@@ -1,1 +1,232 @@
 
+  Introduction:
+
+	Our product S4 is an all-in-one scheduling software that aims to make the lifes of managers, employees, and supervisors easy. Our goal is to create software that will give schedulers the ability to both automatically generate the schedule and manually assign shifts. It will also give employees the ability to see the schedule, and trade or give up shifts. We will make it easy to trade, drop, and pick up all shifts without requiring the use of any outside method, while allowing the ability for manager approval of trades. The software will make the schedule on its own with an algorithm that will include factors such as availability of employees, eligibility to work certain roles, requested hours, and overtime. 
+
+Initial Value Proposition and Customer Segments:
+
+	This initially feels very niche however with every increase in functionality the usage viability increases exponentially for all different kinds of schedulers. We hope to reach all kinds of work schedulers in all different fields, such as restaurant work, school scheduling, even potentially reaching task scheduling. The biggest value from the customer is the options that we hope to offer letting us reach as many customers as possible. Many softwares are very unfinished lacking important options for specific situations that are niche but keep many potential users from using the softwares. We hope that leads to our product being unique in it having as many options as possible allowing things to be used and not used. 
+
+Interviews Summaries: 
+
+Interview 1:
+Summary: Discussed current and past processes for creating schedules and the improvements from past methods to current methods. Also talked about the challenges faced with scheduling, and the possible areas for improvement. 
+
+Interviewer: Eli Vatsaas
+Interviewee: Amanda Ekola
+When: 01/30/2024
+Customer Segment: Manager with scheduling responsibilities
+
+Key Insights
+
+Shift templates for specific roles that can be auto-populated - manager template/cook template/etc.
+Pending time off approval impacts schedule generation
+Shift assignment by seniority
+1-1.5 hours to create schedule, how to make more efficient?
+
+Representative Quotes
+
+“What is nice is for multiple people (schedulers) to have a template (manager, cook).”
+“When there are people who cross train and work multiple jobs, its hard for all to do schedule at the same time.”
+“Its nice to be able to announce to everyone, or just specific roles.”
+“The ability to drag and drop a shift when reassigning between employees is nice.”
+
+Assessment: Must have / Nice to have / Don’t care
+
+Drag and Drop Shifts (Must)
+Annoucements (Must)
+Shift Templates (Must)
+Tools to make human tasks more efficient (Nice)
+Conflict Warnings (Nice)
+Shift Trades (Must)
+Pending Time Off Warning (Nice)
+
+Interview 2:
+Summary: Discussed current scheduling software used and the pros and cons of what it offers. Also talked about what they would want added to a scheduling system.
+
+Interviewer: Tyler Austin
+Interviewee: Jessie Kreuger
+When: 2/2/2024
+Customer Segment: Employee that uses software to get shifts
+
+Key Insights
+
+Everyone's unavailability can be seen when making your schedule.
+
+Able to select days you want off and choose when your are unavailable.
+
+Representative Quotes
+
+"Clear and concise messaging system and scheduling system is easy to use"
+"I like being able to see everyone's availability"
+
+Assessment: Must have / Nice to Have / Don't Care
+
+Availability viewing (must)
+Shift Trades (must)
+HR and Boss Contacts (nice)
+Announcements (nice)
+
+Interview 3: 
+Summary: Discussed the different types of scheduling systems used for each job and the benefits/downsides to each. Also talk about what would be nice to have in a scheduling system.
+
+Interviewer: Tyler Austin
+Interviewee: Natalia Valenzuela
+When: 2/3/2024
+Customer Segment: Employee that uses system to get shifts
+
+Key Insights
+
+Being able to self set hours that work for you.
+Make sure the system is easy to use and understand.
+Able to reschedule or trade shifts when needed.
+
+Representative Quotes 
+"I like being able to easy request and set my own hours"
+"Sometimes having to request time off two weeks in advance is rough and I wish there was an easier way to do it sometimes"
+"I have no guarantee that I can get a shift covered if I need to get one covered"
+
+Assessment: Must have / Nice to Have / Don't Care
+Ease of Use (Must)
+Swapping/Covering Shifts (Must)
+Quick time off request (Nice)
+
+Interview 4: 
+
+Summary: Discussed the differences of using an computer software to make employee schedules and doing it by hand.
+
+Interviewer: Brady Wisniewski
+Interviewee: Lorianna Martin
+When: 2/5/2024
+Customer Segment: Manager who builds schedules
+
+Key Insights:
+
+Hard to trust a computer 100% of the time, need to double check what was built.
+Visuals are one of the most important things to make usage easy.
+Having the option to include trustworthyness of employees would make the system more useful.
+
+Representative quotes 
+"I had to double check it anyway, so it was easier to do it on my own."
+"It was super hard to understand what I was reading."
+"Being able to add tiers [to employees] would make me use it"
+
+Assessment: Must have / Nice to Have / Don't Care
+Ranks/Tiers (Must)
+Readable Visuals (Nice)
+Consistency (Nice)
+
+Interview 5:
+Summary: Discussed current and past processes for creating schedules and the improvements from past methods to current methods. Also talked about the challenges faced with scheduling, and the possible areas for improvement. 
+
+Interviewer: Eli Vatsaas
+Interviewee: Paycen Hendricks
+When: 02/06/2024
+Customer Segment: Manager with scheduling responsibilities
+
+Key Insights
+
+Shift templates are the most important feature in minimizing scheduling time
+Overtime warnings occur during scheduling and shift trades, help ensure employees don't go into overtime
+Issues arise when employee is scheduled in multiple roles, have to do schedules sequentially
+Important to ensure new employees aren't on busy nights
+
+Representative Quotes
+
+"The hardest part of scheduling is when employees can work more than one role."
+“Managing employee preferences require me to play fair.”
+“If you took the majority of the week off, and are only avail be the one day, you might not even get the one day.”
+“The one thing that would be nice would be for us to all do the schedule at the same time, without conflict.”
+
+Assessment: Must have / Nice to have / Don’t care
+
+Drag and Drop Shifts (Nice)
+Announcements (Must)
+Shift Templates (Must)
+Tools to make human tasks more efficient (Nice)
+Conflict Warnings (Nice)
+Shift Trades (Must)
+Simultaneous Scheduling (Nice)
+
+Interview 6:
+
+Summary: Interview focused on the idea of task delegation and how it would be implemented.
+
+Interviewee: Melanie Hull DDS, owner/ operator of Phoenix Pediatric Dental
+Interviewer: Elliot Hull
+When: February 2nd, 2024
+Customer segment: Healthcare Business Owner 
+
+Key Insights
+
+Current softwares don’t manage tasks granularly.
+Would prefer to have specific tasks for workers laid out very specifically.
+
+Representative Quotes
+
+“Workers will show up and not use their time effectively”
+“I want someone to know when they should sweep, and be able to check off the task when completed”
+“Tasks should show up as complete, and automatically become incomplete after a certain period of time”
+
+Assessment: Must have / Nice to have / Don’t care 
+
+If the software offered a more specific task assignment (Nice to have)
+
+Interview #7:
+
+Summary: Interview focused on UI design and ease of use.
+
+Interviewee: Lia Steinemann, Student Administration Assistant, NAU Sociology Department
+Interviewer: Elliot Hull
+When: February 4th, 2024
+Customer segment: Higher Education Administrator 
+
+Key Insights
+
+Some users of the software aren’t good with technology, and need large text / buttons
+UI needs to be easily navigable, rather than difficult to parse
+Simple and reliable so that users can see easily when they are suppose to work  
+
+Representative Quotes
+
+“Some older users have trouble when using the software, and get frustrated”
+“Some professors show up at the wrong time, or don’t know they have a meeting because notifications don’t work, and are difficult to read”
+ “I wish it was easier to see when my schedule is, because my times are hidden under multiple menus”
+
+Assessment: Must have / Nice to have / Don’t care (how the interviewee sees the solution)
+
+Easy to use, with readable buttons and clean UI (Nice to have)
+
+Interview 8:
+
+Summary: Discussed the software currently used to create the Schedules at Papa Murphy's Pizza in Sahuarita Arizona. Discussed the pros and the cons of this software. 
+
+Interviewer: Joseph Laity
+Interviewee: Mindy Boettcher
+When: 2/10/2024
+Customer Segment: Manager with scheduling responsibilities 
+
+Key Insights
+
+Currently uses NCR-Menu Link and has been for 6 years
+Has to create the schedules manually. 
+Has the last 6 years worth of labor and sales stored on a database
+Simple to adjust, change, remove, or update information.
+
+Representative Quotes 
+
+"Automatic schedules would be great."
+"The software would also have to know the prior 6 weeks sales & labor to generate a more accurate schedule"
+"I have no cons, it's one of the easiest to use."
+
+Assessment: Must have / Nice to have / Don't care
+
+Access to a database (Must have)
+Able to adjust schedule (Must have)
+Easy to use (Nice to have)
+Automatic schedule generation (Nice to have)
+
+Final Value Proposition and Customer Segments:
+
+	The 8 interviews that the group conducted gave us extremely valuable insight as to who we are selling this product to and the features it should have. All the "Must have" components from the interviews are: the ability to adjust the schedule, announcements, shift templates, shift trades, availability viewing, ease of use, and access to a database of labor and sales. This tells us the necessary features we should have. Other features that may be considered will be taken from the "Nice to have" section of the interviews. Our target customer is definitely going to include restaurants and schools as those seem to have to most need for schedules. Our product value comes from the ease of use we will provide. Automatically generating schedules will seem to take a heavy load off the managers and employee's in charge of creating them. They will become fast and efficent through our streamline process. Our product is unique because of all the features we will provide. Not only is 
+automatic schedule generation unique to our product, but combined with the other useful and quality of life features we learned about in the interviews, our product will be superior to any other scheduling software.   
