@@ -1,33 +1,46 @@
+USE S4;
+
+ALTER TABLE Employee MODIFY COLUMN version INT NOT NULL DEFAULT 0;
+ALTER TABLE Role MODIFY COLUMN version INT NOT NULL DEFAULT 0;
+ALTER TABLE Store MODIFY COLUMN version INT NOT NULL DEFAULT 0;
+ALTER TABLE Availability MODIFY COLUMN version INT NOT NULL DEFAULT 0;
+ALTER TABLE Schedule MODIFY COLUMN version INT NOT NULL DEFAULT 0;
+ALTER TABLE DesiredShiftHours MODIFY COLUMN version INT NOT NULL DEFAULT 0;
+ALTER TABLE Shift MODIFY COLUMN version INT NOT NULL DEFAULT 0;
+
 -- Insert Roles --
-INSERT INTO `mydb`.`ROLES`
+/*
+INSERT INTO `S4`.`ROLES`
 (`RoleName`)
 VALUES
 ('Manager');
-INSERT INTO `mydb`.`ROLES`
+INSERT INTO `S4`.`ROLES`
 (`RoleName`)
 VALUES
 ('Cook');
-INSERT INTO `mydb`.`ROLES`
+INSERT INTO `S4`.`ROLES`
 (`RoleName`)
 VALUES
 ('Cashier');
-INSERT INTO `mydb`.`ROLES`
+INSERT INTO `S4`.`ROLES`
 (`RoleName`)
 VALUES
 ('Driver');
+*/
+
 
 -- Insert Employees --
-INSERT INTO `mydb`.`EMPLOYEE`
-(`EmployeeID`,
+INSERT INTO `S4`.`EMPLOYEE`
+(`ID`,
 `FirstName`,
 `LastName`,
 `Email`,
 `PhoneNumber`,
 `HireDate`,
-`DateofBirth`,
+`BirthDate`,
 `PayRate`)
 VALUES
-(1,
+(0,
 'Marian',
 'Ostberg',
 'MOstberg@example.com',
@@ -35,17 +48,17 @@ VALUES
 '2022-10-18',
 '1992-02-19',
 16);
-INSERT INTO `mydb`.`EMPLOYEE`
-(`EmployeeID`,
+INSERT INTO `S4`.`EMPLOYEE`
+(`ID`,
 `FirstName`,
 `LastName`,
 `Email`,
 `PhoneNumber`,
 `HireDate`,
-`DateofBirth`,
+`BirthDate`,
 `PayRate`)
 VALUES
-(2,
+(0,
 'Howell',
 'Rosenberg',
 'howellR@example.com',
@@ -53,17 +66,17 @@ VALUES
 '2020-11-23',
 '2003-06-12',
 18);
-INSERT INTO `mydb`.`EMPLOYEE`
-(`EmployeeID`,
+INSERT INTO `S4`.`EMPLOYEE`
+(`ID`,
 `FirstName`,
 `LastName`,
 `Email`,
 `PhoneNumber`,
 `HireDate`,
-`DateofBirth`,
+`BirthDate`,
 `PayRate`)
 VALUES
-(3,
+(0,
 'Mary',
 'Carpenter',
 'MaryCarpenter@example.com',
@@ -71,17 +84,17 @@ VALUES
 '2023-04-20',
 '2000-12-10',
 17);
-INSERT INTO `mydb`.`EMPLOYEE`
-(`EmployeeID`,
+INSERT INTO `S4`.`EMPLOYEE`
+(`ID`,
 `FirstName`,
 `LastName`,
 `Email`,
 `PhoneNumber`,
 `HireDate`,
-`DateofBirth`,
+`BirthDate`,
 `PayRate`)
 VALUES
-(4,
+(0,
 'Radovan',
 'Klerkx',
 'radovan@example.com',
@@ -89,17 +102,17 @@ VALUES
 '2015-10-17',
 '1996-03-17',
 20);
-INSERT INTO `mydb`.`EMPLOYEE`
-(`EmployeeID`,
+INSERT INTO `S4`.`EMPLOYEE`
+(`ID`,
 `FirstName`,
 `LastName`,
 `Email`,
 `PhoneNumber`,
 `HireDate`,
-`DateofBirth`,
+`BirthDate`,
 `PayRate`)
 VALUES
-(5,
+(0,
 'Thiemo',
 'Maria',
 'thiemo@example.com',
@@ -107,17 +120,17 @@ VALUES
 '2018-09-25',
 '2001-04-21',
 16);
-INSERT INTO `mydb`.`EMPLOYEE`
-(`EmployeeID`,
+INSERT INTO `S4`.`EMPLOYEE`
+(`ID`,
 `FirstName`,
 `LastName`,
 `Email`,
 `PhoneNumber`,
 `HireDate`,
-`DateofBirth`,
+`BirthDate`,
 `PayRate`)
 VALUES
-(6,
+(0,
 'Alba',
 'Winship',
 'albawinship@example.com',
@@ -125,17 +138,17 @@ VALUES
 '2019-10-22',
 '2000-02-29',
 16);
-INSERT INTO `mydb`.`EMPLOYEE`
-(`EmployeeID`,
+INSERT INTO `S4`.`EMPLOYEE`
+(`ID`,
 `FirstName`,
 `LastName`,
 `Email`,
 `PhoneNumber`,
 `HireDate`,
-`DateofBirth`,
+`BirthDate`,
 `PayRate`)
 VALUES
-(7,
+(0,
 'Edina',
 'Carlson',
 'edinacarlson@example.com',
@@ -143,17 +156,17 @@ VALUES
 '2021-11-22',
 '2003-06-28',
 19);
-INSERT INTO `mydb`.`EMPLOYEE`
-(`EmployeeID`,
+INSERT INTO `S4`.`EMPLOYEE`
+(`ID`,
 `FirstName`,
 `LastName`,
 `Email`,
 `PhoneNumber`,
 `HireDate`,
-`DateofBirth`,
+`BirthDate`,
 `PayRate`)
 VALUES
-(8,
+(0,
 'Christopher',
 'Komatka',
 'ChristopherK@example.com',
@@ -161,17 +174,17 @@ VALUES
 '2023-09-01',
 '1994-06-20',
 20);
-INSERT INTO `mydb`.`EMPLOYEE`
-(`EmployeeID`,
+INSERT INTO `S4`.`EMPLOYEE`
+(`ID`,
 `FirstName`,
 `LastName`,
 `Email`,
 `PhoneNumber`,
 `HireDate`,
-`DateofBirth`,
+`BirthDate`,
 `PayRate`)
 VALUES
-(9,
+(0,
 'Walaric',
 'Winston',
 'thewalaric@example.com',
@@ -179,17 +192,17 @@ VALUES
 '2012-12-31',
 '1994-07-27',
 20);
-INSERT INTO `mydb`.`EMPLOYEE`
-(`EmployeeID`,
+INSERT INTO `S4`.`EMPLOYEE`
+(`ID`,
 `FirstName`,
 `LastName`,
 `Email`,
 `PhoneNumber`,
 `HireDate`,
-`DateofBirth`,
+`BirthDate`,
 `PayRate`)
 VALUES
-(10,
+(0,
 'Big',
 'Show',
 'BigSHow@example.com',
@@ -199,1424 +212,1523 @@ VALUES
 25);
 
 -- Insert employee roles --
-INSERT INTO `mydb`.`EMPLOYEE_has_ROLES`
-(`EMPLOYEE_EmployeeID`,
-`ROLES_RoleName`)
-VALUES
-(1,
-'Manager');
-INSERT INTO `mydb`.`EMPLOYEE_has_ROLES`
-(`EMPLOYEE_EmployeeID`,
-`ROLES_RoleName`)
-VALUES
-(1,
-'Cook');
-INSERT INTO `mydb`.`EMPLOYEE_has_ROLES`
-(`EMPLOYEE_EmployeeID`,
-`ROLES_RoleName`)
-VALUES
-(1,
-'Driver');
-INSERT INTO `mydb`.`EMPLOYEE_has_ROLES`
-(`EMPLOYEE_EmployeeID`,
-`ROLES_RoleName`)
-VALUES
-(1,
-'Cashier');
-INSERT INTO `mydb`.`EMPLOYEE_has_ROLES`
-(`EMPLOYEE_EmployeeID`,
-`ROLES_RoleName`)
+
+INSERT INTO `S4`.`EmployeeRoles`
+(`EMPLOYEE_ID`,
+`Role_ID`)
 VALUES
 (2,
-'Driver');
-INSERT INTO `mydb`.`EMPLOYEE_has_ROLES`
-(`EMPLOYEE_EmployeeID`,
-`ROLES_RoleName`)
+2);
+INSERT INTO `S4`.`EmployeeRoles`
+(`EMPLOYEE_ID`,
+`Role_ID`)
 VALUES
 (3,
-'Cook');
-INSERT INTO `mydb`.`EMPLOYEE_has_ROLES`
-(`EMPLOYEE_EmployeeID`,
-`ROLES_RoleName`)
+4);
+INSERT INTO `S4`.`EmployeeRoles`
+(`EMPLOYEE_ID`,
+`Role_ID`)
 VALUES
 (4,
-'Cashier');
-INSERT INTO `mydb`.`EMPLOYEE_has_ROLES`
-(`EMPLOYEE_EmployeeID`,
-`ROLES_RoleName`)
+3);
+INSERT INTO `S4`.`EmployeeRoles`
+(`EMPLOYEE_ID`,
+`Role_ID`)
 VALUES
 (5,
-'Manager');
-INSERT INTO `mydb`.`EMPLOYEE_has_ROLES`
-(`EMPLOYEE_EmployeeID`,
-`ROLES_RoleName`)
+1);
+INSERT INTO `S4`.`EmployeeRoles`
+(`EMPLOYEE_ID`,
+`Role_ID`)
 VALUES
 (6,
-'Cook');
-INSERT INTO `mydb`.`EMPLOYEE_has_ROLES`
-(`EMPLOYEE_EmployeeID`,
-`ROLES_RoleName`)
+4);
+INSERT INTO `S4`.`EmployeeRoles`
+(`EMPLOYEE_ID`,
+`Role_ID`)
 VALUES
 (6,
-'Driver');
-INSERT INTO `mydb`.`EMPLOYEE_has_ROLES`
-(`EMPLOYEE_EmployeeID`,
-`ROLES_RoleName`)
+2);
+INSERT INTO `S4`.`EmployeeRoles`
+(`EMPLOYEE_ID`,
+`Role_ID`)
 VALUES
 (7,
-'Cashier');
-INSERT INTO `mydb`.`EMPLOYEE_has_ROLES`
-(`EMPLOYEE_EmployeeID`,
-`ROLES_RoleName`)
+3);
+INSERT INTO `S4`.`EmployeeRoles`
+(`EMPLOYEE_ID`,
+`Role_ID`)
 VALUES
 (7,
-'Cook');
-INSERT INTO `mydb`.`EMPLOYEE_has_ROLES`
-(`EMPLOYEE_EmployeeID`,
-`ROLES_RoleName`)
+4);
+INSERT INTO `S4`.`EmployeeRoles`
+(`EMPLOYEE_ID`,
+`Role_ID`)
 VALUES
 (8,
-'Manager');
-INSERT INTO `mydb`.`EMPLOYEE_has_ROLES`
-(`EMPLOYEE_EmployeeID`,
-`ROLES_RoleName`)
+1);
+INSERT INTO `S4`.`EmployeeRoles`
+(`EMPLOYEE_ID`,
+`Role_ID`)
 VALUES
 (8,
-'Cook');
-INSERT INTO `mydb`.`EMPLOYEE_has_ROLES`
-(`EMPLOYEE_EmployeeID`,
-`ROLES_RoleName`)
+4);
+INSERT INTO `S4`.`EmployeeRoles`
+(`EMPLOYEE_ID`,
+`Role_ID`)
 VALUES
 (8,
-'Cashier');
-INSERT INTO `mydb`.`EMPLOYEE_has_ROLES`
-(`EMPLOYEE_EmployeeID`,
-`ROLES_RoleName`)
+3);
+INSERT INTO `S4`.`EmployeeRoles`
+(`EMPLOYEE_ID`,
+`Role_ID`)
 VALUES
 (9,
-'Driver');
-INSERT INTO `mydb`.`EMPLOYEE_has_ROLES`
-(`EMPLOYEE_EmployeeID`,
-`ROLES_RoleName`)
+2);
+INSERT INTO `S4`.`EmployeeRoles`
+(`EMPLOYEE_ID`,
+`Role_ID`)
 VALUES
 (9,
-'Cook');
-INSERT INTO `mydb`.`EMPLOYEE_has_ROLES`
-(`EMPLOYEE_EmployeeID`,
-`ROLES_RoleName`)
+4);
+INSERT INTO `S4`.`EmployeeRoles`
+(`EMPLOYEE_ID`,
+`Role_ID`)
 VALUES
 (10,
-'Manager');
-INSERT INTO `mydb`.`EMPLOYEE_has_ROLES`
-(`EMPLOYEE_EmployeeID`,
-`ROLES_RoleName`)
+1);
+INSERT INTO `S4`.`EmployeeRoles`
+(`EMPLOYEE_ID`,
+`Role_ID`)
 VALUES
 (10,
-'Driver');
-INSERT INTO `mydb`.`EMPLOYEE_has_ROLES`
-(`EMPLOYEE_EmployeeID`,
-`ROLES_RoleName`)
+2);
+INSERT INTO `S4`.`EmployeeRoles`
+(`EMPLOYEE_ID`,
+`Role_ID`)
 VALUES
 (10,
-'Cook');
-INSERT INTO `mydb`.`EMPLOYEE_has_ROLES`
-(`EMPLOYEE_EmployeeID`,
-`ROLES_RoleName`)
+4);
+INSERT INTO `S4`.`EmployeeRoles`
+(`EMPLOYEE_ID`,
+`Role_ID`)
 VALUES
 (10,
-'Cashier');
+3);
+INSERT INTO `S4`.`EmployeeRoles`
+(`EMPLOYEE_ID`,
+`Role_ID`)
+VALUES
+(11,
+4);
+INSERT INTO `S4`.`EmployeeRoles`
+(`EMPLOYEE_ID`,
+`Role_ID`)
+VALUES
+(11,
+3);
 
 -- Insert Stores --
-INSERT INTO `mydb`.`STORES`
+/*
+INSERT INTO `S4`.`STORES`
 (`StoreName`)
 VALUES
 ('Downtown');
-INSERT INTO `mydb`.`STORES`
+INSERT INTO `S4`.`STORES`
 (`StoreName`)
 VALUES
 ('Eastside');
-INSERT INTO `mydb`.`STORES`
+INSERT INTO `S4`.`STORES`
 (`StoreName`)
 VALUES
 ('Westside');
-
+*/
 -- Insert Employee Stores --
-INSERT INTO `mydb`.`EMPLOYEE_has_STORES`
-(`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`)
-VALUES
-(1,
-'Downtown');
-INSERT INTO `mydb`.`EMPLOYEE_has_STORES`
-(`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`)
-VALUES
-(1,
-'EastSide');
-INSERT INTO `mydb`.`EMPLOYEE_has_STORES`
-(`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`)
-VALUES
-(1,
-'WestSide');
-INSERT INTO `mydb`.`EMPLOYEE_has_STORES`
-(`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`)
+
+INSERT INTO `S4`.`EmployeeStores`
+(`EMPLOYEE_ID`,
+`Store_id`)
 VALUES
 (2,
-'Downtown');
-INSERT INTO `mydb`.`EMPLOYEE_has_STORES`
-(`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`)
+2);
+INSERT INTO `S4`.`EmployeeStores`
+(`EMPLOYEE_ID`,
+`Store_id`)
 VALUES
 (2,
-'Eastside');
-INSERT INTO `mydb`.`EMPLOYEE_has_STORES`
-(`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`)
+3);
+INSERT INTO `S4`.`EmployeeStores`
+(`EMPLOYEE_ID`,
+`Store_id`)
 VALUES
 (3,
-'Eastside');
-INSERT INTO `mydb`.`EMPLOYEE_has_STORES`
-(`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`)
+3);
+INSERT INTO `S4`.`EmployeeStores`
+(`EMPLOYEE_ID`,
+`Store_id`)
 VALUES
 (3,
-'Westside');
-INSERT INTO `mydb`.`EMPLOYEE_has_STORES`
-(`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`)
+1);
+INSERT INTO `S4`.`EmployeeStores`
+(`EMPLOYEE_ID`,
+`Store_id`)
 VALUES
 (4,
-'Downtown');
-INSERT INTO `mydb`.`EMPLOYEE_has_STORES`
-(`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`)
+2);
+INSERT INTO `S4`.`EmployeeStores`
+(`EMPLOYEE_ID`,
+`Store_id`)
 VALUES
 (5,
-'Downtown');
-INSERT INTO `mydb`.`EMPLOYEE_has_STORES`
-(`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`)
+2);
+INSERT INTO `S4`.`EmployeeStores`
+(`EMPLOYEE_ID`,
+`Store_id`)
 VALUES
 (5,
-'EastSide');
-INSERT INTO `mydb`.`EMPLOYEE_has_STORES`
-(`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`)
+3);
+INSERT INTO `S4`.`EmployeeStores`
+(`EMPLOYEE_ID`,
+`Store_id`)
 VALUES
 (5,
-'WestSide');
-INSERT INTO `mydb`.`EMPLOYEE_has_STORES`
-(`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`)
+1);
+INSERT INTO `S4`.`EmployeeStores`
+(`EMPLOYEE_ID`,
+`Store_id`)
 VALUES
 (6,
-'Downtown');
-INSERT INTO `mydb`.`EMPLOYEE_has_STORES`
-(`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`)
+2);
+INSERT INTO `S4`.`EmployeeStores`
+(`EMPLOYEE_ID`,
+`Store_id`)
 VALUES
 (6,
-'EastSide');
-INSERT INTO `mydb`.`EMPLOYEE_has_STORES`
-(`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`)
+3);
+INSERT INTO `S4`.`EmployeeStores`
+(`EMPLOYEE_ID`,
+`Store_id`)
 VALUES
 (7,
-'Downtown');
-INSERT INTO `mydb`.`EMPLOYEE_has_STORES`
-(`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`)
+2);
+INSERT INTO `S4`.`EmployeeStores`
+(`EMPLOYEE_ID`,
+`Store_id`)
 VALUES
 (7,
-'EastSide');
-INSERT INTO `mydb`.`EMPLOYEE_has_STORES`
-(`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`)
+3);
+INSERT INTO `S4`.`EmployeeStores`
+(`EMPLOYEE_ID`,
+`Store_id`)
 VALUES
 (7,
-'WestSide');
-INSERT INTO `mydb`.`EMPLOYEE_has_STORES`
-(`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`)
+1);
+INSERT INTO `S4`.`EmployeeStores`
+(`EMPLOYEE_ID`,
+`Store_id`)
 VALUES
 (8,
-'Downtown');
+2);
 
-INSERT INTO `mydb`.`EMPLOYEE_has_STORES`
-(`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`)
+INSERT INTO `S4`.`EmployeeStores`
+(`EMPLOYEE_ID`,
+`Store_id`)
 VALUES
 (8,
-'WestSide');
-INSERT INTO `mydb`.`EMPLOYEE_has_STORES`
-(`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`)
+1);
+INSERT INTO `S4`.`EmployeeStores`
+(`EMPLOYEE_ID`,
+`Store_id`)
 VALUES
 (9,
-'WestSide');
-INSERT INTO `mydb`.`EMPLOYEE_has_STORES`
-(`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`)
+1);
+INSERT INTO `S4`.`EmployeeStores`
+(`EMPLOYEE_ID`,
+`Store_id`)
 VALUES
 (9,
-'Downtown');
-INSERT INTO `mydb`.`EMPLOYEE_has_STORES`
-(`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`)
+2);
+INSERT INTO `S4`.`EmployeeStores`
+(`EMPLOYEE_ID`,
+`Store_id`)
 VALUES
 (10,
-'WestSide');
-INSERT INTO `mydb`.`EMPLOYEE_has_STORES`
-(`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`)
+1);
+INSERT INTO `S4`.`EmployeeStores`
+(`EMPLOYEE_ID`,
+`Store_id`)
 VALUES
 (10,
-'Downtown');
-INSERT INTO `mydb`.`EMPLOYEE_has_STORES`
-(`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`)
+2);
+INSERT INTO `S4`.`EmployeeStores`
+(`EMPLOYEE_ID`,
+`Store_id`)
 VALUES
 (10,
-'Eastside');
+3);
+INSERT INTO `S4`.`EmployeeStores`
+(`EMPLOYEE_ID`,
+`Store_id`)
+VALUES
+(11,
+3);
+INSERT INTO `S4`.`EmployeeStores`
+(`EMPLOYEE_ID`,
+`Store_id`)
+VALUES
+(11,
+2);
 
 -- Insert Availability --
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(1,
+(0,
 '09:00:00',
 '22:00:00',
 0,
 1,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(2,
+(0,
 '09:00:00',
 '22:00:00',
 1,
 1,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(3,
+(0,
 '09:00:00',
 '22:00:00',
 2,
 1,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(4,
+(0,
 '09:00:00',
 '22:00:00',
 3,
 1,
-NULL);INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+NULL);INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(5,
+(0,
 '09:00:00',
 '22:00:00',
 4,
 1,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(6,
+(0,
 '09:00:00',
 '22:00:00',
 5,
 1,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(7,
+(0,
 '09:00:00',
 '22:00:00',
 6,
 1,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(8,
+(0,
 '08:00:00',
 '20:00:00',
 0,
 2,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(9,
+(0,
 '07:00:00',
 '23:00:00',
 1,
 2,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(10,
+(0,
 '10:00:00',
 '22:00:00',
 2,
 2,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(11,
+(0,
 '07:00:00',
 '22:00:00',
 3,
 2,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(12,
+(0,
 '10:00:00',
 '22:00:00',
 4,
 2,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(13,
+(0,
 '08:30:00',
 '23:30:00',
 5,
 2,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(14,
+(0,
 '08:00:00',
 '22:30:00',
 6,
 2,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(15,
+(0,
 '14:00:00',
 '23:30:00',
 0,
 3,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(16,
+(0,
 '15:00:00',
 '23:30:00',
 1,
 3,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(17,
+(0,
 '10:00:00',
 '22:00:00',
 2,
 3,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(18,
+(0,
 '14:00:00',
 '22:00:00',
 3,
 3,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(19,
+(0,
 '12:00:00',
 '22:00:00',
 4,
 3,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(20,
+(0,
 '12:30:00',
 '23:30:00',
 5,
 3,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(21,
+(0,
 '14:00:00',
 '22:30:00',
 6,
 3,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(22,
+(0,
 '09:00:00',
 '22:00:00',
 0,
 4,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(23,
+(0,
 '07:00:00',
 '23:00:00',
 1,
 4,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(24,
+(0,
 '09:00:00',
 '22:30:00',
 2,
 4,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(25,
+(0,
 '06:00:00',
 '23:30:00',
 3,
 4,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(26,
+(0,
 '07:00:00',
 '23:30:00',
 4,
 4,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(27,
+(0,
 '06:30:00',
 '23:30:00',
 5,
 4,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(28,
+(0,
 '10:00:00',
 '22:30:00',
 6,
 4,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(29,
+(0,
 '15:00:00',
 '23:00:00',
 0,
 5,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(30,
+(0,
 '15:00:00',
 '23:30:00',
 1,
 5,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(31,
+(0,
 '08:00:00',
 '23:00:00',
 2,
 5,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(32,
+(0,
 '06:00:00',
 '22:00:00',
 3,
 5,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(33,
+(0,
 '08:00:00',
 '23:00:00',
 4,
 5,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(34,
+(0,
 '06:30:00',
 '23:30:00',
 5,
 5,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(35,
+(0,
 '09:00:00',
 '20:30:00',
 6,
 5,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(36,
+(0,
 '12:00:00',
 '23:00:00',
 0,
 6,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(37,
+(0,
 '15:00:00',
 '23:30:00',
 1,
 6,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(38,
+(0,
 '08:00:00',
 '23:00:00',
 2,
 6,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(39,
+(0,
 '09:00:00',
 '23:00:00',
 3,
 6,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(40,
+(0,
 '10:00:00',
 '22:00:00',
 4,
 6,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(41,
+(0,
 '08:30:00',
 '21:30:00',
 5,
 6,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(42,
+(0,
 '07:00:00',
 '22:30:00',
 6,
 6,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(43,
+(0,
 '11:00:00',
 '23:30:00',
 0,
 7,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(44,
+(0,
 '09:00:00',
 '23:30:00',
 1,
 7,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(45,
+(0,
 '08:00:00',
 '23:00:00',
 2,
 7,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(46,
+(0,
 '09:00:00',
 '22:00:00',
 3,
 7,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(47,
+(0,
 '09:00:00',
 '23:00:00',
 4,
 7,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(48,
+(0,
 '06:30:00',
 '23:30:00',
 5,
 7,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(49,
+(0,
 '09:00:00',
 '22:30:00',
 6,
 7,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(50,
+(0,
 '09:00:00',
 '23:30:00',
 0,
 8,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(51,
+(0,
 '10:00:00',
 '23:30:00',
 1,
 8,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(52,
+(0,
 '08:00:00',
 '23:00:00',
 2,
 8,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(53,
+(0,
 '10:00:00',
 '20:00:00',
 3,
 8,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(54,
+(0,
 '09:00:00',
 '22:00:00',
 4,
 8,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(55,
+(0,
 '08:30:00',
 '23:30:00',
 5,
 8,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(56,
+(0,
 '09:00:00',
 '20:30:00',
 6,
 8,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(57,
+(0,
 '08:00:00',
 '23:30:00',
 0,
 9,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(58,
+(0,
 '08:00:00',
 '23:30:00',
 1,
 9,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(59,
+(0,
 '19:00:00',
 '23:00:00',
 2,
 9,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(60,
+(0,
 '09:00:00',
 '22:00:00',
 3,
 9,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(61,
+(0,
 '10:00:00',
 '23:30:00',
 4,
 9,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(62,
+(0,
 '08:30:00',
 '23:30:00',
 5,
 9,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(63,
+(0,
 '07:00:00',
 '23:30:00',
 6,
 9,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(64,
+(0,
 '03:00:00',
 '23:30:00',
 0,
 10,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(65,
+(0,
 '06:00:00',
 '23:30:00',
 1,
 10,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(66,
+(0,
 '06:00:00',
 '23:00:00',
 2,
 10,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(67,
+(0,
 '02:00:00',
 '22:00:00',
 3,
 10,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(68,
+(0,
 '05:00:00',
 '23:30:00',
 4,
 10,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(69,
+(0,
 '06:30:00',
 '23:30:00',
 5,
 10,
 NULL);
-INSERT INTO `mydb`.`AVAILABILITY`
-(`AvailabilityID`,
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
 `StartTime`,
 `EndTime`,
 `DayOfWeek`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(70,
+(0,
 '05:00:00',
 '23:30:00',
 6,
 10,
 NULL);
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
+`StartTime`,
+`EndTime`,
+`DayOfWeek`,
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
+VALUES
+(0,
+'03:00:00',
+'23:30:00',
+0,
+11,
+NULL);
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
+`StartTime`,
+`EndTime`,
+`DayOfWeek`,
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
+VALUES
+(0,
+'06:00:00',
+'23:30:00',
+1,
+11,
+NULL);
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
+`StartTime`,
+`EndTime`,
+`DayOfWeek`,
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
+VALUES
+(0,
+'06:00:00',
+'23:00:00',
+2,
+11,
+NULL);
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
+`StartTime`,
+`EndTime`,
+`DayOfWeek`,
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
+VALUES
+(0,
+'02:00:00',
+'22:00:00',
+3,
+11,
+NULL);
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
+`StartTime`,
+`EndTime`,
+`DayOfWeek`,
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
+VALUES
+(0,
+'05:00:00',
+'23:30:00',
+4,
+11,
+NULL);
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
+`StartTime`,
+`EndTime`,
+`DayOfWeek`,
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
+VALUES
+(0,
+'06:30:00',
+'23:30:00',
+5,
+11,
+NULL);
+INSERT INTO `S4`.`AVAILABILITY`
+(`ID`,
+`StartTime`,
+`EndTime`,
+`DayOfWeek`,
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
+VALUES
+(0,
+'05:00:00',
+'23:30:00',
+6,
+11,
+NULL);
 
 -- Insert Desired Shift Hours --
-INSERT INTO `mydb`.`DESIREDSHIFTHOURS`
-(`DesiredShiftHoursID`,
+INSERT INTO `S4`.`DESIREDSHIFTHOURS`
+(`ID`,
 `DesiredShifts`,
 `MaxShifts`,
 `DesiredHours`,
 `MaxHours`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(1,
+(0,
 5,
 7,
 35,
 40,
 1,
 NULL);
-INSERT INTO `mydb`.`DESIREDSHIFTHOURS`
-(`DesiredShiftHoursID`,
+INSERT INTO `S4`.`DESIREDSHIFTHOURS`
+(`ID`,
 `DesiredShifts`,
 `MaxShifts`,
 `DesiredHours`,
 `MaxHours`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(2,
+(0,
 4,
 6,
 30,
 40,
 2,
 NULL);
-INSERT INTO `mydb`.`DESIREDSHIFTHOURS`
-(`DesiredShiftHoursID`,
+INSERT INTO `S4`.`DESIREDSHIFTHOURS`
+(`ID`,
 `DesiredShifts`,
 `MaxShifts`,
 `DesiredHours`,
 `MaxHours`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(3,
+(0,
 3,
 5,
 25,
 35,
 3,
 NULL);
-INSERT INTO `mydb`.`DESIREDSHIFTHOURS`
-(`DesiredShiftHoursID`,
+INSERT INTO `S4`.`DESIREDSHIFTHOURS`
+(`ID`,
 `DesiredShifts`,
 `MaxShifts`,
 `DesiredHours`,
 `MaxHours`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(4,
+(0,
 4,
 7,
 30,
 40,
 4,
 NULL);
-INSERT INTO `mydb`.`DESIREDSHIFTHOURS`
-(`DesiredShiftHoursID`,
+INSERT INTO `S4`.`DESIREDSHIFTHOURS`
+(`ID`,
 `DesiredShifts`,
 `MaxShifts`,
 `DesiredHours`,
 `MaxHours`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(5,
+(0,
 3,
 5,
 20,
 35,
 5,
 NULL);
-INSERT INTO `mydb`.`DESIREDSHIFTHOURS`
-(`DesiredShiftHoursID`,
+INSERT INTO `S4`.`DESIREDSHIFTHOURS`
+(`ID`,
 `DesiredShifts`,
 `MaxShifts`,
 `DesiredHours`,
 `MaxHours`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(6,
+(0,
 5,
 7,
 35,
 40,
 6,
 NULL);
-INSERT INTO `mydb`.`DESIREDSHIFTHOURS`
-(`DesiredShiftHoursID`,
+INSERT INTO `S4`.`DESIREDSHIFTHOURS`
+(`ID`,
 `DesiredShifts`,
 `MaxShifts`,
 `DesiredHours`,
 `MaxHours`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(7,
+(0,
 4,
 6,
 35,
 40,
 7,
 NULL);
-INSERT INTO `mydb`.`DESIREDSHIFTHOURS`
-(`DesiredShiftHoursID`,
+INSERT INTO `S4`.`DESIREDSHIFTHOURS`
+(`ID`,
 `DesiredShifts`,
 `MaxShifts`,
 `DesiredHours`,
 `MaxHours`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(8,
+(0,
 6,
 7,
 40,
 40,
 8,
 NULL);
-INSERT INTO `mydb`.`DESIREDSHIFTHOURS`
-(`DesiredShiftHoursID`,
+INSERT INTO `S4`.`DESIREDSHIFTHOURS`
+(`ID`,
 `DesiredShifts`,
 `MaxShifts`,
 `DesiredHours`,
 `MaxHours`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(9,
+(0,
 4,
 7,
 28,
 40,
 9,
 NULL);
-INSERT INTO `mydb`.`DESIREDSHIFTHOURS`
-(`DesiredShiftHoursID`,
+INSERT INTO `S4`.`DESIREDSHIFTHOURS`
+(`ID`,
 `DesiredShifts`,
 `MaxShifts`,
 `DesiredHours`,
 `MaxHours`,
-`EMPLOYEE_EmployeeID`,
-`SCHEDULE_ScheduleID`)
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
 VALUES
-(10,
+(0,
+4,
+7,
+30,
+40,
+10,
+NULL);
+INSERT INTO `S4`.`DESIREDSHIFTHOURS`
+(`ID`,
+`DesiredShifts`,
+`MaxShifts`,
+`DesiredHours`,
+`MaxHours`,
+`EMPLOYEE_ID`,
+`SCHEDULE_ID`)
+VALUES
+(0,
 4,
 7,
 30,
@@ -1626,1027 +1738,1027 @@ NULL);
 
 -- Insert Schedule --
 
-INSERT INTO `mydb`.`SCHEDULE`
-(`ScheduleID`,
+INSERT INTO `S4`.`SCHEDULE`
+(`ID`,
 `StartDate`,
 `EndDate`,
 `ScheduleName`)
 VALUES
-(1,
+(0,
 '2024-05-19',
 '2024-05-25',
 'ExampleTemplate');
 
 -- Insert Shifts --
 
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(1,
+(0,
 '2024-05-19',
 '09:00:00',
 '17:00:00',
 NULL,
-'Downtown',
-'1',
-'Manager');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+1);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(2,
+(0,
 '2024-05-19',
 '10:00:00',
 '17:00:00',
 NULL,
-'Downtown',
-'1',
-'Cashier');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+1);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(3,
+(0,
 '2024-05-19',
 '11:00:00',
 '17:00:00',
 NULL,
-'Downtown',
-'1',
-'Driver');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+2);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(4,
+(0,
 '2024-05-19',
 '11:00:00',
 '17:00:00',
 NULL,
-'Downtown',
-'1',
-'Cook');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+3);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(5,
+(0,
 '2024-05-19',
 '17:00:00',
 '22:30:00',
 NULL,
-'Downtown',
-'1',
-'Manager');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+1);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(6,
+(0,
 '2024-05-19',
 '17:00:00',
 '22:30:00',
 NULL,
-'Downtown',
-'1',
-'Cashier');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+3);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(7,
+(0,
 '2024-05-19',
 '14:30:00',
 '22:30:00',
 NULL,
-'Downtown',
-'1',
-'Driver');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+2);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(8,
+(0,
 '2024-05-19',
 '14:30:00',
 '22:30:00',
 NULL,
-'Downtown',
-'1',
-'Cook');
+2,
+1,
+3);
 
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(9,
+(0,
 '2024-05-20',
 '09:00:00',
 '17:00:00',
 NULL,
-'Downtown',
-'1',
-'Manager');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+1);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(10,
+(0,
 '2024-05-20',
 '10:00:00',
 '17:00:00',
 NULL,
-'Downtown',
-'1',
-'Cashier');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+3);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(11,
+(0,
 '2024-05-20',
 '11:00:00',
 '17:00:00',
 NULL,
-'Downtown',
-'1',
-'Driver');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+2);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(12,
+(0,
 '2024-05-20',
 '11:00:00',
 '17:00:00',
 NULL,
-'Downtown',
-'1',
-'Cook');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+4);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(13,
+(0,
 '2024-05-20',
 '17:00:00',
 '22:30:00',
 NULL,
-'Downtown',
-'1',
-'Manager');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+1);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(14,
+(0,
 '2024-05-20',
 '17:00:00',
 '22:30:00',
 NULL,
-'Downtown',
-'1',
-'Cashier');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+3);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(15,
+(0,
 '2024-05-20',
 '14:30:00',
 '22:30:00',
 NULL,
-'Downtown',
-'1',
-'Driver');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+2);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(16,
+(0,
 '2024-05-20',
 '14:30:00',
 '22:30:00',
 NULL,
-'Downtown',
-'1',
-'Cook');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+4);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(17,
+(0,
 '2024-05-21',
 '09:00:00',
 '17:00:00',
 NULL,
-'Downtown',
-'1',
-'Manager');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+1);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(18,
+(0,
 '2024-05-21',
 '10:00:00',
 '17:00:00',
 NULL,
-'Downtown',
-'1',
-'Cashier');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+3);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(19,
+(0,
 '2024-05-21',
 '11:00:00',
 '17:00:00',
 NULL,
-'Downtown',
-'1',
-'Driver');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+2);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(20,
+(0,
 '2024-05-21',
 '11:00:00',
 '17:00:00',
 NULL,
-'Downtown',
-'1',
-'Cook');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+4);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(21,
+(0,
 '2024-05-21',
 '17:00:00',
 '22:30:00',
 NULL,
-'Downtown',
-'1',
-'Manager');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+1);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(22,
+(0,
 '2024-05-21',
 '17:00:00',
 '22:30:00',
 NULL,
-'Downtown',
-'1',
-'Cashier');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+3);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(23,
+(0,
 '2024-05-21',
 '14:30:00',
 '22:30:00',
 NULL,
-'Downtown',
-'1',
-'Driver');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+2);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(24,
+(0,
 '2024-05-21',
 '14:30:00',
 '22:30:00',
 NULL,
-'Downtown',
-'1',
-'Cook');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+4);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(25,
+(0,
 '2024-05-22',
 '09:00:00',
 '17:00:00',
 NULL,
-'Downtown',
-'1',
-'Manager');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+1);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(26,
+(0,
 '2024-05-22',
 '10:00:00',
 '17:00:00',
 NULL,
-'Downtown',
-'1',
-'Cashier');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+3);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(27,
+(0,
 '2024-05-22',
 '11:00:00',
 '17:00:00',
 NULL,
-'Downtown',
-'1',
-'Driver');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+2);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(28,
+(0,
 '2024-05-22',
 '11:00:00',
 '17:00:00',
 NULL,
-'Downtown',
-'1',
-'Cook');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+4);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(29,
+(0,
 '2024-05-22',
 '17:00:00',
 '22:30:00',
 NULL,
-'Downtown',
-'1',
-'Manager');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+1);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(30,
+(0,
 '2024-05-22',
 '17:00:00',
 '22:30:00',
 NULL,
-'Downtown',
-'1',
-'Cashier');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+3);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(31,
+(0,
 '2024-05-22',
 '14:30:00',
 '22:30:00',
 NULL,
-'Downtown',
-'1',
-'Driver');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+2);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(32,
+(0,
 '2024-05-22',
 '14:30:00',
 '22:30:00',
 NULL,
-'Downtown',
-'1',
-'Cook');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+4);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(33,
+(0,
 '2024-05-23',
 '09:00:00',
 '17:00:00',
 NULL,
-'Downtown',
-'1',
-'Manager');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+1);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(34,
+(0,
 '2024-05-23',
 '10:00:00',
 '17:00:00',
 NULL,
-'Downtown',
-'1',
-'Cashier');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+4);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(35,
+(0,
 '2024-05-23',
 '11:00:00',
 '17:00:00',
 NULL,
-'Downtown',
-'1',
-'Driver');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+2);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(36,
+(0,
 '2024-05-23',
 '11:00:00',
 '17:00:00',
 NULL,
-'Downtown',
-'1',
-'Cook');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+4);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(37,
+(0,
 '2024-05-23',
 '17:00:00',
 '22:30:00',
 NULL,
-'Downtown',
-'1',
-'Manager');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+1);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(38,
+(0,
 '2024-05-23',
 '17:00:00',
 '22:30:00',
 NULL,
-'Downtown',
-'1',
-'Cashier');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+3);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(39,
+(0,
 '2024-05-23',
 '14:30:00',
 '22:30:00',
 NULL,
-'Downtown',
-'1',
-'Driver');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+2);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(40,
+(0,
 '2024-05-23',
 '14:30:00',
 '22:30:00',
 NULL,
-'Downtown',
-'1',
-'Cook');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+4);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(41,
+(0,
 '2024-05-24',
 '09:00:00',
 '17:00:00',
 NULL,
-'Downtown',
-'1',
-'Manager');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2, 
+1,
+1);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(42,
+(0,
 '2024-05-24',
 '10:00:00',
 '17:00:00',
 NULL,
-'Downtown',
-'1',
-'Cashier');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+3);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(43,
+(0,
 '2024-05-24',
 '11:00:00',
 '17:00:00',
 NULL,
-'Downtown',
-'1',
-'Driver');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+2);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(44,
+(0,
 '2024-05-24',
 '11:00:00',
 '17:00:00',
 NULL,
-'Downtown',
-'1',
-'Cook');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+4);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(45,
+(0,
 '2024-05-24',
 '17:00:00',
 '22:30:00',
 NULL,
-'Downtown',
-'1',
-'Manager');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+1);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(46,
+(0,
 '2024-05-24',
 '17:00:00',
 '22:30:00',
 NULL,
-'Downtown',
-'1',
-'Cashier');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+3);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(47,
+(0,
 '2024-05-24',
 '14:30:00',
 '22:30:00',
 NULL,
-'Downtown',
-'1',
-'Driver');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+2);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(48,
+(0,
 '2024-05-24',
 '14:30:00',
 '22:30:00',
 NULL,
-'Downtown',
-'1',
-'Cook');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+4);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(49,
+(0,
 '2024-05-25',
 '09:00:00',
 '17:00:00',
 NULL,
-'Downtown',
-'1',
-'Manager');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+1);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(50,
+(0,
 '2024-05-25',
 '10:00:00',
 '17:00:00',
 NULL,
-'Downtown',
-'1',
-'Cashier');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+3);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(51,
+(0,
 '2024-05-25',
 '11:00:00',
 '17:00:00',
 NULL,
-'Downtown',
-'1',
-'Driver');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+2);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(52,
+(0,
 '2024-05-25',
 '11:00:00',
 '17:00:00',
 NULL,
-'Downtown',
-'1',
-'Cook');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+4);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(53,
+(0,
 '2024-05-25',
 '17:00:00',
 '22:30:00',
 NULL,
-'Downtown',
-'1',
-'Manager');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+1);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(54,
+(0,
 '2024-05-25',
 '17:00:00',
 '22:30:00',
 NULL,
-'Downtown',
-'1',
-'Cashier');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+3);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(55,
+(0,
 '2024-05-25',
 '14:30:00',
 '22:30:00',
 NULL,
-'Downtown',
-'1',
-'Driver');
-INSERT INTO `mydb`.`SHIFT`
-(`ShiftID`,
+2,
+1,
+2);
+INSERT INTO `S4`.`SHIFT`
+(`ID`,
 `Date`,
 `StartTime`,
 `EndTIme`,
-`EMPLOYEE_EmployeeID`,
-`STORES_StoreName`,
-`SCHEDULE_ScheduleID`,
-`ROLES_RoleName`)
+`EMPLOYEE_ID`,
+`Store_id`,
+`SCHEDULE_ID`,
+`Role_ID`)
 VALUES
-(56,
+(0,
 '2024-05-25',
 '14:30:00',
 '22:30:00',
 NULL,
-'Downtown',
-'1',
-'Cook');
+2,
+1,
+4);
 
 
