@@ -21,6 +21,7 @@ enum dataType
 };
 
 void insertData(dbo::Session *session, string dataType);
+dataType findDataType(string const &inString);
 void insertEmployeeData(dbo::Session *session);
 void insertRoleData(dbo::Session *session);
 void insertStoreData(dbo::Session *session);
