@@ -77,6 +77,7 @@ public:
     dbo::hasMany(a, shifts, dbo::ManyToOne, "Employee");
   }
 };
+
 /*
 namespace Wt {
     namespace Dbo {
@@ -115,8 +116,10 @@ public:
     dbo::belongsTo(a, store,     "Store");
     dbo::belongsTo(a, employee,     "Employee");
     dbo::belongsTo(a, schedule,     "Schedule");
+
   }
 };
+
 /*
 namespace Wt {
     namespace Dbo {
@@ -222,7 +225,7 @@ public:
     dbo::field(a, desiredShifts,     "desiredShifts");
     dbo::field(a, maxShifts,          "maxShifts");
     dbo::field(a, desiredHours,     "desiredHours");
-    dbo::field(a, maxShifts,        "maxHours");
+    dbo::field(a, maxHours,        "maxHours");
     dbo::belongsTo(a, employee,     "Employee");
     dbo::belongsTo(a, schedule,     "Schedule");
   }
