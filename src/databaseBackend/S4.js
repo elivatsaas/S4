@@ -14,9 +14,9 @@ import { getRoles, getRole, createRole,updateRole, deleteRole } from './roleS4.j
 
 import { getSchedules, getSchedule, createSchedule, updateSchedule, deleteSchedule } from './scheduleS4.js'
 
-import { getAllEmployeeStores, getAEmployeeStore, createAEmployeeStore, updateEmployeeStore, deleteEmployeeStores} from './employeeStoresS4.js'
+import { getAllEmployeeStores, getAEmployeeStore, createAEmployeeStore, deleteEmployeeStores} from './employeeStoresS4.js'
 
-import { getAllEmployeeRoles, getAEmployeeRole, createAEmployeeRole, updateEmployeeRole, deleteEmployeeRoles} from './employeeRolesS4.js'
+import { getAllEmployeeRoles, getAEmployeeRole, createAEmployeeRole, deleteEmployeeRoles} from './employeeRolesS4.js'
 
 
 
