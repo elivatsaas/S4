@@ -1,1 +1,25 @@
+S4 is a scheduling software that allows schedule makers to save hours weekly while making schedules, generating schedules based on employee and employer needs, all while making it as easy and efficient to use as possible. 
+The goal of S4 is to solve the problem of inefficient scheduling in workplaces within consistent schedules affects schedule makers; the impact of which is spending hours longer than necessary creating schedules, wasting 
+employer money and employee time. S4 is designed for schedule makers who spend hours weekly creating schedules, it is a scheduling software that autogenerates a schedule considers including but not limited to employee availability, 
+roles employee is eligible to work, stores the employee is eligible to work, desired hours and shifts, seniority, and overtime considerations. To help managers, S4 will also allow shift trades, announcements, and metrics to make 
+the scheduling process smoother. Unlike the paper scheduling many of our interviewed clients rely on, our product will generate a schedule, while highlighting conflicts, in moments. This gives managers more time to do other
+work or get extra time off work. 
+
+Autogenerate Schedules: We will allow the user to autogenerate a schedule. This will allow the user to schedule between roles and stores at the same time. To do this we will take a look at each employee and look at a few factors 
+like their eligible stores, desired hours and shifts, seniority(hire date), trust, eligible roles, and most importantly availability. We also hope to include at least one employee with the role of manager, or a high level of trust 
+present always. To allow the users access there will be the role of schedule maker as well. We hope our program thinks through the schedule making process just like a human scheduler would make it, just in a fraction of the time.
+
+Conflict Recognition/Highlighting: After creating the schedule there will be a run through to check that the schedule is valid and then flag any conflicts like no employee found to fill the shift, employee working two shifts at once,
+or there being overlap between the employee’s availability and a shift that they are scheduled for. This will then allow the user to go through and manually fix any issues with the schedule that are found in the conflict algorithm.
+
+Announcements: Announcements can be sent by employees with roles that have the announcement permission, usually managers but gives decision to user. These announcements can be sent to employees of a specific store, role, or schedule, 
+or any combination of the three (Like cooks at the downtown store working this week). 
+
+Employee Experience: The employee will be able to view their shifts, which include the shift date, start time, end time, shift role and shift store. They will also be able to set availability and desired shift hours. Availability 
+is specific to a day of the week, and includes the employees availability start time, and end time, with an optional schedule name that if present, ties the availability to the schedule only. Desired shift hours is a week to week 
+specification of desired hours, desired shifts, max hours, and max shifts, Similarly to availability, it can be tied to a specific shift. 
+
+Schedule Maker Experience: Aside from autogenerating schedules, schedule makers must create schedule templates for the software to generate. They will first create a schedule that contains start and end dates, and an optional 
+schedule name if they would like to save the template for future use. These schedules are filled with shifts, these shifts have all associations except employee, which is filled in by the software. The schedule maker must
+specify the date of the shift, the start and end times of the shift, the role of the shift, and the store of the shift. They also can add stores and roles.
 
