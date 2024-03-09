@@ -36,6 +36,17 @@ async function getSchedule(id) {
   return schedule[0];
 }
 
+async function getEmployeesForSchedule(id) {
+  const [results] = await db.query(
+    `CALL
+    FindEmployeesForSchedule(?)
+    `,
+    [id]
+  );
+
+  return results;
+}
+
 async function createSchedule(startDate, endDate, scheduleName) {
   const [schedule] = await db.query(
     `
@@ -82,6 +93,7 @@ async function deleteSchedule(id) {
 module.exports = {
   getAllSchedules: getAllSchedules,
   getSchedule: getSchedule,
+  getEmployeesForSchedule: getEmployeesForSchedule,
   createSchedule: createSchedule,
   updateSchedule: updateSchedule,
   deleteSchedule: deleteSchedule,
