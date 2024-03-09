@@ -71,4 +71,16 @@ router
     });
   });
 
+router.route('/find/:id').get(async function (req, res) {
+  var results = await scheduleHandler.getEmployeesForSchedule(
+    req.params.id * 1
+  );
+  res.status(200).json({
+    status: 'success',
+    results: results.length,
+    data: {
+      results,
+    },
+  });
+});
 module.exports = router;
