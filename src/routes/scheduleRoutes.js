@@ -1,86 +1,111 @@
 const express = require('express');
 
 const scheduleHandler = require('./../handlers/scheduleHandlers');
-
+const catchASync = require('./../utils/catchASync');
 const router = express.Router();
+const AppError = require('./../utils/appError');
 
 //router.param("id", employeeHandler.checkID);
 
 router
   .route('/')
-  .get(async function (req, res) {
-    var schedules = await scheduleHandler.getAllSchedules();
-    res.status(200).json({
-      status: 'success',
-      results: schedules.length,
-      data: {
-        schedules,
-      },
-    });
-  })
-  .post(async function (req, res) {
-    const { startDate, endDate, scheduleName } = req.body;
-    const newSchedule = await scheduleHandler.createSchedule(
-      startDate,
-      endDate,
-      scheduleName
-    );
-    res.status(201).json({
-      status: 'success',
-      data: {
-        newSchedule,
-      },
-    });
-  });
+  .get(
+    catchASync(async function (req, res, next) {
+      var schedules = await scheduleHandler.getAllSchedules();
+      res.status(200).json({
+        status: 'success',
+        results: schedules.length,
+        data: {
+          schedules,
+        },
+      });
+    })
+  )
+  .post(
+    catchASync(async function (req, res, next) {
+      const { startDate, endDate, scheduleName } = req.body;
+      const newSchedule = await scheduleHandler.createSchedule(
+        startDate,
+        endDate,
+        scheduleName
+      );
+      res.status(201).json({
+        status: 'success',
+        data: {
+          newSchedule,
+        },
+      });
+    })
+  );
 
 router
   .route('/:id')
-  .get(async function (req, res) {
-    const schedule = await scheduleHandler.getSchedule(req.params.id * 1);
+  .get(
+    catchASync(async function (req, res, next) {
+      const schedule = await scheduleHandler.getSchedule(req.params.id * 1);
+      if (!schedule) {
+        return next(new AppError('No tour found with that ID', 404));
+      }
+      res.status(200).json({
+        status: 'success',
+        data: {
+          schedule,
+        },
+      });
+    })
+  )
+  .patch(
+    catchASync(async function (req, res, next) {
+      const schedule = await scheduleHandler.getSchedule(req.params.id * 1);
+      if (!schedule) {
+        return next(new AppError('No tour found with that ID', 404));
+      }
+      var { startDate, endDate, scheduleName } = req.body;
+      startDate = startDate ?? null;
+      endDate = endDate ?? null;
+      scheduleName = scheduleName ?? null;
+      const id = req.params.id;
+      const updateSchedule = await scheduleHandler.updateSchedule(
+        id,
+        startDate,
+        endDate,
+        scheduleName
+      );
+      res.status(201).json({
+        status: 'success',
+        data: {
+          updateSchedule,
+        },
+      });
+    })
+  )
+  .delete(
+    catchASync(async function (req, res, next) {
+      const schedule = await scheduleHandler.getSchedule(req.params.id * 1);
+      if (!schedule) {
+        return next(new AppError('No tour found with that ID', 404));
+      }
+      await scheduleHandler.deleteSchedule(req.params.id * 1);
+
+      res.status(204).json({
+        status: 'success',
+        data: null,
+      });
+    })
+  );
+
+router.route('/find/:id').get(
+  catchASync(async function (req, res, next) {
+    var results = await scheduleHandler.getEmployeesForSchedule(
+      req.params.id * 1
+    );
     res.status(200).json({
       status: 'success',
+      results: results.length,
       data: {
-        schedule,
+        results,
       },
     });
   })
-  .patch(async function (req, res) {
-    var { startDate, endDate, scheduleName } = req.body;
-    startDate = startDate ?? null;
-    endDate = endDate ?? null;
-    scheduleName = scheduleName ?? null;
-    const id = req.params.id;
-    const updateSchedule = await scheduleHandler.updateSchedule(
-      id,
-      startDate,
-      endDate,
-      scheduleName
-    );
-    res.status(201).json({
-      status: 'success',
-      data: {
-        updateSchedule,
-      },
-    });
-  })
-  .delete(async function (req, res) {
-    scheduleHandler.deleteSchedule(req.params.id * 1);
-    res.status(204).json({
-      status: 'success',
-      data: null,
-    });
-  });
-
-router.route('/find/:id').get(async function (req, res) {
-  var results = await scheduleHandler.getEmployeesForSchedule(
-    req.params.id * 1
-  );
-  res.status(200).json({
-    status: 'success',
-    results: results.length,
-    data: {
-      results,
-    },
-  });
-});
+);
 module.exports = router;

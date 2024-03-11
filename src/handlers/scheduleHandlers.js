@@ -2,8 +2,6 @@ const mysql = require('mysql2');
 const dotenv = require('dotenv');
 
 const availabilityHandler = require('./../handlers/availabilityHandlers');
-const employeeStoresHandler = require('./../handlers/dshHandlers');
-const employeeRolesHandler = require('./../handlers/shiftHandlers');
 const dshHandlers = require('./../handlers/dshHandlers');
 const shiftHandlers = require('./../handlers/shiftHandlers');
 
@@ -74,7 +72,6 @@ async function updateSchedule(schedule_id, startDate, endDate, scheduleName) {
 
 async function deleteSchedule(id) {
   const schedule = getSchedule(id);
-
   availabilityHandler.deleteAvailabilityBySchedule(id);
   dshHandlers.deleteDesiredShiftHourBySchedule(id);
   shiftHandlers.deleteShiftBySchedule(id);
