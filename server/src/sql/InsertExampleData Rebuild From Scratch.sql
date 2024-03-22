@@ -2,6 +2,7 @@ USE S4;
 
 -- give the  columns a default value so we don't have to specify them in our inserts
 
+
 -- Remove all the existing data from the tables and reset the auto-increments on the PK fields so we can get a fresh start
 -- Start by telling the DB to ignore FK integrity
 SET FOREIGN_KEY_CHECKS=0;
@@ -55,8 +56,7 @@ INSERT INTO `S4`.`EMPLOYEE`
 `PhoneNumber`,
 `HireDate`,
 `BirthDate`,
-`PayRate`,
-`password`)
+`PayRate`)
 VALUES
 ('Marian',
 'Ostberg',
@@ -64,8 +64,7 @@ VALUES
 '7201234567',
 '2022-10-18',
 '1992-02-19',
-16,
-'testpass');
+16);
 select @MarianEmployeeId := LAST_INSERT_ID();
 select @MarianEmployeeId;
 
@@ -76,8 +75,7 @@ INSERT INTO `S4`.`EMPLOYEE`
 `PhoneNumber`,
 `HireDate`,
 `BirthDate`,
-`PayRate`,
-`password`)
+`PayRate`)
 VALUES
 ('Howell',
 'Rosenberg',
@@ -85,8 +83,7 @@ VALUES
 '9285637283',
 '2020-11-23',
 '2003-06-12',
-18,
-'testpass');
+18);
 select @HowellEmployeeId := LAST_INSERT_ID();
 
 INSERT INTO `S4`.`EMPLOYEE`
@@ -96,8 +93,7 @@ INSERT INTO `S4`.`EMPLOYEE`
 `PhoneNumber`,
 `HireDate`,
 `BirthDate`,
-`PayRate`,
-`password`)
+`PayRate`)
 VALUES
 ('Mary',
 'Carpenter',
@@ -105,8 +101,7 @@ VALUES
 '9285638273',
 '2023-04-20',
 '2000-12-10',
-17,
-'testpass');
+17);
 select @MaryEmployeeId := LAST_INSERT_ID();
 
 INSERT INTO `S4`.`EMPLOYEE`
@@ -116,8 +111,7 @@ INSERT INTO `S4`.`EMPLOYEE`
 `PhoneNumber`,
 `HireDate`,
 `BirthDate`,
-`PayRate`,
-`password`)
+`PayRate`)
 VALUES
 ('Radovan',
 'Klerkx',
@@ -125,8 +119,7 @@ VALUES
 '2739284938',
 '2015-10-17',
 '1996-03-17',
-20,
-'testpass');
+20);
 select @RadovanEmployeeId := LAST_INSERT_ID();
 
 INSERT INTO `S4`.`EMPLOYEE`
@@ -136,8 +129,7 @@ INSERT INTO `S4`.`EMPLOYEE`
 `PhoneNumber`,
 `HireDate`,
 `BirthDate`,
-`PayRate`,
-`password`)
+`PayRate`)
 VALUES
 ('Thiemo',
 'Maria',
@@ -145,8 +137,7 @@ VALUES
 '8738949384',
 '2018-09-25',
 '2001-04-21',
-16,
-'testpass');
+16);
 select @ThiemoEmployeeId := LAST_INSERT_ID();
 
 INSERT INTO `S4`.`EMPLOYEE`
@@ -156,8 +147,7 @@ INSERT INTO `S4`.`EMPLOYEE`
 `PhoneNumber`,
 `HireDate`,
 `BirthDate`,
-`PayRate`,
-`password`)
+`PayRate`)
 VALUES
 ('Alba',
 'Winship',
@@ -165,8 +155,7 @@ VALUES
 '9279302845',
 '2019-10-22',
 '2000-02-29',
-16,
-'testpass');
+16);
 select @AlbaEmployeeId := LAST_INSERT_ID();
 
 INSERT INTO `S4`.`EMPLOYEE`
@@ -176,8 +165,7 @@ INSERT INTO `S4`.`EMPLOYEE`
 `PhoneNumber`,
 `HireDate`,
 `BirthDate`,
-`PayRate`,
-`password`)
+`PayRate`)
 VALUES
 ('Edina',
 'Carlson',
@@ -185,8 +173,7 @@ VALUES
 '1029482940',
 '2021-11-22',
 '2003-06-28',
-19,
-'testpass');
+19);
 select @EdinaEmployeeId := LAST_INSERT_ID();
 
 INSERT INTO `S4`.`EMPLOYEE`
@@ -196,8 +183,7 @@ INSERT INTO `S4`.`EMPLOYEE`
 `PhoneNumber`,
 `HireDate`,
 `BirthDate`,
-`PayRate`,
-`password`)
+`PayRate`)
 VALUES
 ('Christopher',
 'Komatka',
@@ -205,8 +191,7 @@ VALUES
 '0389203928',
 '2023-09-01',
 '1994-06-20',
-20,
-'testpass');
+20);
 select @ChristopherEmployeeId := LAST_INSERT_ID();
 
 INSERT INTO `S4`.`EMPLOYEE`
@@ -216,8 +201,7 @@ INSERT INTO `S4`.`EMPLOYEE`
 `PhoneNumber`,
 `HireDate`,
 `BirthDate`,
-`PayRate`,
-`password`)
+`PayRate`)
 VALUES
 ('Walaric',
 'Winston',
@@ -225,8 +209,7 @@ VALUES
 '8273890482',
 '2012-12-31',
 '1994-07-27',
-20,
-'testpass');
+20);
 select @WalaricEmployeeId := LAST_INSERT_ID();
 
 INSERT INTO `S4`.`EMPLOYEE`
@@ -236,8 +219,7 @@ INSERT INTO `S4`.`EMPLOYEE`
 `PhoneNumber`,
 `HireDate`,
 `BirthDate`,
-`PayRate`,
-`password`)
+`PayRate`)
 VALUES
 ('Big',
 'Show',
@@ -245,8 +227,7 @@ VALUES
 '9283920394',
 '2010-01-02',
 '1972-02-08',
-25,
-'testpass');
+25);
 select @BigEmployeeId := LAST_INSERT_ID();
 
 -- Insert employee ROLE --
