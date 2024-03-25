@@ -38,3 +38,9 @@ export const deleteSchedule = async ({ id }) => {
   const response = await schedulesApi.delete(`${schedulesUrlEndpoint}/${id}`);
   return response.data;
 };
+
+export const generateSchedule = async ({ id }) => {
+  await delay();
+  const response = await schedulesApi.get(`${schedulesUrlEndpoint}/generate/2`);
+  return response.data;
+};

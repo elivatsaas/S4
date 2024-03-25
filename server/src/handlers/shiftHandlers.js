@@ -31,7 +31,7 @@ async function getShift(id) {
 
   return shift[0];
 }
-async function getShiftBySchedule(id) {
+async function getShiftsBySchedule(id) {
   const [result] = await db.query(
     `SELECT *
     FROM Shift
@@ -141,7 +141,7 @@ async function deleteShift(id) {
 }
 
 async function deleteShiftBySchedule(id) {
-  const result = getShiftBySchedule(id);
+  const result = getShiftsBySchedule(id);
 
   await db.query(
     `
@@ -186,7 +186,7 @@ module.exports = {
   getAllShifts: getAllShifts,
   getShift: getShift,
   getEmployeesForShift: getEmployeesForShift,
-  getShiftBySchedule: getShiftBySchedule,
+  getShiftsBySchedule: getShiftsBySchedule,
   createShift: createShift,
   updateShift: updateShift,
   deleteShift: deleteShift,

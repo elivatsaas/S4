@@ -1,0 +1,1 @@
+cmd_Release/schedule-generator.node := c++ -bundle -undefined dynamic_lookup -Wl,-search_paths_first -mmacosx-version-min=10.15 -arch x86_64 -L./Release -stdlib=libc++  -o Release/schedule-generator.node Release/obj.target/schedule-generator/scheduleGenerator.o Release/obj.target/schedule-generator/cppAPI.o Release/obj.target/schedule-generator/timeConverter.o 
