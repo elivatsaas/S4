@@ -1,0 +1,6 @@
+One of the major problems that we faced during this first version was connecting all the parts. We had to get data from the front-end website, store it in the back-end 
+database, be able to run code on it, and then be able to generate schedules to the front end. The reason it was so challenging was because of all the different languages
+that we were transfering through. The front end uses html, css, and java while the backend is a SQL database and the functions we run on the data are c++. We were able
+to connect them using Node.js, libraries, and by figuring out the syntax to get, store, and send data. 
+
+For the next version, we plan on mainly polishing up the code and website we currently have while also implementing a couple more features. 

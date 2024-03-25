@@ -127,8 +127,8 @@ router.route("/updatecpp").put(
     //console.log(req, res);
     var data = req.body;
     data.forEach(async function (shift) {
-      var Employee_id = shift.Employee_id;
-      var id = shift.id;
+      var Employee_id = shift.employee_id;
+      var id = shift.shiftId;
 
       const updatedShift = await shiftHandler.updateShift(
         id * 1,
@@ -141,13 +141,15 @@ router.route("/updatecpp").put(
         null
       );
     });
-    res.status(201).end();
+    res.status(201).json({
+      status: "success",
+    });
   })
 );
 
 router.route("/schedules/:id").get(
   catchASync(async function (req, res, next) {
-    const shift = await shiftHandler.getShiftBySchedule(req.params.id * 1);
+    const shift = await shiftHandler.getShiftsBySchedule(req.params.id * 1);
     if (!shift) {
       return next(new AppError("No shift found with that ID", 404));
     }

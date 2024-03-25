@@ -1,43 +1,33 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <link type="text/css" href="S4_AddShift.css" rel="stylesheet" />
 
-    <head>
+    <a href="/schedules">
+      <button>Back</button>
+    </a>
+  </head>
 
-        <link type="text/css" href="S4_AddShift.css" rel="stylesheet">
+  <body>
+    <h1>Please enter shift to add below</h1>
 
-        <a href="S4_Scheduling.html">
-        <button>Back</button>
-        </a>
+    <form>
+      <label for="employee">Employee:</label>
+      <select id="employee" name="employee">
+        <option value="placeholder">John Doe</option>
+      </select>
+      <small>(Optional)</small><br />
 
-    </head>
+      <label for="date">Day:</label>
+      <input type="date" id="date" name="date" required /><br />
 
-    <body>
+      <label for="startTime">Start Time:</label>
+      <input type="time" id="startTime" name="startTime" required /><br />
 
-        <h1>Please enter shift to add below</h1>
+      <label for="endTime">End Time:</label>
+      <input type="time" id="endTime" name="endTime" required /><br />
 
-        <form>
-
-            <label for="employee">Employee:</label>
-            <select id="employee" name="employee">
-
-                <option value="placeholder">John Doe</option>
-
-            </select>
-            <small>(Optional)</small><br>
-
-            <label for="date">Day:</label>
-            <input type="date" id="date" name="date"required><br>
-
-            <label for="startTime">Start Time:</label>
-            <input type="time" id="startTime" name="startTime"required><br>
-
-            <label for="endTime">End Time:</label>
-            <input type="time" id="endTime" name="endTime"required><br>
-
-            <input type="submit" value="Add">
-
-        </form>
-
-    </body>
-
+      <input type="submit" value="Add" />
+    </form>
+  </body>
 </html>

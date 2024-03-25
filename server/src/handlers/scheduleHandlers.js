@@ -1,9 +1,10 @@
 const mysql = require("mysql2");
 const dotenv = require("dotenv");
+const process = require("process");
 
-const availabilityHandler = require("./../handlers/availabilityHandlers");
-const dshHandlers = require("./../handlers/dshHandlers");
-const shiftHandlers = require("./../handlers/shiftHandlers");
+const availabilityHandler = require("./availabilityHandlers");
+const dshHandlers = require("./dshHandlers");
+const shiftHandlers = require("./shiftHandlers");
 
 dotenv.config();
 
@@ -85,10 +86,33 @@ async function deleteSchedule(id) {
 
   return schedule;
 }
-
+// var child = execFile(
+//   "../build/Release/schedule-generator",
+//   [],
+//   { cwd: __dirname },
+//   function (error, stdout, stderr) {
+//     console.log(stdout);
+//     console.log(stderr);
+//     console.log(error);
+//     console.log("Schedule generated");
+//   }
+// );
 async function generateSchedule(id) {
-  const shifts = await shiftHandlers.getShiftBySchedule(id);
-  const scheduleEmployees = await getEmployeesForSchedule(id);
+  var execFile = require("child_process").execFile;
+
+  const promiseExec = new Promise((resolve, reject) => {
+    const { getShiftsBySchedule } = require("./shiftHandlers");
+
+    var child = execFile("../build/Release/schedule-generator", [], {
+      cwd: __dirname,
+    });
+    child.stdout.pipe(process.stdout);
+    child.on("exit", function () {
+      resolve("schedule generated");
+    });
+  });
+  let result = await promiseExec(id);
+  return result;
 }
 
 module.exports = {
