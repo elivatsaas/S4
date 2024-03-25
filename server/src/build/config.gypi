@@ -359,7 +359,7 @@
     ],
     "node_module_version": 115,
     "node_no_browser_globals": "false",
-    "node_prefix": "/usr/local",
+    "node_prefix": "/",
     "node_release_urlbase": "https://nodejs.org/download/release/",
     "node_shared": "false",
     "node_shared_brotli": "false",
@@ -412,16 +412,6 @@
     "xcode_version": "13.0",
     "nodedir": "/Users/elivatsaas/Library/Caches/node-gyp/20.11.1",
     "python": "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
-    "standalone_static_library": 1,
-    "global_prefix": "/usr/local",
-    "local_prefix": "/Users/elivatsaas/UpdatedS4/server/src",
-    "globalconfig": "/usr/local/etc/npmrc",
-    "init_module": "/Users/elivatsaas/.npm-init.js",
-    "userconfig": "/Users/elivatsaas/.npmrc",
-    "npm_version": "10.2.4",
-    "node_gyp": "/usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js",
-    "cache": "/Users/elivatsaas/.npm",
-    "user_agent": "npm/10.2.4 node/v20.11.1 darwin x64 workspaces/false",
-    "prefix": "/usr/local"
+    "standalone_static_library": 1
   }
 }
