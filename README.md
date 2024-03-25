@@ -28,9 +28,16 @@ You will need the following items to run this project. Just follow the links and
 
 
 ## Versioning
+Currently, the project is in v0.1.0 and is in a very early stage
 
 ## Authors
+Brady Wisniewski
+Eli Vatsaas
+Tyler Austin
+Joseph Laity
+Elliot Hull
 
 ## License
+This project is under the GNU General Public License v3.0 - see the [LICENSE.md](https://github.com/elivatsaas/S4/blob/main/LICENSE) file for details
 
 ## Acknowledgments
