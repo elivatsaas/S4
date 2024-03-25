@@ -1,11 +1,24 @@
 "use client";
 import ScheduleList from "../../components/schedules/ScheduleList";
+
 import React from "react";
+
+import { generateSchedule } from "../../api/schedulesApi";
 
 import "../../css/S4_Scheduling.css";
 import { Button, ButtonGroup, Link } from "@nextui-org/react";
 
 export default function SchedulePage() {
+  const handleClick = async () => {
+    try {
+      const { isLoading, error, data, mutate } = useSWR(cacheKey, getSchedules);
+      const jsonData = await response.json(data);
+      return jsonData;
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
   return (
     <>
       <link type="text/css" href="S4_Scheduling.css" rel="stylesheet" />
@@ -87,10 +100,11 @@ export default function SchedulePage() {
             </tr>
           </tbody>
         </table>
-        <Button color="primary">
-          <Link href="/employees/1/submit"> Add Employee </Link>
-        </Button>
-
+        <a href="S4_EmployeeInput.html">
+          <button className="button-81" id="shift" role="button">
+            Add Employee
+          </button>
+        </a>
         <a href="S4_AddShift.html">
           <button className="button-81" id="shift" role="button">
             Add Shift
@@ -101,9 +115,9 @@ export default function SchedulePage() {
             Change Availability
           </button>
         </a>
-        <button className="button-81" id="gen" role="button">
-          Generate
-        </button>
+        <Button color="primary">
+          <Link href="/schedules/1/generated"> Generate Schedule </Link>
+        </Button>{" "}
       </div>
     </>
   );

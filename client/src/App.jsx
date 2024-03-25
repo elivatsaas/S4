@@ -4,6 +4,9 @@ import React from "react";
 import Home from "./pages/home";
 import Schedule from "./pages/schedules";
 import Employee from "./pages/employees";
+import Shift from "./pages/shifts";
+
+import Generated from "./pages/schedules/[id]/generated";
 import NavBar from "./components/navBar";
 import NoMatch from "./components/noMatch";
 
@@ -15,6 +18,9 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/schedules" element={<Schedule />} />
         <Route path="/employees" element={<Employee />} />
+        <Route path="/shifts" element={<Shift />} />
+        <Route path="/schedules/1/generated" element={<Generated />} />
+
         <Route path="*" element={<NoMatch />} />
       </Routes>
     </>

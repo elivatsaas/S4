@@ -1,58 +1,53 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <link type="text/css" href="S4_EmployeeInput.css" rel="stylesheet" />
 
-    <head>
+    <a href="/schedules">
+      <button>Back</button>
+    </a>
 
-        <link type="text/css" href="S4_EmployeeInput.css" rel="stylesheet">
+    <title>Employee Data Input</title>
+  </head>
 
-        <a href="S4_Scheduling.html">
-        <button>Back</button>
-        </a>
+  <body>
+    <h1>Please Enter Employee Data Below</h1>
 
-        <title>Employee Data Input</title>
+    <!--Add in action when needing to send data somewhere with post method-->
+    <form>
+      <fieldset>
+        <legend>New Employee</legend>
 
-    </head>
+        <label for="fname">First name:</label>
+        <input type="text" id="fname" name="fname" required /><br />
 
-    <body>
+        <label for="lname">Last name:</label>
+        <input type="text" id="lname" name="lname" required /><br />
 
-        <h1>Please Enter Employee Data Below</h1>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" /><br />
 
-        <!--Add in action when needing to send data somewhere with post method-->
-        <form>
-            
-            <fieldset>
-                
-                <legend>New Employee</legend>
+        <label for="phone">Phone Number:</label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+          required
+        /><br />
+        <small>Format: 123-456-789</small><br /><br />
 
-                <label for="fname">First name:</label>
-                <input type="text" id="fname" name="fname"required><br>
+        <label for="hireDate">Hire Date:</label>
+        <input type="date" id="hireDate" name="hireDate" /><br />
 
-                <label for="lname">Last name:</label>
-                <input type="text" id="lname" name="lname"required><br>
+        <label for="dateOfBirth">Date of Birth:</label>
+        <input type="date" id="dateOfBirth" name="dateOfBirth" /><br />
 
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email"><br>
+        <label for="payRate">Pay Rate:</label>
+        <input type="number" id="payRate" name="payRate" /><br />
 
-                <label for="phone">Phone Number:</label>
-                <input type="tel" id="phone" name="phone"
-                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"required><br>
-                <small>Format: 123-456-789</small><br><br>
-
-                <label for="hireDate">Hire Date:</label>
-                <input type="date" id="hireDate" name="hireDate"><br>
-
-                <label for="dateOfBirth">Date of Birth:</label>
-                <input type="date" id="dateOfBirth" name="dateOfBirth"><br>
-
-                <label for="payRate">Pay Rate:</label>
-                <input type="number" id="payRate" name="payRate"><br>
-
-                <input type="submit" value="Add">
-            
-            </fieldset>
-        
-        </form>
-
-    </body>
-
+        <input type="submit" value="Add" />
+      </fieldset>
+    </form>
+  </body>
 </html>
