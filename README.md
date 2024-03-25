@@ -5,7 +5,6 @@ makes everyone happy.  This could be applicable to any industry where shifts are
 
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
-See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
 You will need the following items to run this project. Just follow the links and download from their respective websites.
@@ -20,12 +19,8 @@ You will need the following items to run this project. Just follow the links and
 
 ### And coding style tests
 
-## Deployment
-
-## Built With
-
 ## Contributing
-
+Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests.
 
 ## Versioning
 Currently, the project is in v0.1.0 and is in a very early stage
@@ -40,4 +35,3 @@ Elliot Hull
 ## License
 This project is under the GNU General Public License v3.0 - see the [LICENSE.md](https://github.com/elivatsaas/S4/blob/main/LICENSE) file for details
 
-## Acknowledgments
