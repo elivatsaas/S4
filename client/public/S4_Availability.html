@@ -1,42 +1,32 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <link type="text/css" href="S4_Availability.css" rel="stylesheet" />
 
-    <head>
+    <a href="/schedules">
+      <button>Back</button>
+    </a>
+  </head>
 
-        <link type="text/css" href="S4_Availability.css" rel="stylesheet">
+  <body>
+    <h1>Please select employee to change availability of</h1>
 
-        <a href="S4_Scheduling.html">
-        <button>Back</button>
-        </a>
+    <form>
+      <label for="employee_1">Employee:</label>
+      <select id="employee_1" name="employee_1" required>
+        <option value="placeholder">John Doe</option></select
+      ><br />
 
-    </head>
+      <label for="day">Day:</label>
+      <input type="date" id="day" name="day" required /><br />
 
-    <body>
+      <label for="startTime">Availability Start:</label>
+      <input type="time" id="startTime" name="startTime" required /><br />
 
-        <h1>Please select employee to change availability of</h1>
+      <label for="endTime">Availability End:</label>
+      <input type="time" id="endTime" name="endTime" required /><br />
 
-        <form>
-
-        <label for="employee_1">Employee:</label>
-            <select id="employee_1" name="employee_1"required>
-
-                <option value="placeholder">John Doe</option>
-
-            </select><br>
-
-        <label for="day">Day:</label>
-        <input type="date" id="day" name="day"required><br>
-
-        <label for="startTime">Availability Start:</label>
-        <input type="time" id="startTime" name="startTime"required><br>
-
-        <label for="endTime">Availability End:</label>
-        <input type="time" id="endTime" name="endTime"required><br>
-
-        <input type="submit" value="Change">
-
-        </form>
-
-    </body>
-
+      <input type="submit" value="Change" />
+    </form>
+  </body>
 </html>

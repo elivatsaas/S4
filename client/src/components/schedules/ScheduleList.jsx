@@ -20,10 +20,9 @@ import {
 } from "../../api/schedulesSWROptions";
 
 const ScheduleList = () => {
-  const [newSchedule, setNewSchedule] = useState("");
-
   const { isLoading, error, data, mutate } = useSWR(cacheKey, getSchedules);
   const schedules = JSON.stringify(data);
+
   return (
     <div>
       <h1>your data </h1>

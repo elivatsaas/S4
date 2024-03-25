@@ -326,18 +326,13 @@ $(obj).$(TOOLSET)/%.o: $(obj)/%.S FORCE_DO_CMD
 
 ifeq ($(strip $(foreach prefix,$(NO_LOAD),\
     $(findstring $(join ^,$(prefix)),\
-                 $(join ^,node_modules/node-addon-api/nothing.target.mk)))),)
-  include node_modules/node-addon-api/nothing.target.mk
-endif
-ifeq ($(strip $(foreach prefix,$(NO_LOAD),\
-    $(findstring $(join ^,$(prefix)),\
-                 $(join ^,testaddon.target.mk)))),)
-  include testaddon.target.mk
+                 $(join ^,schedule-generator.target.mk)))),)
+  include schedule-generator.target.mk
 endif
 
 quiet_cmd_regen_makefile = ACTION Regenerating $@
-cmd_regen_makefile = cd $(srcdir); /usr/local/lib/node_modules/npm/node_modules/node-gyp/gyp/gyp_main.py -fmake --ignore-environment "-Dlibrary=shared_library" "-Dvisibility=default" "-Dnode_root_dir=/Users/elivatsaas/Library/Caches/node-gyp/20.11.1" "-Dnode_gyp_dir=/usr/local/lib/node_modules/npm/node_modules/node-gyp" "-Dnode_lib_file=/Users/elivatsaas/Library/Caches/node-gyp/20.11.1/<(target_arch)/node.lib" "-Dmodule_root_dir=/Users/elivatsaas/UpdatedS4/server/src" "-Dnode_engine=v8" "--depth=." "-Goutput_dir=." "--generator-output=build" -I/Users/elivatsaas/UpdatedS4/server/src/build/config.gypi -I/usr/local/lib/node_modules/npm/node_modules/node-gyp/addon.gypi -I/Users/elivatsaas/Library/Caches/node-gyp/20.11.1/include/node/common.gypi "--toplevel-dir=." binding.gyp
-Makefile: $(srcdir)/binding.gyp $(srcdir)/node_modules/node-addon-api/node_api.gyp $(srcdir)/../../../../../usr/local/lib/node_modules/npm/node_modules/node-gyp/addon.gypi $(srcdir)/../../../Library/Caches/node-gyp/20.11.1/include/node/common.gypi $(srcdir)/build/config.gypi
+cmd_regen_makefile = cd $(srcdir); /usr/local/lib/node_modules/node-gyp/gyp/gyp_main.py -fmake --ignore-environment "-Dlibrary=shared_library" "-Dvisibility=default" "-Dnode_root_dir=/Users/elivatsaas/Library/Caches/node-gyp/20.11.1" "-Dnode_gyp_dir=/usr/local/lib/node_modules/node-gyp" "-Dnode_lib_file=/Users/elivatsaas/Library/Caches/node-gyp/20.11.1/<(target_arch)/node.lib" "-Dmodule_root_dir=/Users/elivatsaas/S4/server/src" "-Dnode_engine=v8" "--depth=." "-Goutput_dir=." "--generator-output=build" -I/Users/elivatsaas/S4/server/src/build/config.gypi -I/usr/local/lib/node_modules/node-gyp/addon.gypi -I/Users/elivatsaas/Library/Caches/node-gyp/20.11.1/include/node/common.gypi "--toplevel-dir=." binding.gyp
+Makefile: $(srcdir)/../../../../../usr/local/lib/node_modules/node-gyp/addon.gypi $(srcdir)/build/config.gypi $(srcdir)/binding.gyp $(srcdir)/../../../Library/Caches/node-gyp/20.11.1/include/node/common.gypi
 	$(call do_cmd,regen_makefile)
 
 # "all" is a concatenation of the "all" targets from all the included
