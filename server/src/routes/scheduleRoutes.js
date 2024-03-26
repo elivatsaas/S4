@@ -122,4 +122,18 @@ router.route("/generate/:id").get(
   })
 );
 
+router.route("/cpp/:id").get(
+  catchASync(async function (req, res, next) {
+    const schedule = await scheduleHandler.getSchedule(req.params.id * 1);
+    if (!schedule) {
+      return next(new AppError("No schedule found with that ID", 404));
+    }
+    console.log(schedule);
+    //res.send(schedule);
+    res.json({
+      schedule,
+    });
+  })
+);
+
 module.exports = router;
