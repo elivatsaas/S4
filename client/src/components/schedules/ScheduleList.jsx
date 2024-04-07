@@ -14,10 +14,10 @@ import {
 } from "../../api/schedulesApi";
 
 import {
-  addScheduleOptions,
-  updateScheduleOptions,
-  deleteScheduleOptions,
-} from "../../api/schedulesSWROptions";
+  addDataOptions,
+  updateDataOptions,
+  deleteDataOptions,
+} from "../../api/dataSWROptions";
 
 const ScheduleList = () => {
   const { isLoading, error, data, mutate } = useSWR(cacheKey, getSchedules);

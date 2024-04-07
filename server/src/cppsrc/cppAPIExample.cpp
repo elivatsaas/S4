@@ -37,10 +37,19 @@ int main()
     Json::Value returnValue2;
 
     getEmployees(returnValue2, employeeLength);
-    // cout << employeeLength << endl;
-    // cout << returnValue2 << endl;
+
+    Json::Value returnValue3;
+
+    getSchedule(2, returnValue3);
+    cout << returnValue3 << endl;
+
+    Json::Value returnValue4;
+    int dshLength;
+
+    getDesiredShiftHours(2, returnValue4, dshLength);
+    cout << returnValue4 << endl;
     // post to database
-    postJson(returnValue1, dataLength);
+    // postJson(returnValue1, dataLength);
 
     return 0;
 }
