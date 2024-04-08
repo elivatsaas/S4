@@ -14,16 +14,15 @@ import {
 } from "../../api/schedulesApi";
 
 import {
-  addScheduleOptions,
-  updateScheduleOptions,
-  deleteScheduleOptions,
-} from "../../api/schedulesSWROptions";
+  addDataOptions,
+  updateDataOptions,
+  deleteDataOptions,
+} from "../../api/dataSWROptions";
 
 const ScheduleList = () => {
-  const [newSchedule, setNewSchedule] = useState("");
-
   const { isLoading, error, data, mutate } = useSWR(cacheKey, getSchedules);
   const schedules = JSON.stringify(data);
+
   return (
     <div>
       <h1>your data </h1>

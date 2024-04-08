@@ -110,15 +110,30 @@ router.route("/find/:id").get(
     });
   })
 );
-module.exports = router;
 
-router.route("/generate/:id").post(
+router.route("/generate/:id").get(
   catchASync(async function (req, res, next) {
-    var results = await scheduleHandler.generateSchedule(req.params.id * 1);
+    var results = await scheduleHandler.generateSchedule(2);
+    console.log(results);
     res.status(200).json({
       status: "success",
-      results: results.length,
       results,
     });
   })
 );
+
+router.route("/cpp/:id").get(
+  catchASync(async function (req, res, next) {
+    const schedule = await scheduleHandler.getSchedule(req.params.id * 1);
+    if (!schedule) {
+      return next(new AppError("No schedule found with that ID", 404));
+    }
+    console.log(schedule);
+    //res.send(schedule);
+    res.json({
+      schedule,
+    });
+  })
+);
+
+module.exports = router;
