@@ -1,5 +1,5 @@
-const mysql = require('mysql2');
-const dotenv = require('dotenv');
+const mysql = require("mysql2");
+const dotenv = require("dotenv");
 
 dotenv.config();
 
@@ -52,6 +52,17 @@ async function getDesiredShiftHoursBySchedule(id) {
   );
 
   return dshs[0];
+}
+
+async function getDesiredShiftHourForSchedule(id) {
+  const [result] = await db.query(
+    `CALL 
+    FindDSHForSchedule(?)
+    `,
+    [id]
+  );
+
+  return result[0];
 }
 
 async function createDesiredShiftHour(
@@ -146,6 +157,7 @@ async function deleteDesiredShiftHourBySchedule(id) {
 module.exports = {
   getAllDesiredShiftHours: getAllDesiredShiftHours,
   getDesiredShiftHour: getDesiredShiftHour,
+  getDesiredShiftHourForSchedule,
   createDesiredShiftHour: createDesiredShiftHour,
   updateDesiredShiftHour: updateDesiredShiftHour,
   deleteDesiredShiftHour: deleteDesiredShiftHour,

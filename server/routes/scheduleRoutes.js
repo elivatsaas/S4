@@ -5,6 +5,8 @@ const authHandler = require("./../handlers/authHandlers");
 const catchASync = require("./../utils/catchASync");
 const router = express.Router();
 const AppError = require("./../utils/appError");
+const employeeHandlers = require("../handlers/employeeHandlers");
+const roleHandlers = require("../handlers/roleHandlers");
 
 //router.param("id", employeeHandler.checkID);
 
@@ -12,6 +14,21 @@ router
   .route("/")
   .get(
     //catchASync(authHandler.protect),
+    //catchASync(async function (req, res, next) {
+    // const hasPermission = await authHandler.restrictTo(
+    //   req.employee.id,
+    //   "Manager"
+    // );
+
+    // if (!hasPermission) {
+    // return next(
+    //   new AppError("You do not have permission to access this route", 403)
+    // );
+    //}
+
+    // If permission is granted, proceed with the route handler
+    //return next();
+    // }),
     catchASync(async function (req, res, next) {
       var schedules = await scheduleHandler.getAllSchedules();
       res.status(200).json({
@@ -48,7 +65,6 @@ router
       if (!schedule) {
         return next(new AppError("No schedule found with that ID", 404));
       }
-      console.log(schedule);
       //res.send(schedule);
       res.json({
         data: {
@@ -114,7 +130,6 @@ router.route("/find/:id").get(
 router.route("/generate/:id").get(
   catchASync(async function (req, res, next) {
     var results = await scheduleHandler.generateSchedule(2);
-    console.log(results);
     res.status(200).json({
       status: "success",
       results,
@@ -128,10 +143,19 @@ router.route("/cpp/:id").get(
     if (!schedule) {
       return next(new AppError("No schedule found with that ID", 404));
     }
-    console.log(schedule);
     //res.send(schedule);
     res.json({
       schedule,
+    });
+  })
+);
+
+router.route("/null/:id").get(
+  catchASync(async function (req, res, next) {
+    const nullReturn = await scheduleHandler.setScheduleNull(req.params.id * 1);
+
+    res.status(200).json({
+      status: "success",
     });
   })
 );

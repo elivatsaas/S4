@@ -134,4 +134,35 @@ router.route("/cpp/:id").get(
     });
   })
 );
+
+router.route("/employee/:id").get(
+  catchASync(async function (req, res, next) {
+    const dsh = await dshHandler.getDesiredShiftHoursByEmployee(req.params.id);
+    if (!dsh) {
+      return next(new AppError("No desired shift hours found for that employee ID", 404));
+    }
+    res.status(200).json({
+      status: "success",
+      data: {
+        dsh,
+      },
+    });
+  })
+);
+
+router.route("/schedule/:id").get(
+  catchASync(async function (req, res, next) {
+    const dsh = await dshHandler.getDesiredShiftHourForSchedule(req.params.id);
+    if (!dsh) {
+      return next(new AppError("No desired shift hours found for that schedule ID", 404));
+    }
+    res.status(200).json({
+      status: "success",
+      data: {
+        dsh,
+      },
+    });
+  })
+);
+
 module.exports = router;

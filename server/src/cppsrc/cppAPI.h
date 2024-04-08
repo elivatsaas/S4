@@ -23,6 +23,10 @@ void getEmployeesForSchedule(int id, Json::Value &returnValue, int &length);
 
 void getEmployees(Json::Value &returnValue, int &length);
 
+void getSchedule(int id, Json::Value &returnValue);
+
+void getDesiredShiftHours(int id, Json::Value &returnValue, int &length);
+
 int postJson(Json::Value &data, int length);
 
 void arrToJson(ShiftType *shifts);

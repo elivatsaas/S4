@@ -14,25 +14,68 @@ export const getShifts = async () => {
   return response.data.shift;
 };
 
+export const getShift = async (id) => {
+  await delay();
+  const response = await shiftsApi.get(`${shiftsUrlEndpoint}/${id}`);
+
+  return response.data.data;
+};
+
 export const getShiftsBySchedule = async (id) => {
   await delay();
   const response = await shiftsApi.get(shiftsUrlEndpoint + "/schedules" + id);
-  console.log(response.data);
   return response.data;
 };
 
-export const addShift = async ({ startDate, endDate, shiftName }) => {
+export const addShift = async ({
+  date,
+  startTime,
+  endTime,
+  Employee_id,
+  Schedule_id,
+  Role_id,
+  Store_id,
+}) => {
   await delay();
   const response = await shiftsApi.post(shiftsUrlEndpoint, {
-    startDate,
-    endDate,
-    shiftName,
+    date,
+    startTime,
+    endTime,
+    Employee_id,
+    Schedule_id,
+    Role_id,
+    Store_id,
   });
   return response.data;
 };
 
 export const updateShift = async (shift) => {
   await delay();
+
+  var shiftRes = await getShift(shift.id);
+  const legacyShift = await shiftRes.shift;
+  if (shift.date === undefined) {
+    shift["date"] == legacyShift.date;
+  }
+  if (shift.startTime === undefined) {
+    shift["startTime"] == legacyShift.startTime;
+  }
+  if (shift.endTime === undefined) {
+    shift["endTime"] = legacyShift.endTime;
+  }
+  if (shift.Employee_id === undefined) {
+    shift["Employee_id"] == legacyShift.Employee_id;
+  }
+  if (shift.Schedule_id === undefined) {
+    shift["Schedule_id"] == legacyShift.Schedule_id;
+  }
+  if (shift.Role_id === undefined) {
+    shift["Role_id"] = legacyShift.Role_id;
+  }
+  if (shift.Store_id === undefined) {
+    shift["Store_id"] = legacyShift.Store_id;
+  }
+  console.log("Finished shift ", shift);
   const response = await shiftsApi.patch(
     `${shiftsUrlEndpoint}/${shift.id}`,
     shift
@@ -40,7 +83,7 @@ export const updateShift = async (shift) => {
   return response.data;
 };
 
-export const deleteShift = async ({ id }) => {
+export const deleteShift = async (id) => {
   await delay();
   const response = await shiftsApi.delete(`${shiftsUrlEndpoint}/${id}`);
   return response.data;
