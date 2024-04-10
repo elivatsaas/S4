@@ -1,6 +1,6 @@
 const express = require("express");
 
-const storeHandler = require("../handlers/StoreHandlers");
+const storeHandler = require("../handlers/storeHandlers");
 const AppError = require("./../utils/appError");
 const catchASync = require("./../utils/catchASync");
 const router = express.Router();
