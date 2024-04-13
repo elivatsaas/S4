@@ -40,8 +40,9 @@ export default function SignIn() {
 				<Link to='/landingpage'>
 					<span className='Home'>Home</span>
 				</Link>
+				<Link to='/announcementpage'>
 				<span className='Announcements'>Announcements</span>
-
+				</Link>
 				<Link to='/schedulingpage'>
 					<span className='Schedule'>Schedule</span>
 				</Link>

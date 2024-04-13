@@ -10,19 +10,19 @@
 }
 .SchedulingPage_SchedulingPage .TopBar {
   position: absolute;
-  right: 0px;
-  top: -9px;
-  width: 1440px;
-  height: 251px;
-  background: rgba(7, 53, 30, 1);
+	right: 0px;
+	top: -9px;
+	width: 100%;
+	height: 251px;
+	background: rgba(7,53,30,1.00);
 }
 .SchedulingPage_SchedulingPage .BottomBar {
   position: absolute;
-  left: 0px;
-  top: 1449px;
-  width: 1440px;
-  height: 251px;
-  background: rgba(7, 53, 30, 1);
+	left: 0px;
+	top: 1449px;
+	width: 100%;
+	height: 251px;
+	background: rgba(7,53,30,1.00);
 }
 .SchedulingPage_SchedulingPage .NavBar {
   position: absolute;
