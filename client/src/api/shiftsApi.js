@@ -12,6 +12,7 @@ export const getShifts = async () => {
   await delay();
   const response = await shiftsApi.get(shiftsUrlEndpoint);
   return response.data.data.shifts;
+
 };
 
 export const getShift = async (id) => {
@@ -24,6 +25,7 @@ export const getShiftsBySchedule = async (id) => {
   await delay();
   const response = await shiftsApi.get(`${shiftsUrlEndpoint}/schedules/${id}`);
   return response.data.shift;
+
 };
 
 export const getEmployeesForShift = async (id) => {

@@ -14,6 +14,7 @@
 	right: 0px;
 	top: -9px;
 	width: 1440px;
+
 	height: 251px;
 	background: rgba(7,53,30,1.00);
 }
@@ -22,6 +23,7 @@
 	left: 0px;
 	top: 1449px;
 	width: 1440px;
+
 	height: 251px;
 	background: rgba(7,53,30,1.00);
 }
@@ -338,6 +340,7 @@
 	position: relative;
 	flex: none;
 	margin-bottom: 29px;
+
 	border: 2px solid rgba(0,0,0,1);
 }
 .AddShiftPage_AddShiftPage .AddDisplay .InputDisplay .InputArea .StartTime_1 .Input {
@@ -347,6 +350,7 @@
 	position: relative;
 	flex: none;
 	margin-bottom: 29px;
+
 	border: 2px solid rgba(0,0,0,1);
 }
 .AddShiftPage_AddShiftPage .AddDisplay .InputDisplay .InputArea .EndTime_1 .Input_1 {

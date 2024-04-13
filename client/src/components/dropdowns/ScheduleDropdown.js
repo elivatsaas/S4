@@ -18,6 +18,7 @@ const ScheduleDropdown = ({
       setSelectedSchedules([...selectedSchedules, schedule]);
     }
     onSelectSchedule(selectedSchedules);
+
   };
 
   return (

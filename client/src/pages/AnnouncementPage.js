@@ -28,6 +28,7 @@ export default function AnnouncementPage() {
   const [scheduleDropdownOpen, setScheduleDropdownOpen] = useState(false);
   const [shiftDropdownOpen, setShiftDropdownOpen] = useState(false);
 
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -48,6 +49,7 @@ export default function AnnouncementPage() {
 
         const announcementsData = await getAnnouncements();
         setAnnouncements(announcementsData);
+
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -76,6 +78,7 @@ export default function AnnouncementPage() {
     setShiftDropdownOpen(!shiftDropdownOpen);
   };
 
+
   return (
     <div className="AnnouncementPage_AnnouncementPage">
       <div className="Rectangle1" />
@@ -103,6 +106,7 @@ export default function AnnouncementPage() {
         <img className="Vector_7" src={ImgAsset.SignUpPage_Vector_7} />
         <img className="Vector_8" src={ImgAsset.SignUpPage_Vector_8} />
         <span className="S4">S4</span>
+
       </div>
       <span className="Announcements_1">Announcements</span>
       <div className="Frame1000007427">
@@ -143,6 +147,7 @@ export default function AnnouncementPage() {
                   shifts={shifts}
                   isOpen={shiftDropdownOpen}
                   toggleDropdown={toggleShiftDropdown}
+
                 />
               )}
             </div>
@@ -160,6 +165,7 @@ export default function AnnouncementPage() {
             />
           );
         })}
+
       </div>
     </div>
   );

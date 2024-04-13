@@ -43,6 +43,7 @@ const EmployeeDropdown = ({
           src={ImgAsset.AnnouncementPage_Vector_9}
           alt="Chevron down"
         />
+
       </div>
     </div>
   );

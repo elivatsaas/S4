@@ -28,6 +28,7 @@ const StoreDropdown = ({ stores, toggleDropdown, isOpen, onSelectStore }) => {
               <input
                 type="checkbox"
                 checked={selectedStores.includes(store)}
+
                 onChange={() => handleStoreSelect(store)}
               />
               <span>{store.storeName}</span>

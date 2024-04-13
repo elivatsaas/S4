@@ -13,6 +13,7 @@ const RoleDropdown = ({ roles, toggleDropdown, isOpen, onSelectRole }) => {
       setSelectedRoles([...selectedRoles, role]);
     }
     onSelectRole(selectedRoles);
+
   };
 
   return (

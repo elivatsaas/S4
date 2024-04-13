@@ -41,6 +41,7 @@ export default function SignIn() {
 					<span className='Home'>Home</span>
 				</Link>
 				<span className='Announcements'>Announcements</span>
+
 				<Link to='/schedulingpage'>
 					<span className='Schedule'>Schedule</span>
 				</Link>
