@@ -1,5 +1,5 @@
-const mysql = require('mysql2');
-const dotenv = require('dotenv');
+const mysql = require("mysql2");
+const dotenv = require("dotenv");
 
 dotenv.config();
 
@@ -64,7 +64,7 @@ async function createEmployeeRole(Employee_id, Role_id) {
   );
 
   const id = result.insertId;
-  return getAEmployeeRole(Employee_id, Role_id);
+  return getEmployeeRole(Employee_id, Role_id);
 }
 
 async function deleteEmployeeRole(Employee_id, Role_id) {

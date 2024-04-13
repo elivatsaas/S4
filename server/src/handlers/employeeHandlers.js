@@ -32,9 +32,14 @@ async function getEmployee(id) {
   `,
     [id]
   );
+  if (!employee || !employee[0]) {
+    throw new Error(`Employee with ID ${id} not found.`);
+  }
+
   delete employee[0].password;
   return employee[0];
 }
+
 async function getEmployeeByEmail(email) {
   const [employee] = await db.query(
     `SELECT *
@@ -45,6 +50,19 @@ async function getEmployeeByEmail(email) {
   );
 
   return employee[0];
+}
+
+async function getAllEmployeeEmails() {
+  try {
+    const employees = await getAllEmployees();
+
+    const emails = employees.map((employee) => employee.email);
+
+    return emails;
+  } catch (error) {
+    console.error("Error retrieving all employee emails:", error);
+    return new AppError("Failed to retrieve all employee emails");
+  }
 }
 
 async function getEmployeePasswordEdit(id) {
@@ -60,6 +78,79 @@ WHERE  table_schema = 'S4'
   return editTime[0];
 }
 
+async function getEmployeeByResetToken(token) {
+  const [employee] = await db.query(
+    `SELECT *
+  FROM Employee
+  WHERE passwordResetToken = ?
+  `,
+    [token]
+  );
+
+  return employee[0];
+}
+
+async function getEmployeeRoles(id) {
+  try {
+    const [employee] = await db.query(
+      `SELECT *
+    FROM employeeRoles
+    WHERE Employee_id = ?
+    `,
+      [id]
+    );
+
+    return employee;
+  } catch (error) {
+    return next(
+      new AppError(
+        `Error fetching roles for  ${employee.id}: ${employee.firstName} ${employee.lastName}`
+      )
+    );
+  }
+}
+async function getEmployeesByStore(id) {
+  try {
+    const employee = await db.query(
+      `SELECT *
+    FROM employeeStores
+    WHERE Store_id = ?
+    `,
+      [id]
+    );
+    return employee;
+  } catch (error) {
+    return next(new AppError(`Error fetching employees for stores`));
+  }
+}
+async function getEmployeesByRole(id) {
+  try {
+    const employee = await db.query(
+      `SELECT *
+    FROM employeeRoles
+    WHERE Role_id = ?
+    `,
+      [id]
+    );
+    return employee;
+  } catch (error) {
+    return next(new AppError(`Error fetching employees for roles`));
+  }
+}
+async function getEmployeesByAnnouncement(id) {
+  try {
+    const employee = await db.query(
+      `SELECT *
+    FROM employeeAnnouncements
+    WHERE Announcement_id = ?
+    `,
+      [id]
+    );
+    return employee;
+  } catch (error) {
+    return next(new AppError(`Error fetching employees for announcement`));
+  }
+}
 async function createEmployee(
   firstName,
   lastName,
@@ -97,26 +188,45 @@ async function updateEmployee(
   hireDate,
   birthDate,
   payRate,
-  password,
   id
 ) {
   await db.query(
     `
     UPDATE Employee
-    SET firstName = IFNULL(?, firstName), lastName = IFNULL(?, lastName), email = IFNULL(?, email), phoneNumber = IFNULL(?,phoneNumber), hireDate = IFNULL(?,hireDate), birthDate = IFNULL(?, birthDate), payRate = IFNULL(?, payRate),  password = IFNULL(?, password)
+    SET firstName = IFNULL(?, firstName), lastName = IFNULL(?, lastName), email = IFNULL(?, email), phoneNumber = IFNULL(?,phoneNumber), hireDate = IFNULL(?,hireDate), birthDate = IFNULL(?, birthDate), payRate = IFNULL(?, payRate)
+
     WHERE id = ?
     `,
-    [
-      firstName,
-      lastName,
-      email,
-      phoneNumber,
-      hireDate,
-      birthDate,
-      payRate,
-      password,
-      id,
-    ]
+    [firstName, lastName, email, phoneNumber, hireDate, birthDate, payRate, id]
+  );
+  return getEmployee(id);
+}
+
+async function updateEmployeePassword(password, id) {
+  await db.query(
+    `
+    UPDATE Employee
+    SET password = ?, passwordResetToken = NULL, passwordResetExpire = NULL
+    WHERE id = ?
+    `,
+    [password, id]
+  );
+  return getEmployee(id);
+}
+
+async function updateEmployeeResets(
+  passwordResetToken,
+  passwordResetExpire,
+  id
+) {
+  await db.query(
+    `
+    UPDATE Employee
+    SET passwordResetToken = ?,
+        passwordResetExpire = ?
+    WHERE id = ?
+    `,
+    [passwordResetToken, passwordResetExpire, id]
   );
   return getEmployee(id);
 }
@@ -143,8 +253,16 @@ module.exports = {
   getAllEmployees: getAllEmployees,
   getEmployee: getEmployee,
   getEmployeeByEmail: getEmployeeByEmail,
+  getAllEmployeeEmails: getAllEmployeeEmails,
+  getEmployeeByResetToken: getEmployeeByResetToken,
   getEmployeePasswordEdit: getEmployeePasswordEdit,
+  getEmployeeRoles: getEmployeeRoles,
+  getEmployeesByStore: getEmployeesByStore,
+  getEmployeesByRole: getEmployeesByRole,
+  getEmployeesByAnnouncement: getEmployeesByAnnouncement,
   createEmployee: createEmployee,
   updateEmployee: updateEmployee,
+  updateEmployeePassword: updateEmployeePassword,
+  updateEmployeeResets: updateEmployeeResets,
   deleteEmployee: deleteEmployee,
 };
