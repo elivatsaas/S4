@@ -1,8 +1,6 @@
 const mysql = require("mysql2");
 const dotenv = require("dotenv");
 
-const scheduleHandler = require("./scheduleHandlers");
-
 dotenv.config();
 
 const db = mysql
@@ -16,7 +14,6 @@ const db = mysql
 
 async function getAllShifts() {
   const [shifts] = await db.query(`SELECT * FROM Shift`);
-  console.log(shifts);
   return shifts;
 }
 
@@ -64,6 +61,24 @@ async function getShiftByRole(id) {
   );
 
   return result;
+}
+
+async function getShiftsByDate(id) {
+  const shift = await getShift(id);
+  if (!shift) {
+    return []; // Return an empty array if the shift with the provided ID does not exist
+  }
+
+  const date = shift.date;
+  const [shifts] = await db.query(
+    `SELECT *
+    FROM Shift
+    WHERE date = ?
+    `,
+    [date]
+  );
+
+  return shifts;
 }
 
 async function getEmployeesForShift(id) {
@@ -187,6 +202,7 @@ module.exports = {
   getShift: getShift,
   getEmployeesForShift: getEmployeesForShift,
   getShiftsBySchedule: getShiftsBySchedule,
+  getShiftsByDate: getShiftsByDate,
   createShift: createShift,
   updateShift: updateShift,
   deleteShift: deleteShift,

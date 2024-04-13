@@ -8,10 +8,11 @@ const announcementsApi = axios.create({
 
 export const announcementsUrlEndpoint = "/announcements";
 
-export const getAllAnnouncements = async () => {
+export const getAnnouncements = async () => {
   await delay();
   const response = await announcementsApi.get(announcementsUrlEndpoint);
-  return response.data;
+  return response.data.data.announcements;
+
 };
 
 export const getAnnouncement = async (id) => {

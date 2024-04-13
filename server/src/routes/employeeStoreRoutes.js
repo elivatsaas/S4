@@ -24,7 +24,7 @@ router
   .post(
     catchASync(async function (req, res, next) {
       const { storeId, employeeId } = req.body;
-      const newEmployeeStore = await employeeStoreHandler.createEmployeestore(
+      const newEmployeeStore = await employeeStoreHandler.createEmployeeStore(
         employeeId,
         storeId
       );

@@ -13,7 +13,8 @@
 	position: absolute;
 	right: 0px;
 	top: -9px;
-	width: 100%;
+	width: 1440px;
+
 	height: 251px;
 	background: rgba(7,53,30,1.00);
 }
@@ -21,7 +22,8 @@
 	position: absolute;
 	left: 0px;
 	top: 1449px;
-	width: 100%;
+	width: 1440px;
+
 	height: 251px;
 	background: rgba(7,53,30,1.00);
 }
@@ -294,10 +296,7 @@
 .ShiftTradePage_ShiftTradePage .TradeDisplay .TradeArea .TradeInput .Day_1 {
 	position: relative;
 	flex: none;
-	margin-bottom: 41px;
-	height: 40px;
-	width: 300px;
-	font-size: large;
+	margin-bottom: 31px;
 	border: 2px solid rgba(0,0,0,1);
 }
 .ShiftTradePage_ShiftTradePage .TradeDisplay .TradeArea .TradeInput .Day_1 .Input {
@@ -306,10 +305,8 @@
 .ShiftTradePage_ShiftTradePage .TradeDisplay .TradeArea .TradeInput .StartTime_1 {
 	position: relative;
 	flex: none;
-	margin-bottom: 41px;
-	height: 40px;
-	width: 300px;
-	font-size: large;
+	margin-bottom: 31px;
+
 	border: 2px solid rgba(0,0,0,1);
 }
 .ShiftTradePage_ShiftTradePage .TradeDisplay .TradeArea .TradeInput .StartTime_1 .Input_1 {
@@ -318,10 +315,8 @@
 .ShiftTradePage_ShiftTradePage .TradeDisplay .TradeArea .TradeInput .EndTime_1 {
 	position: relative;
 	flex: none;
-	margin-bottom: 41px;
-	height: 40px;
-	width: 300px;
-	font-size: large;
+	margin-bottom: 31px;
+
 	border: 2px solid rgba(0,0,0,1);
 }
 .ShiftTradePage_ShiftTradePage .TradeDisplay .TradeArea .TradeInput .EndTime_1 .Input_2 {

@@ -4,32 +4,52 @@ import ImgAsset from "../public";
 import { Link } from "react-router-dom";
 import { getStores } from "../api/storesApi";
 import { getRoles } from "../api/rolesApi";
+import { getEmployees, getEmployee } from "../api/employeeApi";
 import { getSchedules } from "../api/schedulesApi";
 import { getShifts } from "../api/shiftsApi";
-import { getEmployees } from "../api/employeeApi";
-import FilterAnnouncementDropdown from "../components/dropdowns/FilterAnnouncementDropdown";
+import { getAnnouncements } from "../api/announcementsApi";
+import StoreDropdown from "../components/dropdowns/StoreDropdown";
+import RoleDropdown from "../components/dropdowns/RoleDropdown";
+import EmployeeDropdown from "../components/dropdowns/EmployeeDropdown";
+import ScheduleDropdown from "../components/dropdowns/ScheduleDropdown";
+import ShiftDropdown from "../components/dropdowns/ShiftDropdown";
+import AnnouncementMessage from "../components/AnnouncementMessage";
 
 export default function AnnouncementPage() {
   const [stores, setStores] = useState([]);
   const [roles, setRoles] = useState([]);
+  const [employees, setEmployees] = useState([]);
   const [schedules, setSchedules] = useState([]);
   const [shifts, setShifts] = useState([]);
-  const [employees, setEmployees] = useState([]);
-  const [isOpen, setIsOpen] = useState(false);
+  const [announcements, setAnnouncements] = useState([]);
+  const [storeDropdownOpen, setStoreDropdownOpen] = useState(false);
+  const [roleDropdownOpen, setRoleDropdownOpen] = useState(false);
+  const [employeeDropdownOpen, setEmployeeDropdownOpen] = useState(false);
+  const [scheduleDropdownOpen, setScheduleDropdownOpen] = useState(false);
+  const [shiftDropdownOpen, setShiftDropdownOpen] = useState(false);
+
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const storesData = await getStores();
         setStores(storesData);
+
         const rolesData = await getRoles();
         setRoles(rolesData);
-        const schedulesData = await getSchedules();
-        setSchedules(schedulesData);
-        const shiftsData = await getShifts();
-        setShifts(shiftsData);
+
         const employeesData = await getEmployees();
         setEmployees(employeesData);
+
+        const schedulesData = await getSchedules();
+        setSchedules(schedulesData);
+
+        const shiftsData = await getShifts();
+        setShifts(shiftsData);
+
+        const announcementsData = await getAnnouncements();
+        setAnnouncements(announcementsData);
+
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -38,43 +58,26 @@ export default function AnnouncementPage() {
     fetchData();
   }, []);
 
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
+  const toggleStoreDropdown = () => {
+    setStoreDropdownOpen(!storeDropdownOpen);
   };
 
-  const applyFilters = () => {
-    // Logic to apply filters
+  const toggleRoleDropdown = () => {
+    setRoleDropdownOpen(!roleDropdownOpen);
   };
 
-  // Transform stores data
-  const transformedStores = stores.map((store) => ({
-    value: store.id,
-    label: store.storeName,
-  }));
+  const toggleEmployeeDropdown = () => {
+    setEmployeeDropdownOpen(!employeeDropdownOpen);
+  };
 
-  // Transform roles data
-  const transformedRoles = roles.map((role) => ({
-    value: role.id,
-    label: role.roleName, // Assuming there's a roleName property in your role object
-  }));
+  const toggleScheduleDropdown = () => {
+    setScheduleDropdownOpen(!scheduleDropdownOpen);
+  };
 
-  // Transform schedules data
-  const transformedSchedules = schedules.map((schedule) => ({
-    value: schedule.id,
-    label: schedule.scheduleName, // Assuming there's a scheduleName property in your schedule object
-  }));
+  const toggleShiftDropdown = () => {
+    setShiftDropdownOpen(!shiftDropdownOpen);
+  };
 
-  // Transform shifts data
-  const transformedShifts = shifts.map((shift) => ({
-    value: shift.id,
-    label: shift.shiftName, // Assuming there's a shiftName property in your shift object
-  }));
-
-  // Transform employees data
-  const transformedEmployees = employees.map((employee) => ({
-    value: employee.id,
-    label: employee.employeeName, // Assuming there's an employeeName property in your employee object
-  }));
 
   return (
     <div className="AnnouncementPage_AnnouncementPage">
@@ -93,7 +96,17 @@ export default function AnnouncementPage() {
         </Link>
       </div>
       <div className="Screenshot20240326at35932PM3">
-        {/* Include image tags for Vector, Vector_1, etc. */}
+        <img className="Vector" src={ImgAsset.SignUpPage_Vector} />
+        <img className="Vector_1" src={ImgAsset.SignUpPage_Vector_1} />
+        <img className="Vector_2" src={ImgAsset.SignUpPage_Vector_2} />
+        <img className="Vector_3" src={ImgAsset.SignUpPage_Vector_3} />
+        <img className="Vector_4" src={ImgAsset.SignUpPage_Vector_4} />
+        <img className="Vector_5" src={ImgAsset.SignUpPage_Vector_5} />
+        <img className="Vector_6" src={ImgAsset.SignUpPage_Vector_6} />
+        <img className="Vector_7" src={ImgAsset.SignUpPage_Vector_7} />
+        <img className="Vector_8" src={ImgAsset.SignUpPage_Vector_8} />
+        <span className="S4">S4</span>
+
       </div>
       <span className="Announcements_1">Announcements</span>
       <div className="Frame1000007427">
@@ -101,51 +114,58 @@ export default function AnnouncementPage() {
           <div className="Frame1000007426">
             <span className="Filters">Filters:</span>
             <div className="Frame1000007425">
-              {transformedStores.length > 0 && (
-                <FilterAnnouncementDropdown
-                  options={transformedStores}
-                  isOpen={isOpen}
-                  toggleDropdown={toggleDropdown}
-                  label="Store"
+              {stores && stores.length > 0 && (
+                <StoreDropdown
+                  stores={stores}
+                  isOpen={storeDropdownOpen}
+                  toggleDropdown={toggleStoreDropdown}
                 />
               )}
-              {transformedRoles.length > 0 && (
-                <FilterAnnouncementDropdown
-                  options={transformedRoles}
-                  isOpen={isOpen}
-                  toggleDropdown={toggleDropdown}
-                  label="Role"
+              {roles && roles.length > 0 && (
+                <RoleDropdown
+                  roles={roles}
+                  isOpen={roleDropdownOpen}
+                  toggleDropdown={toggleRoleDropdown}
                 />
               )}
-              {transformedSchedules.length > 0 && (
-                <FilterAnnouncementDropdown
-                  options={transformedSchedules}
-                  isOpen={isOpen}
-                  toggleDropdown={toggleDropdown}
-                  label="Schedule"
+              {employees && employees.length > 0 && (
+                <EmployeeDropdown
+                  employees={employees}
+                  isOpen={employeeDropdownOpen}
+                  toggleDropdown={toggleEmployeeDropdown}
                 />
               )}
-              {transformedShifts.length > 0 && (
-                <FilterAnnouncementDropdown
-                  options={transformedShifts}
-                  isOpen={isOpen}
-                  toggleDropdown={toggleDropdown}
-                  label="Shift"
+              {schedules && schedules.length > 0 && (
+                <ScheduleDropdown
+                  schedules={schedules}
+                  isOpen={scheduleDropdownOpen}
+                  toggleDropdown={toggleScheduleDropdown}
                 />
               )}
-              {transformedEmployees.length > 0 && (
-                <FilterAnnouncementDropdown
-                  options={transformedEmployees}
-                  isOpen={isOpen}
-                  toggleDropdown={toggleDropdown}
-                  label="Employee"
+              {shifts && shifts.length > 0 && (
+                <ShiftDropdown
+                  shifts={shifts}
+                  isOpen={shiftDropdownOpen}
+                  toggleDropdown={toggleShiftDropdown}
+
                 />
               )}
             </div>
           </div>
         </div>
         <span className="MessageArea">Message Area</span>
-        <button onClick={applyFilters}>Apply</button>
+      </div>
+      <div className="AnnouncementsContainer">
+        {announcements.map((announcement, index) => {
+          return (
+            <AnnouncementMessage
+              key={index}
+              text={announcement.body}
+              employeeId={announcement.Employee_id}
+            />
+          );
+        })}
+
       </div>
     </div>
   );

@@ -70,7 +70,7 @@ router
   )
   .delete(
     catchASync(async function (req, res, next) {
-      const role = roleHandler.getRole(id);
+      const role = roleHandler.getRole(req.params.id * 1);
       if (!role) {
         return next(new AppError("No role found with that ID", 404));
       }

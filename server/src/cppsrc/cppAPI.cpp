@@ -325,5 +325,6 @@ void arrToJson(ShiftType *shifts)
         shiftJson[shiftIndex]["shiftId"] = shifts->sftArr[shiftIndex].id;
         shiftJson[shiftIndex]["employee_id"] = shifts->sftArr[shiftIndex].empId;
     }
+
     postJson(shiftJson, shifts->shiftCount);
 }

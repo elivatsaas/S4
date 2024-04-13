@@ -5,6 +5,7 @@ const process = require("process");
 const availabilityHandler = require("./availabilityHandlers");
 const dshHandlers = require("./dshHandlers");
 const shiftHandlers = require("./shiftHandlers");
+const employeeHandlers = require("./employeeHandlers");
 
 dotenv.config();
 
@@ -86,17 +87,7 @@ async function deleteSchedule(id) {
 
   return schedule;
 }
-// var child = execFile(
-//   "../build/Release/schedule-generator",
-//   [],
-//   { cwd: __dirname },
-//   function (error, stdout, stderr) {
-//     console.log(stdout);
-//     console.log(stderr);
-//     console.log(error);
-//     console.log("Schedule generated");
-//   }
-// );
+
 async function generateSchedule(id) {
   var execFile = require("child_process").execFile;
 
@@ -111,8 +102,78 @@ async function generateSchedule(id) {
       resolve("schedule generated");
     });
   });
-  let result = await promiseExec(id);
+  let result = await promiseExec;
   return result;
+}
+
+async function setScheduleNull(id) {
+  var shifts = await shiftHandlers.getShiftsBySchedule(id);
+  for (let i = 0; i < shifts.length; i++) {
+    shifts[i].Employee_id = null;
+    await shiftHandlers.updateShift(shifts[i].id);
+  }
+  return shifts;
+}
+
+async function sendScheduleEmail(employeeId, scheduleId, shifts) {
+  // Retrieve employee's shifts for the schedule
+  const employeeShifts = shifts.filter(
+    (shift) =>
+      shift.employeeId === employeeId && shift.scheduleId === scheduleId
+  );
+
+  if (employeeShifts.length === 0) {
+    console.log(
+      `No shifts found for employee ${employeeId} in schedule ${scheduleId}.`
+    );
+    return;
+  }
+
+  // Construct email content
+  let emailContent = `
+    <p>Dear Employee,</p>
+    <p>We are pleased to confirm your shifts for Schedule ${scheduleId}:</p>
+    <ul>
+  `;
+
+  // Append shift information
+  employeeShifts.forEach((shift, index) => {
+    emailContent += `
+      <li><strong>Shift ${index + 1}:</strong></li>
+      <li>Date: ${shift.date}</li>
+      <li>Start Time: ${shift.startTime}</li>
+      <li>End Time: ${shift.endTime}</li>
+      <li>Location: ${shift.location}</li>
+      <br>
+    `;
+  });
+
+  emailContent += `</ul>
+    <p>Please make sure to attend on time.</p>
+    <p>Best regards,</p>
+    <p>Your Organization</p>
+  `;
+
+  try {
+    // Get the email address of the employee (assuming you have a function to retrieve it)
+    const { email } = await employeeHandlers.getEmployee(employeeId);
+
+    // Send email
+    await sendEmail({
+      to: email,
+      subject: `Confirmation of Shifts for Schedule ${scheduleId}`,
+      html: emailContent,
+    });
+
+    console.log(
+      `Confirmation email sent successfully to employee ${employeeId}.`
+    );
+  } catch (error) {
+    console.error(
+      `Error sending confirmation email to employee ${employeeId}:`,
+      error
+    );
+  }
 }
 
 module.exports = {
@@ -123,4 +184,6 @@ module.exports = {
   updateSchedule: updateSchedule,
   deleteSchedule: deleteSchedule,
   generateSchedule: generateSchedule,
+  setScheduleNull: setScheduleNull,
+  sendScheduleEmail: sendScheduleEmail,
 };
