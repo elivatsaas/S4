@@ -11,7 +11,7 @@ export const rolesUrlEndpoint = "/roles";
 export const getRoles = async () => {
   await delay();
   const response = await rolesApi.get(rolesUrlEndpoint);
-  return response.data.role;
+  return response.data.data.roles;
 };
 
 export const getRole = async (id) => {

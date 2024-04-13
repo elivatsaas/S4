@@ -11,7 +11,8 @@ export const schedulesUrlEndpoint = "/schedules";
 export const getSchedules = async () => {
   await delay();
   const response = await schedulesApi.get(schedulesUrlEndpoint);
-  return response.data.data;
+  return response.data.data.schedules;
+
 };
 
 export const getSchedule = async (id) => {
