@@ -1,0 +1,47 @@
+
+.Property1Variant2_Property1Variant2 {
+	width: 248px;
+	height: 43.88531494140625px;
+}
+.Property1Variant2_Property1Variant2 .Left {
+	position: absolute;
+	left: 0.000080108642578125px;
+	top: 0px;
+	width: 10.126586114206622%;
+	height: 100%;
+	border-radius: 8px;
+}
+.Property1Variant2_Property1Variant2 .Right {
+	position: absolute;
+	left: 222.88613891601562px;
+	top: 0px;
+	width: 10.126586114206622%;
+	height: 100%;
+	border-radius: 8px;
+}
+.Property1Variant2_Property1Variant2 .DefaultLabel {
+	position: absolute;
+	left: 31px;
+	top: 9px;
+	width: 41.12903225806452%;
+	height: 54.687997641224065%;
+	color: rgba(0,0,0,1.00);
+	font-family: Inter;
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 24px;
+}
+.Property1Variant2_Property1Variant2 .TopLine {
+	position: absolute;
+	left: 25.114013671875px;
+	top: 0px;
+	width: 80.37977526264805%;
+	height: 0%;
+}
+.Property1Variant2_Property1Variant2 .BottomLine {
+	position: absolute;
+	left: 20.405120849609375px;
+	top: 43.88531494140625px;
+	width: 81.64565793929562%;
+	height: 0%;
+}
