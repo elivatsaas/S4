@@ -1,0 +1,162 @@
+[
+  {
+    "birthDate": "1992-02-19T07:00:00.000Z",
+    "email": "MOstberg@example.com",
+    "firstName": "Marian",
+    "hireDate": "2022-10-18T07:00:00.000Z",
+    "id": 1,
+    "lastName": "Ostberg",
+    "payRate": 16,
+    "phoneNumber": "7201234567"
+  },
+  {
+    "birthDate": "2003-06-12T07:00:00.000Z",
+    "email": "howellR@example.com",
+    "firstName": "Howell",
+    "hireDate": "2020-11-23T07:00:00.000Z",
+    "id": 2,
+    "lastName": "Rosenberg",
+    "payRate": 18,
+    "phoneNumber": "9285637283"
+  },
+  {
+    "birthDate": "2000-12-10T07:00:00.000Z",
+    "email": "MaryCarpenter@example.com",
+    "firstName": "Mary",
+    "hireDate": "2023-04-20T07:00:00.000Z",
+    "id": 3,
+    "lastName": "Carpenter",
+    "payRate": 17,
+    "phoneNumber": "9285638273"
+  },
+  {
+    "birthDate": "1996-03-17T07:00:00.000Z",
+    "email": "radovan@example.com",
+    "firstName": "Radovan",
+    "hireDate": "2015-10-17T07:00:00.000Z",
+    "id": 4,
+    "lastName": "Klerkx",
+    "payRate": 20,
+    "phoneNumber": "2739284938"
+  },
+  {
+    "birthDate": "2001-04-21T07:00:00.000Z",
+    "email": "thiemo@example.com",
+    "firstName": "Thiemo",
+    "hireDate": "2018-09-25T07:00:00.000Z",
+    "id": 5,
+    "lastName": "Maria",
+    "payRate": 16,
+    "phoneNumber": "8738949384"
+  },
+  {
+    "birthDate": "2000-02-29T07:00:00.000Z",
+    "email": "albawinship@example.com",
+    "firstName": "Alba",
+    "hireDate": "2019-10-22T07:00:00.000Z",
+    "id": 6,
+    "lastName": "Winship",
+    "payRate": 16,
+    "phoneNumber": "9279302845"
+  },
+  {
+    "birthDate": "2003-06-28T07:00:00.000Z",
+    "email": "edinacarlson@example.com",
+    "firstName": "Edina",
+    "hireDate": "2021-11-22T07:00:00.000Z",
+    "id": 7,
+    "lastName": "Carlson",
+    "payRate": 19,
+    "phoneNumber": "1029482940"
+  },
+  {
+    "birthDate": "1994-06-20T07:00:00.000Z",
+    "email": "ChristopherK@example.com",
+    "firstName": "Christopher",
+    "hireDate": "2023-09-01T07:00:00.000Z",
+    "id": 8,
+    "lastName": "Komatka",
+    "payRate": 20,
+    "phoneNumber": "0389203928"
+  },
+  {
+    "birthDate": "1994-07-27T07:00:00.000Z",
+    "email": "thewalaric@example.com",
+    "firstName": "Walaric",
+    "hireDate": "2012-12-31T07:00:00.000Z",
+    "id": 9,
+    "lastName": "Winston",
+    "payRate": 20,
+    "phoneNumber": "8273890482"
+  },
+  {
+    "birthDate": "1972-02-08T07:00:00.000Z",
+    "email": "BigSHow@example.com",
+    "firstName": "Big",
+    "hireDate": "2010-01-02T07:00:00.000Z",
+    "id": 10,
+    "lastName": "Show",
+    "payRate": 25,
+    "phoneNumber": "9283920394"
+  },
+  {
+    "birthDate": "1972-02-08T07:00:00.000Z",
+    "email": "newtest@example.com",
+    "firstName": "new",
+    "hireDate": "2010-01-02T07:00:00.000Z",
+    "id": 12,
+    "lastName": "test",
+    "payRate": 25,
+    "phoneNumber": "9283920394"
+  },
+  {
+    "birthDate": "1972-02-08T07:00:00.000Z",
+    "email": "newtest1@example.com",
+    "firstName": "new",
+    "hireDate": "2010-01-02T07:00:00.000Z",
+    "id": 13,
+    "lastName": "test",
+    "payRate": 25,
+    "phoneNumber": "9283920394"
+  },
+  {
+    "birthDate": "1972-02-08T07:00:00.000Z",
+    "email": "newtest2@example.com",
+    "firstName": "new",
+    "hireDate": "2010-01-02T07:00:00.000Z",
+    "id": 14,
+    "lastName": "test",
+    "payRate": 25,
+    "phoneNumber": "9283920394"
+  },
+  {
+    "birthDate": "1992-02-19T07:00:00.000Z",
+    "email": "1234@example.com",
+    "firstName": "cpp1",
+    "hireDate": "2022-10-18T07:00:00.000Z",
+    "id": 15,
+    "lastName": "test",
+    "payRate": 16,
+    "phoneNumber": "7201234567"
+  },
+  {
+    "birthDate": "1992-02-19T07:00:00.000Z",
+    "email": "12345@example.com",
+    "firstName": "cpp2",
+    "hireDate": "2022-10-18T07:00:00.000Z",
+    "id": 17,
+    "lastName": "test",
+    "payRate": 16,
+    "phoneNumber": "7201234567"
+  },
+  {
+    "birthDate": "1992-02-19T07:00:00.000Z",
+    "email": "123456@example.com",
+    "firstName": "cpp3",
+    "hireDate": "2022-10-18T07:00:00.000Z",
+    "id": 18,
+    "lastName": "test",
+    "payRate": 16,
+    "phoneNumber": "7201234567"
+  }
+]

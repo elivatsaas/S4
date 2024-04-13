@@ -157,7 +157,8 @@ async function deleteDesiredShiftHourBySchedule(id) {
 module.exports = {
   getAllDesiredShiftHours: getAllDesiredShiftHours,
   getDesiredShiftHour: getDesiredShiftHour,
-  getDesiredShiftHourForSchedule,
+  getDesiredShiftHoursByEmployee: getDesiredShiftHoursByEmployee,
+  getDesiredShiftHoursBySchedule: getDesiredShiftHoursBySchedule,
   createDesiredShiftHour: createDesiredShiftHour,
   updateDesiredShiftHour: updateDesiredShiftHour,
   deleteDesiredShiftHour: deleteDesiredShiftHour,

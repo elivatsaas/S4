@@ -1,8 +1,9 @@
-const mysql = require('mysql2');
-const dotenv = require('dotenv');
+const mysql = require("mysql2");
+const dotenv = require("dotenv");
 
-const employeeRoleHandler = require('./../handlers/employeeRoleHandlers');
-const shiftHandler = require('./../handlers/shiftHandlers');
+const employeeRoleHandler = require("./../handlers/employeeRoleHandlers");
+const shiftHandler = require("./../handlers/shiftHandlers");
+const AppError = require("../utils/appError");
 
 dotenv.config();
 
@@ -31,6 +32,21 @@ async function getRole(id) {
   );
 
   return role[0];
+}
+async function getRoleByName(roleName) {
+  try {
+    const [role] = await db.query(
+      `SELECT id
+      FROM Role
+      WHERE roleName = ?
+      `,
+      [roleName]
+    );
+    return role[0];
+  } catch (error) {
+    // Handle any errors that occur during role fetching
+    return next(new AppError(`Error fetching role ${roleName}`)); // Rethrow the error to propagate it to the caller
+  }
 }
 
 async function createRole(roleName) {
@@ -77,6 +93,7 @@ async function deleteRole(id) {
 module.exports = {
   getAllRoles: getAllRoles,
   getRole: getRole,
+  getRoleByName: getRoleByName,
   createRole: createRole,
   updateRole: updateRole,
   deleteRole: deleteRole,

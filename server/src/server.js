@@ -1,15 +1,4 @@
 // const url = require('url');
-(function () {
-  var childProcess = require("child_process");
-  var oldSpawn = childProcess.spawn;
-  function mySpawn() {
-    console.log("spawn called");
-    console.log(arguments);
-    var result = oldSpawn.apply(this, arguments);
-    return result;
-  }
-  childProcess.spawn = mySpawn;
-})();
 const app = require("./app");
 
 //index.js
@@ -35,6 +24,7 @@ const server = app.listen(port, () => {
 
 process.on("unhandledRejection", (err) => {
   console.log("UNHANDLED REJECTION! SHUTTING DOWN");
+  console.log(err);
   console.log(err.name, err.message);
   server.close(() => {
     process.exit(1);

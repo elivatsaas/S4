@@ -44,15 +44,18 @@ extern "C"
 
         int shiftEnd = convertTime(checkShift.endTime);
 
-        int empStart, empEnd;
+        int empStart, empEnd, empDay, empMonth, empYear;
         int shiftIndex;
         for (shiftIndex = 0; shiftIndex < checkEmp.shiftCount; shiftIndex++)
         {
+            empDay = checkEmp.shiftList[shiftIndex].day;
+            empMonth = checkEmp.shiftList[shiftIndex].month;
+            empYear = checkEmp.shiftList[shiftIndex].year;
             empStart = convertTime(checkEmp.shiftList[shiftIndex].startTime);
 
             empEnd = convertTime(checkEmp.shiftList[shiftIndex].endTime);
 
-            if ((empStart == shiftStart) || (empStart < shiftStart && shiftStart < empEnd) || (shiftStart < empStart && empStart < shiftEnd))
+            if ((empStart == shiftStart) || (empStart < shiftStart && shiftStart < empEnd) || (shiftStart < empStart && empStart < shiftEnd) && (checkShift.day == empDay) && (checkShift.month == empMonth) && (checkShift.year == empYear))
             {
                 return true;
             }
@@ -72,12 +75,43 @@ extern "C"
         employees->incrementArrSize();
     }
 
+    void dateStringToInts(int *day, int *month, int *year, string toConvert)
+    {
+        string dayString, monthString, yearString;
+        dayString[0] = toConvert[8];
+        dayString[1] = toConvert[9];
+
+        monthString[0] = toConvert[5];
+        monthString[1] = toConvert[6];
+
+        yearString[0] = toConvert[0];
+        yearString[1] = toConvert[1];
+        yearString[2] = toConvert[2];
+        yearString[3] = toConvert[3];
+
+        *day = stoi(dayString);
+        *month = stoi(monthString);
+        *year = stoi(yearString);
+    }
+
     void deepCopyShift(Shift *dest, Shift src)
     {
         dest->id = src.id;
         dest->startTime = src.startTime;
         dest->endTime = src.endTime;
         dest->empId = src.empId;
+    }
+
+    void deepCopyShiftType(ShiftType *dest, ShiftType *src)
+    {
+        int shiftIndex;
+        int newShiftsFilled = src->getShiftsFilled();
+        dest->setShiftsFilled(newShiftsFilled);
+        dest->shiftCount = src->shiftCount;
+        for (shiftIndex = 0; shiftIndex < dest->shiftCount; shiftIndex++)
+        {
+            deepCopyShift(&dest->sftArr[shiftIndex], src->sftArr[shiftIndex]);
+        }
     }
 
     bool empInArray(Employee *array, int arrLen, int toFind)
@@ -108,12 +142,16 @@ extern "C"
     }
 
     // boolean function taking in a shift & employee data structure
-    bool fillShift(ShiftType *shifts, EmployeeType *employees, int shiftIndex, int **availableIds)
+    bool fillShift(ShiftType *shifts, EmployeeType *employees, int shiftIndex, int **availableIds, ShiftType *incompleteOption)
     {
         int index, empExists;
         if (shiftIndex == shifts->shiftCount)
         {
             return true;
+        }
+        else if (shifts->getShiftsFilled() > incompleteOption->getShiftsFilled())
+        {
+            deepCopyShiftType(incompleteOption, shifts);
         }
 
         // loop through available ids
@@ -132,9 +170,10 @@ extern "C"
                     // add shift
                     addShiftToEmployee(shifts->sftArr[shiftIndex], empExists, employees);
                     addEmployeeToShift(shiftIndex, availableIds[shiftIndex][index], shifts);
+                    shifts->incrementShiftsFilled();
                     // cout << "Employee " << availableIds[shiftIndex][index] << " now has " << employees->empArr[empExists].shiftCount << " shifts" << endl;
                     //  recursively call for next shift
-                    if (fillShift(shifts, employees, shiftIndex + 1, availableIds))
+                    if (fillShift(shifts, employees, shiftIndex + 1, availableIds, incompleteOption))
                     {
                         // if successful return true
                         return true;
@@ -144,6 +183,8 @@ extern "C"
                     {
                         // remove shift
                         employees->empArr[empExists].shiftCount--;
+                        shifts->sftArr[shiftIndex].empId = -1;
+                        shifts->decrementShiftsFilled();
                     }
                 }
             }
@@ -158,10 +199,10 @@ extern "C"
                 // add shift
                 addShiftToEmployee(shifts->sftArr[shiftIndex], empExists, employees);
                 addEmployeeToShift(shiftIndex, availableIds[shiftIndex][index], shifts);
-
+                shifts->incrementShiftsFilled();
                 // cout << "Employee " << availableIds[shiftIndex][index] << " now has " << employees->empArr[employees->employeeCount - 1].shiftCount << " shifts" << endl;
 
-                if (fillShift(shifts, employees, shiftIndex + 1, availableIds))
+                if (fillShift(shifts, employees, shiftIndex + 1, availableIds, incompleteOption))
                 {
                     // if successful return true
                     return true;
@@ -172,6 +213,7 @@ extern "C"
                     // remove shift
                     employees->empArr[empExists].shiftCount--;
                     shifts->sftArr[shiftIndex].empId = -1;
+                    shifts->decrementShiftsFilled();
                 }
             }
         }
@@ -288,14 +330,20 @@ extern "C"
         {
             setCount(testVal, &shiftCount, &employeeCount);
         }
+
         // get all shifts into Shift Type
         ShiftType shifts(shiftCount);
+        ShiftType incomplete(shiftCount);
         EmployeeType employees(employeeCount);
 
         int loopIndex, row;
         int **availableIds;
         int *shiftIds = new int[shiftCount];
 
+        for (loopIndex = 0; loopIndex < employeeCount; loopIndex++)
+        {
+            employees.empArr[loopIndex].shiftList = new Shift[shiftCount];
+        }
         // come back later and change to a dynamic allocation method to improve storage efficiency
         // each row is a shift and is filled with the employee ids of each worker that can work it
         availableIds = new int *[shiftCount];
@@ -315,6 +363,9 @@ extern "C"
                 shifts.sftArr[i].startTime = shiftJson[i]["startTime"].asString();
                 shifts.sftArr[i].endTime = shiftJson[i]["endTime"].asString();
                 shifts.sftArr[i].id = shiftJson[i]["id"].asInt();
+                shifts.sftArr[i].empId = shiftJson[i]["Employee_id"].asInt();
+                // NEW CODE
+                dateStringToInts(&shifts.sftArr[i].day, &shifts.sftArr[i].month, &shifts.sftArr[i].year, shiftJson[i]["date"].asString());
                 cout << "Shifts for schedule" << shifts.sftArr[i].id << shifts.sftArr[i].startTime << shifts.sftArr[i].endTime << endl;
             }
 
@@ -345,7 +396,7 @@ extern "C"
 
         srand(time(NULL));
 
-        bool filled = fillShift(&shifts, &employees, 0, availableIds);
+        bool filled = fillShift(&shifts, &employees, 0, availableIds, &incomplete);
 
         if (filled)
         {
@@ -358,7 +409,14 @@ extern "C"
         }
         else
         {
-            cout << "Unable to fill all shifts." << endl;
+            cout << "Unable to fill all shifts. Here was the best option." << endl;
+
+            arrToJson(&incomplete);
+
+            for (shiftIndex = 0; shiftIndex < shifts.shiftCount; shiftIndex++)
+            {
+                cout << "Shift " << incomplete.sftArr[shiftIndex].id << " employee: " << incomplete.sftArr[shiftIndex].empId << endl;
+            }
         }
 
         if (testing)
@@ -412,22 +470,37 @@ extern "C"
             shifts->sftArr[0].startTime = "11:30:00";
             shifts->sftArr[0].endTime = "12:30:00";
             shifts->sftArr[0].id = 1;
+            shifts->sftArr[0].day = 1;
+            shifts->sftArr[0].month = 1;
+            shifts->sftArr[0].year = 2000;
             // SECOND SHIFT
             shifts->sftArr[1].startTime = "12:00:00";
             shifts->sftArr[1].endTime = "12:30:00";
             shifts->sftArr[1].id = 2;
+            shifts->sftArr[1].day = 1;
+            shifts->sftArr[1].month = 1;
+            shifts->sftArr[1].year = 2000;
             // THIRD SHIFT
             shifts->sftArr[2].startTime = "12:30:00";
             shifts->sftArr[2].endTime = "14:30:00";
             shifts->sftArr[2].id = 3;
+            shifts->sftArr[2].day = 1;
+            shifts->sftArr[2].month = 1;
+            shifts->sftArr[2].year = 2000;
             // FOURTH SHIFT
             shifts->sftArr[3].startTime = "17:30:00";
             shifts->sftArr[3].endTime = "18:30:00";
             shifts->sftArr[3].id = 4;
+            shifts->sftArr[3].day = 1;
+            shifts->sftArr[3].month = 1;
+            shifts->sftArr[3].year = 2000;
             // FIFTH SHIFT
             shifts->sftArr[4].startTime = "17:00:00";
             shifts->sftArr[4].endTime = "18:30:00";
             shifts->sftArr[4].id = 5;
+            shifts->sftArr[4].day = 1;
+            shifts->sftArr[4].month = 1;
+            shifts->sftArr[4].year = 2000;
         }
         else if (testVal == 2)
         {
@@ -435,42 +508,72 @@ extern "C"
             shifts->sftArr[0].startTime = "8:00:00";
             shifts->sftArr[0].endTime = "12:00:00";
             shifts->sftArr[0].id = 1;
+            shifts->sftArr[0].day = 1;
+            shifts->sftArr[0].month = 1;
+            shifts->sftArr[0].year = 2000;
             // SECOND SHIFT
             shifts->sftArr[1].startTime = "8:00:00";
             shifts->sftArr[1].endTime = "20:00:00";
             shifts->sftArr[1].id = 2;
+            shifts->sftArr[1].day = 1;
+            shifts->sftArr[1].month = 1;
+            shifts->sftArr[1].year = 2000;
             // THIRD SHIFT
             shifts->sftArr[2].startTime = "8:00:00";
             shifts->sftArr[2].endTime = "14:00:00";
             shifts->sftArr[2].id = 3;
+            shifts->sftArr[2].day = 1;
+            shifts->sftArr[2].month = 1;
+            shifts->sftArr[2].year = 2000;
             // FOURTH SHIFT
             shifts->sftArr[3].startTime = "8:00:00";
             shifts->sftArr[3].endTime = "12:00:00";
             shifts->sftArr[3].id = 4;
+            shifts->sftArr[3].day = 1;
+            shifts->sftArr[3].month = 1;
+            shifts->sftArr[3].year = 2000;
             // FIFTH SHIFT
             shifts->sftArr[4].startTime = "8:00:00";
             shifts->sftArr[4].endTime = "12:00:00";
             shifts->sftArr[4].id = 5;
+            shifts->sftArr[4].day = 1;
+            shifts->sftArr[4].month = 1;
+            shifts->sftArr[4].year = 2000;
             // SIXTH SHIFT
             shifts->sftArr[5].startTime = "12:00:00";
             shifts->sftArr[5].endTime = "18:00:00";
             shifts->sftArr[5].id = 6;
+            shifts->sftArr[5].day = 1;
+            shifts->sftArr[5].month = 1;
+            shifts->sftArr[5].year = 2000;
             // SEVENTH SHIFT
             shifts->sftArr[6].startTime = "16:00:00";
             shifts->sftArr[6].endTime = "20:30:00";
             shifts->sftArr[6].id = 7;
+            shifts->sftArr[6].day = 1;
+            shifts->sftArr[6].month = 1;
+            shifts->sftArr[6].year = 2000;
             // EIGHTH SHIFT
             shifts->sftArr[7].startTime = "12:00:00";
             shifts->sftArr[7].endTime = "16:00:00";
             shifts->sftArr[7].id = 8;
+            shifts->sftArr[7].day = 1;
+            shifts->sftArr[7].month = 1;
+            shifts->sftArr[7].year = 2000;
             // NINTH SHIFT
             shifts->sftArr[8].startTime = "10:00:00";
             shifts->sftArr[8].endTime = "14:00:00";
             shifts->sftArr[8].id = 9;
+            shifts->sftArr[8].day = 1;
+            shifts->sftArr[8].month = 1;
+            shifts->sftArr[8].year = 2000;
             // TENTH SHIFT
             shifts->sftArr[9].startTime = "14:00:00";
             shifts->sftArr[9].endTime = "20:00:00";
             shifts->sftArr[9].id = 10;
+            shifts->sftArr[9].day = 1;
+            shifts->sftArr[9].month = 1;
+            shifts->sftArr[9].year = 2000;
         }
         else if (testVal == 3)
         {
@@ -478,22 +581,37 @@ extern "C"
             shifts->sftArr[0].startTime = "8:00:00";
             shifts->sftArr[0].endTime = "12:00:00";
             shifts->sftArr[0].id = 1;
+            shifts->sftArr[0].day = 1;
+            shifts->sftArr[0].month = 1;
+            shifts->sftArr[0].year = 2000;
             // SECOND SHIFT
             shifts->sftArr[1].startTime = "12:00:00";
             shifts->sftArr[1].endTime = "20:00:00";
             shifts->sftArr[1].id = 2;
+            shifts->sftArr[1].day = 1;
+            shifts->sftArr[1].month = 1;
+            shifts->sftArr[1].year = 2000;
             // THIRD SHIFT
             shifts->sftArr[2].startTime = "12:00:00";
             shifts->sftArr[2].endTime = "16:00:00";
             shifts->sftArr[2].id = 3;
+            shifts->sftArr[2].day = 1;
+            shifts->sftArr[2].month = 1;
+            shifts->sftArr[2].year = 2000;
             // FOURTH SHIFT
             shifts->sftArr[3].startTime = "16:00:00";
             shifts->sftArr[3].endTime = "20:00:00";
             shifts->sftArr[3].id = 4;
+            shifts->sftArr[3].day = 1;
+            shifts->sftArr[3].month = 1;
+            shifts->sftArr[3].year = 2000;
             // FIFTH SHIFT
             shifts->sftArr[4].startTime = "10:00:00";
             shifts->sftArr[4].endTime = "16:00:00";
             shifts->sftArr[4].id = 5;
+            shifts->sftArr[4].day = 1;
+            shifts->sftArr[4].month = 1;
+            shifts->sftArr[4].year = 2000;
         }
     }
 
