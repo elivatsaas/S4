@@ -1,0 +1,52 @@
+[
+  {
+    "Employee_id": null,
+    "Role_id": 1,
+    "Schedule_id": 2,
+    "Store_id": 1,
+    "date": "2024-06-18T07:00:00.000Z",
+    "endTime": "12:30:00",
+    "id": 57,
+    "startTime": "11:30:00"
+  },
+  {
+    "Employee_id": 5,
+    "Role_id": 1,
+    "Schedule_id": 2,
+    "Store_id": 1,
+    "date": "2024-06-18T07:00:00.000Z",
+    "endTime": "12:30:00",
+    "id": 58,
+    "startTime": "12:00:00"
+  },
+  {
+    "Employee_id": null,
+    "Role_id": 1,
+    "Schedule_id": 2,
+    "Store_id": 1,
+    "date": "2024-06-18T07:00:00.000Z",
+    "endTime": "14:30:00",
+    "id": 59,
+    "startTime": "12:30:00"
+  },
+  {
+    "Employee_id": null,
+    "Role_id": 1,
+    "Schedule_id": 2,
+    "Store_id": 1,
+    "date": "2024-06-18T07:00:00.000Z",
+    "endTime": "18:30:00",
+    "id": 61,
+    "startTime": "17:30:00"
+  },
+  {
+    "Employee_id": 5,
+    "Role_id": 1,
+    "Schedule_id": 2,
+    "Store_id": 1,
+    "date": "2024-06-18T07:00:00.000Z",
+    "endTime": "18:30:00",
+    "id": 62,
+    "startTime": "17:00:00"
+  }
+]

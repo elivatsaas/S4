@@ -63,7 +63,7 @@ async function createEmployeeStore(Employee_id, Store_id) {
   );
 
   const id = result.insertId;
-  return getAEmployeeStore(Employee_id, Store_id);
+  return getEmployeeStore(Employee_id, Store_id);
 }
 
 async function deleteEmployeeStore(Employee_id, Store_id) {

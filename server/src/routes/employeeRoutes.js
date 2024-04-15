@@ -1,7 +1,6 @@
 const express = require("express");
 
 const employeeHandler = require("./../handlers/employeeHandlers");
-const authHandler = require("./../handlers/authHandlers");
 const AppError = require("./../utils/appError");
 
 const catchASync = require("./../utils/catchASync");
@@ -9,13 +8,9 @@ const router = express.Router();
 
 //router.param("id", employeeHandler.checkID);
 
-router.route("/signup").post(catchASync(authHandler.signup));
-router.route("/login").post(catchASync(authHandler.login));
-
 router.route("/").get(
   catchASync(async function (req, res, next) {
     var employees = await employeeHandler.getAllEmployees();
-    console.log(employees);
     res.status(200).json({
       status: "success",
       results: employees.length,
@@ -95,9 +90,9 @@ router
         hireDate,
         birthDate,
         payRate,
-        password,
-        passwordConfirm,
       } = req.body;
+      hireDate = hireDate.substring(0, 10);
+      birthDate = birthDate.substring(0, 10);
       firstName = firstName ?? null;
       lastName = lastName ?? null;
       email = email ?? null;
@@ -105,8 +100,6 @@ router
       hireDate = hireDate ?? null;
       birthDate = birthDate ?? null;
       payRate = payRate ?? null;
-      password = password ?? null;
-      passwordConfirm = passwordConfirm ?? null;
 
       const id = req.params.id;
       const employee = employeeHandler.getEmployee(id);
@@ -121,8 +114,6 @@ router
         hireDate,
         birthDate,
         payRate,
-        password,
-        passwordConfirm,
         id
       );
       res.status(201).json({

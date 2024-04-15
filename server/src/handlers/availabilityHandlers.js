@@ -1,5 +1,5 @@
-const mysql = require('mysql2');
-const dotenv = require('dotenv');
+const mysql = require("mysql2");
+const dotenv = require("dotenv");
 
 dotenv.config();
 
@@ -87,15 +87,7 @@ async function updateAvailability(
     SET  startTime = IFNULL(?, startTime), endTime = IFNULL(?, endTime), dayOfWeek = IFNULL(?, dayOfWeek),  Employee_id = IFNULL(?, Employee_id), Schedule_id = IFNULL(?, Schedule_id)
     WHERE id = ?
     `,
-    [
-      availability_id,
-      startTime,
-      endTime,
-      dayOfWeek,
-      Employee_id,
-      Schedule_id,
-      availability_id,
-    ]
+    [startTime, endTime, dayOfWeek, Employee_id, Schedule_id, availability_id]
   );
 
   return getAvailability(availability_id);
@@ -145,6 +137,8 @@ async function deleteAvailabilityBySchedule(id) {
 module.exports = {
   getAllAvailabilities: getAllAvailabilities,
   getAvailability: getAvailability,
+  getAvailabilityByEmployee: getAvailabilityByEmployee,
+  getAvailabilityBySchedule: getAvailabilityBySchedule,
   createAvailability: createAvailability,
   updateAvailability: updateAvailability,
   deleteAvailability: deleteAvailability,

@@ -1,0 +1,172 @@
+[
+  {
+    "Employee_id": 1,
+    "Schedule_id": null,
+    "desiredHours": 35,
+    "desiredShifts": 5,
+    "desired_shift_hours_id": 1,
+    "id": 1,
+    "maxHours": 40,
+    "maxShifts": 7
+  },
+  {
+    "Employee_id": 2,
+    "Schedule_id": null,
+    "desiredHours": 30,
+    "desiredShifts": 4,
+    "desired_shift_hours_id": 2,
+    "id": 2,
+    "maxHours": 40,
+    "maxShifts": 6
+  },
+  {
+    "Employee_id": 3,
+    "Schedule_id": null,
+    "desiredHours": 25,
+    "desiredShifts": 3,
+    "desired_shift_hours_id": 3,
+    "id": 3,
+    "maxHours": 35,
+    "maxShifts": 5
+  },
+  {
+    "Employee_id": 4,
+    "Schedule_id": null,
+    "desiredHours": 30,
+    "desiredShifts": 4,
+    "desired_shift_hours_id": 4,
+    "id": 4,
+    "maxHours": 40,
+    "maxShifts": 7
+  },
+  {
+    "Employee_id": 5,
+    "Schedule_id": null,
+    "desiredHours": 20,
+    "desiredShifts": 3,
+    "desired_shift_hours_id": 5,
+    "id": 5,
+    "maxHours": 35,
+    "maxShifts": 5
+  },
+  {
+    "Employee_id": 6,
+    "Schedule_id": null,
+    "desiredHours": 35,
+    "desiredShifts": 5,
+    "desired_shift_hours_id": 6,
+    "id": 6,
+    "maxHours": 40,
+    "maxShifts": 7
+  },
+  {
+    "Employee_id": 7,
+    "Schedule_id": null,
+    "desiredHours": 35,
+    "desiredShifts": 4,
+    "desired_shift_hours_id": 7,
+    "id": 7,
+    "maxHours": 40,
+    "maxShifts": 6
+  },
+  {
+    "Employee_id": 8,
+    "Schedule_id": null,
+    "desiredHours": 40,
+    "desiredShifts": 6,
+    "desired_shift_hours_id": 8,
+    "id": 8,
+    "maxHours": 40,
+    "maxShifts": 7
+  },
+  {
+    "Employee_id": 9,
+    "Schedule_id": null,
+    "desiredHours": 28,
+    "desiredShifts": 4,
+    "desired_shift_hours_id": 9,
+    "id": 9,
+    "maxHours": 40,
+    "maxShifts": 7
+  },
+  {
+    "Employee_id": 10,
+    "Schedule_id": null,
+    "desiredHours": 30,
+    "desiredShifts": 4,
+    "desired_shift_hours_id": 10,
+    "id": 10,
+    "maxHours": 40,
+    "maxShifts": 7
+  },
+  {
+    "Employee_id": 10,
+    "Schedule_id": null,
+    "desiredHours": 30,
+    "desiredShifts": 4,
+    "desired_shift_hours_id": 11,
+    "id": 11,
+    "maxHours": 40,
+    "maxShifts": 7
+  },
+  {
+    "Employee_id": null,
+    "Schedule_id": null,
+    "desiredHours": null,
+    "desiredShifts": null,
+    "desired_shift_hours_id": null,
+    "id": null,
+    "maxHours": null,
+    "maxShifts": null
+  },
+  {
+    "Employee_id": null,
+    "Schedule_id": null,
+    "desiredHours": null,
+    "desiredShifts": null,
+    "desired_shift_hours_id": null,
+    "id": null,
+    "maxHours": null,
+    "maxShifts": null
+  },
+  {
+    "Employee_id": null,
+    "Schedule_id": null,
+    "desiredHours": null,
+    "desiredShifts": null,
+    "desired_shift_hours_id": null,
+    "id": null,
+    "maxHours": null,
+    "maxShifts": null
+  },
+  {
+    "Employee_id": null,
+    "Schedule_id": null,
+    "desiredHours": null,
+    "desiredShifts": null,
+    "desired_shift_hours_id": null,
+    "id": null,
+    "maxHours": null,
+    "maxShifts": null
+  },
+  {
+    "Employee_id": null,
+    "Schedule_id": null,
+    "desiredHours": null,
+    "desiredShifts": null,
+    "desired_shift_hours_id": null,
+    "id": null,
+    "maxHours": null,
+    "maxShifts": null
+  },
+  {
+    "Employee_id": null,
+    "Schedule_id": null,
+    "desiredHours": null,
+    "desiredShifts": null,
+    "desired_shift_hours_id": null,
+    "id": null,
+    "maxHours": null,
+    "maxShifts": null
+  }
+]
