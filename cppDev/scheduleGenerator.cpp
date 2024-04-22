@@ -194,7 +194,7 @@ extern "C"
             return fillShift(shifts, employees, shiftIndex + 1, availableIds, incompleteOption);
         }
         // sort available ids
-        //sortByHoursFilled(employees, availableIds, shiftIndex);
+        sortByHoursFilled(employees, availableIds, shiftIndex);
         
 
         // loop through available ids
@@ -271,22 +271,22 @@ extern "C"
             
         // COMMENT FROM HERE
             
-        ifstream shiftFile("inputData/test1Shifts.json",ifstream::binary);
+        ifstream shiftFile("inputData/test3Shifts.json",ifstream::binary);
         shiftFile >> shiftJson;
-        shiftCount = 10;
+        shiftCount = 60;
             
             
-        ifstream employeeForScheduleFile("inputData/test1EmployeesForSchedule.json",ifstream::binary);
+        ifstream employeeForScheduleFile("inputData/test3EmployeesForSchedule.json",ifstream::binary);
         employeeForScheduleFile >> employeeShiftJson;
-        employeeShiftCount = 20;
+        employeeShiftCount = 360;
             
 
-        ifstream employeeFile("inputData/test1Employees.json",ifstream::binary);
+        ifstream employeeFile("inputData/test3Employees.json",ifstream::binary);
         employeeFile >> employeeJson;
-        employeeCount = 5;
+        employeeCount = 12;
 
 
-        ifstream hoursFile("inputData/test1Hours.json",ifstream::binary);
+        ifstream hoursFile("inputData/test3Hours.json",ifstream::binary);
         hoursFile >> hoursJson;
 
         
@@ -545,44 +545,27 @@ extern "C"
     }
     void sortByHoursFilled(EmployeeType *employees, int **availableIds, int shiftIndex)
     {
-        // Define variables 
+        // 
         int size = availableIds[shiftIndex][0];
-        int index, tempIndex, firstId, secondId;
-        double firstPercent, secondPercent;
-
-        // Interate through avaiableId's array
-        for ( index = 1; index < size; index++ )
+        int outerIndex, innerIndex, swapVal;
+        int leftEmpId, rightEmpId, leftEmpIndex, rightEmpIndex;
+        double leftPer, rightPer;
+        for(outerIndex = 1; outerIndex < size - 1; outerIndex++)
         {
-            // Get current and next index in array of ids
-            firstId = availableIds[shiftIndex][index];
-            secondId = availableIds[shiftIndex][index + 1];
-
-            // Find first employee by id
-            for ( tempIndex = 0; tempIndex < size - 1; tempIndex++ )
+            for(innerIndex = 1; innerIndex < size - outerIndex - 1; innerIndex++)
             {
-                if ( employees->empArr[tempIndex].id == firstId )
+                leftEmpId = availableIds[shiftIndex][innerIndex];
+                rightEmpId = availableIds[shiftIndex][innerIndex + 1];
+                leftEmpIndex = employeeExists(employees, leftEmpId);
+                rightEmpIndex = employeeExists(employees, rightEmpId);
+                leftPer = (double)employees->empArr[leftEmpIndex].currentTime / (double)employees->empArr[leftEmpIndex].timeRequested;
+                rightPer = (double)employees->empArr[rightEmpIndex].currentTime / (double)employees->empArr[rightEmpIndex].timeRequested;
+                if(leftPer > rightPer)
                 {
-                    // Calculate first percentage based on hours worked and requested hours
-                    firstPercent = employees->empArr[tempIndex].currentTime / employees->empArr[tempIndex].timeRequested;
+                    swapVal = leftEmpId;
+                    availableIds[shiftIndex][innerIndex] = availableIds[shiftIndex][innerIndex + 1];
+                    availableIds[shiftIndex][innerIndex + 1] = swapVal;
                 }
-            }
-
-            // Find second employee by id
-            for ( tempIndex = 0; tempIndex < size - 1; tempIndex++ )
-            {
-                if ( employees->empArr[tempIndex].id == secondId )
-                {
-                    // Calculate second percentage based on hours worked and requested hours
-                    secondPercent = employees->empArr[tempIndex].currentTime / employees->empArr[tempIndex].timeRequested;
-                }
-            }
-
-            // If first employee percentage is greater than second employee percentage
-            if ( firstPercent > secondPercent )
-            {
-                // Swap id's in availableIds array
-                availableIds[shiftIndex][index] = secondId;
-                availableIds[shiftIndex][index + 1] = firstId;
             }
         }
     }
