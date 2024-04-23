@@ -17,7 +17,7 @@ export const getStores = async () => {
 export const getStore = async (id) => {
   await delay();
   const response = await storesApi.get(`${storesUrlEndpoint}/${id}`);
-  return response.data.data;
+  return response.data.data.store;
 };
 
 export const getStoresByEmployee = async (id) => {

@@ -1,79 +1,136 @@
 import React, { useState, useEffect } from "react";
+import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
-import Scheduler, { SchedulerData, ViewTypes } from "react-big-scheduler";
-import "react-big-scheduler/lib/css/style.css";
-import { getShiftsBySchedule } from "../api/shiftsApi"; // Import your API function
+import "react-big-calendar/lib/css/react-big-calendar.css";
 
-export default function Schedule({ scheduleId }) {
-  const [schedulerData, setSchedulerData] = useState(null);
+const localizer = momentLocalizer(moment);
+
+const EmployeeScheduleCalendar = ({ shiftsData, viewType }) => {
+  const [selectedShift, setSelectedShift] = useState(null);
+  const [popupPosition, setPopupPosition] = useState({});
+  const [earliestDate, setEarliestDate] = useState(null);
+  const [earliestStartTime, setEarliestStartTime] = useState(new Date());
+  const [latestEndTime, setLatestEndTime] = useState(new Date());
 
   useEffect(() => {
     const fetchShifts = async () => {
       try {
-        const shiftsData = await getShiftsBySchedule(scheduleId); // Fetch shifts data from API
-        console.log(shiftsData);
-        const resources = shiftsData.map((shift) => ({
-          id: shift.Employee_id ? shift.Employee_id.toString() : "no_employee", // Use Employee_id as resource ID if it exists, otherwise use 'no_employee'
-          name: shift.Employee_id
-            ? `Employee ${shift.Employee_id}`
-            : "No Employee", // Use Employee ID as resource name if it exists, otherwise use 'No Employee'
-        }));
+        // Calculate earliestDate, earliestStartTime, latestEndTime
+        let earliestDate1 = null;
+        let earliestStartTime1 = null;
+        let latestEndTime1 = null;
 
-        const events = shiftsData.map((shift) => ({
-          id: shift.id,
-          start: moment(
-            shift.date + " " + shift.startTime,
-            "YYYY-MM-DDTHH:mm:ss.SSSZ"
-          ).format(), // Specify format explicitly
-          end: moment(
-            shift.date + " " + shift.endTime,
-            "YYYY-MM-DDTHH:mm:ss.SSSZ"
-          ).format(), // Specify format explicitly
-          resourceId: shift.Employee_id
-            ? shift.Employee_id.toString()
-            : "no_employee", // Use Employee_id as resource ID if it exists, otherwise use 'no_employee'
-          title: shift.Employee_id
-            ? `Shift for Employee ${shift.Employee_id}`
-            : "Shift for No Employee", // Use Employee ID in the title if it exists, otherwise use 'No Employee'
-        }));
+        if (shiftsData && shiftsData.length > 0) {
+          // Sort shiftsData by start time to find the earliest start time
+          shiftsData.sort((a, b) => new Date(a.start) - new Date(b.start));
+          earliestStartTime1 = new Date(shiftsData[0].start);
 
-        const schedulerData = new SchedulerData(
-          moment().format(),
-          ViewTypes.Day,
-          false,
-          false,
-          {
-            schedulerWidth: "100%",
-            resources,
-            events,
-          }
-        );
-        schedulerData._setDocumentWidth = () => {}; // Define an empty function for _setDocumentWidth
+          // Find the latest end time
+          shiftsData.forEach((shift) => {
+            const end = new Date(shift.end);
+            if (!latestEndTime1 || end > latestEndTime1) {
+              latestEndTime1 = end;
+            }
+          });
 
-        setSchedulerData(schedulerData);
+          // Find the earliest date
+          const dates = shiftsData.map((shift) => new Date(shift.start));
+          earliestDate1 = new Date(Math.min(...dates));
+        }
+
+        setEarliestDate(earliestDate1);
+        setEarliestStartTime(earliestStartTime1);
+        setLatestEndTime(latestEndTime1);
       } catch (error) {
-        console.error("Error fetching shifts data:", error);
+        console.error("Error fetching shifts:", error);
       }
     };
 
-    fetchShifts();
-  }, []);
+    if (shiftsData) {
+      fetchShifts();
+    }
+  }, [shiftsData]);
 
-  if (!schedulerData) {
-    return <div>Loading...</div>;
-  }
+  const handleSelectEvent = (event, e) => {
+    setSelectedShift(event);
+    setPopupPosition({
+      top: e.clientY,
+      left: e.clientX,
+    });
+  };
 
+  const closeModal = () => {
+    setSelectedShift(null);
+  };
+
+  // Inside the return statement of your component
   return (
-    <div className="ScheduleContainer">
-      {" "}
-      {/* Add the class to position the schedule */}
-      <Scheduler
-        schedulerData={schedulerData}
-        prevClick={() => {}} // Empty function for now
-        nextClick={() => {}} // Empty function for now
-        onViewChange={() => {}} // Empty function for now
-        onSelectDate={() => {}} // Empty function for now
-      />
+    <div className="schedule-container" style={{ position: "relative" }}>
+      {earliestDate ? (
+        <Calendar
+          localizer={localizer}
+          events={shiftsData}
+          defaultView={viewType}
+          views={["day", "week", "month"]} // Allow all view types
+          step={30}
+          timeslots={2}
+          min={earliestStartTime}
+          max={latestEndTime}
+          defaultDate={earliestDate} // Start of the week containing the earliest shift
+          eventPropGetter={(event) => ({
+            className: event.employeeId ? "employee" : "no-employee",
+          })}
+          style={{
+            height: "calc(120vh - 100px)", // Adjust the height of the calendar container
+            zIndex: 1, // Ensure the calendar is on top of other elements
+          }}
+          onSelectEvent={handleSelectEvent}
+          dayLayoutAlgorithm="no-overlap"
+        />
+      ) : (
+        <p>Loading...</p> // Or any loading indicator you prefer
+      )}
+      {selectedShift && (
+        <div
+          className="popup"
+          style={{
+            position: "absolute",
+            top: popupPosition.top,
+            left: popupPosition.left,
+            zIndex: 2, // Ensure the pop-up is on top of the calendar
+            background: "white", // Set the background color
+            padding: "10px", // Add padding for better appearance
+            borderRadius: "5px", // Add border radius for rounded corners
+          }}
+        >
+          <div className="popup-content">
+            <span className="close" onClick={closeModal}>
+              &times;
+            </span>
+            <h2>Shift Information</h2>
+            <p>
+              <strong>Employee:</strong> {selectedShift.title}
+            </p>
+            <p>
+              <strong>Role:</strong> {selectedShift.role}
+            </p>
+            <p>
+              <strong>Store:</strong> {selectedShift.store}
+            </p>
+            <p>
+              <strong>Start:</strong>{" "}
+              {moment(selectedShift.start).format("ddd MMM DD YYYY HH:mm:ss")}
+            </p>
+            <p>
+              <strong>End:</strong>{" "}
+              {moment(selectedShift.end).format("ddd MMM DD YYYY HH:mm:ss")}
+            </p>
+            {/* Add more shift information as needed */}
+          </div>
+        </div>
+      )}
     </div>
   );
-}
+};
+
+export default EmployeeScheduleCalendar;

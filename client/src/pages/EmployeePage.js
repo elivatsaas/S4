@@ -1,77 +1,198 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../css/EmployeePage.css";
 import ImgAsset from "../public";
 import { Link } from "react-router-dom";
+import {
+  getEmployees,
+  getEmployeeRoles,
+  getEmployeeStores,
+} from "../api/employeeApi";
+import { getRoles } from "../api/rolesApi";
+import { getStores } from "../api/storesApi";
+import Navigation from "../components/NavBar";
+
 export default function EmployeePage() {
+  const [employees, setEmployees] = useState([]);
+  const [rolesData, setRolesData] = useState([]);
+  const [storesData, setStoresData] = useState([]);
+  const [selectedEmployee, setSelectedEmployee] = useState(null);
+  const [popupPosition, setPopupPosition] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [employeeRoles, setEmployeeRoles] = useState(
+    Array(employees.length).fill([])
+  );
+  const [employeeStores, setEmployeeStores] = useState(
+    Array(employees.length).fill([])
+  );
+
+  useEffect(() => {
+    fetchEmployeesData();
+    fetchEmployeeRoles();
+    fetchEmployeeStores();
+  }, []);
+
+  const fetchEmployeesData = async () => {
+    try {
+      const employeesData = await getEmployees();
+      const rolesData = await getRoles();
+      const storeData = await getStores();
+      setEmployees(employeesData);
+      setRolesData(rolesData);
+      setStoresData(storeData);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching employees data:", error);
+    }
+  };
+
+  const fetchEmployeeRoles = async () => {
+    try {
+      // Fetch roles for each employee
+      const roles = await Promise.all(
+        employees.map((employee) => getEmployeeRoles(employee.id))
+      );
+      setEmployeeRoles(roles);
+    } catch (error) {
+      console.error("Error fetching employee roles:", error);
+    }
+  };
+
+  const fetchEmployeeStores = async () => {
+    try {
+      // Fetch stores for each employee
+      const stores = await Promise.all(
+        employees.map((employee) => getEmployeeStores(employee.id))
+      );
+      setEmployeeStores(stores);
+    } catch (error) {
+      console.error("Error fetching employee stores:", error);
+    }
+  };
+
+  const handleEmployeeClick = async (employee, e) => {
+    setSelectedEmployee(employee);
+    try {
+      // Fetch roles and stores for the selected employee
+      const roles = await getEmployeeRoles(employee.id);
+      const stores = await getEmployeeStores(employee.id);
+      setEmployeeRoles([roles]);
+      setEmployeeStores([stores]);
+      setPopupPosition({
+        top: e.clientY,
+        left: e.clientX,
+      });
+      setIsModalOpen(true); // Open the modal when an employee box is clicked
+    } catch (error) {
+      console.error("Error fetching roles and stores for employee:", error);
+    }
+  };
+  const closeModal = () => {
+    setSelectedEmployee(null);
+    setIsModalOpen(false); // Close the modal when the close button is clicked
+  };
+
+  const calculateAge = (birthDate) => {
+    const today = new Date();
+    const dob = new Date(birthDate);
+    let age = today.getFullYear() - dob.getFullYear();
+    const monthDiff = today.getMonth() - dob.getMonth();
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+      age--;
+    }
+    return age;
+  };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <div className='EmployeePage_EmployeePage'>
-			<div className='TopBar'/>
-			<div className='BottomBar'/>
-			<div className='NavBar'>
-				<Link to='/landingpage'>
-					<span className='Home'>Home</span>
-				</Link>
-				<Link to='/announcementpage'>
-					<span className='Announcements'>Announcements</span>
-				</Link>
-				<Link to='/schedulingpage'>
-					<span className='Schedule'>Schedule</span>
-				</Link>
-				<span className='Employees'>Employees</span>
-			</div>
-			<div className='Logo'>
-				<img className='Vector' src = {ImgAsset.EmployeePage_Vector} />
-				<img className='Vector_1' src = {ImgAsset.EmployeePage_Vector_1} />
-				<img className='Vector_2' src = {ImgAsset.EmployeePage_Vector_2} />
-				<img className='Vector_3' src = {ImgAsset.EmployeePage_Vector_3} />
-				<img className='Vector_4' src = {ImgAsset.EmployeePage_Vector_4} />
-				<img className='Vector_5' src = {ImgAsset.EmployeePage_Vector_5} />
-				<img className='Vector_6' src = {ImgAsset.EmployeePage_Vector_6} />
-				<img className='Vector_7' src = {ImgAsset.EmployeePage_Vector_7} />
-				<img className='Vector_8' src = {ImgAsset.EmployeePage_Vector_8} />
-				<span className='S4'>S4</span>
-			</div>
-			<span className='Employees_1'>Employees</span>
-			<div className='EmployeeDisplay'>
-				<div className='FilterArea'>
-					<div className='FilterSelection'>
-						<span className='Filters'>Filters:</span>
-						<div className='DropdownMenu'>
-							<div className='Stores'>
-								<span className='Label'>Store</span>
-								<div className='chevrondown'>
-									<img className='Vector_9' src = {ImgAsset.EmployeePage_Vector_9} />
-								</div>
-							</div>
-							<div className='Roles'>
-								<span className='Label_1'>Role</span>
-								<div className='chevrondown_1'>
-									<img className='Vector_10' src = {ImgAsset.EmployeePage_Vector_10} />
-								</div>
-							</div>
-							<div className='Schedules'>
-								<span className='Label_2'>Schedule</span>
-								<div className='chevrondown_2'>
-									<img className='Vector_11' src = {ImgAsset.EmployeePage_Vector_11} />
-								</div>
-							</div>
-							<div className='Shifts'>
-								<span className='Label_3'>Shift</span>
-								<div className='chevrondown_3'>
-									<img className='Vector_12' src = {ImgAsset.EmployeePage_Vector_12} />
-								</div>
-							</div>
-							<div className='Employees_2'>
-								<span className='Label_4'>Employee</span>
-								<div className='chevrondown_4'>
-									<img className='Vector_13' src = {ImgAsset.EmployeePage_Vector_13} />
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<span className='Listings'>Listings</span>
-			</div>
-		</div>
+    <div className="EmployeePage_EmployeePage">
+      <div className="TopBar" />
+      <div className="BottomBar" />
+      <div>
+        <Navigation />
+        <span className="S4">S4</span>
+      </div>
+      <span className="Employees_1">Employees</span>
+      <div className="EmployeeDisplay">
+        {employees.map((employee, index) => (
+          <div
+            key={employee.id}
+            className="EmployeeBox"
+            onClick={(event) => handleEmployeeClick(employee, event)}
+          >
+            <p>{`${employee.firstName} ${employee.lastName}`}</p>
+          </div>
+        ))}
+      </div>
+      {isModalOpen && selectedEmployee && (
+        <div
+          className="popup"
+          style={{
+            position: "absolute",
+            top: popupPosition.top,
+            left: popupPosition.left,
+            zIndex: 2,
+            background: "white",
+            padding: "10px",
+            borderRadius: "5px",
+          }}
+        >
+          <div className="popup-content">
+            <span className="close" onClick={closeModal}>
+              &times;
+            </span>
+            <h2>
+              {`${selectedEmployee.firstName} ${selectedEmployee.lastName}`}
+            </h2>
+            <p>Email: {selectedEmployee.email}</p>
+            <p>
+              Phone: {selectedEmployee.phoneNumber.slice(0, 3)}-
+              {selectedEmployee.phoneNumber.slice(3, 6)}-
+              {selectedEmployee.phoneNumber.slice(6, 10)}
+            </p>
+            <p>Hire Date: {selectedEmployee.hireDate.slice(0, 10)}</p>
+            <p>Age: {calculateAge(selectedEmployee.birthDate)}</p>
+
+            <p>
+              Roles:{" "}
+              {employeeRoles
+                .find(
+                  (roles) =>
+                    roles.length > 0 &&
+                    roles[0].Employee_id === selectedEmployee.id
+                )
+                ?.map((role) => {
+                  const foundRole = rolesData.find(
+                    (data) => data.id === role.Role_id
+                  );
+                  return foundRole ? foundRole.roleName : "";
+                })
+                .join(", ")}
+            </p>
+
+            <p>
+              Stores:{" "}
+              {employeeStores
+                .find(
+                  (stores) =>
+                    stores.length > 0 &&
+                    stores[0].Employee_id === selectedEmployee.id
+                )
+                ?.map((store) => {
+                  const foundStore = storesData.find(
+                    (data) => data.id === store.Store_id
+                  );
+                  return foundStore ? foundStore.storeName : "";
+                })
+                .join(", ")}
+            </p>
+            <button onClick={closeModal}>Close</button>
+          </div>
+        </div>
+      )}
+    </div>
   );
 }

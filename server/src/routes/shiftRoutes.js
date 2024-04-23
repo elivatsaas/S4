@@ -127,7 +127,12 @@ router.route("/updatecpp").put(
     //console.log(req, res);
     var data = req.body;
     data.forEach(async function (shift) {
-      var Employee_id = shift.employee_id;
+      var Employee_id;
+      if (shift.employee_id === -1) {
+        Employee_id = null;
+      } else {
+        Employee_id = shift.employee_id;
+      }
       var id = shift.shiftId;
 
       const updatedShift = await shiftHandler.updateShift(

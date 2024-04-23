@@ -1,22 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ImgAsset from "../../public";
 import "../../css/Dropdown.css";
 
-const StoreDropdown = ({ stores, toggleDropdown, isOpen, onSelectStore }) => {
-  const [selectedStores, setSelectedStores] = useState([]);
+const StoreDropdown = ({
+  stores,
+  toggleDropdown,
+  isOpen,
+  onSelectStore,
+  selectedStores,
+}) => {
+  const [selected, setSelected] = useState([]);
+
+  useEffect(() => {
+    setSelected(selectedStores || []);
+  }, [selectedStores]);
 
   const handleStoreSelect = (store) => {
-    const isSelected = selectedStores.includes(store);
+    const isSelected = selected.includes(store);
+    let updatedSelected = [];
+
     if (isSelected) {
-      setSelectedStores(selectedStores.filter((s) => s !== store));
+      updatedSelected = selected.filter((s) => s !== store);
     } else {
-      setSelectedStores([...selectedStores, store]);
+      updatedSelected = [...selected, store];
     }
-    onSelectStore(selectedStores);
+    setSelected(updatedSelected);
+    onSelectStore(updatedSelected);
+  };
+
+  const handleClick = (event) => {
+    event.stopPropagation(); // Prevent click propagation to parent
+    toggleDropdown(); // Toggle dropdown state
   };
 
   return (
-    <div className="_04Dropdown" onClick={toggleDropdown}>
+    <div className="_04Dropdown" onClick={handleClick}>
       <span className="Label">Store</span>
       <div className="chevrondown">
         <img className="Vector_9" src={ImgAsset.AnnouncementPage_Vector_9} />
@@ -27,8 +45,7 @@ const StoreDropdown = ({ stores, toggleDropdown, isOpen, onSelectStore }) => {
             <label key={store.id} className="dropdown-label">
               <input
                 type="checkbox"
-                checked={selectedStores.includes(store)}
-
+                checked={selected.includes(store)}
                 onChange={() => handleStoreSelect(store)}
               />
               <span>{store.storeName}</span>
