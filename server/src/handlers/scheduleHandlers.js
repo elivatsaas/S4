@@ -90,11 +90,10 @@ async function deleteSchedule(id) {
 
 async function generateSchedule(id) {
   var execFile = require("child_process").execFile;
-
+  let idPass = id.toString();
+  console.log("about to pass");
   const promiseExec = new Promise((resolve, reject) => {
-    const { getShiftsBySchedule } = require("./shiftHandlers");
-
-    var child = execFile("../build/Release/schedule-generator", [], {
+    var child = execFile("../build/Release/schedule-generator", [`${idPass}`], {
       cwd: __dirname,
     });
     child.stdout.pipe(process.stdout);

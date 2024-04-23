@@ -130,7 +130,7 @@ router.route("/find/:id").get(
 
 router.route("/generate/:id").get(
   catchASync(async function (req, res, next) {
-    var results = await scheduleHandler.generateSchedule(2);
+    var results = await scheduleHandler.generateSchedule(req.params.id * 1);
     res.status(200).json({
       status: "success",
       results,
