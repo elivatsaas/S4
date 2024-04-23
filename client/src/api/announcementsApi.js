@@ -12,7 +12,6 @@ export const getAnnouncements = async () => {
   await delay();
   const response = await announcementsApi.get(announcementsUrlEndpoint);
   return response.data.data.announcements;
-
 };
 
 export const getAnnouncement = async (id) => {
@@ -22,45 +21,78 @@ export const getAnnouncement = async (id) => {
   );
   return response.data;
 };
-
-export const getAnnouncementsBySchedule = async (Schedule_id, id) => {
+export const getAnnouncementsBySchedules = async () => {
   await delay();
   const response = await announcementsApi.get(
-    `${announcementsUrlEndpoint}/schedules/${Schedule_id}/${id}`
+    `${announcementsUrlEndpoint}/schedules`
   );
-  return response.data;
+  return response.data.data.announcements[0];
+};
+export const getAnnouncementsBySchedule = async (Schedule_id) => {
+  await delay();
+  const response = await announcementsApi.get(
+    `${announcementsUrlEndpoint}/schedules/${Schedule_id}`
+  );
+  return response.data.announcement;
 };
 
-export const getAnnouncementByStore = async (Store_id, id) => {
+export const getAnnouncementsByStores = async () => {
   await delay();
   const response = await announcementsApi.get(
-    `${announcementsUrlEndpoint}/stores/${Store_id}/${id}`
+    `${announcementsUrlEndpoint}/stores`
   );
-  return response.data;
+  return response.data.data.announcement;
+};
+export const getAnnouncementsByStore = async (Store_id) => {
+  await delay();
+  const response = await announcementsApi.get(
+    `${announcementsUrlEndpoint}/stores/${Store_id}`
+  );
+  return response.data.announcement;
+};
+export const getAnnouncementsByRoles = async () => {
+  await delay();
+  const response = await announcementsApi.get(
+    `${announcementsUrlEndpoint}/roles`
+  );
+  return response.data.data.announcement;
+};
+export const getAnnouncementsByRole = async (Role_id) => {
+  await delay();
+  const response = await announcementsApi.get(
+    `${announcementsUrlEndpoint}/roles/${Role_id}`
+  );
+  return response.data.announcement;
+};
+export const getAnnouncementsByEmployees = async () => {
+  await delay();
+  const response = await announcementsApi.get(
+    `${announcementsUrlEndpoint}/employees`
+  );
+  return response.data.data.announcements[0];
+};
+export const getAnnouncementsByEmployee = async (Employee_id) => {
+  await delay();
+  const response = await announcementsApi.get(
+    `${announcementsUrlEndpoint}/employees/${Employee_id}`
+  );
+  return response.data.announcement;
 };
 
-export const getAnnouncementByRole = async (Role_id, id) => {
+export const getAnnouncementsByShiftDates = async () => {
   await delay();
   const response = await announcementsApi.get(
-    `${announcementsUrlEndpoint}/roles/${Role_id}/${id}`
+    `${announcementsUrlEndpoint}/shifts`
   );
-  return response.data;
+  return response.data.announcement;
 };
 
-export const getAnnouncementByEmployee = async (Employee_id, id) => {
+export const getAnnouncementsByShiftDate = async (Shift_id) => {
   await delay();
   const response = await announcementsApi.get(
-    `${announcementsUrlEndpoint}/employees/${Employee_id}/${id}`
+    `${announcementsUrlEndpoint}/shifts/${Shift_id}`
   );
-  return response.data;
-};
-
-export const getAnnouncementByShiftDate = async (date, id) => {
-  await delay();
-  const response = await announcementsApi.get(
-    `${announcementsUrlEndpoint}/shifts/${date}/${id}`
-  );
-  return response.data;
+  return response.data.announcement;
 };
 
 export const createAnnouncement = async (body, Employee_id) => {

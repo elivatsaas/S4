@@ -11,15 +11,27 @@ export const employeeUrlEndpoint = "/employees";
 export const getEmployees = async () => {
   await delay();
   const response = await employeesApi.get(employeeUrlEndpoint);
-  return response.data.data.employees; // Updated response data structure
+  return response.data.data.employees;
 };
 
 export const getEmployee = async (id) => {
   await delay();
   const response = await employeesApi.get(`${employeeUrlEndpoint}/${id}`);
-  return response.data.data.employee; // Updated response data structure
+  return response.data.data.employee;
 };
 
+export const getEmployeeRoles = async (id) => {
+  await delay();
+  const response = await employeesApi.get(`${employeeUrlEndpoint}/roles/${id}`);
+  return response.data.data.employeeRoles;
+};
+export const getEmployeeStores = async (id) => {
+  await delay();
+  const response = await employeesApi.get(
+    `${employeeUrlEndpoint}/stores/${id}`
+  );
+  return response.data.data.employeeStores;
+};
 export const addEmployee = async ({
   firstName,
   lastName,

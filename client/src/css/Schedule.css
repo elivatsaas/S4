@@ -1,0 +1,51 @@
+.schedule-container {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Calendar */
+.rbc-calendar {
+  height: 1000px;
+}
+
+/* Time slots */
+.rbc-time-view {
+  border-right: 1px solid #ddd;
+}
+
+.rbc-time-header-content {
+  font-size: 12px;
+  color: #777;
+}
+
+.rbc-time-content {
+  width: 90%;
+  border-left: 1px solid #ddd;
+}
+
+/* Events */
+.rbc-event {
+  height: 200px;
+  width: 100%;
+  border-radius: 4px;
+  padding: 2px 5px;
+  color: #fff;
+  overflow: hidden;
+}
+
+/* Events with employee */
+.rbc-event.employee {
+  background-color: #07351e;
+}
+
+/* Events without employee */
+.rbc-event.no-employee {
+  background-color: #dc3545;
+}
+
+.rbc-event:hover {
+  opacity: 0.8;
+}
