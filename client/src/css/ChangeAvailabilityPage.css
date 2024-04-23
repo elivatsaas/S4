@@ -13,8 +13,7 @@
 	position: absolute;
 	right: 0px;
 	top: -9px;
-	width: 1440px;
-
+	width: 100%;
 	height: 251px;
 	background: rgba(7,53,30,1.00);
 }
@@ -22,8 +21,7 @@
 	position: absolute;
 	left: 0px;
 	top: 1449px;
-	width: 1440px;
-
+	width: 100%;
 	height: 251px;
 	background: rgba(7,53,30,1.00);
 }
@@ -353,8 +351,10 @@
 .ChangeAvailabilityPage_ChangeAvailabilityPage .ChangeDisplay .InputDisplay .InputArea .Day_1 {
 	position: relative;
 	flex: none;
+	margin-top: 10px;
 	margin-bottom: 51px;
-
+	height: 40px;
+	font-size: large;
 	border: 2px solid rgba(0,0,0,1);
 }
 .ChangeAvailabilityPage_ChangeAvailabilityPage .ChangeDisplay .InputDisplay .InputArea .Day_1 .Input {
@@ -364,7 +364,8 @@
 	position: relative;
 	flex: none;
 	margin-bottom: 51px;
-
+	height: 40px;
+	font-size: large;
 	border: 2px solid rgba(0,0,0,1);
 }
 .ChangeAvailabilityPage_ChangeAvailabilityPage .ChangeDisplay .InputDisplay .InputArea .StartTime_1 .Input_1 {
@@ -374,7 +375,8 @@
 	position: relative;
 	flex: none;
 	margin-bottom: 51px;
-
+	height: 40px;
+	font-size: large;
 	border: 2px solid rgba(0,0,0,1);
 }
 .ChangeAvailabilityPage_ChangeAvailabilityPage .ChangeDisplay .InputDisplay .InputArea .EndTime_1 .Input_2 {
