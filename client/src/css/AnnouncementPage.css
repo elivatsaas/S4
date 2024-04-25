@@ -516,7 +516,7 @@
 .CustomButton {
   position: absolute;
   height: 40px;
-  margin-left: 750px;
+  margin-left: 820px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -527,7 +527,7 @@
   font-family: Inter;
   font-size: 16px;
   font-weight: 400;
-  line-height: 24px;
+  line-height: 20px;
   color: rgba(255, 255, 255, 1);
   cursor: pointer;
 }
@@ -552,4 +552,12 @@
   top: calc(100% - 150px);
   padding-left: 235px;
   width: 800px;
+}
+.CreateAnnouncement {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgb(185, 209, 197);
+  z-index: 9999;
 }
