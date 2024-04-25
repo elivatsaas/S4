@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../css/SchedulingPage.css";
 import "../css/Schedule.css";
+import Navigation from "../components/NavBar";
 import ImgAsset from "../public";
 import DailySchedule from "../components/DailySchedule";
 import WeeklySchedule from "../components/WeeklySchedule";
@@ -13,7 +14,11 @@ import ScheduleDropdown from "../components/dropdowns/ScheduleDropdown";
 import { getStore, getStores } from "../api/storesApi";
 import { getRoles, getRole } from "../api/rolesApi";
 import { getEmployee, getEmployees } from "../api/employeeApi";
-import { getSchedules, generateSchedule } from "../api/schedulesApi";
+import {
+  getSchedules,
+  generateSchedule,
+  confirmSchedule,
+} from "../api/schedulesApi";
 import { getShiftsBySchedule } from "../api/shiftsApi";
 
 function isEmpty(array) {
@@ -41,7 +46,7 @@ const SchedulingPage = () => {
   const [filteredShifts, setFilteredShifts] = useState([]);
   const [scheduleSelected, setScheduleSelected] = useState(false); // New state to track schedule selection
   const [scheduleId, setScheduleId] = useState(null);
-
+  const [gSchedule, setGSchedule] = useState(false);
   const [storeDropdownOpen, setStoreDropdownOpen] = useState(false);
   const toggleStoreDropdown = () => setStoreDropdownOpen(!storeDropdownOpen);
 
@@ -114,10 +119,10 @@ const SchedulingPage = () => {
       }
     };
 
-    if (scheduleId) {
+    if (scheduleId || gSchedule) {
       fetchShifts();
     }
-  }, [scheduleId]);
+  }, [scheduleId, gSchedule]);
 
   useEffect(() => {
     // Fetch data once at the beginning
@@ -230,7 +235,7 @@ const SchedulingPage = () => {
   ) {
     shiftsToDisplay = shifts;
   }
-  const GenerateSchedule = async () => {
+  const handleGenerateSchedule = async () => {
     if (!selectedFilters.scheduleIds[0]) {
       const alertMessage1 = displayAlert("Please select a schedule");
       window.alert(alertMessage1);
@@ -253,9 +258,29 @@ const SchedulingPage = () => {
       const alertMessage5 = displayAlert("Error Generating Schedule");
       window.alert(alertMessage5);
     }
+    let generatedSchedule = filterShifts(selectedFilters);
+    setFilteredShifts(generatedSchedule);
+    setGSchedule(true);
   };
-  let scheduleComponent;
+  const handleConfirmSchedule = async () => {
+    try {
+      const confirmedSchedule = await confirmSchedule(
+        selectedFilters.scheduleIds[0].id
+      );
+      if (confirmedSchedule) {
+        const alertMessage3 = displayAlert("Schedule Emails Sent");
+        window.alert(alertMessage3);
+      } else {
+        const alertMessage4 = displayAlert("Error Confirming Schedule");
+        window.alert(alertMessage4);
+      }
+    } catch (error) {
+      const alertMessage5 = displayAlert("Error Confirming Schedule");
+      window.alert(alertMessage5);
+    }
+  };
 
+  let scheduleComponent;
   switch (view) {
     case "day":
       scheduleComponent = <DailySchedule shifts={shiftsToDisplay} />;
@@ -287,17 +312,9 @@ const SchedulingPage = () => {
     <div className="SchedulingPage_SchedulingPage">
       <div className="TopBar" />
       <div className="BottomBar" />
-      <div className="NavBar">
-        <Link to="/landingpage">
-          <span className="Home">Home</span>
-        </Link>
-        <Link to="/announcementpage">
-          <span className="Announcements">Announcements</span>
-        </Link>
-        <span className="Schedule">Schedule</span>
-        <Link to="/employeepage">
-          <span className="Employees">Employees</span>
-        </Link>
+      <div>
+        <Navigation />
+        <span className="S4">S4</span>
       </div>
       <div className="SchedulingNavBar">
         <Link to="/addshiftpage">
@@ -316,18 +333,7 @@ const SchedulingPage = () => {
           </Link>
         </div>
       </div>
-      <div className="Logo">
-        <img className="Vector" src={ImgAsset.SchedulingPage_Vector} />
-        <img className="Vector_1" src={ImgAsset.SchedulingPage_Vector_1} />
-        <img className="Vector_2" src={ImgAsset.SchedulingPage_Vector_2} />
-        <img className="Vector_3" src={ImgAsset.SchedulingPage_Vector_3} />
-        <img className="Vector_4" src={ImgAsset.SchedulingPage_Vector_4} />
-        <img className="Vector_5" src={ImgAsset.SchedulingPage_Vector_5} />
-        <img className="Vector_6" src={ImgAsset.SchedulingPage_Vector_6} />
-        <img className="Vector_7" src={ImgAsset.SchedulingPage_Vector_7} />
-        <img className="Vector_8" src={ImgAsset.SchedulingPage_Vector_8} />
-        <span className="S4">S4</span>
-      </div>
+
       <div className="FilterArea">
         <div className="FilterSelection">
           <span className="Filters">Filters:</span>
@@ -354,10 +360,75 @@ const SchedulingPage = () => {
         </div>
       </div>
 
-      {shiftsToDisplay.length > 0 && (
+      {!gSchedule && shiftsToDisplay.length > 0 && (
         <>
           <div className="GenerateSchedule">
-            <button onClick={GenerateSchedule}>Generate Schedule</button>
+            <button onClick={handleGenerateSchedule}>Generate Schedule</button>
+          </div>
+          <div className="FilterArea">
+            <div className="FilterSelection">
+              <span className="Filters">Filters:</span>
+              <div className="DropdownMenu">
+                {schedules && schedules.length > 0 && (
+                  <ScheduleDropdown
+                    schedules={schedules}
+                    isOpen={scheduleDropdownOpen}
+                    toggleDropdown={toggleScheduleDropdown}
+                    onSelectSchedule={(selectedSchedules) => {
+                      handleFilterChange("scheduleIds", selectedSchedules);
+                      // Set the scheduleId to the selected schedule id
+                      const selectedScheduleId =
+                        selectedSchedules.length > 0
+                          ? selectedSchedules[0].id
+                          : null;
+                      setScheduleId(selectedScheduleId);
+                    }}
+                    selectedSchedules={selectedFilters.scheduleIds}
+                  />
+                )}
+                {stores && stores.length > 0 && (
+                  <StoreDropdown
+                    stores={stores}
+                    isOpen={storeDropdownOpen}
+                    toggleDropdown={toggleStoreDropdown}
+                    onSelectStore={(selectedStores) =>
+                      handleFilterChange("storeIds", selectedStores)
+                    }
+                    selectedStores={selectedFilters.storeIds}
+                  />
+                )}
+                {roles && roles.length > 0 && (
+                  <RoleDropdown
+                    roles={roles}
+                    isOpen={roleDropdownOpen}
+                    toggleDropdown={toggleRoleDropdown}
+                    onSelectRole={(selectedRoles) =>
+                      handleFilterChange("roleIds", selectedRoles)
+                    }
+                    selectedRoles={selectedFilters.roleIds}
+                  />
+                )}
+                {employees && employees.length > 0 && (
+                  <EmployeeDropdown
+                    employees={employees}
+                    isOpen={employeeDropdownOpen}
+                    toggleDropdown={toggleEmployeeDropdown}
+                    onSelectEmployee={(selectedEmployees) =>
+                      handleFilterChange("employeeIds", selectedEmployees)
+                    }
+                    selectedEmployees={selectedFilters.employeeIds}
+                  />
+                )}
+              </div>
+            </div>
+          </div>
+          <div className="schedule-container">{scheduleComponent}</div>
+        </>
+      )}
+      {gSchedule && shiftsToDisplay.length > 0 && (
+        <>
+          <div className="GenerateSchedule">
+            <button onClick={handleConfirmSchedule}>Confirm Schedule</button>
           </div>
           <div className="FilterArea">
             <div className="FilterSelection">
