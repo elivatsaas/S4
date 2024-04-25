@@ -6,6 +6,9 @@ const availabilityHandler = require("./availabilityHandlers");
 const dshHandlers = require("./dshHandlers");
 const shiftHandlers = require("./shiftHandlers");
 const employeeHandlers = require("./employeeHandlers");
+const sendEmail = require("../utils/email");
+const roleHandlers = require("./roleHandlers");
+const storeHandlers = require("./storeHandlers");
 
 dotenv.config();
 
@@ -116,57 +119,61 @@ async function setScheduleNull(id) {
 
 async function sendScheduleEmail(employeeId, scheduleId, shifts) {
   // Retrieve employee's shifts for the schedule
-  const employeeShifts = shifts.filter(
-    (shift) =>
-      shift.employeeId === employeeId && shift.scheduleId === scheduleId
+  let employeeShifts = shifts.filter(
+    (shift) => shift.Employee_id === employeeId
   );
 
   if (employeeShifts.length === 0) {
     console.log(
       `No shifts found for employee ${employeeId} in schedule ${scheduleId}.`
     );
-    return;
   }
-
+  const { email, firstName, lastName } = await employeeHandlers.getEmployee(
+    employeeId
+  );
+  const { startDate, endDate } = await getSchedule(scheduleId);
   // Construct email content
   let emailContent = `
-    <p>Dear Employee,</p>
-    <p>We are pleased to confirm your shifts for Schedule ${scheduleId}:</p>
-    <ul>
+    Dear ${firstName} ${lastName},
+    We are pleased to confirm your shifts from ${startDate} to ${endDate}:
+   
   `;
-
+  const roles = await roleHandlers.getAllRoles();
+  const stores = await storeHandlers.getAllStores();
+  employeeShifts = employeeShifts.map((shift) => {
+    const role = roles.find((role) => role.id === shift.Role_id);
+    shift.role = role ? role.roleName : null;
+    const store = stores.find((store) => store.id === shift.Store_id);
+    shift.store = store ? store.storeName : null;
+    return shift;
+  });
   // Append shift information
   employeeShifts.forEach((shift, index) => {
     emailContent += `
-      <li><strong>Shift ${index + 1}:</strong></li>
-      <li>Date: ${shift.date}</li>
-      <li>Start Time: ${shift.startTime}</li>
-      <li>End Time: ${shift.endTime}</li>
-      <li>Location: ${shift.location}</li>
-      <br>
+      Date: ${shift.date}
+      Start Time: ${shift.startTime}
+      End Time: ${shift.endTime}
+      Store: ${shift.store}
+      Role: ${shift.role}
     `;
   });
-
-  emailContent += `</ul>
-    <p>Please make sure to attend on time.</p>
-    <p>Best regards,</p>
-    <p>Your Organization</p>
-  `;
-
   try {
     // Get the email address of the employee (assuming you have a function to retrieve it)
-    const { email } = await employeeHandlers.getEmployee(employeeId);
-
     // Send email
-    await sendEmail({
-      to: email,
+    const emailSent = await sendEmail({
+      email: email,
       subject: `Confirmation of Shifts for Schedule ${scheduleId}`,
-      html: emailContent,
+      message: emailContent,
     });
-
-    console.log(
-      `Confirmation email sent successfully to employee ${employeeId}.`
-    );
+    if (emailSent) {
+      console.log(
+        `Confirmation email sent successfully to employee ${employeeId}.`
+      );
+    } else {
+      console.log(
+        `Error sending confirmation email to employee ${employeeId}.`
+      );
+    }
   } catch (error) {
     console.error(
       `Error sending confirmation email to employee ${employeeId}:`,
