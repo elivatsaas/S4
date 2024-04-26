@@ -3,7 +3,8 @@ import axios from "axios";
 const delay = () => new Promise((res) => setTimeout(() => res(), 800));
 
 const authenticationApi = axios.create({
-  baseURL: "http://localhost:8080/api/v1",
+  baseURL:
+    "http://ec2-13-52-252-101.us-west-1.compute.amazonaws.com:8080/api/v1",
   withCredentials: true,
 });
 
