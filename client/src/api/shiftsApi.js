@@ -59,6 +59,22 @@ export const addShift = async ({
   });
   return response.data;
 };
+export const tradeShift = async ({ firstShiftId, secondShiftId }) => {
+  await delay();
+  const response = await shiftsApi.post(`${shiftsUrlEndpoint}/trade}`, {
+    firstShiftId,
+    secondShiftId,
+  });
+  return response.data;
+};
+export const giveShift = async ({ shiftId, employeeId }) => {
+  await delay();
+  const response = await shiftsApi.post(`${shiftsUrlEndpoint}/give}`, {
+    shiftId,
+    employeeId,
+  });
+  return response.data;
+};
 
 export const updateShift = async (shift) => {
   await delay();

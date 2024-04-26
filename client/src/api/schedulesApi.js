@@ -62,3 +62,11 @@ export const generateSchedule = async (id) => {
   );
   return response.data;
 };
+
+export const confirmSchedule = async (id) => {
+  await delay();
+  const response = await schedulesApi.post(
+    `${schedulesUrlEndpoint}/confirm/${id}`
+  );
+  return response.data;
+};

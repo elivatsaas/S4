@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import "../css/AnnouncementPage.css";
 import ImgAsset from "../public";
 import { Link } from "react-router-dom";
+import Navigation from "../components/NavBar";
+
 import { getStores } from "../api/storesApi";
 import { getRoles } from "../api/rolesApi";
 import { getEmployees } from "../api/employeeApi";
@@ -18,10 +20,12 @@ import RoleDropdown from "../components/dropdowns/RoleDropdown";
 import EmployeeDropdown from "../components/dropdowns/EmployeeDropdown";
 import ScheduleDropdown from "../components/dropdowns/ScheduleDropdown";
 import AnnouncementMessage from "../components/AnnouncementMessage";
+import CreateAnnouncementPopup from "../components/CreateAnnouncementPopup";
 
 function isEmpty(array) {
   return Array.isArray(array) && array.length === 0;
 }
+
 function hasMoreThanOne(array) {
   return Array.isArray(array) && array.length > 1;
 }
@@ -36,7 +40,6 @@ export default function AnnouncementPage() {
   const [storeAnnouncements, setStoreAnnouncements] = useState([]);
   const [roleAnnouncements, setRoleAnnouncements] = useState([]);
   const [employeeAnnouncements, setEmployeeAnnouncements] = useState([]);
-
   const [selectedFilters, setSelectedFilters] = useState({
     storeIds: [],
     roleIds: [],
@@ -44,8 +47,7 @@ export default function AnnouncementPage() {
     scheduleIds: [],
   });
   const [loading, setLoading] = useState(true);
-
-  // Define dropdown state variables and toggle functions
+  const [popupVisible, setPopupVisible] = useState(false);
   const [storeDropdownOpen, setStoreDropdownOpen] = useState(false);
   const toggleStoreDropdown = () => setStoreDropdownOpen(!storeDropdownOpen);
 
@@ -60,8 +62,8 @@ export default function AnnouncementPage() {
   const toggleScheduleDropdown = () =>
     setScheduleDropdownOpen(!scheduleDropdownOpen);
 
+  // State variable for managing popup visibility
   useEffect(() => {
-    // Fetch data once at the beginning
     const fetchData = async () => {
       try {
         const storesData = await getStores();
@@ -92,7 +94,6 @@ export default function AnnouncementPage() {
         setLoading(false);
       }
     };
-
     fetchData();
   }, []);
   // Function to filter announcements based on selected filters
@@ -271,7 +272,6 @@ export default function AnnouncementPage() {
       // Append filtered announcements without overwriting
       filteredAnnouncements.push(...filteredAnnouncementsForSchedule);
     }
-
     return filteredAnnouncements;
   };
 
@@ -279,20 +279,23 @@ export default function AnnouncementPage() {
   const handleFilterChange = (filterName, selectedValues) => {
     setSelectedFilters({ ...selectedFilters, [filterName]: selectedValues });
   };
-  const resetFilters = () => {
-    setSelectedFilters({
-      storeIds: [],
-      roleIds: [],
-      employeeIds: [],
-      scheduleIds: [],
-    });
-  };
 
+  const togglePopup = () => {
+    setPopupVisible(!popupVisible);
+  };
+  const handleSubmitAnnouncement = () => {
+    let filteredAnnouncements = filterAnnouncements(selectedFilters);
+    return filteredAnnouncements;
+  };
   // Rendering logic
   if (loading) {
     return <div>Loading...</div>;
   }
-  let filteredAnnouncements = filterAnnouncements(selectedFilters);
+  let filteredAnnouncements = [];
+  if (!popupVisible) {
+    filteredAnnouncements = filterAnnouncements(selectedFilters);
+  }
+
   if (isEmpty(filteredAnnouncements)) {
     filteredAnnouncements = [
       {
@@ -310,67 +313,16 @@ export default function AnnouncementPage() {
   ) {
     filteredAnnouncements = announcements;
   }
+
   return (
     <div className="AnnouncementPage_AnnouncementPage">
       <div className="Rectangle1" />
       <div
         className="Rectangle2"
         style={{ bottom: `${filterAnnouncements.length * -1500}px` }}
-      />
-      <div className="Frame9">
-        <Link to="/landingpage">
-          <span className="Home">Home</span>
-        </Link>
-        <span className="Announcements">Announcements</span>
-        <Link to="/schedulingpage">
-          <span className="Schedule">Schedule</span>
-        </Link>
-        <Link to="/employeepage">
-          <span className="Employees">Employees</span>
-        </Link>
-      </div>
-      <div className="Screenshot20240326at35932PM3">
-        <img className="Vector" src={ImgAsset.SignUpPage_Vector} alt="Vector" />
-        <img
-          className="Vector_1"
-          src={ImgAsset.SignUpPage_Vector_1}
-          alt="Vector_1"
-        />
-        <img
-          className="Vector_2"
-          src={ImgAsset.SignUpPage_Vector_2}
-          alt="Vector_2"
-        />
-        <img
-          className="Vector_3"
-          src={ImgAsset.SignUpPage_Vector_3}
-          alt="Vector_3"
-        />
-        <img
-          className="Vector_4"
-          src={ImgAsset.SignUpPage_Vector_4}
-          alt="Vector_4"
-        />
-        <img
-          className="Vector_5"
-          src={ImgAsset.SignUpPage_Vector_5}
-          alt="Vector_5"
-        />
-        <img
-          className="Vector_6"
-          src={ImgAsset.SignUpPage_Vector_6}
-          alt="Vector_6"
-        />
-        <img
-          className="Vector_7"
-          src={ImgAsset.SignUpPage_Vector_7}
-          alt="Vector_7"
-        />
-        <img
-          className="Vector_8"
-          src={ImgAsset.SignUpPage_Vector_8}
-          alt="Vector_8"
-        />
+      />{" "}
+      <div>
+        <Navigation />
         <span className="S4">S4</span>
       </div>
       <span className="Announcements_1">Announcements</span>
@@ -424,18 +376,39 @@ export default function AnnouncementPage() {
                 />
               )}
             </div>
-          </div>
+
+            <button className="CustomButton" onClick={togglePopup}>
+              Create Announcement
+            </button>
+
+            {popupVisible && (
+              <div className="createannouncementpopup">
+                <CreateAnnouncementPopup
+                  onClose={() => togglePopup()}
+                  onSubmit={handleSubmitAnnouncement}
+                  stores={stores}
+                  roles={roles}
+                  employees={employees}
+                  schedules={schedules}
+                />
+              </div>
+            )}
+          </div>{" "}
         </div>
         <span className="MessageArea">Message Area</span>
       </div>
       <div className="AnnouncementsContainer">
-        {filteredAnnouncements.map((announcement, index) => (
-          <AnnouncementMessage
-            key={index}
-            text={announcement.body}
-            employeeId={announcement.Employee_id}
-          />
-        ))}
+        {!popupVisible &&
+          filteredAnnouncements
+            .slice() // Create a shallow copy to avoid mutating the original array
+            .sort((a, b) => b.id - a.id) // Sort in descending order based on index
+            .map((announcement, index) => (
+              <AnnouncementMessage
+                key={index}
+                text={announcement.body}
+                employeeId={announcement.Employee_id}
+              />
+            ))}
       </div>
     </div>
   );

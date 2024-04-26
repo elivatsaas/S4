@@ -125,7 +125,7 @@ extern "C"
 
     int employeeExists(EmployeeType *employees, int checkId);
 
-    bool fillShift(ShiftType *shifts, EmployeeType *employees, int shiftIndex, int **availableIds, ShiftType *incompleteOption);
+    bool fillShift(ShiftType *shifts, EmployeeType *employees, int shiftIndex, int **availableIds, ShiftType *incompleteOption, int *maxIndex);
 
     bool intInArray(int *array, int arrLen, int toFind);
 
@@ -142,4 +142,6 @@ extern "C"
     bool sameWeek( Shift shift1, Shift shift2);
 
     void resetEmployeeTime(EmployeeType employees);
+
+    void sortByHoursFilled(EmployeeType *employees, int **availableIds, int shiftIndex);
 }

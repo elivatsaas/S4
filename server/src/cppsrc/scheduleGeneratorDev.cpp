@@ -247,41 +247,40 @@ extern "C"
         {
             id = argv[1];
         }
-
-        int idInt = stoi(id);
-
-        int shiftCount, employeeCount, employeeShiftCount, dshCount, col;
+        int shiftCount, employeeCount, employeeShiftCount, col;
         Json::Value shiftJson;
         Json::Value employeeShiftJson;
         Json::Value employeeJson;
         Json::Value hoursJson;
-        // for testing
 
-        getShiftsForSchedule(idInt, shiftJson, shiftCount);
-        getEmployeesForSchedule(idInt, employeeShiftJson, employeeShiftCount);
+        // uncomment when ready for online connection eli
+
+        getShiftsForSchedule(id, shiftJson, shiftCount);
+        getEmployeesForSchedule(id, employeeShiftJson, employeeShiftCount);
         getEmployees(employeeJson, employeeCount);
-        getDesiredShiftHours(idInt, hoursJson, dshCount);
-        // COMMENT FROM HERE
+        getDesiredShiftHours(id, hoursJson)
 
-        // ifstream shiftFile("inputData/test4Shifts.json", ifstream::binary);
-        // shiftFile >> shiftJson;
-        // shiftCount = 70;
+            // COMMENT FROM HERE
 
-        // ifstream employeeForScheduleFile("inputData/test4EmployeesForSchedule.json", ifstream::binary);
-        // employeeForScheduleFile >> employeeShiftJson;
-        // employeeShiftCount = 998;
+            // ifstream shiftFile("inputData/test4Shifts.json",ifstream::binary);
+            // shiftFile >> shiftJson;
+            // shiftCount = 70;
 
-        // ifstream employeeFile("inputData/test4Employees.json", ifstream::binary);
-        // employeeFile >> employeeJson;
-        // employeeCount = 24;
+            // ifstream employeeForScheduleFile("inputData/test4EmployeesForSchedule.json",ifstream::binary);
+            // employeeForScheduleFile >> employeeShiftJson;
+            // employeeShiftCount = 998;
 
-        // ifstream hoursFile("inputData/test4Hours.json", ifstream::binary);
-        // hoursFile >> hoursJson;
+            // ifstream employeeFile("inputData/test4Employees.json",ifstream::binary);
+            // employeeFile >> employeeJson;
+            // employeeCount = 24;
 
-        // TO HERE
+            // ifstream hoursFile("inputData/test4Hours.json",ifstream::binary);
+            // hoursFile >> hoursJson;
 
-        // get all shifts into Shift Type
-        ShiftType shifts(shiftCount);
+            // TO HERE
+
+            // get all shifts into Shift Type
+            ShiftType shifts(shiftCount);
         ShiftType incomplete(shiftCount);
         EmployeeType employees(employeeCount);
 

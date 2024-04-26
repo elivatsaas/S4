@@ -151,7 +151,7 @@ router.route("/cpp/:id").get(
   })
 );
 
-router.route("/null/:id").get(
+router.route("/null/:id").post(
   catchASync(async function (req, res, next) {
     const nullReturn = await scheduleHandler.setScheduleNull(req.params.id * 1);
 
@@ -170,7 +170,11 @@ router.post("/confirm/:scheduleId", async (req, res, next) => {
 
     // Find all unique employee IDs for the shifts
     const uniqueEmployeeIds = [
-      ...new Set(shifts.map((shift) => shift.employeeId)),
+      ...new Set(
+        shifts
+          .filter((shift) => shift.Employee_id !== null)
+          .map((shift) => shift.Employee_id)
+      ),
     ];
 
     // For each employee, send confirmation email
@@ -179,7 +183,6 @@ router.post("/confirm/:scheduleId", async (req, res, next) => {
         scheduleHandler.sendScheduleEmail(employeeId, scheduleId, shifts)
       )
     );
-
     res.status(200).json({
       status: "success",
       message: `Confirmation emails sent successfully for Schedule ${scheduleId}.`,

@@ -101,6 +101,57 @@ export const createAnnouncement = async (body, Employee_id) => {
     body,
     Employee_id,
   });
+  return response.data.data.newAnnouncement;
+};
+
+export const createAnnouncementSchedule = async (
+  announcementId,
+  scheduleId
+) => {
+  await delay();
+  const response = await announcementsApi.post(
+    `${announcementsUrlEndpoint}/schedules`,
+    {
+      announcementId,
+      scheduleId,
+    }
+  );
+  return response.data;
+};
+export const createAnnouncementEmployee = async (
+  announcementId,
+  employeeId
+) => {
+  await delay();
+  const response = await announcementsApi.post(
+    `${announcementsUrlEndpoint}/employees`,
+    {
+      announcementId,
+      employeeId,
+    }
+  );
+  return response.data;
+};
+export const createAnnouncementStore = async (announcementId, storeId) => {
+  await delay();
+  const response = await announcementsApi.post(
+    `${announcementsUrlEndpoint}/stores`,
+    {
+      announcementId,
+      storeId,
+    }
+  );
+  return response.data;
+};
+export const createAnnouncementRole = async (announcementId, roleId) => {
+  await delay();
+  const response = await announcementsApi.post(
+    `${announcementsUrlEndpoint}/roles`,
+    {
+      announcementId,
+      roleId,
+    }
+  );
   return response.data;
 };
 
