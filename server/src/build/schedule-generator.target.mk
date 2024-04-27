@@ -56,7 +56,7 @@ INCS_Debug := \
 	-I/Users/elivatsaas/Library/Caches/node-gyp/20.11.1/deps/zlib \
 	-I/Users/elivatsaas/Library/Caches/node-gyp/20.11.1/deps/v8/include \
 	-I$(srcdir)/-I/usr/local/Cellar/jsoncpp/1.9.5/include \
-	-I/Users/elivatsaas/S4/server/src/node_modules/node-addon-api \
+	-I/Users/elivatsaas/test/S4/server/src/node_modules/node-addon-api \
 	-I$(srcdir)/-I/Users/elivatsaas/curl/include-I/Users/elivatsaas/S4/server/src/cppsrc/include
 
 DEFS_Release := \
@@ -111,7 +111,7 @@ INCS_Release := \
 	-I/Users/elivatsaas/Library/Caches/node-gyp/20.11.1/deps/zlib \
 	-I/Users/elivatsaas/Library/Caches/node-gyp/20.11.1/deps/v8/include \
 	-I$(srcdir)/-I/usr/local/Cellar/jsoncpp/1.9.5/include \
-	-I/Users/elivatsaas/S4/server/src/node_modules/node-addon-api \
+	-I/Users/elivatsaas/test/S4/server/src/node_modules/node-addon-api \
 	-I$(srcdir)/-I/Users/elivatsaas/curl/include-I/Users/elivatsaas/S4/server/src/cppsrc/include
 
 OBJS := \

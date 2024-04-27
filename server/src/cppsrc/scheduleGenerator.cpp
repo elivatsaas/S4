@@ -1,26 +1,16 @@
 #include <string>
 #include <iostream>
+#include <fstream>
 #include <time.h>
+
 #include "scheduleGenerator.h"
 #include "timeConverter.h"
 
-// CURL
-// #include <curl/curl.h>
-
-// // JSON stuff
-// #include "allocator.h"
-// #include "assertions.h"
-// #include "config.h"
-// #include "forwards.h"
-// #include "json.h"
-// #include "json_features.h"
-// #include "reader.h"
-// #include "value.h"
-// #include "version.h"
-// #include "writer.h"
-#include <json/json.h>
+#include "json/json.h"
 #include "cppAPI.h"
 using namespace std;
+
+#include <cmath>
 extern "C"
 {
     void addEmployeeToShift(int shiftIndex, int employeeId, ShiftType *shifts)
@@ -30,38 +20,52 @@ extern "C"
 
     void addShiftToEmployee(Shift shiftToAdd, int employeeIndex, EmployeeType *employees)
     {
-        cout << "Employee Index being added: " << employeeIndex << endl;
+        // cout << "Employee Index being added: " << employeeIndex << endl;
         int addIndex = employees->empArr[employeeIndex].shiftCount;
         deepCopyShift(&employees->empArr[employeeIndex].shiftList[addIndex], shiftToAdd);
-        cout << "Shifts before increment " << employees->empArr[employeeIndex].shiftCount << endl;
+        // cout << "Shifts before increment " << employees->empArr[employeeIndex].shiftCount << endl;
         employees->empArr[employeeIndex].shiftCount = employees->empArr[employeeIndex].shiftCount + 1;
-        cout << "Shifts after increment " << employees->empArr[employeeIndex].shiftCount << endl;
+        // cout << "Shifts after increment " << employees->empArr[employeeIndex].shiftCount << endl;
+        int addedTime = shiftToAdd.endTime - shiftToAdd.startTime;
+        // cout << "adding " << addedTime << " minutes \n";
+        // cout << "minutes before: " << employees->empArr[employeeIndex].currentTime << endl;
+        employees->empArr[employeeIndex].currentTime += addedTime;
+        // cout << "minutes after: " << employees->empArr[employeeIndex].currentTime << endl;
     }
 
     bool checkForOverlap(Employee checkEmp, Shift checkShift)
     {
-        int shiftStart = convertTime(checkShift.startTime);
+        int shiftStart = checkShift.startTime;
 
-        int shiftEnd = convertTime(checkShift.endTime);
+        int shiftEnd = checkShift.endTime;
 
-        int empStart, empEnd;
+        int empStart, empEnd, empDay, empMonth, empYear;
         int shiftIndex;
         for (shiftIndex = 0; shiftIndex < checkEmp.shiftCount; shiftIndex++)
         {
-            empStart = convertTime(checkEmp.shiftList[shiftIndex].startTime);
 
-            empEnd = convertTime(checkEmp.shiftList[shiftIndex].endTime);
+            empDay = checkEmp.shiftList[shiftIndex].day;
+            empMonth = checkEmp.shiftList[shiftIndex].month;
+            empYear = checkEmp.shiftList[shiftIndex].year;
+            empStart = checkEmp.shiftList[shiftIndex].startTime;
+
+            empEnd = checkEmp.shiftList[shiftIndex].endTime;
 
             if ((empStart == shiftStart) || (empStart < shiftStart && shiftStart < empEnd) || (shiftStart < empStart && empStart < shiftEnd))
             {
-                return true;
+                // cout << "Day comp " << checkShift.day << " to " << empDay << " Month comp " << checkShift.month << " to " << empMonth << " Year comp: " << checkShift.year << " to " << empYear << endl;
+                if ((checkShift.day == empDay) && (checkShift.month == empMonth) && (checkShift.year == empYear))
+                {
+                    // cout << "OVERLAP FOUND" << endl;
+                    return true;
+                }
             }
         }
 
         return false;
     }
 
-    void createNewEmployee(EmployeeType *employees, int newId)
+    void createNewEmployee(EmployeeType *employees, int newId, int timeReq)
     {
         int arrSize = employees->getArrSize();
 
@@ -69,7 +73,39 @@ extern "C"
 
         employees->empArr[arrSize].shiftCount = 0;
 
+        employees->empArr[arrSize].currentTime = 0;
+
+        employees->empArr[arrSize].timeRequested = timeReq * 60;
+
         employees->incrementArrSize();
+    }
+
+    void dateStringToInts(int *day, int *month, int *year, string toConvert)
+    {
+        // cout << toConvert << endl;
+        char dayString[3], monthString[3], yearString[5];
+        dayString[0] = toConvert[8];
+        dayString[1] = toConvert[9];
+        dayString[2] = '\0';
+
+        monthString[0] = toConvert[5];
+        monthString[1] = toConvert[6];
+        monthString[2] = '\0';
+
+        yearString[0] = toConvert[0];
+        yearString[1] = toConvert[1];
+        yearString[2] = toConvert[2];
+        yearString[3] = toConvert[3];
+        yearString[4] = '\0';
+
+        // cout << "before stoi" << endl;
+        *day = stoi(dayString);
+        *month = stoi(monthString);
+        *year = stoi(yearString);
+        // cout << "after stoi" << endl;
+        // cout << "Day: " << *day << endl;
+        // cout << "Month: " << *month << endl;
+        // cout << "Year: " << *year << endl;
     }
 
     void deepCopyShift(Shift *dest, Shift src)
@@ -78,6 +114,21 @@ extern "C"
         dest->startTime = src.startTime;
         dest->endTime = src.endTime;
         dest->empId = src.empId;
+        dest->day = src.day;
+        dest->month = src.month;
+        dest->year = src.year;
+    }
+
+    void deepCopyShiftType(ShiftType *dest, ShiftType *src)
+    {
+        int shiftIndex;
+        int newShiftsFilled = src->getShiftsFilled();
+        dest->setShiftsFilled(newShiftsFilled);
+        dest->shiftCount = src->shiftCount;
+        for (shiftIndex = 0; shiftIndex < dest->shiftCount; shiftIndex++)
+        {
+            deepCopyShift(&dest->sftArr[shiftIndex], src->sftArr[shiftIndex]);
+        }
     }
 
     bool empInArray(Employee *array, int arrLen, int toFind)
@@ -95,10 +146,13 @@ extern "C"
 
     int employeeExists(EmployeeType *employees, int checkId)
     {
-        int loopLen = employees->getArrSize();
+        // cout << "Id being serached for: " << checkId << endl;
+        int loopLen = employees->employeeCount;
+
         int index;
         for (index = 0; index < loopLen; index++)
         {
+            // cout << "Id at index " << index << " is " << employees->empArr[index].id << endl;
             if (employees->empArr[index].id == checkId)
             {
                 return index;
@@ -108,60 +162,47 @@ extern "C"
     }
 
     // boolean function taking in a shift & employee data structure
-    bool fillShift(ShiftType *shifts, EmployeeType *employees, int shiftIndex, int **availableIds)
+    bool fillShift(ShiftType *shifts, EmployeeType *employees, int shiftIndex, int **availableIds, ShiftType *incompleteOption, int *maxIndex)
     {
+        cout << "Trying to fill shift at index " << shiftIndex << endl;
         int index, empExists;
+        if (shiftIndex > *maxIndex)
+        {
+            *maxIndex = shiftIndex;
+        }
         if (shiftIndex == shifts->shiftCount)
         {
             return true;
         }
+        else if (shifts->getShiftsFilled() > incompleteOption->getShiftsFilled())
+        {
+            deepCopyShiftType(incompleteOption, shifts);
+        }
+
+        if (shifts->sftArr[shiftIndex].empId >= 0)
+        {
+            cout << "Employee prefilled" << endl;
+            return fillShift(shifts, employees, shiftIndex + 1, availableIds, incompleteOption, maxIndex);
+        }
+        // sort available ids
+        sortByHoursFilled(employees, availableIds, shiftIndex);
 
         // loop through available ids
-        for (index = 1; index < availableIds[shiftIndex][0] + 1; index++)
+        for (index = 1; index < availableIds[shiftIndex][0]; index++)
         {
             cout << endl
                  << "Checking employee " << availableIds[shiftIndex][index] << " for shift " << shifts->sftArr[shiftIndex].id << endl;
             empExists = employeeExists(employees, availableIds[shiftIndex][index]);
-            // check if employee created locally
-            if (empExists >= 0)
+            cout << "Employee Exists at index " << empExists << endl;
+            if (!checkForOverlap(employees->empArr[empExists], shifts->sftArr[shiftIndex]))
             {
-                // check for no overlap
-                cout << "Checking for overlap between employee " << availableIds[shiftIndex][index] << " and shift " << shifts->sftArr[shiftIndex].id << endl;
-                if (!checkForOverlap(employees->empArr[empExists], shifts->sftArr[shiftIndex]))
-                {
-                    // add shift
-                    addShiftToEmployee(shifts->sftArr[shiftIndex], empExists, employees);
-                    addEmployeeToShift(shiftIndex, availableIds[shiftIndex][index], shifts);
-                    // cout << "Employee " << availableIds[shiftIndex][index] << " now has " << employees->empArr[empExists].shiftCount << " shifts" << endl;
-                    //  recursively call for next shift
-                    if (fillShift(shifts, employees, shiftIndex + 1, availableIds))
-                    {
-                        // if successful return true
-                        return true;
-                    }
-                    // otherwise
-                    else
-                    {
-                        // remove shift
-                        employees->empArr[empExists].shiftCount--;
-                    }
-                }
-            }
-            else
-            {
-                // if not
-
-                // create employee locally
-                createNewEmployee(employees, availableIds[shiftIndex][index]);
-
-                empExists = employees->getArrSize() - 1;
                 // add shift
                 addShiftToEmployee(shifts->sftArr[shiftIndex], empExists, employees);
                 addEmployeeToShift(shiftIndex, availableIds[shiftIndex][index], shifts);
-
-                // cout << "Employee " << availableIds[shiftIndex][index] << " now has " << employees->empArr[employees->employeeCount - 1].shiftCount << " shifts" << endl;
-
-                if (fillShift(shifts, employees, shiftIndex + 1, availableIds))
+                shifts->incrementShiftsFilled();
+                cout << "Employee " << availableIds[shiftIndex][index] << " now has " << employees->empArr[empExists].shiftCount << " shifts" << endl;
+                //  recursively call for next shift
+                if (fillShift(shifts, employees, shiftIndex + 1, availableIds, incompleteOption, maxIndex))
                 {
                     // if successful return true
                     return true;
@@ -172,85 +213,19 @@ extern "C"
                     // remove shift
                     employees->empArr[empExists].shiftCount--;
                     shifts->sftArr[shiftIndex].empId = -1;
+                    shifts->decrementShiftsFilled();
+
+                    int removeTime = shifts->sftArr[shiftIndex].endTime - shifts->sftArr[shiftIndex].startTime;
+                    // cout << "removing " << removeTime << " minutes \n";
+                    // cout << "minutes before: " << employees->empArr[empExists].currentTime << endl;
+                    employees->empArr[empExists].currentTime -= removeTime;
+                    // cout << "minutes after: " << employees->empArr[empExists].currentTime << endl;
                 }
             }
         }
 
         return false;
     }
-
-    /*
-    int getRandomValue(int low, int high)
-    {
-        int randomVal = rand();
-        return (randomVal % (high - low)) + low;
-    }
-
-    int getUniqueRandom(int possibleRandoms, char code)
-    {
-        // initialize variables
-        static int *arr = NULL;
-        static int size = 0;
-        int randomVal;
-        // check for initilization case
-        if(code == 'i')
-        {
-            // check for array NULL
-            if(arr == NULL)
-            {
-                // allocate data for array
-                arr = new int[possibleRandoms];
-                // set size to zero
-                size = 0;
-                // set srand
-                srand(time(NULL));
-
-            }
-        }
-        // otherwise check for return random case
-        else if(code == 'g')
-        {
-            // check for array not NULL
-            if(arr != NULL)
-            {
-                // start loop for getting value
-                do
-                {
-                    // get random while
-                    randomVal = getRandomValue(1, possibleRandoms);
-                }
-                // end loop if value not found in array
-                while(intInArray(arr, size, randomVal));
-                // load the value into array
-                arr[size] = randomVal;
-                // increment the size
-                size = size + 1;
-                // return the value
-                return randomVal;
-            }
-        }
-        // otherwise check for deallocation
-        else if(code == 'c')
-        {
-            // check for array not NULL
-            if(arr != NULL)
-            {
-                // free the array
-                delete arr;
-                // set ptr to null
-                arr = NULL;
-                // set size to 0
-                size = 0;
-            }
-        }
-        // return no result
-        return -1;
-
-
-
-
-    }
-    */
     bool intInArray(int *array, int arrLen, int toFind)
     {
         int checkIndex;
@@ -264,91 +239,188 @@ extern "C"
         return false;
     }
 
-    int main()
+    int main(int argc, const char *argv[])
     {
-        // get total employees and shifts to fill -- w/ database
-        bool testing = false;
-        int testVal = 1;
-        int shiftCount, employeeCount, employeeShiftCount, col;
+        std::string id;
+        id = 2;
+        if (argc > 1)
+        {
+            id = argv[1];
+        }
+
+        int idInt = stoi(id);
+
+        int shiftCount, employeeCount, employeeShiftCount, dshCount, col;
         Json::Value shiftJson;
         Json::Value employeeShiftJson;
         Json::Value employeeJson;
+        Json::Value hoursJson;
         // for testing
-        int shiftIndex;
-        if (!testing)
-        {
 
-            getShiftsForSchedule(2, shiftJson, shiftCount);
+        getShiftsForSchedule(idInt, shiftJson, shiftCount);
+        getEmployeesForSchedule(idInt, employeeShiftJson, employeeShiftCount);
+        getEmployees(employeeJson, employeeCount);
+        getDesiredShiftHours(idInt, hoursJson, dshCount);
+        // COMMENT FROM HERE
 
-            getEmployeesForSchedule(2, employeeShiftJson, employeeShiftCount);
+        // ifstream shiftFile("inputData/test4Shifts.json", ifstream::binary);
+        // shiftFile >> shiftJson;
+        // shiftCount = 70;
 
-            getEmployees(employeeJson, employeeCount);
-        }
-        else
-        {
-            setCount(testVal, &shiftCount, &employeeCount);
-        }
+        // ifstream employeeForScheduleFile("inputData/test4EmployeesForSchedule.json", ifstream::binary);
+        // employeeForScheduleFile >> employeeShiftJson;
+        // employeeShiftCount = 998;
+
+        // ifstream employeeFile("inputData/test4Employees.json", ifstream::binary);
+        // employeeFile >> employeeJson;
+        // employeeCount = 24;
+
+        // ifstream hoursFile("inputData/test4Hours.json", ifstream::binary);
+        // hoursFile >> hoursJson;
+
+        // TO HERE
+
         // get all shifts into Shift Type
         ShiftType shifts(shiftCount);
+        ShiftType incomplete(shiftCount);
         EmployeeType employees(employeeCount);
+
+        cout << "Data in" << endl;
 
         int loopIndex, row;
         int **availableIds;
         int *shiftIds = new int[shiftCount];
 
+        for (loopIndex = 0; loopIndex < employeeCount; loopIndex++)
+        {
+            createNewEmployee(&employees, employeeJson[loopIndex]["id"].asInt(), hoursJson[loopIndex]["desiredHours"].asInt());
+
+            employees.empArr[loopIndex].shiftList = new Shift[shiftCount];
+        }
+
+        cout << "Loop 1" << endl;
         // come back later and change to a dynamic allocation method to improve storage efficiency
         // each row is a shift and is filled with the employee ids of each worker that can work it
         availableIds = new int *[shiftCount];
 
-        for (loopIndex = 0; loopIndex < shiftCount; loopIndex++)
+        // fill up employees for shifts
+        for (row = 0; row < shiftCount; row++)
         {
-            availableIds[loopIndex] = new int[employeeCount + 1];
-        }
+            // allocate space for array
+            availableIds[row] = new int[employeeCount + 1];
 
-        // loop through availability data -- w/ database
+            shiftIds[row] = shiftJson[row]["id"].asInt();
 
-        if (!testing)
-        {
-            for (int i = 0; i < shiftCount; i++)
+            int index, countIndex;
+            col = 1;
+            // loop through availability data -- w/ database
+            for (countIndex = 0; countIndex < employeeShiftCount; countIndex++)
             {
-                shiftIds[i] = shiftJson[i]["id"].asInt();
-                shifts.sftArr[i].startTime = shiftJson[i]["startTime"].asString();
-                shifts.sftArr[i].endTime = shiftJson[i]["endTime"].asString();
-                shifts.sftArr[i].id = shiftJson[i]["id"].asInt();
-                cout << "Shifts for schedule" << shifts.sftArr[i].id << shifts.sftArr[i].startTime << shifts.sftArr[i].endTime << endl;
-            }
-
-            for (row = 0; row < shiftCount; row++)
-            {
-                int index;
-                col = 1;
-                // loop through availability data -- w/ database
-                for (int i = 0; i < employeeShiftCount; i++)
+                index = employeeShiftJson[countIndex]["shiftId"].asInt();
+                // check if shiftId[row] matches shift id from data -- w/ database
+                if (shiftIds[row] == index)
                 {
-                    index = employeeShiftJson[i]["shiftId"].asInt();
-                    // check if shiftId[row] matches shift id from data -- w/ database
-                    if (shiftIds[row] == index)
-                    {
-                        // add employee id to availableIds[row][col]
-                        availableIds[row][col] = employeeShiftJson[i]["employee_id"].asInt();
-                        col++;
-                    }
+                    // add employee id to availableIds[row][col]
+                    availableIds[row][col] = employeeShiftJson[countIndex]["employee_id"].asInt();
+                    col++;
                 }
-                availableIds[row][0] = col - 1;
             }
+            availableIds[row][0] = col;
         }
-        else
+        cout << "Loop 2" << endl;
+        // loop through availability data -- w/ database
+        bool masterFilled = true;
+        bool tempFilled;
+        int nextStart = 0;
+        int maxIndex = 0;
+        // fill up shifts
+        int shiftIndex;
+        for (shiftIndex = 0; shiftIndex < shiftCount; shiftIndex++)
         {
-            setIds(testVal, availableIds, shiftIds);
-            setShifts(testVal, &shifts);
+
+            string startTime, endTime;
+            // int weekInex;
+
+            cout << "uploading shift to index " << shiftIndex << endl;
+
+            startTime = shiftJson[shiftIndex]["startTime"].asString();
+            endTime = shiftJson[shiftIndex]["endTime"].asString();
+
+            shifts.sftArr[shiftIndex].startTime = convertTime(startTime);
+            shifts.sftArr[shiftIndex].endTime = convertTime(endTime);
+            shifts.sftArr[shiftIndex].id = shiftJson[shiftIndex]["id"].asInt();
+
+            // no preset employee
+            if (shiftJson[shiftIndex]["Employee_id"].asString() == "\0")
+            {
+                // cout << "Null worked!" << endl;
+                shifts.sftArr[shiftIndex].empId = -1;
+            }
+            // preset employee
+            else
+            {
+
+                shifts.sftArr[shiftIndex].empId = shiftJson[shiftIndex]["Employee_id"].asInt();
+                // cout << "Not null, inputted ID was " << shifts.sftArr[i].empId << endl;
+
+                int validEmployee = employeeExists(&employees, shifts.sftArr[shiftIndex].empId);
+                // check to make sure that is a valid employee
+                if (validEmployee >= 0)
+                {
+                    addShiftToEmployee(shifts.sftArr[shiftIndex], validEmployee, &employees);
+                    // cout << "Auto set employee into shift " << i << endl;
+                }
+                // otherwise let it be filled as normal
+                else
+                {
+                    shifts.sftArr[shiftIndex].empId = -1;
+                }
+            }
+            // NEW CODE
+            dateStringToInts(&shifts.sftArr[shiftIndex].day, &shifts.sftArr[shiftIndex].month, &shifts.sftArr[shiftIndex].year, shiftJson[shiftIndex]["date"].asString());
+            // cout << "Shifts for schedule" << shifts.sftArr[i].id << shifts.sftArr[i].startTime << shifts.sftArr[i].endTime << endl;
+
+            if (shiftIndex > 0 && !sameWeek(shifts.sftArr[shiftIndex - 1], shifts.sftArr[shiftIndex]))
+            {
+                cout << "different weeks!" << endl;
+                cout << "initial call!" << endl;
+                tempFilled = fillShift(&shifts, &employees, nextStart, availableIds, &incomplete, &maxIndex);
+                while (!tempFilled)
+                {
+                    cout << "Schedule failed, skipping shift" << endl;
+                    deepCopyShiftType(&shifts, &incomplete);
+                    tempFilled = fillShift(&shifts, &employees, maxIndex + 1, availableIds, &incomplete, &maxIndex);
+                }
+
+                masterFilled = tempFilled && masterFilled;
+                resetEmployeeTime(employees);
+                nextStart = shiftIndex;
+            }
+            else
+            {
+                // cout << "same week!" << endl;
+            }
+
+            shifts.shiftCount++;
+
+            // cout << "shifts uploaded " << shifts.shiftCount << endl;
         }
 
-        srand(time(NULL));
+        // cout << "Loop 3" << endl;
 
-        bool filled = fillShift(&shifts, &employees, 0, availableIds);
-
-        if (filled)
+        // cout << "initial call!" << endl;
+        tempFilled = fillShift(&shifts, &employees, nextStart, availableIds, &incomplete, &maxIndex);
+        while (!tempFilled)
         {
+            deepCopyShiftType(&shifts, &incomplete);
+            tempFilled = fillShift(&shifts, &employees, maxIndex + 1, availableIds, &incomplete, &maxIndex);
+        }
+        masterFilled = tempFilled && masterFilled;
+
+        if (masterFilled)
+        {
+            cout << "All shifts were filled, here is how!" << endl;
+            //  uncomment when ready for online connection eli
             arrToJson(&shifts);
 
             for (shiftIndex = 0; shiftIndex < shifts.shiftCount; shiftIndex++)
@@ -358,266 +430,145 @@ extern "C"
         }
         else
         {
-            cout << "Unable to fill all shifts." << endl;
-        }
+            cout << "Unable to fill all shifts. Here was the best option." << endl;
+            //  uncomment when ready for online connection eli
+            arrToJson(&incomplete);
 
-        if (testing)
-        {
-            expectedOutput(testVal);
+            for (shiftIndex = 0; shiftIndex < shifts.shiftCount; shiftIndex++)
+            {
+                cout << "Shift " << incomplete.sftArr[shiftIndex].id << " employee: " << incomplete.sftArr[shiftIndex].empId << endl;
+            }
         }
 
         return 0;
     }
 
-    // Test functions
-    void expectedOutput(int testVal)
+    int DayOfWeek(int day, int month, int year)
     {
-        if (testVal == 1)
+        // Define variables
+        int mon = month;
+        // If month is Jan or Feb
+        if (month < 3)
         {
-            cout << endl
-                 << "Expected Output:" << endl;
-            cout << "Shift 1 employee: 1" << endl;
-            cout << "Shift 2 employee: 3" << endl;
-            cout << "Shift 3 employee: 1" << endl;
-            cout << "Shift 4 employee: 2" << endl;
-            cout << "Shift 5 employee: 3" << endl;
+            // Add 12 to mon
+            mon = (12 + month);
+            // Decrement the year
+            year = year - 1;
         }
-        else if (testVal == 2)
-        {
-            cout << endl
-                 << "Expected Output:" << endl;
-            cout << "Shift 1 employee: 2" << endl;
-            cout << "Shift 2 employee: 5" << endl;
-            cout << "Shift 3 employee: 6" << endl;
-            cout << "Shift 4 employee: 1" << endl;
-            cout << "Shift 5 employee: 10" << endl;
-            cout << "Shift 6 employee: 2" << endl;
-            cout << "Shift 7 employee: 7" << endl;
-            cout << "Shift 8 employee: 3" << endl;
-            cout << "Shift 9 employee: 4" << endl;
-            cout << "Shift 10 employee: 6" << endl;
-        }
-        else if (testVal == 3)
-        {
-            cout << "Expected Output:" << endl;
-            cout << "Unable to fill all shifts.";
-        }
+        int lastYears = year % 100;
+        int cent = year / 100;
+        int weekday = (day + floor((13 * (mon + 1)) / 5) + lastYears + floor(lastYears / 4) + floor(cent / 4) + (5 * cent));
+
+        // Offset weekday by 5
+        weekday = (weekday + 5) % 7;
+        // Return weekday as int
+        return weekday;
     }
 
-    void setShifts(int testVal, ShiftType *shifts)
+    bool sameWeek(Shift shift1, Shift shift2)
     {
-        if (testVal == 1)
+
+        int day_1 = shift1.day;
+        int month_1 = shift1.month;
+        int year_1 = shift1.year;
+        int day_2 = shift2.day;
+        int month_2 = shift2.month;
+        int year_2 = shift2.year;
+
+        // Define variables
+        int weekday_1 = DayOfWeek(day_1, month_1, year_1);
+        int weekday_2 = DayOfWeek(day_2, month_2, year_2);
+        int diff = weekday_2 - weekday_1;
+
+        // Add difference to day_1
+        day_1 = day_1 + diff;
+        // If month is Feb
+        if (month_1 == 2)
         {
-            // FIRST SHIFT
-            shifts->sftArr[0].startTime = "11:30:00";
-            shifts->sftArr[0].endTime = "12:30:00";
-            shifts->sftArr[0].id = 1;
-            // SECOND SHIFT
-            shifts->sftArr[1].startTime = "12:00:00";
-            shifts->sftArr[1].endTime = "12:30:00";
-            shifts->sftArr[1].id = 2;
-            // THIRD SHIFT
-            shifts->sftArr[2].startTime = "12:30:00";
-            shifts->sftArr[2].endTime = "14:30:00";
-            shifts->sftArr[2].id = 3;
-            // FOURTH SHIFT
-            shifts->sftArr[3].startTime = "17:30:00";
-            shifts->sftArr[3].endTime = "18:30:00";
-            shifts->sftArr[3].id = 4;
-            // FIFTH SHIFT
-            shifts->sftArr[4].startTime = "17:00:00";
-            shifts->sftArr[4].endTime = "18:30:00";
-            shifts->sftArr[4].id = 5;
+            // Check for leap year
+            if (year_1 % 4 == 0 && day_1 > 29)
+            {
+                day_1 = day_1 % 29;
+                month_1 = month_1 + 1;
+            }
+            // Else not leap year
+            else if (day_1 > 28)
+            {
+                day_1 = day_1 % 28;
+                month_1 = month_1 + 1;
+            }
         }
-        else if (testVal == 2)
+        // Check if month has 31 days and if day_1 increment to next month is needed
+        else if (((month_1 < 8 && month_1 % 2 != 0) || (month_1 > 7 && month_1 % 2 == 0)) && day_1 > 31)
         {
-            // FIRST SHIFT
-            shifts->sftArr[0].startTime = "8:00:00";
-            shifts->sftArr[0].endTime = "12:00:00";
-            shifts->sftArr[0].id = 1;
-            // SECOND SHIFT
-            shifts->sftArr[1].startTime = "8:00:00";
-            shifts->sftArr[1].endTime = "20:00:00";
-            shifts->sftArr[1].id = 2;
-            // THIRD SHIFT
-            shifts->sftArr[2].startTime = "8:00:00";
-            shifts->sftArr[2].endTime = "14:00:00";
-            shifts->sftArr[2].id = 3;
-            // FOURTH SHIFT
-            shifts->sftArr[3].startTime = "8:00:00";
-            shifts->sftArr[3].endTime = "12:00:00";
-            shifts->sftArr[3].id = 4;
-            // FIFTH SHIFT
-            shifts->sftArr[4].startTime = "8:00:00";
-            shifts->sftArr[4].endTime = "12:00:00";
-            shifts->sftArr[4].id = 5;
-            // SIXTH SHIFT
-            shifts->sftArr[5].startTime = "12:00:00";
-            shifts->sftArr[5].endTime = "18:00:00";
-            shifts->sftArr[5].id = 6;
-            // SEVENTH SHIFT
-            shifts->sftArr[6].startTime = "16:00:00";
-            shifts->sftArr[6].endTime = "20:30:00";
-            shifts->sftArr[6].id = 7;
-            // EIGHTH SHIFT
-            shifts->sftArr[7].startTime = "12:00:00";
-            shifts->sftArr[7].endTime = "16:00:00";
-            shifts->sftArr[7].id = 8;
-            // NINTH SHIFT
-            shifts->sftArr[8].startTime = "10:00:00";
-            shifts->sftArr[8].endTime = "14:00:00";
-            shifts->sftArr[8].id = 9;
-            // TENTH SHIFT
-            shifts->sftArr[9].startTime = "14:00:00";
-            shifts->sftArr[9].endTime = "20:00:00";
-            shifts->sftArr[9].id = 10;
+            day_1 = day_1 % 31;
+            month_1 = month_1 + 1;
         }
-        else if (testVal == 3)
+        // Else month has 30 days. Check if increment to next month is needed
+        else if (day_1 > 30)
         {
-            // FIRST SHIFT
-            shifts->sftArr[0].startTime = "8:00:00";
-            shifts->sftArr[0].endTime = "12:00:00";
-            shifts->sftArr[0].id = 1;
-            // SECOND SHIFT
-            shifts->sftArr[1].startTime = "12:00:00";
-            shifts->sftArr[1].endTime = "20:00:00";
-            shifts->sftArr[1].id = 2;
-            // THIRD SHIFT
-            shifts->sftArr[2].startTime = "12:00:00";
-            shifts->sftArr[2].endTime = "16:00:00";
-            shifts->sftArr[2].id = 3;
-            // FOURTH SHIFT
-            shifts->sftArr[3].startTime = "16:00:00";
-            shifts->sftArr[3].endTime = "20:00:00";
-            shifts->sftArr[3].id = 4;
-            // FIFTH SHIFT
-            shifts->sftArr[4].startTime = "10:00:00";
-            shifts->sftArr[4].endTime = "16:00:00";
-            shifts->sftArr[4].id = 5;
+            day_1 = day_1 % 30;
+            month_1 = month_1 + 1;
+        }
+
+        // Check if increment to next year is needed
+        if (month_1 == 13)
+        {
+            month_1 = 1;
+            year_1 = year_1 + 1;
+        }
+
+        // Check if dates are the same and return boolean
+        return (day_1 == day_2 && month_1 == month_2 && year_1 == year_2);
+    }
+    void resetEmployeeTime(EmployeeType employees)
+    {
+        int totalEmployees = employees.employeeCount;
+        int index;
+        for (index = 0; index < totalEmployees; index++)
+        {
+            employees.empArr[index].currentTime = 0;
         }
     }
-
-    void setIds(int testVal, int **availableIds, int *shiftIds)
+    void sortByHoursFilled(EmployeeType *employees, int **availableIds, int shiftIndex)
     {
-        if (testVal == 1)
+        //
+        int overtimeCount = 0;
+        int overtimeIndex;
+        int size = availableIds[shiftIndex][0];
+        int outerIndex, innerIndex, swapVal;
+        int leftEmpId, rightEmpId, leftEmpIndex, rightEmpIndex;
+        double leftPer, rightPer;
+        for (outerIndex = 1; outerIndex < size - 1; outerIndex++)
         {
-            for (int i = 0; i < 5; i++)
+            for (innerIndex = 1; innerIndex < size - outerIndex - 1; innerIndex++)
             {
-                shiftIds[i] = i + 1;
+                leftEmpId = availableIds[shiftIndex][innerIndex];
+                rightEmpId = availableIds[shiftIndex][innerIndex + 1];
+                leftEmpIndex = employeeExists(employees, leftEmpId);
+                rightEmpIndex = employeeExists(employees, rightEmpId);
+                leftPer = (double)employees->empArr[leftEmpIndex].currentTime / (double)employees->empArr[leftEmpIndex].timeRequested;
+                rightPer = (double)employees->empArr[rightEmpIndex].currentTime / (double)employees->empArr[rightEmpIndex].timeRequested;
+                if (leftPer > rightPer)
+                {
+                    swapVal = leftEmpId;
+                    availableIds[shiftIndex][innerIndex] = availableIds[shiftIndex][innerIndex + 1];
+                    availableIds[shiftIndex][innerIndex + 1] = swapVal;
+                }
             }
-            // shift 1
-            availableIds[0][1] = 1;
-            availableIds[0][2] = 2;
-            availableIds[0][0] = 2;
-            // shift 2
-            availableIds[1][1] = 1;
-            availableIds[1][2] = 3;
-            availableIds[1][0] = 2;
-            // shift 3
-            availableIds[2][1] = 1;
-            availableIds[2][2] = 3;
-            availableIds[2][0] = 2;
-            // shift 4
-            availableIds[3][1] = 2;
-            availableIds[3][2] = 3;
-            availableIds[3][0] = 2;
-            // shift 5
-            availableIds[4][1] = 2;
-            availableIds[4][2] = 3;
-            availableIds[4][0] = 2;
         }
-        else if (testVal == 2)
+        for (overtimeIndex = 1; overtimeIndex < size; overtimeIndex++)
         {
-            for (int i = 0; i < 10; i++)
+            leftEmpIndex = employeeExists(employees, availableIds[shiftIndex][overtimeIndex]);
+            int timeIn = employees->empArr[leftEmpIndex].currentTime;
+            if (timeIn >= 2400)
             {
-                shiftIds[i] = i + 1;
+                swapVal = leftEmpIndex;
+                availableIds[shiftIndex][overtimeIndex] = availableIds[shiftIndex][size - overtimeCount];
+                availableIds[shiftIndex][size - overtimeCount] = swapVal;
+                overtimeIndex--;
+                overtimeCount++;
             }
-            // shift 1
-            availableIds[0][1] = 2;
-            availableIds[0][2] = 3;
-            availableIds[0][0] = 2;
-            // shift 2
-            availableIds[1][1] = 5;
-            availableIds[1][2] = 9;
-            availableIds[1][0] = 2;
-            // shift 3
-            availableIds[2][1] = 6;
-            availableIds[2][2] = 10;
-            availableIds[2][0] = 2;
-            // shift 4
-            availableIds[3][1] = 1;
-            availableIds[3][2] = 8;
-            availableIds[3][0] = 2;
-            // shift 5
-            availableIds[4][1] = 4;
-            availableIds[4][2] = 10;
-            availableIds[4][0] = 2;
-            // shift 6
-            availableIds[5][1] = 2;
-            availableIds[5][2] = 5;
-            availableIds[5][0] = 2;
-            // shift 7
-            availableIds[6][1] = 7;
-            availableIds[6][2] = 8;
-            availableIds[6][0] = 2;
-            // shift 8
-            availableIds[7][1] = 3;
-            availableIds[7][2] = 7;
-            availableIds[7][0] = 2;
-            // shift 9
-            availableIds[8][1] = 1;
-            availableIds[8][2] = 4;
-            availableIds[8][0] = 2;
-            // shift 10
-            availableIds[9][1] = 6;
-            availableIds[9][2] = 39;
-            availableIds[9][0] = 2;
-        }
-        else if (testVal == 3)
-        {
-            for (int i = 0; i < 5; i++)
-            {
-                shiftIds[i] = i + 1;
-            }
-            // shift 1
-            availableIds[0][1] = 1;
-            availableIds[0][2] = 3;
-            availableIds[0][0] = 2;
-            // shift 2
-            availableIds[1][1] = 2;
-            availableIds[1][2] = 3;
-            availableIds[1][0] = 2;
-            // shift 3
-            availableIds[2][1] = 2;
-            availableIds[2][2] = 3;
-            availableIds[2][0] = 2;
-            // shift 4
-            availableIds[3][1] = 2;
-            availableIds[3][2] = 3;
-            availableIds[3][0] = 2;
-            // shift 5
-            availableIds[4][1] = 2;
-            availableIds[4][2] = 3;
-            availableIds[4][0] = 2;
-        }
-    }
-
-    void setCount(int testVal, int *shiftCount, int *employeeCount)
-    {
-        if (testVal == 1)
-        {
-            *shiftCount = 5;
-            *employeeCount = 3;
-        }
-        else if (testVal == 2)
-        {
-            *shiftCount = 10;
-            *employeeCount = 10;
-        }
-        else if (testVal == 3)
-        {
-            *shiftCount = 5;
-            *employeeCount = 3;
         }
     }
 }

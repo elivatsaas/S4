@@ -1,0 +1,451 @@
+.SchedulingPage_SchedulingPage {
+  position: relative;
+  left: 0px;
+  top: 0px;
+  margin: auto;
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+  background: rgba(255, 255, 255, 1);
+}
+.SchedulingPage_SchedulingPage .TopBar {
+  position: absolute;
+  right: 0px;
+  top: -9px;
+  width: 1440px;
+  height: 251px;
+  background: rgba(7, 53, 30, 1);
+}
+.SchedulingPage_SchedulingPage .BottomBar {
+  position: absolute;
+  left: 0px;
+  top: 1449px;
+  width: 1440px;
+  height: 251px;
+  background: rgba(7, 53, 30, 1);
+}
+.SchedulingPage_SchedulingPage .NavBar {
+  position: absolute;
+  left: 616px;
+  top: 99px;
+  width: 665px;
+  height: 20px;
+  display: flex;
+  box-sizing: border-box;
+}
+.SchedulingPage_SchedulingPage .NavBar .Home {
+  position: relative;
+  flex: none;
+  margin-right: 25px;
+  width: 75px;
+  height: 20px;
+  color: rgba(255, 255, 255, 1);
+  font-family: Inter;
+  font-size: 25px;
+  font-weight: 400;
+  line-height: 20px;
+}
+.SchedulingPage_SchedulingPage .NavBar .Announcements {
+  position: relative;
+  flex: none;
+  margin-right: 25px;
+  width: 233px;
+  height: 20px;
+  color: rgba(255, 255, 255, 1);
+  font-family: Inter;
+  font-size: 25px;
+  font-weight: 400;
+  line-height: 20px;
+}
+.SchedulingPage_SchedulingPage .NavBar .Schedule {
+  position: relative;
+  flex: none;
+  margin-right: 25px;
+  width: 134px;
+  height: 20px;
+  color: rgba(255, 255, 255, 1);
+  font-family: Inter;
+  font-size: 25px;
+  font-weight: 400;
+  line-height: 20px;
+}
+.SchedulingPage_SchedulingPage .NavBar .Employees {
+  position: relative;
+  flex: none;
+  margin-right: 25px;
+  width: 148px;
+  height: 20px;
+  color: rgba(255, 255, 255, 1);
+  font-family: Inter;
+  font-size: 25px;
+  font-weight: 400;
+  line-height: 20px;
+}
+.SchedulingPage_SchedulingPage .GenerateSchedule {
+  position: absolute;
+  left: 1104px;
+  top: 380px;
+  width: 160px;
+  height: 52px;
+  display: flex;
+  padding-top: 14px;
+  padding-right: 24px;
+  padding-bottom: 14px;
+  padding-left: 24px;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  background: rgba(120, 222, 159, 1);
+  border-radius: 8px;
+}
+.GenerateSchedule {
+  position: absolute;
+  left: 1104px;
+  top: 380px;
+  width: 160px;
+  height: 52px;
+  display: flex;
+  padding-top: 14px;
+  padding-right: 24px;
+  padding-bottom: 14px;
+  padding-left: 24px;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  background: rgba(120, 222, 159, 1);
+  border-radius: 8px;
+}
+
+.GenerateSchedule button {
+  width: 100%;
+  height: 100%;
+  background: none;
+  border: none;
+  color: white;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 16px;
+  cursor: pointer;
+  outline: none;
+  padding-top: 5px; /* Adjust padding to move the text up */
+  margin-top: -15px; /* Adjust margin to move the text up */
+}
+
+.SchedulingPage_SchedulingPage .SchedulingNavBar {
+  position: absolute;
+  left: 138px;
+  top: 380px;
+  width: 558px;
+  height: 52px;
+  display: flex;
+  box-sizing: border-box;
+}
+.SchedulingPage_SchedulingPage .SchedulingNavBar .AddShift {
+  position: relative;
+  flex: none;
+  margin-right: 39px;
+  width: 160px;
+  height: 52px;
+  display: flex;
+  padding-top: 14px;
+  padding-right: 24px;
+  padding-bottom: 14px;
+  padding-left: 24px;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  background: rgba(120, 222, 159, 1);
+  border-radius: 8px;
+}
+.SchedulingPage_SchedulingPage .SchedulingNavBar .AddShift .AddShift_1 {
+  position: relative;
+  flex: none;
+  margin-right: 8px;
+  width: 72px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 1);
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+.SchedulingPage_SchedulingPage .SchedulingNavBar .ChangeAvailability {
+  position: relative;
+  flex: none;
+  margin-right: 39px;
+  width: 160px;
+  height: 52px;
+  display: flex;
+  padding-top: 14px;
+  padding-right: 24px;
+  padding-bottom: 14px;
+  padding-left: 24px;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  background: rgba(120, 222, 159, 1);
+  border-radius: 8px;
+}
+.SchedulingPage_SchedulingPage
+  .SchedulingNavBar
+  .ChangeAvailability
+  .ChangeAvailability_1 {
+  position: relative;
+  flex: none;
+  margin-right: 8px;
+  width: 146px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 1);
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+.SchedulingPage_SchedulingPage .SchedulingNavBar .ShiftTrade {
+  position: relative;
+  flex: none;
+  margin-right: 39px;
+  width: 160px;
+  height: 52px;
+  display: flex;
+  padding-top: 14px;
+  padding-right: 24px;
+  padding-bottom: 14px;
+  padding-left: 24px;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  background: rgba(120, 222, 159, 1);
+  border-radius: 8px;
+}
+.SchedulingPage_SchedulingPage .SchedulingNavBar .ShiftTrade .ShiftTrade_1 {
+  position: relative;
+  flex: none;
+  margin-right: 8px;
+  width: 85px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 1);
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+.SchedulingPage_SchedulingPage .Logo {
+  position: absolute;
+  left: 200px;
+  top: 0px;
+  width: 386px;
+  height: 316px;
+}
+.SchedulingPage_SchedulingPage .Logo .Vector {
+  position: absolute;
+  left: 114.6427001953125px;
+  top: 26.3585205078125px;
+  width: 42.217539258571485%;
+  height: 47.30155558525762%;
+}
+.SchedulingPage_SchedulingPage .Logo .Vector_1 {
+  position: absolute;
+  left: 163.2933349609375px;
+  top: 174.63729858398438px;
+  width: 17.012405395507812%;
+  height: 5.301770681067358%;
+}
+.SchedulingPage_SchedulingPage .Logo .Vector_2 {
+  position: absolute;
+  left: 180.429443359375px;
+  top: 196.31304931640625px;
+  width: 8.124049586953277%;
+  height: 2.5267898281918293%;
+}
+.SchedulingPage_SchedulingPage .Logo .Vector_3 {
+  position: absolute;
+  left: 186.960693359375px;
+  top: 105.4359130859375px;
+  width: 8.654516348567034%;
+  height: 15.391582778737515%;
+}
+.SchedulingPage_SchedulingPage .Logo .Vector_4 {
+  position: absolute;
+  left: 172.702392578125px;
+  top: 106.84036254882812px;
+  width: 1.8076390182416056%;
+  height: 2.3328240913680838%;
+}
+.SchedulingPage_SchedulingPage .Logo .Vector_5 {
+  position: absolute;
+  left: 220.1866455078125px;
+  top: 128.97402954101562px;
+  width: 2.0796249567535874%;
+  height: 1.4978307711927197%;
+}
+.SchedulingPage_SchedulingPage .Logo .Vector_6 {
+  position: absolute;
+  left: 163.998291015625px;
+  top: 128.961669921875px;
+  width: 2.0351318497731894%;
+  height: 1.4824094651620598%;
+}
+.SchedulingPage_SchedulingPage .Logo .Vector_7 {
+  position: absolute;
+  left: 194.0439453125px;
+  top: 97.82684326171875px;
+  width: 1.1208241467648836%;
+  height: 2.6304661473141437%;
+}
+.SchedulingPage_SchedulingPage .Logo .Vector_8 {
+  position: absolute;
+  left: 212.48876953125px;
+  top: 106.89886474609375px;
+  width: 1.811937470510216%;
+  height: 2.313817301882973%;
+}
+.SchedulingPage_SchedulingPage .Logo .S4 {
+  position: absolute;
+  left: 277.775634765625px;
+  top: 154.06405639648438px;
+  width: 22.563418452603827%;
+  height: 14.9466188648079%;
+  color: rgba(255, 255, 255, 1);
+  font-family: Jacques Francois;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 30px;
+}
+.SchedulingPage_SchedulingPage .FilterArea {
+  position: absolute;
+  left: 162px;
+  top: 469px;
+  width: 1032px;
+  height: 60px;
+  display: flex;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+}
+.SchedulingPage_SchedulingPage .FilterArea .FilterSelection {
+  position: relative;
+  flex: none;
+  margin-right: 10px;
+  width: 1012px;
+  height: 40px;
+  display: flex;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+}
+.SchedulingPage_SchedulingPage .FilterArea .FilterSelection .Filters {
+  position: relative;
+  flex: none;
+  margin-right: 60px;
+  width: 64px;
+  height: 32px;
+  color: rgba(0, 0, 0, 1);
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 32px;
+}
+.SchedulingPage_SchedulingPage .FilterArea .FilterSelection .DropdownMenu {
+  position: relative;
+  flex: none;
+  margin-right: 60px;
+  width: 888px;
+  height: 40px;
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+}
+.SchedulingPage_SchedulingPage
+  .FilterArea
+  .FilterSelection
+  .DropdownMenu
+  ._04Dropdown {
+  position: relative;
+  flex: none;
+  margin-right: 40px;
+  width: 140px;
+  height: 40px;
+  display: flex;
+  padding-top: 8px;
+  padding-right: 16px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  box-sizing: border-box;
+  align-items: center;
+  background: rgba(120, 222, 159, 1);
+  border-radius: 8px;
+  border: 1px solid
+    rgba(224.000001847744, 224.000001847744, 224.000001847744, 1);
+  box-sizing: border-box;
+}
+.SchedulingPage_SchedulingPage
+  .FilterArea
+  .FilterSelection
+  .DropdownMenu
+  ._04Dropdown
+  .Label {
+  position: relative;
+  flex: none;
+  margin-right: 16px;
+  width: 68px;
+  height: 24px;
+  color: rgba(255, 255, 255, 1);
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+.SchedulingPage_SchedulingPage
+  .FilterArea
+  .FilterSelection
+  .DropdownMenu
+  ._04Dropdown
+  .chevrondown {
+  position: relative;
+  flex: none;
+  margin-right: 16px;
+  width: 24px;
+  height: 24px;
+}
+.SchedulingPage_SchedulingPage
+  .FilterArea
+  .FilterSelection
+  .DropdownMenu
+  ._04Dropdown
+  .chevrondown
+  .Vector_9 {
+  position: absolute;
+  left: 6px;
+  top: 9px;
+  width: 50%;
+  height: 25%;
+}
+.schedule-container {
+  position: absolute;
+  top: 190%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 120vh - 100px;
+}
+.NoShiftsMessage {
+  margin: 20px auto;
+  padding: 10px;
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  text-align: center;
+}

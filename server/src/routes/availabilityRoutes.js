@@ -68,6 +68,7 @@ router
       Employee_id = Employee_id ?? null;
       Schedule_id = Schedule_id ?? null;
       const id = req.params.id;
+
       const availability = availabilityHandler.getAvailability(id);
       if (!availability) {
         return next(new AppError("No availability found with that ID", 404));
@@ -101,5 +102,33 @@ router
       });
     })
   );
+
+router.route("/employees/:employeeId").get(
+  catchASync(async (req, res, next) => {
+    const availability = await availabilityHandler.getAvailabilityByEmployee(
+      req.params.employeeId
+    );
+    res.status(200).json({
+      status: "success",
+      data: {
+        availability,
+      },
+    });
+  })
+);
+
+router.route("/schedules/:scheduleId").get(
+  catchASync(async (req, res, next) => {
+    const availability = await availabilityHandler.getAvailabilityBySchedule(
+      req.params.scheduleId
+    );
+    res.status(200).json({
+      status: "success",
+      data: {
+        availability,
+      },
+    });
+  })
+);
 
 module.exports = router;

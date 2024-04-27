@@ -1,0 +1,9 @@
+.AnnouncementMessage {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background: rgba(7, 53, 30, 1);
+  color: white;
+  font-weight: bold;
+}

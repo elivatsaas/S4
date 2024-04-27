@@ -170,6 +170,90 @@ void getEmployees(Json::Value &returnValue, int &length)
     }
 }
 
+void getSchedule(int id, Json::Value &returnValue)
+{
+    auto curl = curl_easy_init();
+
+    if (curl)
+    {
+        string data;
+        string urlID = to_string(id);
+        string url = "http://127.0.0.1:8080/api/v1/schedules/cpp/";
+
+        url.append(urlID);
+        char *cUrl = new char[url.length() + 1];
+
+        std::strcpy(cUrl, url.c_str());
+
+        curl_easy_setopt(curl, CURLOPT_URL, cUrl);
+        curl_easy_setopt(curl, CURLOPT_HTTPGET, 1L);
+
+        // provide a pointer to where you'd like to store the data:
+        curl_easy_setopt(curl, CURLOPT_WRITEDATA, &data);
+
+        // provide a callback function:
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_callback);
+
+        if (curl_easy_perform(curl) == CURLE_OK)
+        {
+
+            Json::Value root;
+            if (parseJsonResponse(data, root))
+            {
+
+                Json::Value schedules = root["schedule"];
+                returnValue = schedules;
+            }
+            else
+            {
+                cout << "Failed to parse JSON" << endl;
+            }
+        }
+        curl_easy_cleanup(curl);
+    }
+}
+
+void getDesiredShiftHours(int id, Json::Value &returnValue, int &length)
+{
+    auto curl = curl_easy_init();
+
+    if (curl)
+    {
+        string data;
+        string urlID = to_string(id);
+        string url = "http://127.0.0.1:8080/api/v1/dsh/cpp/";
+        url.append(urlID);
+
+        char *cUrl = new char[url.length() + 1];
+
+        std::strcpy(cUrl, url.c_str());
+        curl_easy_setopt(curl, CURLOPT_URL, cUrl);
+        curl_easy_setopt(curl, CURLOPT_HTTPGET, 1L);
+
+        // provide a pointer to where you'd like to store the data:
+        curl_easy_setopt(curl, CURLOPT_WRITEDATA, &data);
+
+        // provide a callback function:
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_callback);
+
+        if (curl_easy_perform(curl) == CURLE_OK)
+        {
+
+            Json::Value root;
+            if (parseJsonResponse(data, root))
+            {
+                Json::Value data = root["dsh"];
+                returnValue = data;
+                length = root["results"].asInt();
+            }
+            else
+            {
+                cout << "Failed to parse JSON" << endl;
+            }
+        }
+        curl_easy_cleanup(curl);
+    }
+}
 int postJson(Json::Value &data, int length)
 {
     CURL *curl;

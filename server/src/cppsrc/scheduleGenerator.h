@@ -11,53 +11,62 @@ extern "C"
 {
     struct Shift
     {
+        int day;
+        int month;
+        int year;
+        
         int id;
-        string startTime;
-        string endTime;
+        int startTime;
+        int endTime;
         int empId;
+
+        int length;
     };
     struct Employee
     {
         int id;
         int shiftCount = 0;
-        // need to make this dynamically sized eventually
-        Shift shiftList[40];
+        Shift *shiftList;
+        int timeRequested;
+        int currentTime;
+
     };
     class ShiftType
     {
     private:
-        int arrSize;
+        int shiftsFilled;
 
     public:
         Shift *sftArr;
         int shiftCount;
+        int totalTime;
         ShiftType()
         {
             shiftCount = 0;
             sftArr = new Shift[0];
-            arrSize = 0;
+            shiftsFilled = 0;
         }
         ShiftType(int sftCount)
         {
-            shiftCount = sftCount;
+            shiftCount = 0;
             sftArr = new Shift[sftCount];
-            arrSize = 0;
+            shiftsFilled = 0;
         }
-        void setArrSize(int newSize)
+        void setShiftsFilled(int filledCount)
         {
-            arrSize = newSize;
+            shiftsFilled = filledCount;
         }
-        void incrementArrSize()
+        void incrementShiftsFilled()
         {
-            setArrSize(arrSize + 1);
+            setShiftsFilled(shiftsFilled + 1);
         }
-        void decrementArrSize()
+        void decrementShiftsFilled()
         {
-            setArrSize(arrSize - 1);
+            setShiftsFilled(shiftsFilled - 1);
         }
-        int getArrSize()
+        int getShiftsFilled()
         {
-            return arrSize;
+            return shiftsFilled;
         }
     };
     class EmployeeType
@@ -68,6 +77,7 @@ extern "C"
     public:
         Employee *empArr;
         int employeeCount;
+        int totalRequested;
 
         EmployeeType()
         {
@@ -107,13 +117,15 @@ extern "C"
 
     bool checkForOverlap(Employee checkEmp, Shift checkShift);
 
+    void dateStringToInts(int *day, int* month, int *year, string toConvert);
+
     void deepCopyShift(Shift *dest, Shift src);
 
     bool empInArray(Employee *array, int arrLen, int toFind);
 
     int employeeExists(EmployeeType *employees, int checkId);
 
-    bool fillShift(ShiftType *shifts, EmployeeType *employees, int shiftIndex, int **availableIds);
+    bool fillShift(ShiftType *shifts, EmployeeType *employees, int shiftIndex, int **availableIds, ShiftType *incompleteOption, int *maxIndex);
 
     bool intInArray(int *array, int arrLen, int toFind);
 
@@ -124,4 +136,12 @@ extern "C"
     void setIds(int testVal, int **availableIds, int *shiftIds);
 
     void setCount(int testVal, int *shiftCount, int *employeeCount);
+
+    int DayOfWeek( int day, int month, int year );
+
+    bool sameWeek( Shift shift1, Shift shift2);
+
+    void resetEmployeeTime(EmployeeType employees);
+
+    void sortByHoursFilled(EmployeeType *employees, int **availableIds, int shiftIndex);
 }
