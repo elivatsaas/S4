@@ -2,8 +2,56 @@ import React from "react";
 import "../css/SignUpPage.css";
 import ImgAsset from "../public";
 import { Link } from "react-router-dom";
-import Property1Default from "../components/Property1Default";
+import { useState } from "react";
+import { signup } from "../api/authenticationApi";
+
 export default function SignUpPage() {
+
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [hireDate, setHireDate] = useState('');
+  const [birthDate, setbirthDate] = useState('');
+  const [payRate, setPayRate] = useState(0);
+  const [password, setPassword] = useState('');
+  const [passwordConfirm, setpasswordConfirm] = useState('');
+
+  const handleSubmit = () => {
+	if(firstName.length === 0){
+		alert("First name has been left blank!");
+	}
+	else if (lastName.length === 0){
+		alert("Last name has been left blank!")
+	}
+	else if (email.length === 0){
+		alert("Email has been left blank!");
+	}
+	else if (phoneNumber.length === 0){
+		alert("Phone number has been left blank!");
+	}
+	else if (hireDate.length === 0){
+		alert("Hire date has been left blank!");
+	}
+	else if (birthDate.length === 0){
+		alert("Date of birth has been left blank!");
+	}
+	else if (password.length === 0){
+		alert("Password has been left blank!");
+	}
+	else if (passwordConfirm.length === 0){
+		alert("Confirm password has been left blank!");
+	}
+	else if (password !== passwordConfirm){
+		alert("Passwords don't match!");
+	}
+	else{
+		signup({firstName, lastName, email, phoneNumber, hireDate,
+		birthDate, payRate, password, passwordConfirm});
+		alert("Employee Added!");
+	}
+  }
+
   return (
     <div className='SignUpPage_SignUpPage'>
 			<div className='TopBar'/>
@@ -51,20 +99,22 @@ export default function SignUpPage() {
 						<span className='DateofBirth'>Date of Birth:</span>
 						<span className='PayRate'>Pay Rate:</span>
 						<span className='Password'>Password:</span>
+						<span className='confirmPassword'>Confirm Password:</span>
 					</div>
 					<div className='SignUpInput'>
-						<Property1Default className='FirstName_1'/>
-						<Property1Default className='LastName_1'/>
-						<Property1Default className='Email_1'/>
-						<Property1Default className='PhoneNumber_1'/>
-						<Property1Default className='HireDate_1'/>
-						<Property1Default className='DateOfBirth'/>
-						<Property1Default className='PayRate_1'/>
-						<Property1Default className='Password_1'/>
+						<input type="text" name="fistName" id="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)}/>
+						<input type="text" name="lastName" id="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)}/>
+						<input type="email" name="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+						<input type="text" name="phoneNumber" id="phoneNumber" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)}/>
+						<input type="date" name="hireDate" id="hireDate" value={hireDate} onChange={(e) => setHireDate(e.target.value)}/>
+						<input type="date" name="birthDate" id="birthDate" value={birthDate} onChange={(e) => setbirthDate(e.target.value)}/>
+						<input type="number" name="payRate" id="payRate" value={payRate} onChange={(e) => setPayRate(e.target.value)}/>
+						<input type="password" name="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+						<input type="password" name="passwordConfirm" id="passwordConfirm" value={passwordConfirm} onChange={(e) => setpasswordConfirm(e.target.value)}/>
 					</div>
 				</div>
 				<div className='SignUpButton'>
-					<span className='SignUp'>Sign Up</span>
+					<input type="button" name="signUp" id="signUp" value="Sign Up" onClick={handleSubmit}/>
 				</div>
 			</div>
 		</div>
