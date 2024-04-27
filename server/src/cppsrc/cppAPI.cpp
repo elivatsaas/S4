@@ -177,9 +177,10 @@ void getSchedule(int id, Json::Value &returnValue)
     if (curl)
     {
         string data;
+        string urlID = to_string(id);
+        string url = "http://127.0.0.1:8080/api/v1/schedules/cpp/";
 
-        string url = "http://127.0.0.1:8080/api/v1/schedules/cpp/1";
-
+        url.append(urlID);
         char *cUrl = new char[url.length() + 1];
 
         std::strcpy(cUrl, url.c_str());
@@ -219,13 +220,13 @@ void getDesiredShiftHours(int id, Json::Value &returnValue, int &length)
     if (curl)
     {
         string data;
-
-        string url = "http://127.0.0.1:8080/api/v1/dsh/cpp/2";
+        string urlID = to_string(id);
+        string url = "http://127.0.0.1:8080/api/v1/dsh/cpp/";
+        url.append(urlID);
 
         char *cUrl = new char[url.length() + 1];
 
         std::strcpy(cUrl, url.c_str());
-
         curl_easy_setopt(curl, CURLOPT_URL, cUrl);
         curl_easy_setopt(curl, CURLOPT_HTTPGET, 1L);
 
@@ -325,6 +326,5 @@ void arrToJson(ShiftType *shifts)
         shiftJson[shiftIndex]["shiftId"] = shifts->sftArr[shiftIndex].id;
         shiftJson[shiftIndex]["employee_id"] = shifts->sftArr[shiftIndex].empId;
     }
-
     postJson(shiftJson, shifts->shiftCount);
 }

@@ -39,7 +39,7 @@ async function getEmployeeStoreByEmployee(Employee_id) {
     [Employee_id]
   );
 
-  return result[0];
+  return result;
 }
 async function getEmployeeStoreByStore(Store_id) {
   const [result] = await db.query(
@@ -50,7 +50,7 @@ async function getEmployeeStoreByStore(Store_id) {
     [Store_id]
   );
 
-  return result[0];
+  return result;
 }
 
 async function createEmployeeStore(Employee_id, Store_id) {
@@ -109,6 +109,7 @@ async function deleteEmployeeStoresByEmployee(id) {
 module.exports = {
   getAllEmployeeStores: getAllEmployeeStores,
   getEmployeeStore: getEmployeeStore,
+  getEmployeeStoreByEmployee: getEmployeeStoreByEmployee,
   createEmployeeStore: createEmployeeStore,
   deleteEmployeeStore: deleteEmployeeStore,
   deleteEmployeeStoresByStore: deleteEmployeeStoresByStore,

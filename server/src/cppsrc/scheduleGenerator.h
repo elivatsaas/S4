@@ -16,15 +16,20 @@ extern "C"
         int year;
         
         int id;
-        string startTime;
-        string endTime;
-        int empId ;
+        int startTime;
+        int endTime;
+        int empId;
+
+        int length;
     };
     struct Employee
     {
         int id;
         int shiftCount = 0;
         Shift *shiftList;
+        int timeRequested;
+        int currentTime;
+
     };
     class ShiftType
     {
@@ -34,6 +39,7 @@ extern "C"
     public:
         Shift *sftArr;
         int shiftCount;
+        int totalTime;
         ShiftType()
         {
             shiftCount = 0;
@@ -42,7 +48,7 @@ extern "C"
         }
         ShiftType(int sftCount)
         {
-            shiftCount = sftCount;
+            shiftCount = 0;
             sftArr = new Shift[sftCount];
             shiftsFilled = 0;
         }
@@ -71,6 +77,7 @@ extern "C"
     public:
         Employee *empArr;
         int employeeCount;
+        int totalRequested;
 
         EmployeeType()
         {
@@ -118,7 +125,7 @@ extern "C"
 
     int employeeExists(EmployeeType *employees, int checkId);
 
-    bool fillShift(ShiftType *shifts, EmployeeType *employees, int shiftIndex, int **availableIds, ShiftType *incompleteOption);
+    bool fillShift(ShiftType *shifts, EmployeeType *employees, int shiftIndex, int **availableIds, ShiftType *incompleteOption, int *maxIndex);
 
     bool intInArray(int *array, int arrLen, int toFind);
 
@@ -129,4 +136,12 @@ extern "C"
     void setIds(int testVal, int **availableIds, int *shiftIds);
 
     void setCount(int testVal, int *shiftCount, int *employeeCount);
+
+    int DayOfWeek( int day, int month, int year );
+
+    bool sameWeek( Shift shift1, Shift shift2);
+
+    void resetEmployeeTime(EmployeeType employees);
+
+    void sortByHoursFilled(EmployeeType *employees, int **availableIds, int shiftIndex);
 }

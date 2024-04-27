@@ -19,7 +19,7 @@
 .AnnouncementPage_AnnouncementPage .Rectangle2 {
   position: absolute;
   left: 0px;
-  top: 1449px;
+  bottom: 0px;
   width: 1440px;
   height: 251px;
   background: rgba(7, 53, 30, 1);
@@ -513,92 +513,27 @@
   height: 24px;
   z-index: 2;
 }
-.AnnouncementPage_AnnouncementPage
-  .Frame1000007427
-  .Frame1000007424
-  .Frame1000007426
-  .Frame1000007425
-  ._04Dropdown_3
-  .chevrondown_3
-  .Vector_12 {
+.CustomButton {
   position: absolute;
-  left: 6px;
-  top: 9px;
-  width: 50%;
-  height: 25%;
-  z-index: 2;
-}
-.AnnouncementPage_AnnouncementPage
-  .Frame1000007427
-  .Frame1000007424
-  .Frame1000007426
-  .Frame1000007425
-  ._04Dropdown_4 {
-  position: relative;
-  flex: none;
-  margin-right: 40px;
-  width: 153px;
   height: 40px;
+  margin-left: 820px;
   display: flex;
-  padding-top: 8px;
-  padding-right: 16px;
-  padding-bottom: 8px;
-  padding-left: 16px;
-  box-sizing: border-box;
   align-items: center;
+  justify-content: space-between;
   background: rgba(120, 222, 159, 1);
   border-radius: 8px;
-  border: 1px solid
-    rgba(224.000001847744, 224.000001847744, 224.000001847744, 1);
-  box-sizing: border-box;
-  z-index: 2;
-}
-.AnnouncementPage_AnnouncementPage
-  .Frame1000007427
-  .Frame1000007424
-  .Frame1000007426
-  .Frame1000007425
-  ._04Dropdown_4
-  .Label_4 {
-  position: relative;
-  flex: none;
-  margin-right: 16px;
-  width: 81px;
-  height: 24px;
-  color: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(224, 224, 224, 1);
+  padding: 0 16px;
   font-family: Inter;
   font-size: 16px;
   font-weight: 400;
-  line-height: 24px;
-  z-index: 2;
+  line-height: 20px;
+  color: rgba(255, 255, 255, 1);
+  cursor: pointer;
 }
-.AnnouncementPage_AnnouncementPage
-  .Frame1000007427
-  .Frame1000007424
-  .Frame1000007426
-  .Frame1000007425
-  ._04Dropdown_4
-  .chevrondown_4 {
-  position: relative;
-  flex: none;
-  margin-right: 16px;
+.CustomButton img {
   width: 24px;
   height: 24px;
-}
-.AnnouncementPage_AnnouncementPage
-  .Frame1000007427
-  .Frame1000007424
-  .Frame1000007426
-  .Frame1000007425
-  ._04Dropdown_4
-  .chevrondown_4
-  .Vector_13 {
-  position: absolute;
-  left: 6px;
-  top: 9px;
-  width: 50%;
-  height: 25%;
-  z-index: 2;
 }
 .AnnouncementPage_AnnouncementPage .Frame1000007427 .MessageArea {
   position: relative;
@@ -614,7 +549,15 @@
 }
 .AnnouncementsContainer {
   position: absolute;
-  top: calc(100% - 40px);
-  width: 100%;
+  top: calc(100% - 150px);
+  padding-left: 235px;
+  width: 800px;
 }
-
+.CreateAnnouncement {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgb(185, 209, 197);
+  z-index: 9999;
+}

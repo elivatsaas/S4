@@ -3,7 +3,8 @@ import axios from "axios";
 const delay = () => new Promise((res) => setTimeout(() => res(), 800));
 
 const shiftsApi = axios.create({
-  baseURL: "http://localhost:8080/api/v1",
+  baseURL:
+    "http://ec2-13-52-252-101.us-west-1.compute.amazonaws.com:8080/api/v1",
 });
 
 export const shiftsUrlEndpoint = "/shifts";
@@ -12,7 +13,6 @@ export const getShifts = async () => {
   await delay();
   const response = await shiftsApi.get(shiftsUrlEndpoint);
   return response.data.data.shifts;
-
 };
 
 export const getShift = async (id) => {
@@ -25,7 +25,6 @@ export const getShiftsBySchedule = async (id) => {
   await delay();
   const response = await shiftsApi.get(`${shiftsUrlEndpoint}/schedules/${id}`);
   return response.data.shift;
-
 };
 
 export const getEmployeesForShift = async (id) => {
@@ -58,6 +57,22 @@ export const addShift = async ({
     Schedule_id,
     Role_id,
     Store_id,
+  });
+  return response.data;
+};
+export const tradeShift = async ({ firstShiftId, secondShiftId }) => {
+  await delay();
+  const response = await shiftsApi.post(`${shiftsUrlEndpoint}/trade}`, {
+    firstShiftId,
+    secondShiftId,
+  });
+  return response.data;
+};
+export const giveShift = async ({ shiftId, employeeId }) => {
+  await delay();
+  const response = await shiftsApi.post(`${shiftsUrlEndpoint}/give}`, {
+    shiftId,
+    employeeId,
   });
   return response.data;
 };

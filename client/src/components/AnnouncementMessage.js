@@ -6,8 +6,16 @@ const AnnouncementMessage = ({ text, employeeId }) => {
 
   useEffect(() => {
     const fetchEmployee = async () => {
-      const employeeData = await getEmployee(employeeId);
-      setEmployee(employeeData);
+      if (employeeId) {
+        const employeeData = await getEmployee(employeeId);
+        setEmployee(employeeData);
+      } else {
+        const employeeData = {
+          firstName: "System",
+          lastName: "Announcement",
+        };
+        setEmployee(employeeData);
+      }
     };
 
     fetchEmployee();

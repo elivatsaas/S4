@@ -1,19 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ImgAsset from "../../public";
 import "../../css/Dropdown.css";
 
-const RoleDropdown = ({ roles, toggleDropdown, isOpen, onSelectRole }) => {
-  const [selectedRoles, setSelectedRoles] = useState([]);
+const RoleDropdown = ({
+  roles,
+  toggleDropdown,
+  isOpen,
+  onSelectRole,
+  selectedRoles,
+}) => {
+  const [selected, setSelected] = useState(selectedRoles || []);
+
+  useEffect(() => {
+    setSelected(selectedRoles || []);
+  }, [selectedRoles]);
 
   const handleRoleSelect = (role) => {
-    const isSelected = selectedRoles.includes(role);
-    if (isSelected) {
-      setSelectedRoles(selectedRoles.filter((r) => r !== role));
-    } else {
-      setSelectedRoles([...selectedRoles, role]);
-    }
-    onSelectRole(selectedRoles);
+    const isSelected = selected.includes(role);
+    let updatedSelected = [];
 
+    if (isSelected) {
+      updatedSelected = selected.filter((r) => r !== role);
+    } else {
+      updatedSelected = [...selected, role];
+    }
+    setSelected(updatedSelected);
+    onSelectRole(updatedSelected);
   };
 
   return (
@@ -28,7 +40,7 @@ const RoleDropdown = ({ roles, toggleDropdown, isOpen, onSelectRole }) => {
             <label key={role.id} className="dropdown-label">
               <input
                 type="checkbox"
-                checked={selectedRoles.includes(role)}
+                checked={selected.includes(role)}
                 onChange={() => handleRoleSelect(role)}
               />
               <span>{role.roleName}</span>
