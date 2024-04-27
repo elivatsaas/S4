@@ -27,7 +27,9 @@ const ShiftDropdown = ({ shifts, toggleDropdown, isOpen, onSelectShift }) => {
                 checked={selectedShifts.includes(shift)}
                 onChange={() => handleShiftSelect(shift)}
               />
-              <span>{shift.date}</span>
+              <span>{`On ${shift.date.substring(0, 10)} At ${
+                shift.startTime
+              }`}</span>
             </label>
           ))}
         </div>

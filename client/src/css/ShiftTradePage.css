@@ -12,7 +12,7 @@
   position: absolute;
   right: 0px;
   top: -9px;
-  width: 1440px;
+  width: 100%;
   height: 251px;
   background: rgba(7, 53, 30, 1);
 }
@@ -20,7 +20,7 @@
   position: absolute;
   left: 0px;
   top: 1449px;
-  width: 1440px;
+  width: 100%;
   height: 251px;
   background: rgba(7, 53, 30, 1);
 }
@@ -237,11 +237,81 @@
   flex-direction: column;
   box-sizing: border-box;
 }
+.ShiftTradePage_ShiftTradePage
+  .TradeDisplay
+  .TradeArea
+  .TradeInputIndicators
+  .Employee {
+  position: relative;
+  flex: none;
+  margin-bottom: 51px;
+  width: 100px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  color: rgba(0, 0, 0, 1);
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+.ShiftTradePage_ShiftTradePage
+  .TradeDisplay
+  .TradeArea
+  .TradeInputIndicators
+  .Shift {
+  position: relative;
+  flex: none;
+  margin-bottom: 51px;
+  width: 85px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  color: rgba(0, 0, 0, 1);
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+.ShiftTradePage_ShiftTradePage
+  .TradeDisplay
+  .TradeArea
+  .TradeInputIndicators
+  .EndTime {
+  position: relative;
+  flex: none;
+  margin-bottom: 51px;
+  width: 76px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  color: rgba(0, 0, 0, 1);
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
 
-.ShiftTradePage_ShiftTradePage .TradeDisplay .TradeArea .TradeInput {
+.ShiftTradePage_ShiftTradePage .TradeDisplay .TradeArea .Employee1Title {
   position: relative;
   flex: none;
   margin-right: 25px;
+  width: 100px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  color: rgba(0, 0, 0, 1);
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+.ShiftTradePage_ShiftTradePage .TradeDisplay .TradeArea .TradeInput1 {
+  position: relative;
+  flex: none;
+  margin-right: 25px;
+  margin-left: -50px;
+  margin-top: -30px;
   width: 408px;
   height: 212px;
   display: flex;
@@ -249,11 +319,445 @@
   box-sizing: border-box;
   align-items: flex-end;
 }
-
-.ShiftTradePage_ShiftTradePage .TradeDisplay .TradeButton {
+.ShiftTradePage_ShiftTradePage .TradeDisplay .TradeArea .TradeInput1 .Day_1 {
   position: relative;
   flex: none;
+  margin-bottom: 41px;
+  height: 40px;
+  width: 300px;
+  font-size: large;
+  border: 2px solid rgba(0, 0, 0, 1);
+}
+
+.ShiftTradePage_ShiftTradePage
+  .TradeDisplay
+  .TradeArea
+  .TradeInput1
+  ._04Dropdown {
+  position: relative;
+  flex: none;
+  margin-bottom: 35px;
+  width: 208px;
+  height: 40px;
+  display: flex;
+  padding-top: 8px;
+  padding-right: 16px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  box-sizing: border-box;
+  align-items: center;
+  background: rgba(120, 222, 159, 1);
+  border-radius: 8px;
+  border: 1px solid
+    rgba(224.000001847744, 224.000001847744, 224.000001847744, 1);
+  box-sizing: border-box;
+}
+
+.ShiftTradePage_ShiftTradePage
+  .TradeDisplay
+  .TradeArea
+  .TradeInput1
+  ._04Dropdown
+  .Label {
+  position: relative;
+  flex: none;
+  margin-right: 16px;
+  width: 136px;
+  height: 24px;
+  color: rgba(255, 255, 255, 1);
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+.ShiftTradePage_ShiftTradePage
+  .TradeDisplay
+  .TradeArea
+  .TradeInput1
+  ._04Dropdown
+  .chevrondown {
+  position: relative;
+  flex: none;
+  margin-right: 16px;
+  width: 24px;
+  height: 24px;
+}
+.ShiftTradePage_ShiftTradePage
+  .TradeDisplay
+  .TradeArea
+  .TradeInput1
+  ._04Dropdown
+  .chevrondown
+  .Vector_9 {
+  position: absolute;
+  left: 6px;
+  top: 9px;
+  width: 50%;
+  height: 25%;
+}
+.ShiftTradePage_ShiftTradePage .TradeDisplay .TradeArea .Shift1Title {
+  position: relative;
+  flex: none;
+  margin-left: 200px;
+  margin-top: -90px;
+  width: 408px;
+  height: 212px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  align-items: flex-end;
+  color: rgba(0, 0, 0, 1);
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+.ShiftTradePage_ShiftTradePage .TradeDisplay .TradeArea .TradeInput1Shift {
+  position: relative;
+  flex: none;
+  margin-right: 25px;
+  margin-left: 450px;
+  margin-top: -216px;
+  width: 408px;
+  height: 212px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  align-items: flex-end;
+}
+.ShiftTradePage_ShiftTradePage
+  .TradeDisplay
+  .TradeArea
+  .TradeInput1Shift
+  .Day_1 {
+  position: relative;
+  flex: none;
+  margin-bottom: 41px;
+  height: 40px;
+  width: 300px;
+  font-size: large;
+  border: 2px solid rgba(0, 0, 0, 1);
+}
+
+.ShiftTradePage_ShiftTradePage
+  .TradeDisplay
+  .TradeArea
+  .TradeInput1Shift
+  ._04Dropdown {
+  position: relative;
+  flex: none;
+  margin-bottom: 35px;
+  width: 208px;
+  height: 40px;
+  display: flex;
+  padding-top: 8px;
+  padding-right: 16px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  box-sizing: border-box;
+  align-items: center;
+  background: rgba(120, 222, 159, 1);
+  border-radius: 8px;
+  border: 1px solid
+    rgba(224.000001847744, 224.000001847744, 224.000001847744, 1);
+  box-sizing: border-box;
+}
+
+.ShiftTradePage_ShiftTradePage
+  .TradeDisplay
+  .TradeArea
+  .TradeInput1Shift
+  ._04Dropdown
+  .Label {
+  position: relative;
+  flex: none;
+  margin-right: 16px;
+  width: 136px;
+  height: 24px;
+  color: rgba(255, 255, 255, 1);
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+.ShiftTradePage_ShiftTradePage
+  .TradeDisplay
+  .TradeArea
+  .TradeInput1Shift
+  ._04Dropdown
+  .chevrondown {
+  position: relative;
+  flex: none;
+  margin-right: 16px;
+  width: 24px;
+  height: 24px;
+}
+.ShiftTradePage_ShiftTradePage
+  .TradeDisplay
+  .TradeArea
+  .TradeInput1Shift
+  ._04Dropdown
+  .chevrondown
+  .Vector_9 {
+  position: absolute;
+  left: 6px;
+  top: 9px;
+  width: 50%;
+  height: 25%;
+}
+.ShiftTradePage_ShiftTradePage .TradeDisplay .TradeArea .Employee2Title {
+  position: relative;
+  flex: none;
+  margin-right: 25px;
+  width: 100px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  color: rgba(0, 0, 0, 1);
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+.ShiftTradePage_ShiftTradePage .TradeDisplay .TradeArea .TradeInput2 {
+  position: relative;
+  flex: none;
+  margin-right: 25px;
+  margin-left: -50px;
+  margin-top: -30px;
+  width: 408px;
+  height: 212px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  align-items: flex-end;
+}
+.ShiftTradePage_ShiftTradePage .TradeDisplay .TradeArea .TradeInput2 .Day_1 {
+  position: relative;
+  flex: none;
+  margin-bottom: 41px;
+  height: 40px;
+  width: 300px;
+  font-size: large;
+  border: 2px solid rgba(0, 0, 0, 1);
+}
+
+.ShiftTradePage_ShiftTradePage
+  .TradeDisplay
+  .TradeArea
+  .TradeInput2
+  ._04Dropdown {
+  position: relative;
+  flex: none;
+  margin-bottom: 35px;
+  width: 208px;
+  height: 40px;
+  display: flex;
+  padding-top: 8px;
+  padding-right: 16px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  box-sizing: border-box;
+  align-items: center;
+  background: rgba(120, 222, 159, 1);
+  border-radius: 8px;
+  border: 1px solid
+    rgba(224.000001847744, 224.000001847744, 224.000001847744, 1);
+  box-sizing: border-box;
+}
+
+.ShiftTradePage_ShiftTradePage
+  .TradeDisplay
+  .TradeArea
+  .TradeInput2
+  ._04Dropdown
+  .Label {
+  position: relative;
+  flex: none;
+  margin-right: 16px;
+  width: 136px;
+  height: 24px;
+  color: rgba(255, 255, 255, 1);
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+.ShiftTradePage_ShiftTradePage
+  .TradeDisplay
+  .TradeArea
+  .TradeInput2
+  ._04Dropdown
+  .chevrondown {
+  position: relative;
+  flex: none;
+  margin-right: 16px;
+  width: 24px;
+  height: 24px;
+}
+.ShiftTradePage_ShiftTradePage
+  .TradeDisplay
+  .TradeArea
+  .TradeInput2
+  ._04Dropdown
+  .chevrondown
+  .Vector_9 {
+  position: absolute;
+  left: 6px;
+  top: 9px;
+  width: 50%;
+  height: 25%;
+}
+
+.ShiftTradePage_ShiftTradePage .TradeDisplay .TradeArea .TradeInput2 input {
+  position: relative;
+  flex: none;
+  margin-bottom: 41px;
+  height: 40px;
+  width: 305px;
+  font-size: large;
+  border: 2px solid rgba(0, 0, 0, 1);
+}
+.ShiftTradePage_ShiftTradePage .TradeDisplay .TradeArea .Shift2Title {
+  position: relative;
+  flex: none;
+  margin-left: 10px;
+  margin-top: -270px;
+  width: 408px;
+  height: 212px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  align-items: flex-end;
+  color: rgba(0, 0, 0, 1);
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+.ShiftTradePage_ShiftTradePage .TradeDisplay .TradeArea .TradeInput2Shift {
+  position: relative;
+  flex: none;
+  margin-right: 25px;
+  margin-left: 250px;
+  margin-top: -215px;
+  width: 408px;
+  height: 212px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  align-items: flex-end;
+}
+.ShiftTradePage_ShiftTradePage
+  .TradeDisplay
+  .TradeArea
+  .TradeInput2Shift
+  .Day_1 {
+  position: relative;
+  flex: none;
+  margin-bottom: 41px;
+  height: 40px;
+  width: 300px;
+  font-size: large;
+  border: 2px solid rgba(0, 0, 0, 1);
+}
+
+.ShiftTradePage_ShiftTradePage
+  .TradeDisplay
+  .TradeArea
+  .TradeInput2Shift
+  ._04Dropdown {
+  position: relative;
+  flex: none;
+  margin-bottom: 35px;
+  width: 208px;
+  height: 40px;
+  display: flex;
+  padding-top: 8px;
+  padding-right: 16px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  box-sizing: border-box;
+  align-items: center;
+  background: rgba(120, 222, 159, 1);
+  border-radius: 8px;
+  border: 1px solid
+    rgba(224.000001847744, 224.000001847744, 224.000001847744, 1);
+  box-sizing: border-box;
+}
+
+.ShiftTradePage_ShiftTradePage
+  .TradeDisplay
+  .TradeArea
+  .TradeInput2Shift
+  ._04Dropdown
+  .Label {
+  position: relative;
+  flex: none;
+  margin-right: 16px;
+  width: 136px;
+  height: 24px;
+  color: rgba(255, 255, 255, 1);
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+.ShiftTradePage_ShiftTradePage
+  .TradeDisplay
+  .TradeArea
+  .TradeInput2Shift
+  ._04Dropdown
+  .chevrondown {
+  position: relative;
+  flex: none;
+  margin-right: 16px;
+  width: 24px;
+  height: 24px;
+}
+
+.ShiftTradePage_ShiftTradePage
+  .TradeDisplay
+  .TradeArea
+  .TradeInput2Shift
+  ._04Dropdown
+  .chevrondown
+  .Vector_9 {
+  position: absolute;
+  left: 6px;
+  top: 9px;
+  width: 50%;
+  height: 25%;
+}
+
+.ShiftTradePage_ShiftTradePage
+  .TradeDisplay
+  .TradeArea
+  .TradeInput2Shift
+  input {
+  position: relative;
+  flex: none;
+  margin-bottom: 41px;
+  height: 40px;
+  width: 305px;
+  font-size: large;
+  border: 2px solid rgba(0, 0, 0, 1);
+}
+
+.ShiftTradePage_ShiftTradePage
+  .TradeDisplay
+  .TradeArea
+  .TradeInput2
+  .EndTime_1
+  .Input_2 {
+  font-weight: 400;
+}
+.ShiftTradePage_ShiftTradePage .TradeDisplay .TradeButton input {
+  position: relative;
+  flex: none;
+  margin-top: 15%;
   margin-bottom: 53px;
+  margin-left: 500px;
   width: 160px;
   height: 52px;
   display: flex;
