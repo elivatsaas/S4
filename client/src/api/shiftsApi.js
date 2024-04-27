@@ -62,7 +62,7 @@ export const addShift = async ({
 };
 export const tradeShift = async ({ firstShiftId, secondShiftId }) => {
   await delay();
-  const response = await shiftsApi.post(`${shiftsUrlEndpoint}/trade}`, {
+  const response = await shiftsApi.post(`${shiftsUrlEndpoint}/trade`, {
     firstShiftId,
     secondShiftId,
   });
@@ -70,7 +70,7 @@ export const tradeShift = async ({ firstShiftId, secondShiftId }) => {
 };
 export const giveShift = async ({ shiftId, employeeId }) => {
   await delay();
-  const response = await shiftsApi.post(`${shiftsUrlEndpoint}/give}`, {
+  const response = await shiftsApi.post(`${shiftsUrlEndpoint}/give`, {
     shiftId,
     employeeId,
   });
