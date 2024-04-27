@@ -13,7 +13,6 @@ const ShiftDropdown = ({ shifts, toggleDropdown, isOpen, onSelectShift }) => {
       setSelectedShifts([...selectedShifts, shift]);
     }
     onSelectShift(selectedShifts);
-
   };
 
   return (
@@ -28,7 +27,9 @@ const ShiftDropdown = ({ shifts, toggleDropdown, isOpen, onSelectShift }) => {
                 checked={selectedShifts.includes(shift)}
                 onChange={() => handleShiftSelect(shift)}
               />
-              <span>{shift.date}</span>
+              <span>{`On ${shift.date.substring(0, 10)} At ${
+                shift.startTime
+              }`}</span>
             </label>
           ))}
         </div>
@@ -39,7 +40,6 @@ const ShiftDropdown = ({ shifts, toggleDropdown, isOpen, onSelectShift }) => {
           src={ImgAsset.AnnouncementPage_Vector_9}
           alt="Chevron down"
         />
-
       </div>
     </div>
   );
