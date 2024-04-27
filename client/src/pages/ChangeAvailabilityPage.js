@@ -1,96 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "../css/ChangeAvailabilityPage.css";
 import ImgAsset from "../public";
 import { Link } from "react-router-dom";
-import { getEmployees} from "../api/employeeApi";
-import { getSchedules } from "../api/schedulesApi";
-// import { updateAvailability } from "../../../server/src/handlers/availabilityHandlers";
-import { addAvailability } from "../api/availabilityApi";
-import EmployeeDropdown from "../components/dropdowns/EmployeeDropdown";
-import ScheduleDropdown from "../components/dropdowns/ScheduleDropdown";
-
-
-function isEmpty(array) {
-	return Array.isArray(array) && array.length === 0;
-  }
-
+import Property1Default from "../components/Property1Default";
 export default function ChangeAvailabilityPage() {
-  
-  const [dayOfWeek, setDayOfWeek] = useState(0);
-  const [startTime, setStartTime] = useState('');
-  const [endTime, setEndTime] = useState('');
-  const [employees, setEmployees] = useState([]);
-  const [schedules, setSchedules] = useState([]);
-  
-  const [selectedFilters, setSelectedFilters] = useState({
-	employeeIds: [],
-	scheduleIds: [],
-  });
-  
-  const [employeeDropdownOpen, setEmployeeDropdownOpen] = useState(false);
-  const toggleEmployeeDropdown = () =>
-    setEmployeeDropdownOpen(!employeeDropdownOpen);
-
-  const [scheduleDropdownOpen, setScheduleDropdownOpen] = useState(false);
-  const toggleScheduleDropdown = () =>
-    setScheduleDropdownOpen(!scheduleDropdownOpen);
-  const [employeeAvailability, setEmployeeAvailability] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const employeesData = await getEmployees();
-        setEmployees(employeesData);
-
-        const schedulesData = await getSchedules();
-        setSchedules(schedulesData);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  const handleFilterChange = (filterName, selectedValues) => {
-    setSelectedFilters({ ...selectedFilters, [filterName]: selectedValues });
-  };
-
-  const handleSubmit = () => {
-	console.log(selectedFilters.employeeIds, selectedFilters.scheduleIds);
-	var Employee_id = 0;
-	var Schedule_id = 0;
-	if (selectedFilters.employeeIds.length !== 0 && 
-	    selectedFilters.employeeIds.length < 2 &&
-		selectedFilters.scheduleIds.length !== 0 && 
-	    selectedFilters.scheduleIds.length < 2){
-		Employee_id = selectedFilters.employeeIds[0].id;
-		Schedule_id = selectedFilters.scheduleIds[0].id;
-		if(dayOfWeek.length === 0){
-			alert("Day has been left blank!");
-		}
-		else if (startTime.length === 0){
-			alert("Start time has been left blank!")
-		}
-		else if (endTime.length === 0){
-			alert("End time has been left blank!");
-		}
-		else{
-			console.log(Employee_id);
-			addAvailability({startTime, endTime, Employee_id, Schedule_id, dayOfWeek});
-			alert("Submitted!")
-		}
-	} else {
-		if (selectedFilters.employeeIds.length === 0 || 
-			selectedFilters.employeeIds.length > 1){
-			alert("Employee not selected/Multiple Selected!");
-		}
-		else {
-			alert("Schedule not selected/Multiple Selected!")
-		}
-	}
-  }
-
   return (
     <div className='ChangeAvailabilityPage_ChangeAvailabilityPage'>
 			<div className='TopBar'/>
@@ -131,43 +44,24 @@ export default function ChangeAvailabilityPage() {
 				<div className='InputDisplay'>
 					<div className='InputIndicators'>
 						<span className='Employee'>Employee:</span>
-						<span className='Schedule'>Schedule:</span>
-						<span className='Day'>Day (Mon=0; Sun=6):</span>
+						<span className='Day'>Day:</span>
 						<span className='StartTime'>Start Time:</span>
 						<span className='EndTime'>End Time:</span>
 					</div>
 					<div className='InputArea'>
-							{employees && employees.length > 0 && (
-                			<EmployeeDropdown
-							employees={employees}
-							isOpen={employeeDropdownOpen}
-							toggleDropdown={toggleEmployeeDropdown}
-							onSelectEmployee={(selectedEmployees) =>
-							handleFilterChange("employeeIds", selectedEmployees)
-                  			}
-                  			selectedEmployees={selectedFilters.employeeIds}
-                			/>
-              				)}
-
-							{schedules && schedules.length > 0 && (
-                			<ScheduleDropdown
-                  			schedules={schedules}
-                  			isOpen={scheduleDropdownOpen}
-							toggleDropdown={toggleScheduleDropdown}
-							onSelectSchedule={(selectedSchedules) =>
-                    		handleFilterChange("scheduleIds", selectedSchedules)
-                  			}
-                  			selectedSchedules={selectedFilters.scheduleIds}
-                			/>
-              				)}
-
-						<input type="number" name="dayOfWeek" id="dayOfWeek" value={dayOfWeek} onChange={(e) => setDayOfWeek(e.target.value)}/>
-						<input type="time" name="startTime" id="startTime" value={startTime} onChange={(e) => setStartTime(e.target.value)}/>
-						<input type="time" name="endTime" id="endTime" value={endTime} onChange={(e) => setEndTime(e.target.value)}/>
+						<div className='EmployeeDropdown'>
+							<span className='Label'>Placeholder</span>
+							<div className='chevrondown'>
+								<img className='Vector_9' src = {ImgAsset.ChangeAvailabilityPage_Vector_9} />
+							</div>
+						</div>
+						<Property1Default className='Day_1'/>
+						<Property1Default className='StartTime_1'/>
+						<Property1Default className='EndTime_1'/>
 					</div>
 				</div>
 				<div className='ChangeButton'>
-					<input type="button" name="change" id="change" value="Change" onClick={handleSubmit}/>
+					<span className='Change'>Change</span>
 				</div>
 			</div>
 		</div>

@@ -3,23 +3,34 @@ import { Link, useHistory } from "react-router-dom";
 import { login } from "../api/authenticationApi";
 import "../css/SignIn.css";
 import ImgAsset from "../public";
+import Property1Default from "../components/Property1Default";
 
 export default function SignIn() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [error, setError] = useState("");
+  const history = useHistory();
 
-  const handleSubmit = () => {
-	if(email.length === 0){
-		alert("Email has been left blank!");
-	}
-	else if ([password].length === 0){
-		alert("Password has been left blank!")
-	}
-	else{
-		login({email, password});
-	}
-  }
-  
+  const { email, password } = formData;
+
+  const handleInputChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await login({ email, password });
+      console.log(response);
+      if (response.status === 200) {
+        history.push("/schedulingpage");
+      } else {
+        setError(response.data.message);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      setError("An error occurred. Please try again later.");
+    }
+  };
 
   return (
     <div className='SignIn_SignIn'>
@@ -29,9 +40,7 @@ export default function SignIn() {
 				<Link to='/landingpage'>
 					<span className='Home'>Home</span>
 				</Link>
-				<Link to='/announcementpage'>
 				<span className='Announcements'>Announcements</span>
-				</Link>
 				<Link to='/schedulingpage'>
 					<span className='Schedule'>Schedule</span>
 				</Link>
@@ -59,8 +68,8 @@ export default function SignIn() {
 						<span className='Password'>Password:</span>
 					</div>
 					<div className='InputArea'>
-						<input type="text" name="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
-						<input type="password" name="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+						<Property1Default className='EmailInput'/>
+						<Property1Default className='PasswordInput'/>
 					</div>
 				</div>
 				<div className='ButtonArea'>
@@ -70,7 +79,7 @@ export default function SignIn() {
 						</div>
 					</Link>
 					<div className='SignInButton'>
-						<input type="button" name="logIn" id="logIn" value="Sign In" onClick={handleSubmit}/>
+						<span className='SignIn_2'>Sign In</span>
 					</div>
 				</div>
 			</div>

@@ -13,7 +13,6 @@ const ShiftDropdown = ({ shifts, toggleDropdown, isOpen, onSelectShift }) => {
       setSelectedShifts([...selectedShifts, shift]);
     }
     onSelectShift(selectedShifts);
-
   };
 
   return (
@@ -39,7 +38,6 @@ const ShiftDropdown = ({ shifts, toggleDropdown, isOpen, onSelectShift }) => {
           src={ImgAsset.AnnouncementPage_Vector_9}
           alt="Chevron down"
         />
-
       </div>
     </div>
   );

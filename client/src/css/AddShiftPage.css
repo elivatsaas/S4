@@ -13,7 +13,7 @@
 	position: absolute;
 	right: 0px;
 	top: -9px;
-	width: 100%;
+	width: 1440px;
 	height: 251px;
 	background: rgba(7,53,30,1.00);
 }
@@ -21,7 +21,7 @@
 	position: absolute;
 	left: 0px;
 	top: 1449px;
-	width: 100%;
+	width: 1440px;
 	height: 251px;
 	background: rgba(7,53,30,1.00);
 }
@@ -221,7 +221,7 @@
 .AddShiftPage_AddShiftPage .AddDisplay .InputDisplay {
 	position: relative;
 	flex: none;
-	margin-bottom: 65%;
+	margin-bottom: 58px;
 	width: 520px;
 	height: 198px;
 	display: flex;
@@ -252,67 +252,6 @@
 	font-weight: 500;
 	line-height: 24px;
 }
-
-.AddShiftPage_AddShiftPage .AddDisplay .InputDisplay .InputIndicators .Role {
-	position: relative;
-	flex: none;
-	margin-bottom: 51px;
-	width: 80px;
-	height: 24px;
-	display: flex;
-	align-items: center;
-	color: rgba(0,0,0,1.00);
-	font-family: Inter;
-	font-size: 16px;
-	font-weight: 500;
-	line-height: 24px;
-}
-
-.AddShiftPage_AddShiftPage .AddDisplay .InputDisplay .InputIndicators .Store {
-	position: relative;
-	flex: none;
-	margin-bottom: 51px;
-	width: 80px;
-	height: 24px;
-	display: flex;
-	align-items: center;
-	color: rgba(0,0,0,1.00);
-	font-family: Inter;
-	font-size: 16px;
-	font-weight: 500;
-	line-height: 24px;
-}
-
-.AddShiftPage_AddShiftPage .AddDisplay .InputDisplay .InputIndicators .Schedule {
-	position: relative;
-	flex: none;
-	margin-bottom: 51px;
-	width: 80px;
-	height: 24px;
-	display: flex;
-	align-items: center;
-	color: rgba(0,0,0,1.00);
-	font-family: Inter;
-	font-size: 16px;
-	font-weight: 500;
-	line-height: 24px;
-}
-
-.AddShiftPage_AddShiftPage .AddDisplay .InputDisplay .InputIndicators .Date {
-	position: relative;
-	flex: none;
-	margin-bottom: 51px;
-	width: 85px;
-	height: 24px;
-	display: flex;
-	align-items: center;
-	color: rgba(0,0,0,1.00);
-	font-family: Inter;
-	font-size: 16px;
-	font-weight: 500;
-	line-height: 24px;
-}
-
 .AddShiftPage_AddShiftPage .AddDisplay .InputDisplay .InputIndicators .StartTime {
 	position: relative;
 	flex: none;
@@ -350,12 +289,11 @@
 	display: flex;
 	flex-direction: column;
 	box-sizing: border-box;
-	align-items: flex-end;
 }
-.AddShiftPage_AddShiftPage .AddDisplay .InputDisplay .InputArea .Dropdowns ._04Dropdown{
+.AddShiftPage_AddShiftPage .AddDisplay .InputDisplay .InputArea .EmployeeDropdown {
 	position: relative;
 	flex: none;
-	margin-bottom: 35px;
+	margin-bottom: 29px;
 	width: 208px;
 	height: 40px;
 	display: flex;
@@ -370,7 +308,7 @@
 	border: 1px solid rgba(224.000001847744,224.000001847744,224.000001847744,1);
 	box-sizing: border-box;
 }
-.AddShiftPage_AddShiftPage .AddDisplay .InputDisplay .InputArea .Dropdowns .Label {
+.AddShiftPage_AddShiftPage .AddDisplay .InputDisplay .InputArea .EmployeeDropdown .Label {
 	position: relative;
 	flex: none;
 	margin-right: 16px;
@@ -382,14 +320,14 @@
 	font-weight: 400;
 	line-height: 24px;
 }
-.AddShiftPage_AddShiftPage .AddDisplay .InputDisplay .InputArea .Dropdowns .chevrondown {
+.AddShiftPage_AddShiftPage .AddDisplay .InputDisplay .InputArea .EmployeeDropdown .chevrondown {
 	position: relative;
 	flex: none;
 	margin-right: 16px;
 	width: 24px;
 	height: 24px;
 }
-.AddShiftPage_AddShiftPage .AddDisplay .InputDisplay .InputArea .Dropdowns .chevrondown .Vector_9 {
+.AddShiftPage_AddShiftPage .AddDisplay .InputDisplay .InputArea .EmployeeDropdown .chevrondown .Vector_9 {
 	position: absolute;
 	left: 6px;
 	top: 9px;
@@ -399,9 +337,7 @@
 .AddShiftPage_AddShiftPage .AddDisplay .InputDisplay .InputArea .StartTime_1 {
 	position: relative;
 	flex: none;
-	margin-bottom: 41px;
-	height: 40px;
-	font-size: large;
+	margin-bottom: 29px;
 	border: 2px solid rgba(0,0,0,1);
 }
 .AddShiftPage_AddShiftPage .AddDisplay .InputDisplay .InputArea .StartTime_1 .Input {
@@ -410,25 +346,13 @@
 .AddShiftPage_AddShiftPage .AddDisplay .InputDisplay .InputArea .EndTime_1 {
 	position: relative;
 	flex: none;
-	margin-bottom: 41px;
-	height: 40px;
-	font-size: large;
+	margin-bottom: 29px;
 	border: 2px solid rgba(0,0,0,1);
 }
-
-.AddShiftPage_AddShiftPage .AddDisplay .InputDisplay .InputArea input {
-	position: relative;
-	flex: none;
-	margin-bottom: 32px;
-	height: 40px;
-	font-size: large;
-	border: 2px solid rgba(0,0,0,1);
-}
-
 .AddShiftPage_AddShiftPage .AddDisplay .InputDisplay .InputArea .EndTime_1 .Input_1 {
 	font-weight: 400;
 }
-.AddShiftPage_AddShiftPage .AddDisplay .AddButton input{
+.AddShiftPage_AddShiftPage .AddDisplay .AddButton {
 	position: relative;
 	flex: none;
 	margin-bottom: 58px;

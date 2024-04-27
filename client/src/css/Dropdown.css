@@ -28,4 +28,6 @@
 
 .dropdown-content .dropdown-label input[type="checkbox"] {
   margin-right: 8px; /* Add space between checkbox and label */
+  width: 12px !important;
+  height: 12px !important;
 }

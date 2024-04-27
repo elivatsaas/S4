@@ -3,8 +3,7 @@ import axios from "axios";
 const delay = () => new Promise((res) => setTimeout(() => res(), 800));
 
 const shiftsApi = axios.create({
-  baseURL:
-    "http://ec2-13-52-252-101.us-west-1.compute.amazonaws.com:8080/api/v1",
+  baseURL: "http://localhost:8080/api/v1",
 });
 
 export const shiftsUrlEndpoint = "/shifts";
@@ -62,7 +61,7 @@ export const addShift = async ({
 };
 export const tradeShift = async ({ firstShiftId, secondShiftId }) => {
   await delay();
-  const response = await shiftsApi.post(`${shiftsUrlEndpoint}/trade}`, {
+  const response = await shiftsApi.post(`${shiftsUrlEndpoint}/trade`, {
     firstShiftId,
     secondShiftId,
   });
@@ -70,7 +69,7 @@ export const tradeShift = async ({ firstShiftId, secondShiftId }) => {
 };
 export const giveShift = async ({ shiftId, employeeId }) => {
   await delay();
-  const response = await shiftsApi.post(`${shiftsUrlEndpoint}/give}`, {
+  const response = await shiftsApi.post(`${shiftsUrlEndpoint}/give`, {
     shiftId,
     employeeId,
   });

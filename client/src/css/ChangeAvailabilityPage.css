@@ -13,7 +13,7 @@
 	position: absolute;
 	right: 0px;
 	top: -9px;
-	width: 100%;
+	width: 1440px;
 	height: 251px;
 	background: rgba(7,53,30,1.00);
 }
@@ -21,7 +21,7 @@
 	position: absolute;
 	left: 0px;
 	top: 1449px;
-	width: 100%;
+	width: 1440px;
 	height: 251px;
 	background: rgba(7,53,30,1.00);
 }
@@ -252,25 +252,11 @@
 	font-weight: 500;
 	line-height: 24px;
 }
-.ChangeAvailabilityPage_ChangeAvailabilityPage .ChangeDisplay .InputDisplay .InputIndicators .Schedule {
-	position: relative;
-	flex: none;
-	margin-bottom: 75px;
-	width: 80px;
-	height: 24px;
-	display: flex;
-	align-items: center;
-	color: rgba(0,0,0,1.00);
-	font-family: Inter;
-	font-size: 16px;
-	font-weight: 500;
-	line-height: 24px;
-}
 .ChangeAvailabilityPage_ChangeAvailabilityPage .ChangeDisplay .InputDisplay .InputIndicators .Day {
 	position: relative;
 	flex: none;
 	margin-bottom: 75px;
-	width: 200px;
+	width: 34px;
 	height: 24px;
 	display: flex;
 	align-items: center;
@@ -317,9 +303,8 @@
 	display: flex;
 	flex-direction: column;
 	box-sizing: border-box;
-	align-items: flex-end;
 }
-.ChangeAvailabilityPage_ChangeAvailabilityPage .ChangeDisplay .InputDisplay .InputArea ._04Dropdown {
+.ChangeAvailabilityPage_ChangeAvailabilityPage .ChangeDisplay .InputDisplay .InputArea .EmployeeDropdown {
 	position: relative;
 	flex: none;
 	margin-bottom: 51px;
@@ -330,7 +315,6 @@
 	padding-right: 16px;
 	padding-bottom: 8px;
 	padding-left: 16px;
-	margin-bottom: 60px;
 	box-sizing: border-box;
 	align-items: center;
 	background: rgba(120,222,159,1.00);
@@ -338,7 +322,7 @@
 	border: 1px solid rgba(224.000001847744,224.000001847744,224.000001847744,1);
 	box-sizing: border-box;
 }
-.ChangeAvailabilityPage_ChangeAvailabilityPage .ChangeDisplay .InputDisplay .InputArea ._04Dropdown .Label {
+.ChangeAvailabilityPage_ChangeAvailabilityPage .ChangeDisplay .InputDisplay .InputArea .EmployeeDropdown .Label {
 	position: relative;
 	flex: none;
 	margin-right: 16px;
@@ -350,14 +334,14 @@
 	font-weight: 400;
 	line-height: 24px;
 }
-.ChangeAvailabilityPage_ChangeAvailabilityPage .ChangeDisplay .InputDisplay .InputArea ._04Dropdown .chevrondown {
+.ChangeAvailabilityPage_ChangeAvailabilityPage .ChangeDisplay .InputDisplay .InputArea .EmployeeDropdown .chevrondown {
 	position: relative;
 	flex: none;
 	margin-right: 16px;
 	width: 24px;
 	height: 24px;
 }
-.ChangeAvailabilityPage_ChangeAvailabilityPage .ChangeDisplay .InputDisplay .InputArea ._04Dropdown .chevrondown .Vector_9 {
+.ChangeAvailabilityPage_ChangeAvailabilityPage .ChangeDisplay .InputDisplay .InputArea .EmployeeDropdown .chevrondown .Vector_9 {
 	position: absolute;
 	left: 6px;
 	top: 9px;
@@ -367,10 +351,7 @@
 .ChangeAvailabilityPage_ChangeAvailabilityPage .ChangeDisplay .InputDisplay .InputArea .Day_1 {
 	position: relative;
 	flex: none;
-	margin-top: 10px;
 	margin-bottom: 51px;
-	height: 40px;
-	font-size: large;
 	border: 2px solid rgba(0,0,0,1);
 }
 .ChangeAvailabilityPage_ChangeAvailabilityPage .ChangeDisplay .InputDisplay .InputArea .Day_1 .Input {
@@ -380,8 +361,6 @@
 	position: relative;
 	flex: none;
 	margin-bottom: 51px;
-	height: 40px;
-	font-size: large;
 	border: 2px solid rgba(0,0,0,1);
 }
 .ChangeAvailabilityPage_ChangeAvailabilityPage .ChangeDisplay .InputDisplay .InputArea .StartTime_1 .Input_1 {
@@ -391,27 +370,14 @@
 	position: relative;
 	flex: none;
 	margin-bottom: 51px;
-	height: 40px;
-	font-size: large;
 	border: 2px solid rgba(0,0,0,1);
 }
-
-.ChangeAvailabilityPage_ChangeAvailabilityPage .ChangeDisplay .InputDisplay .InputArea input {
-	position: relative;
-	flex: none;
-	margin-bottom: 55px;
-	height: 40px;
-	font-size: large;
-	border: 2px solid rgba(0,0,0,1);
-}
-
 .ChangeAvailabilityPage_ChangeAvailabilityPage .ChangeDisplay .InputDisplay .InputArea .EndTime_1 .Input_2 {
 	font-weight: 400;
 }
-.ChangeAvailabilityPage_ChangeAvailabilityPage .ChangeDisplay .ChangeButton input {
+.ChangeAvailabilityPage_ChangeAvailabilityPage .ChangeDisplay .ChangeButton {
 	position: relative;
 	flex: none;
-	margin-top: 20%;
 	margin-bottom: 76px;
 	width: 160px;
 	height: 52px;
