@@ -1,6 +1,9 @@
 const express = require("express");
 
 const employeeHandler = require("./../handlers/employeeHandlers");
+const employeeRoleHandler = require("./../handlers/employeeRoleHandlers");
+const employeeStoreHandler = require("./../handlers/employeeStoreHandlers");
+
 const AppError = require("./../utils/appError");
 
 const catchASync = require("./../utils/catchASync");
@@ -16,6 +19,34 @@ router.route("/").get(
       results: employees.length,
       data: {
         employees,
+      },
+    });
+  })
+);
+router.route("/roles/:Employee_id").get(
+  catchASync(async function (req, res, next) {
+    var employeeRoles = await employeeRoleHandler.getEmployeeRoleByEmployee(
+      req.params.Employee_id * 1
+    );
+    res.status(200).json({
+      status: "success",
+      results: employeeRoles.length,
+      data: {
+        employeeRoles,
+      },
+    });
+  })
+);
+router.route("/stores/:Employee_id").get(
+  catchASync(async function (req, res, next) {
+    var employeeStores = await employeeStoreHandler.getEmployeeStoreByEmployee(
+      req.params.Employee_id * 1
+    );
+    res.status(200).json({
+      status: "success",
+      results: employeeStores.length,
+      data: {
+        employeeStores,
       },
     });
   })

@@ -51,7 +51,7 @@ async function getEmployeeRoleByEmployee(id) {
     [id]
   );
 
-  return result[0];
+  return result;
 }
 
 async function createEmployeeRole(Employee_id, Role_id) {
@@ -112,6 +112,7 @@ async function deleteEmployeeRolesByRole(id) {
 module.exports = {
   getAllEmployeeRoles: getAllEmployeeRoles,
   getEmployeeRole: getEmployeeRole,
+  getEmployeeRoleByEmployee: getEmployeeRoleByEmployee,
   createEmployeeRole: createEmployeeRole,
   deleteEmployeeRole: deleteEmployeeRole,
   deleteEmployeeRolesByRole: deleteEmployeeRolesByRole,

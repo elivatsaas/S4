@@ -1,0 +1,139 @@
+.NavBar {
+  position: absolute;
+  left: 616px;
+  top: 99px;
+  width: 665px;
+  height: 20px;
+  display: flex;
+  box-sizing: border-box;
+}
+.NavBar .Home {
+  position: relative;
+  flex: none;
+  margin-right: 25px;
+  width: 75px;
+  height: 20px;
+  color: rgba(255, 255, 255, 1);
+  font-family: Inter;
+  font-size: 25px;
+  font-weight: 400;
+  line-height: 20px;
+}
+.NavBar .Announcements {
+  position: relative;
+  flex: none;
+  margin-right: 25px;
+  width: 233px;
+  height: 20px;
+  color: rgba(255, 255, 255, 1);
+  font-family: Inter;
+  font-size: 25px;
+  font-weight: 400;
+  line-height: 20px;
+}
+.NavBar .Schedule {
+  position: relative;
+  flex: none;
+  margin-right: 25px;
+  width: 134px;
+  height: 20px;
+  color: rgba(255, 255, 255, 1);
+  font-family: Inter;
+  font-size: 25px;
+  font-weight: 400;
+  line-height: 20px;
+}
+.NavBar .Employees {
+  position: relative;
+  flex: none;
+  margin-right: 25px;
+  width: 148px;
+  height: 20px;
+  color: rgba(255, 255, 255, 1);
+  font-family: Inter;
+  font-size: 25px;
+  font-weight: 400;
+  line-height: 20px;
+}
+.Logo {
+  position: absolute;
+  left: 200px;
+  top: 0px;
+  width: 386px;
+  height: 316px;
+}
+.Logo .Vector {
+  position: absolute;
+  left: 114.6427001953125px;
+  top: 26.3585205078125px;
+  width: 42.217539258571485%;
+  height: 47.30155558525762%;
+}
+.Logo .Vector_1 {
+  position: absolute;
+  left: 163.2933349609375px;
+  top: 174.63729858398438px;
+  width: 17.012405395507812%;
+  height: 5.301770681067358%;
+}
+.Logo .Vector_2 {
+  position: absolute;
+  left: 180.429443359375px;
+  top: 196.31304931640625px;
+  width: 8.124049586953277%;
+  height: 2.5267898281918293%;
+}
+.Logo .Vector_3 {
+  position: absolute;
+  left: 186.960693359375px;
+  top: 105.4359130859375px;
+  width: 8.654516348567034%;
+  height: 15.391582778737515%;
+}
+.Logo .Vector_4 {
+  position: absolute;
+  left: 172.702392578125px;
+  top: 106.84036254882812px;
+  width: 1.8076390182416056%;
+  height: 2.3328240913680838%;
+}
+.Logo .Vector_5 {
+  position: absolute;
+  left: 220.1866455078125px;
+  top: 128.97402954101562px;
+  width: 2.0796249567535874%;
+  height: 1.4978307711927197%;
+}
+.Logo .Vector_6 {
+  position: absolute;
+  left: 163.998291015625px;
+  top: 128.961669921875px;
+  width: 2.0351318497731894%;
+  height: 1.4824094651620598%;
+}
+.Logo .Vector_7 {
+  position: absolute;
+  left: 194.0439453125px;
+  top: 97.82684326171875px;
+  width: 1.1208241467648836%;
+  height: 2.6304661473141437%;
+}
+.Logo .Vector_8 {
+  position: absolute;
+  left: 212.48876953125px;
+  top: 106.89886474609375px;
+  width: 1.811937470510216%;
+  height: 2.313817301882973%;
+}
+.Logo .S4 {
+  position: absolute;
+  left: 277.775634765625px;
+  top: 154.06405639648438px;
+  width: 22.563418452603827%;
+  height: 14.9466188648079%;
+  color: rgba(255, 255, 255, 1);
+  font-family: Jacques Francois;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 30px;
+}

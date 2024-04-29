@@ -265,6 +265,15 @@
 	font-size: large;
 	border: 2px solid rgba(0,0,0,1);
 }
+
+.SignIn_SignIn .SignInDisplay .SignInArea .InputArea input {
+	position: relative;
+	flex: none;
+	margin-bottom: 51px;
+	height: 40px;
+	font-size: large;
+	border: 2px solid rgba(0,0,0,1);
+}
 .SignIn_SignIn .SignInDisplay .SignInArea .InputArea .PasswordInput .Input_1 {
 	font-weight: 400;
 }
@@ -308,7 +317,7 @@
 	font-weight: 500;
 	line-height: 24px;
 }
-.SignIn_SignIn .SignInDisplay .ButtonArea .SignInButton {
+.SignIn_SignIn .SignInDisplay .ButtonArea .SignInButton input{
 	position: relative;
 	flex: none;
 	margin-right: 34px;

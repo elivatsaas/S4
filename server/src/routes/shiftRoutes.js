@@ -127,7 +127,12 @@ router.route("/updatecpp").put(
     //console.log(req, res);
     var data = req.body;
     data.forEach(async function (shift) {
-      var Employee_id = shift.employee_id;
+      var Employee_id;
+      if (shift.employee_id === -1) {
+        Employee_id = null;
+      } else {
+        Employee_id = shift.employee_id;
+      }
       var id = shift.shiftId;
 
       const updatedShift = await shiftHandler.updateShift(
@@ -237,76 +242,52 @@ router.route("/take").post(
 
 router.route("/trade").post(
   catchASync(async (req, res, next) => {
-    const shift1 = await shiftHandler.getShift(req.body.firstShiftId);
-    const employee1 = await employeeHandlers.getEmployee(
-      req.body.firstEmployeeId
-    );
-    const shift2 = await shiftHandler.getShift(req.body.secondShiftId);
-    const employee2 = await employeeHandlers.getEmployee(
-      req.body.secondEmployeeId
-    );
+    const shift1 = await shiftHandler.getShift(req.body.firstShiftId * 1);
+    const shift2 = await shiftHandler.getShift(req.body.secondShiftId * 1);
 
     if (!shift1 | !shift2) {
       return next(new AppError("No shift found with that ID", 404));
     }
-    if (!employee1 | !employee2) {
-      return next(new AppError("No employee found with that ID", 404));
-    }
-    if (shift1.Employee_id != employee1.id) {
-      return next(
-        new AppError(
-          `Employee ${employee1.firstName} ${employee1.lastName} does not own that shift`,
-          404
-        )
-      );
-    }
-    if (shift2.Employee_id != employee2.id) {
-      return next(
-        new AppError(
-          `Employee ${employee2.firstName} ${employee2.lastName} does not own that shift`,
-          404
-        )
-      );
-    }
 
-    const shifts1Res = await shiftHandler.getEmployeesForShift(shift1.id);
-    const shifts1 = shifts1Res[0];
-    const employeeIsInShift1 = shifts1.some(
-      (employee) => employee.employee_id === employee1.id
-    );
+    // const shifts1Res = await shiftHandler.getEmployeesForShift(shift1.id);
+    // const shifts1 = shifts1Res[0];
+    // const employeeIsInShift1 = shifts1.some(
+    //   (employee) => employee.employee_id === employee1.id
+    // );
 
-    const shifts2Res = await shiftHandler.getEmployeesForShift(shift2.id);
-    const shifts2 = shifts2Res[0];
-    const employeeIsInShift2 = shifts2.some(
-      (employee) => employee.employee_id === employee2.id
-    );
-    if (!employeeIsInShift1) {
-      return next(
-        new AppError(
-          `Employee ${employee1.firstName} ${employee1.lastName} is not eligible for that shift`,
-          404
-        )
-      );
-    }
+    // const shifts2Res = await shiftHandler.getEmployeesForShift(shift2.id);
+    // const shifts2 = shifts2Res[0];
+    // const employeeIsInShift2 = shifts2.some(
+    //   (employee) => employee.employee_id === employee2.id
+    // );
+    // if (!employeeIsInShift1) {
+    //   return next(
+    //     new AppError(
+    //       `Employee ${employee1.firstName} ${employee1.lastName} is not eligible for that shift`,
+    //       404
+    //     )
+    //   );
+    // }
     //const shifts2 = shiftHandler.getEmployeesForShift(shift2);
     //const employeeIsInShift2 = shifts2.some(
     //  (employee) => employee.employee_id === employee2.id
     //);
-    if (!employeeIsInShift2) {
-      return next(
-        new AppError(
-          `Employee ${employee2.firstName} ${employee2.lastName} is not eligible for that shift`,
-          404
-        )
-      );
-    }
-
+    // if (!employeeIsInShift2) {
+    //   return next(
+    //     new AppError(
+    //       `Employee ${employee2.firstName} ${employee2.lastName} is not eligible for that shift`,
+    //       404
+    //     )
+    //   );
+    // }
+    employee1Id = shift1.Employee_id;
+    employee2Id = shift2.Employee_id;
     const updatedShift1 = await shiftHandler.updateShift(
       shift1.id,
       undefined,
       undefined,
       undefined,
-      employee2.id,
+      employee2Id,
       undefined,
       undefined,
       undefined
@@ -316,11 +297,12 @@ router.route("/trade").post(
       undefined,
       undefined,
       undefined,
-      employee1.id,
+      employee1Id,
       undefined,
       undefined,
       undefined
     );
+
     res.status(201).json({
       status: "success",
       data: {

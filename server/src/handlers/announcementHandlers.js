@@ -32,57 +32,138 @@ async function getAnnouncement(id) {
 
   return annoucement[0];
 }
-async function getAnnouncementsBySchedule(Schedule_id, id) {
-  const [result] = await db.query(
-    `SELECT *
-    FROM Announcement
-    WHERE Schedule_id = ?
-    AND Announcement_id = ? 
-    `,
-    [Schedule_id, id]
-  );
 
+async function getAnnouncementsBySchedules() {
+  const result = await db.query(
+    `SELECT *
+    FROM AnnouncementSchedules
+    `
+  );
+  if (!result) {
+    result = {
+      status: 404,
+      message: "No announcement found for Schedules",
+    };
+  }
   return result;
 }
-async function getAnnouncementByStore(Store_id, id) {
+async function getAnnouncementsBySchedule(Schedule_id) {
+  const [result] = await db.query(
+    `SELECT *
+    FROM AnnouncementSchedules
+    WHERE Schedule_id = ?
+    `,
+    [Schedule_id]
+  );
+  if (!result) {
+    result = {
+      status: 404,
+      message: "No announcement found with that Schedule ID",
+    };
+  }
+  return result;
+}
+async function getAnnouncementByStores() {
+  try {
+    const [result] = await db.query(`SELECT * FROM AnnouncementStores`);
+    if (!result) {
+      return null; // Return null if no announcement found
+    }
+    return result; // Return the announcement result
+  } catch (error) {
+    console.error("Error fetching announcement by stores:", error);
+    throw error; // Throw the error so it can be caught elsewhere
+  }
+}
+
+async function getAnnouncementByStore(Store_id) {
   const [result] = await db.query(
     `SELECT *
     FROM AnnouncementStores
     WHERE Store_id = ?
-    AND Announcement_id = ?
     `,
-    [Store_id, id]
+    [Store_id]
   );
-
-  return result;
+  if (!result) {
+    result = {
+      status: 404,
+      message: "No announcement found with that Store ID",
+    };
+    return result;
+  }
 }
 
-async function getAnnouncementByRole(Role_id, id) {
+async function getAnnouncementByRoles() {
+  try {
+    const [result] = await db.query(`SELECT * FROM AnnouncementRoles`);
+    if (!result) {
+      return null; // Return null if no announcement found
+    }
+    return result; // Return the announcement result
+  } catch (error) {
+    console.error("Error fetching announcement by roles:", error);
+    throw error; // Throw the error so it can be caught elsewhere
+  }
+}
+async function getAnnouncementByRole(Role_id) {
   const [result] = await db.query(
     `SELECT *
     FROM AnnouncementRoles
     WHERE Role_id = ?
-    AND Announcement_id = ?
     `,
-    [Role_id, id]
+    [Role_id]
   );
+  if (!result) {
+    result = {
+      status: 404,
+      message: "No announcement found with that Role ID",
+    };
+    return result;
+  }
+}
 
+async function getAnnouncementByEmployees() {
+  let result = await db.query(
+    `SELECT *
+    FROM AnnouncementEmployees
+    `
+  );
+  console.log(result);
+  if (!result) {
+    result = {
+      status: 404,
+      message: "No announcement found for Employees",
+    };
+  }
   return result;
 }
 
-async function getAnnouncementByEmployee(Employee_id, id) {
-  results[i] = await db.query(
+async function getAnnouncementByEmployee(Employee_id) {
+  let result = await db.query(
+    `SELECT *
+        FROM AnnouncementEmployees
+        WHERE Employee_id = ?
+        `,
+    [Employee_id]
+  );
+  if (!result) {
+    result = {
+      status: 404,
+      message: "No announcement found with that Employee ID",
+    };
+  }
+  return result;
+}
+async function getAnnouncementByShiftDates() {
+  result = await db.query(
     `SELECT *
         FROM AnnouncementShifts
-        WHERE Employee_id = ?
-        AND Announcement_id = ?
-        `,
-    [Employee_id, id]
+        WHERE Shift_id = ?
+        `
   );
-  return results;
+  return result;
 }
-
-async function getAnnouncementByShiftDate(date, id) {
+async function getAnnouncementByShiftDate(date) {
   const [shifts] = shiftHandlers.getShiftsByDate(date);
   var results = new Array();
   for (let i = 0; i < shifts.length; i++) {
@@ -90,7 +171,6 @@ async function getAnnouncementByShiftDate(date, id) {
       `SELECT *
         FROM AnnouncementShifts
         WHERE Shift_id = ?
-        AND Announcement_id = ?
         `,
       [shifts[i].id, id]
     );
@@ -114,6 +194,117 @@ async function createAnnouncement(body, Employee_id) {
     await getAnnouncement(annoucement.insertId)
   );
   return getAnnouncement(annoucement.insertId);
+}
+async function createAnnouncementStores(announcementId, storeId) {
+  try {
+    const [result] = await db.query(
+      `
+      INSERT INTO AnnouncementStores(Announcement_id, Store_id)
+      VALUES (?, ?)
+      `,
+      [announcementId, storeId]
+    );
+
+    if (!result || result.affectedRows === 0) {
+      throw new Error("Failed to create announcement-store relationship");
+    }
+
+    return result;
+  } catch (error) {
+    console.error("Error creating announcement-store relationship:", error);
+    throw new Error("Failed to create announcement-store relationship");
+  }
+}
+
+async function createAnnouncementRoles(announcementId, roleId) {
+  try {
+    const [result] = await db.query(
+      `
+      INSERT INTO AnnouncementRoles(Announcement_id, Role_id)
+      VALUES (?, ?)
+      `,
+      [announcementId, roleId]
+    );
+
+    if (!result || result.affectedRows === 0) {
+      throw new Error("Failed to create announcement-role relationship");
+    }
+
+    return result;
+  } catch (error) {
+    console.error("Error creating announcement-role relationship:", error);
+    throw new Error("Failed to create announcement-role relationship");
+  }
+}
+
+async function createAnnouncementEmployee(announcementId, employeeId) {
+  try {
+    const [result] = await db.query(
+      `
+      INSERT INTO AnnouncementEmployees(Announcement_id, Employee_id)
+      VALUES (?, ?)
+      `,
+      [announcementId, employeeId]
+    );
+
+    if (!result || result.affectedRows === 0) {
+      throw new Error("Failed to create announcement-employee relationship");
+    }
+
+    return result;
+  } catch (error) {
+    console.error("Error creating announcement-employee relationship:", error);
+    throw new Error("Failed to create announcement-employee relationship");
+  }
+}
+
+async function createAnnouncementSchedule(announcementId, scheduleId) {
+  try {
+    const [result] = await db.query(
+      `
+      INSERT INTO AnnouncementSchedules(Announcement_id, Schedule_id)
+      VALUES (?, ?)
+      `,
+      [announcementId, scheduleId]
+    );
+
+    // Check if the relationship was successfully inserted
+    if (!result || result.affectedRows === 0) {
+      throw new Error("Failed to create announcement-schedule relationship");
+    }
+
+    // Return the inserted relationship data
+    return result;
+  } catch (error) {
+    // Handle errors
+    console.error("Error creating announcement-schedule relationship:", error);
+    throw new Error("Failed to create announcement-schedule relationship");
+  }
+}
+
+async function createAnnouncementShift(announcementId, shiftId) {
+  try {
+    // Insert the announcement-shift relationship into the AnnouncementShifts table
+    const [result] = await db.query(
+      `
+      INSERT INTO AnnouncementShifts(Announcement_id, Shift_id)
+      VALUES (?, ?)
+      `,
+      [announcementId, shiftId]
+    );
+
+    // Check if the relationship was successfully inserted
+    if (!result || result.affectedRows === 0) {
+      throw new Error("Failed to create announcement-shift relationship");
+    }
+
+    // Return the inserted relationship data
+    return result;
+  } catch (error) {
+    // Handle errors
+    console.error("Error creating announcement-shift relationship:", error);
+    throw new Error("Failed to create announcement-shift relationship");
+  }
 }
 
 async function updateAnnouncement(annoucement_id, body) {
@@ -364,7 +555,17 @@ module.exports = {
   getAnnouncementByStore: getAnnouncementByStore,
   getAnnouncementByRole: getAnnouncementByRole,
   getAnnouncementByEmployee: getAnnouncementByEmployee,
+  getAnnouncementsBySchedules: getAnnouncementsBySchedules,
+  getAnnouncementByShiftDates: getAnnouncementByShiftDates,
+  getAnnouncementByStores: getAnnouncementByStores,
+  getAnnouncementByRoles: getAnnouncementByRoles,
+  getAnnouncementByEmployees: getAnnouncementByEmployees,
   createAnnouncement: createAnnouncement,
+  createAnnouncementStores: createAnnouncementStores,
+  createAnnouncementShift: createAnnouncementShift,
+  createAnnouncementRoles: createAnnouncementRoles,
+  createAnnouncementEmployee: createAnnouncementEmployee,
+  createAnnouncementSchedule: createAnnouncementSchedule,
   updateAnnouncement: updateAnnouncement,
   deleteAnnouncement: deleteAnnouncement,
 };

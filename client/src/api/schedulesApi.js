@@ -3,7 +3,8 @@ import axios from "axios";
 const delay = () => new Promise((res) => setTimeout(() => res(), 800));
 
 const schedulesApi = axios.create({
-  baseURL: "http://localhost:8080/api/v1",
+  baseURL:
+    "http://ec2-13-52-252-101.us-west-1.compute.amazonaws.com:8080/api/v1",
 });
 
 export const schedulesUrlEndpoint = "/schedules";
@@ -12,7 +13,6 @@ export const getSchedules = async () => {
   await delay();
   const response = await schedulesApi.get(schedulesUrlEndpoint);
   return response.data.data.schedules;
-
 };
 
 export const getSchedule = async (id) => {
@@ -60,6 +60,14 @@ export const generateSchedule = async (id) => {
   await delay();
   const response = await schedulesApi.get(
     `${schedulesUrlEndpoint}/generate/${id}`
+  );
+  return response.data;
+};
+
+export const confirmSchedule = async (id) => {
+  await delay();
+  const response = await schedulesApi.post(
+    `${schedulesUrlEndpoint}/confirm/${id}`
   );
   return response.data;
 };

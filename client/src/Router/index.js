@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import NavBar from "../components/NavBar";
 import ChangeAvailabilityPage from "../pages/ChangeAvailabilityPage";
 import AddShiftPage from "../pages/AddShiftPage";
 import ShiftTradePage from "../pages/ShiftTradePage";
@@ -22,6 +23,7 @@ import CheckedTrue from "../components/CheckedTrue";
 const RouterDOM = () => {
   return (
     <Router>
+      <NavBar />
       <Switch>
         <Route exact path="/">
           <LandingPage />

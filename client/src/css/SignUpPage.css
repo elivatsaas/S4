@@ -241,7 +241,7 @@
 .SignUpPage_SignUpPage .SignUpDisplay .SignUpArea .SignUpDescriptor .FirstName {
 	position: relative;
 	flex: none;
-	margin-bottom: 80px;
+	margin-bottom: 60px;
 	width: 88px;
 	height: 24px;
 	display: flex;
@@ -255,7 +255,7 @@
 .SignUpPage_SignUpPage .SignUpDisplay .SignUpArea .SignUpDescriptor .LastName {
 	position: relative;
 	flex: none;
-	margin-bottom: 80px;
+	margin-bottom: 60px;
 	width: 87px;
 	height: 24px;
 	display: flex;
@@ -269,7 +269,7 @@
 .SignUpPage_SignUpPage .SignUpDisplay .SignUpArea .SignUpDescriptor .Email {
 	position: relative;
 	flex: none;
-	margin-bottom: 80px;
+	margin-bottom: 60px;
 	width: 46px;
 	height: 24px;
 	display: flex;
@@ -283,7 +283,7 @@
 .SignUpPage_SignUpPage .SignUpDisplay .SignUpArea .SignUpDescriptor .PhoneNumber {
 	position: relative;
 	flex: none;
-	margin-bottom: 80px;
+	margin-bottom: 60px;
 	width: 119px;
 	height: 24px;
 	display: flex;
@@ -297,7 +297,7 @@
 .SignUpPage_SignUpPage .SignUpDisplay .SignUpArea .SignUpDescriptor .HireDate {
 	position: relative;
 	flex: none;
-	margin-bottom: 80px;
+	margin-bottom: 60px;
 	width: 76px;
 	height: 24px;
 	display: flex;
@@ -311,7 +311,7 @@
 .SignUpPage_SignUpPage .SignUpDisplay .SignUpArea .SignUpDescriptor .DateofBirth {
 	position: relative;
 	flex: none;
-	margin-bottom: 80px;
+	margin-bottom: 60px;
 	width: 102px;
 	height: 24px;
 	display: flex;
@@ -325,7 +325,7 @@
 .SignUpPage_SignUpPage .SignUpDisplay .SignUpArea .SignUpDescriptor .PayRate {
 	position: relative;
 	flex: none;
-	margin-bottom: 80px;
+	margin-bottom: 60px;
 	width: 72px;
 	height: 24px;
 	display: flex;
@@ -339,7 +339,7 @@
 .SignUpPage_SignUpPage .SignUpDisplay .SignUpArea .SignUpDescriptor .Password {
 	position: relative;
 	flex: none;
-	margin-bottom: 80px;
+	margin-bottom: 60px;
 	width: 80px;
 	height: 24px;
 	display: flex;
@@ -350,6 +350,22 @@
 	font-weight: 500;
 	line-height: 24px;
 }
+
+.SignUpPage_SignUpPage .SignUpDisplay .SignUpArea .SignUpDescriptor .confirmPassword {
+	position: relative;
+	flex: none;
+	margin-bottom: 20px;
+	width: 150px;
+	height: 24px;
+	display: flex;
+	align-items: center;
+	color: rgba(0,0,0,1.00);
+	font-family: Inter;
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 24px;
+}
+
 .SignUpPage_SignUpPage .SignUpDisplay .SignUpArea .SignUpInput {
 	position: relative;
 	flex: none;
@@ -445,10 +461,20 @@
 	font-size: large;
 	border: 2px solid rgba(0,0,0,1);
 }
+
+.SignUpPage_SignUpPage .SignUpDisplay .SignUpArea .SignUpInput input{
+	position: relative;
+	flex: none;
+	margin-bottom: 40px;
+	height: 40px;
+	font-size: large;
+	border: 2px solid rgba(0,0,0,1);
+}
+
 .SignUpPage_SignUpPage .SignUpDisplay .SignUpArea .SignUpInput .Password_1 .Input_7 {
 	font-weight: 400;
 }
-.SignUpPage_SignUpPage .SignUpDisplay .SignUpButton {
+.SignUpPage_SignUpPage .SignUpDisplay .SignUpButton input{
 	position: relative;
 	flex: none;
 	margin-bottom: 65px;

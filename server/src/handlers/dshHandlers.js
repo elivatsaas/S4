@@ -159,6 +159,7 @@ module.exports = {
   getDesiredShiftHour: getDesiredShiftHour,
   getDesiredShiftHoursByEmployee: getDesiredShiftHoursByEmployee,
   getDesiredShiftHoursBySchedule: getDesiredShiftHoursBySchedule,
+  getDesiredShiftHourForSchedule: getDesiredShiftHourForSchedule,
   createDesiredShiftHour: createDesiredShiftHour,
   updateDesiredShiftHour: updateDesiredShiftHour,
   deleteDesiredShiftHour: deleteDesiredShiftHour,

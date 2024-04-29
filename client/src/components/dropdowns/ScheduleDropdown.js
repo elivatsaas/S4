@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ImgAsset from "../../public";
 import "../../css/Dropdown.css";
 
@@ -7,30 +7,40 @@ const ScheduleDropdown = ({
   toggleDropdown,
   isOpen,
   onSelectSchedule,
+  selectedSchedules,
 }) => {
-  const [selectedSchedules, setSelectedSchedules] = useState([]);
+  const [selected, setSelected] = useState(selectedSchedules || []);
+
+  useEffect(() => {
+    setSelected(selectedSchedules || []);
+  }, [selectedSchedules]);
 
   const handleScheduleSelect = (schedule) => {
-    const isSelected = selectedSchedules.includes(schedule);
-    if (isSelected) {
-      setSelectedSchedules(selectedSchedules.filter((sch) => sch !== schedule));
-    } else {
-      setSelectedSchedules([...selectedSchedules, schedule]);
-    }
-    onSelectSchedule(selectedSchedules);
+    const isSelected = selected.includes(schedule);
+    let updatedSelected = [];
 
+    if (isSelected) {
+      updatedSelected = selected.filter((sch) => sch !== schedule);
+    } else {
+      updatedSelected = [...selected, schedule];
+    }
+    setSelected(updatedSelected);
+    onSelectSchedule(updatedSelected);
   };
 
   return (
     <div className="_04Dropdown" onClick={toggleDropdown}>
       <span className="Label">Schedule</span>
+      <div className="chevrondown">
+        <img className="Vector_9" src={ImgAsset.AnnouncementPage_Vector_9} />
+      </div>
       <div className={`dropdown-content ${isOpen ? "show" : ""}`}>
         <div className="dropdown-list">
           {schedules.map((schedule) => (
             <label key={schedule.id} className="dropdown-label">
               <input
                 type="checkbox"
-                checked={selectedSchedules.includes(schedule)}
+                checked={selected.includes(schedule)}
                 onChange={() => handleScheduleSelect(schedule)}
               />
               <span>
@@ -39,13 +49,6 @@ const ScheduleDropdown = ({
             </label>
           ))}
         </div>
-      </div>
-      <div className="chevrondown">
-        <img
-          className="Vector_9"
-          src={ImgAsset.AnnouncementPage_Vector_9}
-          alt="Chevron down"
-        />
       </div>
     </div>
   );

@@ -120,6 +120,7 @@ async function updateShift(
   Role_id,
   Store_id
 ) {
+  console;
   await db.query(
     `
     UPDATE Shift

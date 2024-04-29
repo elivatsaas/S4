@@ -3,7 +3,8 @@ import axios from "axios";
 const delay = () => new Promise((res) => setTimeout(() => res(), 800));
 
 const storesApi = axios.create({
-  baseURL: "http://localhost:8080/api/v1",
+  baseURL:
+    "http://ec2-13-52-252-101.us-west-1.compute.amazonaws.com:8080/api/v1",
 });
 
 export const storesUrlEndpoint = "/stores";
@@ -17,7 +18,7 @@ export const getStores = async () => {
 export const getStore = async (id) => {
   await delay();
   const response = await storesApi.get(`${storesUrlEndpoint}/${id}`);
-  return response.data.data;
+  return response.data.data.store;
 };
 
 export const getStoresByEmployee = async (id) => {
