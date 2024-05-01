@@ -1,0 +1,2812 @@
+[
+    {
+        "id": 13553,
+        "date": "2024-05-19T00:00:00.000Z",
+        "startTime": "08:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 10,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13554,
+        "date": "2024-05-19T00:00:00.000Z",
+        "startTime": "09:30:00",
+        "endTime": "14:00:00",
+        "Employee_id": 11,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13555,
+        "date": "2024-05-19T00:00:00.000Z",
+        "startTime": "10:30:00",
+        "endTime": "16:00:00",
+        "Employee_id": 13,
+        "Schedule_id": 5,
+        "Role_id": 3,
+        "Store_id": 1
+    },
+    {
+        "id": 13556,
+        "date": "2024-05-19T00:00:00.000Z",
+        "startTime": "11:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 14,
+        "Schedule_id": 5,
+        "Role_id": 4,
+        "Store_id": 1
+    },
+    {
+        "id": 13557,
+        "date": "2024-05-19T00:00:00.000Z",
+        "startTime": "14:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 21,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13558,
+        "date": "2024-05-19T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "20:30:00",
+        "Employee_id": 51,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13559,
+        "date": "2024-05-19T00:00:00.000Z",
+        "startTime": "14:00:00",
+        "endTime": "20:00:00",
+        "Employee_id": 53,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13560,
+        "date": "2024-05-19T00:00:00.000Z",
+        "startTime": "17:00:00",
+        "endTime": "21:30:00",
+        "Employee_id": 54,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13561,
+        "date": "2024-05-19T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 59,
+        "Schedule_id": 5,
+        "Role_id": 3,
+        "Store_id": 1
+    },
+    {
+        "id": 13562,
+        "date": "2024-05-19T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 60,
+        "Schedule_id": 5,
+        "Role_id": 4,
+        "Store_id": 1
+    },
+    {
+        "id": 13563,
+        "date": "2024-05-20T00:00:00.000Z",
+        "startTime": "08:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 11,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13564,
+        "date": "2024-05-20T00:00:00.000Z",
+        "startTime": "09:30:00",
+        "endTime": "14:00:00",
+        "Employee_id": 10,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13565,
+        "date": "2024-05-20T00:00:00.000Z",
+        "startTime": "10:30:00",
+        "endTime": "16:00:00",
+        "Employee_id": 59,
+        "Schedule_id": 5,
+        "Role_id": 3,
+        "Store_id": 1
+    },
+    {
+        "id": 13566,
+        "date": "2024-05-20T00:00:00.000Z",
+        "startTime": "11:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 55,
+        "Schedule_id": 5,
+        "Role_id": 4,
+        "Store_id": 1
+    },
+    {
+        "id": 13567,
+        "date": "2024-05-20T00:00:00.000Z",
+        "startTime": "14:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 61,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13568,
+        "date": "2024-05-20T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "20:30:00",
+        "Employee_id": 14,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13569,
+        "date": "2024-05-20T00:00:00.000Z",
+        "startTime": "14:00:00",
+        "endTime": "20:00:00",
+        "Employee_id": 16,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13570,
+        "date": "2024-05-20T00:00:00.000Z",
+        "startTime": "17:00:00",
+        "endTime": "21:30:00",
+        "Employee_id": 18,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13571,
+        "date": "2024-05-20T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 19,
+        "Schedule_id": 5,
+        "Role_id": 3,
+        "Store_id": 1
+    },
+    {
+        "id": 13572,
+        "date": "2024-05-20T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 20,
+        "Schedule_id": 5,
+        "Role_id": 4,
+        "Store_id": 1
+    },
+    {
+        "id": 13573,
+        "date": "2024-05-21T00:00:00.000Z",
+        "startTime": "08:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 13,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13574,
+        "date": "2024-05-21T00:00:00.000Z",
+        "startTime": "09:30:00",
+        "endTime": "14:00:00",
+        "Employee_id": 15,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13575,
+        "date": "2024-05-21T00:00:00.000Z",
+        "startTime": "10:30:00",
+        "endTime": "16:00:00",
+        "Employee_id": 17,
+        "Schedule_id": 5,
+        "Role_id": 3,
+        "Store_id": 1
+    },
+    {
+        "id": 13576,
+        "date": "2024-05-21T00:00:00.000Z",
+        "startTime": "11:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 57,
+        "Schedule_id": 5,
+        "Role_id": 4,
+        "Store_id": 1
+    },
+    {
+        "id": 13577,
+        "date": "2024-05-21T00:00:00.000Z",
+        "startTime": "14:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 20,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13578,
+        "date": "2024-05-21T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "20:30:00",
+        "Employee_id": 54,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13579,
+        "date": "2024-05-21T00:00:00.000Z",
+        "startTime": "14:00:00",
+        "endTime": "20:00:00",
+        "Employee_id": 61,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13580,
+        "date": "2024-05-21T00:00:00.000Z",
+        "startTime": "17:00:00",
+        "endTime": "21:30:00",
+        "Employee_id": 60,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13581,
+        "date": "2024-05-21T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 56,
+        "Schedule_id": 5,
+        "Role_id": 3,
+        "Store_id": 1
+    },
+    {
+        "id": 13582,
+        "date": "2024-05-21T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 11,
+        "Schedule_id": 5,
+        "Role_id": 4,
+        "Store_id": 1
+    },
+    {
+        "id": 13583,
+        "date": "2024-05-22T00:00:00.000Z",
+        "startTime": "08:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 10,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13584,
+        "date": "2024-05-22T00:00:00.000Z",
+        "startTime": "09:30:00",
+        "endTime": "14:00:00",
+        "Employee_id": 16,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13585,
+        "date": "2024-05-22T00:00:00.000Z",
+        "startTime": "10:30:00",
+        "endTime": "16:00:00",
+        "Employee_id": 14,
+        "Schedule_id": 5,
+        "Role_id": 3,
+        "Store_id": 1
+    },
+    {
+        "id": 13586,
+        "date": "2024-05-22T00:00:00.000Z",
+        "startTime": "11:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 19,
+        "Schedule_id": 5,
+        "Role_id": 4,
+        "Store_id": 1
+    },
+    {
+        "id": 13587,
+        "date": "2024-05-22T00:00:00.000Z",
+        "startTime": "14:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 18,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13588,
+        "date": "2024-05-22T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "20:30:00",
+        "Employee_id": 55,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13589,
+        "date": "2024-05-22T00:00:00.000Z",
+        "startTime": "14:00:00",
+        "endTime": "20:00:00",
+        "Employee_id": 21,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13590,
+        "date": "2024-05-22T00:00:00.000Z",
+        "startTime": "17:00:00",
+        "endTime": "21:30:00",
+        "Employee_id": 57,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13591,
+        "date": "2024-05-22T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 58,
+        "Schedule_id": 5,
+        "Role_id": 3,
+        "Store_id": 1
+    },
+    {
+        "id": 13592,
+        "date": "2024-05-22T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 56,
+        "Schedule_id": 5,
+        "Role_id": 4,
+        "Store_id": 1
+    },
+    {
+        "id": 13593,
+        "date": "2024-05-23T00:00:00.000Z",
+        "startTime": "08:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 55,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13594,
+        "date": "2024-05-23T00:00:00.000Z",
+        "startTime": "09:30:00",
+        "endTime": "14:00:00",
+        "Employee_id": 53,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13595,
+        "date": "2024-05-23T00:00:00.000Z",
+        "startTime": "10:30:00",
+        "endTime": "16:00:00",
+        "Employee_id": 14,
+        "Schedule_id": 5,
+        "Role_id": 3,
+        "Store_id": 1
+    },
+    {
+        "id": 13596,
+        "date": "2024-05-23T00:00:00.000Z",
+        "startTime": "11:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 57,
+        "Schedule_id": 5,
+        "Role_id": 4,
+        "Store_id": 1
+    },
+    {
+        "id": 13597,
+        "date": "2024-05-23T00:00:00.000Z",
+        "startTime": "14:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 21,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13598,
+        "date": "2024-05-23T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "20:30:00",
+        "Employee_id": 60,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13599,
+        "date": "2024-05-23T00:00:00.000Z",
+        "startTime": "14:00:00",
+        "endTime": "20:00:00",
+        "Employee_id": 51,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13600,
+        "date": "2024-05-23T00:00:00.000Z",
+        "startTime": "17:00:00",
+        "endTime": "21:30:00",
+        "Employee_id": 24,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13601,
+        "date": "2024-05-23T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 19,
+        "Schedule_id": 5,
+        "Role_id": 3,
+        "Store_id": 1
+    },
+    {
+        "id": 13602,
+        "date": "2024-05-23T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 18,
+        "Schedule_id": 5,
+        "Role_id": 4,
+        "Store_id": 1
+    },
+    {
+        "id": 13603,
+        "date": "2024-05-24T00:00:00.000Z",
+        "startTime": "08:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 54,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13604,
+        "date": "2024-05-24T00:00:00.000Z",
+        "startTime": "09:30:00",
+        "endTime": "14:00:00",
+        "Employee_id": 24,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13605,
+        "date": "2024-05-24T00:00:00.000Z",
+        "startTime": "10:30:00",
+        "endTime": "16:00:00",
+        "Employee_id": 14,
+        "Schedule_id": 5,
+        "Role_id": 3,
+        "Store_id": 1
+    },
+    {
+        "id": 13606,
+        "date": "2024-05-24T00:00:00.000Z",
+        "startTime": "11:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 11,
+        "Schedule_id": 5,
+        "Role_id": 4,
+        "Store_id": 1
+    },
+    {
+        "id": 13607,
+        "date": "2024-05-24T00:00:00.000Z",
+        "startTime": "14:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 13,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13608,
+        "date": "2024-05-24T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "20:30:00",
+        "Employee_id": 51,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13609,
+        "date": "2024-05-24T00:00:00.000Z",
+        "startTime": "14:00:00",
+        "endTime": "20:00:00",
+        "Employee_id": 53,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13610,
+        "date": "2024-05-24T00:00:00.000Z",
+        "startTime": "17:00:00",
+        "endTime": "21:30:00",
+        "Employee_id": 57,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13611,
+        "date": "2024-05-24T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 59,
+        "Schedule_id": 5,
+        "Role_id": 3,
+        "Store_id": 1
+    },
+    {
+        "id": 13612,
+        "date": "2024-05-24T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 55,
+        "Schedule_id": 5,
+        "Role_id": 4,
+        "Store_id": 1
+    },
+    {
+        "id": 13613,
+        "date": "2024-05-25T00:00:00.000Z",
+        "startTime": "08:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 10,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13614,
+        "date": "2024-05-25T00:00:00.000Z",
+        "startTime": "09:30:00",
+        "endTime": "14:00:00",
+        "Employee_id": 11,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13615,
+        "date": "2024-05-25T00:00:00.000Z",
+        "startTime": "10:30:00",
+        "endTime": "16:00:00",
+        "Employee_id": 13,
+        "Schedule_id": 5,
+        "Role_id": 3,
+        "Store_id": 1
+    },
+    {
+        "id": 13616,
+        "date": "2024-05-25T00:00:00.000Z",
+        "startTime": "11:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 17,
+        "Schedule_id": 5,
+        "Role_id": 4,
+        "Store_id": 1
+    },
+    {
+        "id": 13617,
+        "date": "2024-05-25T00:00:00.000Z",
+        "startTime": "14:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 16,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13618,
+        "date": "2024-05-25T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "20:30:00",
+        "Employee_id": 15,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13619,
+        "date": "2024-05-25T00:00:00.000Z",
+        "startTime": "14:00:00",
+        "endTime": "20:00:00",
+        "Employee_id": 14,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13620,
+        "date": "2024-05-25T00:00:00.000Z",
+        "startTime": "17:00:00",
+        "endTime": "21:30:00",
+        "Employee_id": 20,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13621,
+        "date": "2024-05-25T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 53,
+        "Schedule_id": 5,
+        "Role_id": 3,
+        "Store_id": 1
+    },
+    {
+        "id": 13622,
+        "date": "2024-05-25T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 19,
+        "Schedule_id": 5,
+        "Role_id": 4,
+        "Store_id": 1
+    },
+    {
+        "id": 13623,
+        "date": "2024-05-19T00:00:00.000Z",
+        "startTime": "08:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 24,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13624,
+        "date": "2024-05-19T00:00:00.000Z",
+        "startTime": "09:30:00",
+        "endTime": "14:00:00",
+        "Employee_id": 20,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13625,
+        "date": "2024-05-19T00:00:00.000Z",
+        "startTime": "10:30:00",
+        "endTime": "16:00:00",
+        "Employee_id": 52,
+        "Schedule_id": 5,
+        "Role_id": 3,
+        "Store_id": 2
+    },
+    {
+        "id": 13626,
+        "date": "2024-05-19T00:00:00.000Z",
+        "startTime": "11:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 19,
+        "Schedule_id": 5,
+        "Role_id": 4,
+        "Store_id": 2
+    },
+    {
+        "id": 13627,
+        "date": "2024-05-19T00:00:00.000Z",
+        "startTime": "14:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 55,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13628,
+        "date": "2024-05-19T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "20:30:00",
+        "Employee_id": 56,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13629,
+        "date": "2024-05-19T00:00:00.000Z",
+        "startTime": "14:00:00",
+        "endTime": "20:00:00",
+        "Employee_id": 57,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13630,
+        "date": "2024-05-19T00:00:00.000Z",
+        "startTime": "17:00:00",
+        "endTime": "21:30:00",
+        "Employee_id": 58,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13631,
+        "date": "2024-05-19T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 63,
+        "Schedule_id": 5,
+        "Role_id": 3,
+        "Store_id": 2
+    },
+    {
+        "id": 13632,
+        "date": "2024-05-19T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 64,
+        "Schedule_id": 5,
+        "Role_id": 4,
+        "Store_id": 2
+    },
+    {
+        "id": 13633,
+        "date": "2024-05-20T00:00:00.000Z",
+        "startTime": "08:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 13,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13634,
+        "date": "2024-05-20T00:00:00.000Z",
+        "startTime": "09:30:00",
+        "endTime": "14:00:00",
+        "Employee_id": 15,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13635,
+        "date": "2024-05-20T00:00:00.000Z",
+        "startTime": "10:30:00",
+        "endTime": "16:00:00",
+        "Employee_id": 17,
+        "Schedule_id": 5,
+        "Role_id": 3,
+        "Store_id": 2
+    },
+    {
+        "id": 13636,
+        "date": "2024-05-20T00:00:00.000Z",
+        "startTime": "11:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 21,
+        "Schedule_id": 5,
+        "Role_id": 4,
+        "Store_id": 2
+    },
+    {
+        "id": 13637,
+        "date": "2024-05-20T00:00:00.000Z",
+        "startTime": "14:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 24,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13638,
+        "date": "2024-05-20T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "20:30:00",
+        "Employee_id": 51,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13639,
+        "date": "2024-05-20T00:00:00.000Z",
+        "startTime": "14:00:00",
+        "endTime": "20:00:00",
+        "Employee_id": 52,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13640,
+        "date": "2024-05-20T00:00:00.000Z",
+        "startTime": "17:00:00",
+        "endTime": "21:30:00",
+        "Employee_id": 53,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13641,
+        "date": "2024-05-20T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 54,
+        "Schedule_id": 5,
+        "Role_id": 3,
+        "Store_id": 2
+    },
+    {
+        "id": 13642,
+        "date": "2024-05-20T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 56,
+        "Schedule_id": 5,
+        "Role_id": 4,
+        "Store_id": 2
+    },
+    {
+        "id": 13643,
+        "date": "2024-05-21T00:00:00.000Z",
+        "startTime": "08:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 53,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13644,
+        "date": "2024-05-21T00:00:00.000Z",
+        "startTime": "09:30:00",
+        "endTime": "14:00:00",
+        "Employee_id": 67,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13645,
+        "date": "2024-05-21T00:00:00.000Z",
+        "startTime": "10:30:00",
+        "endTime": "16:00:00",
+        "Employee_id": 69,
+        "Schedule_id": 5,
+        "Role_id": 3,
+        "Store_id": 2
+    },
+    {
+        "id": 13646,
+        "date": "2024-05-21T00:00:00.000Z",
+        "startTime": "11:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 58,
+        "Schedule_id": 5,
+        "Role_id": 4,
+        "Store_id": 2
+    },
+    {
+        "id": 13647,
+        "date": "2024-05-21T00:00:00.000Z",
+        "startTime": "14:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 59,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13648,
+        "date": "2024-05-21T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "20:30:00",
+        "Employee_id": 62,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13649,
+        "date": "2024-05-21T00:00:00.000Z",
+        "startTime": "14:00:00",
+        "endTime": "20:00:00",
+        "Employee_id": 63,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13650,
+        "date": "2024-05-21T00:00:00.000Z",
+        "startTime": "17:00:00",
+        "endTime": "21:30:00",
+        "Employee_id": 64,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13651,
+        "date": "2024-05-21T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 65,
+        "Schedule_id": 5,
+        "Role_id": 3,
+        "Store_id": 2
+    },
+    {
+        "id": 13652,
+        "date": "2024-05-21T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 66,
+        "Schedule_id": 5,
+        "Role_id": 4,
+        "Store_id": 2
+    },
+    {
+        "id": 13653,
+        "date": "2024-05-22T00:00:00.000Z",
+        "startTime": "08:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 62,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13654,
+        "date": "2024-05-22T00:00:00.000Z",
+        "startTime": "09:30:00",
+        "endTime": "14:00:00",
+        "Employee_id": 63,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13655,
+        "date": "2024-05-22T00:00:00.000Z",
+        "startTime": "10:30:00",
+        "endTime": "16:00:00",
+        "Employee_id": 64,
+        "Schedule_id": 5,
+        "Role_id": 3,
+        "Store_id": 2
+    },
+    {
+        "id": 13656,
+        "date": "2024-05-22T00:00:00.000Z",
+        "startTime": "11:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 65,
+        "Schedule_id": 5,
+        "Role_id": 4,
+        "Store_id": 2
+    },
+    {
+        "id": 13657,
+        "date": "2024-05-22T00:00:00.000Z",
+        "startTime": "14:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 66,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13658,
+        "date": "2024-05-22T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "20:30:00",
+        "Employee_id": 67,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13659,
+        "date": "2024-05-22T00:00:00.000Z",
+        "startTime": "14:00:00",
+        "endTime": "20:00:00",
+        "Employee_id": 74,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13660,
+        "date": "2024-05-22T00:00:00.000Z",
+        "startTime": "17:00:00",
+        "endTime": "21:30:00",
+        "Employee_id": 75,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13661,
+        "date": "2024-05-22T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 76,
+        "Schedule_id": 5,
+        "Role_id": 3,
+        "Store_id": 2
+    },
+    {
+        "id": 13662,
+        "date": "2024-05-22T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 52,
+        "Schedule_id": 5,
+        "Role_id": 4,
+        "Store_id": 2
+    },
+    {
+        "id": 13663,
+        "date": "2024-05-23T00:00:00.000Z",
+        "startTime": "08:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 74,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13664,
+        "date": "2024-05-23T00:00:00.000Z",
+        "startTime": "09:30:00",
+        "endTime": "14:00:00",
+        "Employee_id": 54,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13665,
+        "date": "2024-05-23T00:00:00.000Z",
+        "startTime": "10:30:00",
+        "endTime": "16:00:00",
+        "Employee_id": 56,
+        "Schedule_id": 5,
+        "Role_id": 3,
+        "Store_id": 2
+    },
+    {
+        "id": 13666,
+        "date": "2024-05-23T00:00:00.000Z",
+        "startTime": "11:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 76,
+        "Schedule_id": 5,
+        "Role_id": 4,
+        "Store_id": 2
+    },
+    {
+        "id": 13667,
+        "date": "2024-05-23T00:00:00.000Z",
+        "startTime": "14:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 58,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13668,
+        "date": "2024-05-23T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "20:30:00",
+        "Employee_id": 69,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13669,
+        "date": "2024-05-23T00:00:00.000Z",
+        "startTime": "14:00:00",
+        "endTime": "20:00:00",
+        "Employee_id": 61,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13670,
+        "date": "2024-05-23T00:00:00.000Z",
+        "startTime": "17:00:00",
+        "endTime": "21:30:00",
+        "Employee_id": 68,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13671,
+        "date": "2024-05-23T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 64,
+        "Schedule_id": 5,
+        "Role_id": 3,
+        "Store_id": 2
+    },
+    {
+        "id": 13672,
+        "date": "2024-05-23T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 70,
+        "Schedule_id": 5,
+        "Role_id": 4,
+        "Store_id": 2
+    },
+    {
+        "id": 13673,
+        "date": "2024-05-24T00:00:00.000Z",
+        "startTime": "08:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 64,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13674,
+        "date": "2024-05-24T00:00:00.000Z",
+        "startTime": "09:30:00",
+        "endTime": "14:00:00",
+        "Employee_id": 65,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13675,
+        "date": "2024-05-24T00:00:00.000Z",
+        "startTime": "10:30:00",
+        "endTime": "16:00:00",
+        "Employee_id": 66,
+        "Schedule_id": 5,
+        "Role_id": 3,
+        "Store_id": 2
+    },
+    {
+        "id": 13676,
+        "date": "2024-05-24T00:00:00.000Z",
+        "startTime": "11:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 67,
+        "Schedule_id": 5,
+        "Role_id": 4,
+        "Store_id": 2
+    },
+    {
+        "id": 13677,
+        "date": "2024-05-24T00:00:00.000Z",
+        "startTime": "14:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 68,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13678,
+        "date": "2024-05-24T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "20:30:00",
+        "Employee_id": 72,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13679,
+        "date": "2024-05-24T00:00:00.000Z",
+        "startTime": "14:00:00",
+        "endTime": "20:00:00",
+        "Employee_id": 70,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13680,
+        "date": "2024-05-24T00:00:00.000Z",
+        "startTime": "17:00:00",
+        "endTime": "21:30:00",
+        "Employee_id": 71,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13681,
+        "date": "2024-05-24T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 73,
+        "Schedule_id": 5,
+        "Role_id": 3,
+        "Store_id": 2
+    },
+    {
+        "id": 13682,
+        "date": "2024-05-24T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 58,
+        "Schedule_id": 5,
+        "Role_id": 4,
+        "Store_id": 2
+    },
+    {
+        "id": 13683,
+        "date": "2024-05-25T00:00:00.000Z",
+        "startTime": "08:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 21,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13684,
+        "date": "2024-05-25T00:00:00.000Z",
+        "startTime": "09:30:00",
+        "endTime": "14:00:00",
+        "Employee_id": 67,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13685,
+        "date": "2024-05-25T00:00:00.000Z",
+        "startTime": "10:30:00",
+        "endTime": "16:00:00",
+        "Employee_id": 51,
+        "Schedule_id": 5,
+        "Role_id": 3,
+        "Store_id": 2
+    },
+    {
+        "id": 13686,
+        "date": "2024-05-25T00:00:00.000Z",
+        "startTime": "11:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 52,
+        "Schedule_id": 5,
+        "Role_id": 4,
+        "Store_id": 2
+    },
+    {
+        "id": 13687,
+        "date": "2024-05-25T00:00:00.000Z",
+        "startTime": "14:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 71,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13688,
+        "date": "2024-05-25T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "20:30:00",
+        "Employee_id": 62,
+        "Schedule_id": 5,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13689,
+        "date": "2024-05-25T00:00:00.000Z",
+        "startTime": "14:00:00",
+        "endTime": "20:00:00",
+        "Employee_id": 63,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13690,
+        "date": "2024-05-25T00:00:00.000Z",
+        "startTime": "17:00:00",
+        "endTime": "21:30:00",
+        "Employee_id": 74,
+        "Schedule_id": 5,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13691,
+        "date": "2024-05-25T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 75,
+        "Schedule_id": 5,
+        "Role_id": 3,
+        "Store_id": 2
+    },
+    {
+        "id": 13692,
+        "date": "2024-05-25T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 65,
+        "Schedule_id": 5,
+        "Role_id": 4,
+        "Store_id": 2
+    },
+    {
+        "id": 13808,
+        "date": "2024-05-26T00:00:00.000Z",
+        "startTime": "08:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 10,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13809,
+        "date": "2024-05-26T00:00:00.000Z",
+        "startTime": "09:30:00",
+        "endTime": "14:00:00",
+        "Employee_id": 11,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13810,
+        "date": "2024-05-26T00:00:00.000Z",
+        "startTime": "10:30:00",
+        "endTime": "16:00:00",
+        "Employee_id": 13,
+        "Schedule_id": 6,
+        "Role_id": 3,
+        "Store_id": 1
+    },
+    {
+        "id": 13811,
+        "date": "2024-05-26T00:00:00.000Z",
+        "startTime": "11:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 14,
+        "Schedule_id": 6,
+        "Role_id": 4,
+        "Store_id": 1
+    },
+    {
+        "id": 13812,
+        "date": "2024-05-26T00:00:00.000Z",
+        "startTime": "14:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 21,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13813,
+        "date": "2024-05-26T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "20:30:00",
+        "Employee_id": 51,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13814,
+        "date": "2024-05-26T00:00:00.000Z",
+        "startTime": "14:00:00",
+        "endTime": "20:00:00",
+        "Employee_id": 53,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13815,
+        "date": "2024-05-26T00:00:00.000Z",
+        "startTime": "17:00:00",
+        "endTime": "21:30:00",
+        "Employee_id": 54,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13816,
+        "date": "2024-05-26T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 59,
+        "Schedule_id": 6,
+        "Role_id": 3,
+        "Store_id": 1
+    },
+    {
+        "id": 13817,
+        "date": "2024-05-26T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 60,
+        "Schedule_id": 6,
+        "Role_id": 4,
+        "Store_id": 1
+    },
+    {
+        "id": 13818,
+        "date": "2024-05-27T00:00:00.000Z",
+        "startTime": "08:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 11,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13819,
+        "date": "2024-05-27T00:00:00.000Z",
+        "startTime": "09:30:00",
+        "endTime": "14:00:00",
+        "Employee_id": 10,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13820,
+        "date": "2024-05-27T00:00:00.000Z",
+        "startTime": "10:30:00",
+        "endTime": "16:00:00",
+        "Employee_id": 59,
+        "Schedule_id": 6,
+        "Role_id": 3,
+        "Store_id": 1
+    },
+    {
+        "id": 13821,
+        "date": "2024-05-27T00:00:00.000Z",
+        "startTime": "11:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 55,
+        "Schedule_id": 6,
+        "Role_id": 4,
+        "Store_id": 1
+    },
+    {
+        "id": 13822,
+        "date": "2024-05-27T00:00:00.000Z",
+        "startTime": "14:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 61,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13823,
+        "date": "2024-05-27T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "20:30:00",
+        "Employee_id": 14,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13824,
+        "date": "2024-05-27T00:00:00.000Z",
+        "startTime": "14:00:00",
+        "endTime": "20:00:00",
+        "Employee_id": 16,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13825,
+        "date": "2024-05-27T00:00:00.000Z",
+        "startTime": "17:00:00",
+        "endTime": "21:30:00",
+        "Employee_id": 18,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13826,
+        "date": "2024-05-27T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 19,
+        "Schedule_id": 6,
+        "Role_id": 3,
+        "Store_id": 1
+    },
+    {
+        "id": 13827,
+        "date": "2024-05-27T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 20,
+        "Schedule_id": 6,
+        "Role_id": 4,
+        "Store_id": 1
+    },
+    {
+        "id": 13828,
+        "date": "2024-05-28T00:00:00.000Z",
+        "startTime": "08:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 13,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13829,
+        "date": "2024-05-28T00:00:00.000Z",
+        "startTime": "09:30:00",
+        "endTime": "14:00:00",
+        "Employee_id": 15,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13830,
+        "date": "2024-05-28T00:00:00.000Z",
+        "startTime": "10:30:00",
+        "endTime": "16:00:00",
+        "Employee_id": 17,
+        "Schedule_id": 6,
+        "Role_id": 3,
+        "Store_id": 1
+    },
+    {
+        "id": 13831,
+        "date": "2024-05-28T00:00:00.000Z",
+        "startTime": "11:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 57,
+        "Schedule_id": 6,
+        "Role_id": 4,
+        "Store_id": 1
+    },
+    {
+        "id": 13832,
+        "date": "2024-05-28T00:00:00.000Z",
+        "startTime": "14:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 20,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13833,
+        "date": "2024-05-28T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "20:30:00",
+        "Employee_id": 54,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13834,
+        "date": "2024-05-28T00:00:00.000Z",
+        "startTime": "14:00:00",
+        "endTime": "20:00:00",
+        "Employee_id": 61,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13835,
+        "date": "2024-05-28T00:00:00.000Z",
+        "startTime": "17:00:00",
+        "endTime": "21:30:00",
+        "Employee_id": 60,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13836,
+        "date": "2024-05-28T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 56,
+        "Schedule_id": 6,
+        "Role_id": 3,
+        "Store_id": 1
+    },
+    {
+        "id": 13837,
+        "date": "2024-05-28T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 11,
+        "Schedule_id": 6,
+        "Role_id": 4,
+        "Store_id": 1
+    },
+    {
+        "id": 13838,
+        "date": "2024-05-29T00:00:00.000Z",
+        "startTime": "08:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 10,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13839,
+        "date": "2024-05-29T00:00:00.000Z",
+        "startTime": "09:30:00",
+        "endTime": "14:00:00",
+        "Employee_id": 16,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13840,
+        "date": "2024-05-29T00:00:00.000Z",
+        "startTime": "10:30:00",
+        "endTime": "16:00:00",
+        "Employee_id": 14,
+        "Schedule_id": 6,
+        "Role_id": 3,
+        "Store_id": 1
+    },
+    {
+        "id": 13841,
+        "date": "2024-05-29T00:00:00.000Z",
+        "startTime": "11:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 19,
+        "Schedule_id": 6,
+        "Role_id": 4,
+        "Store_id": 1
+    },
+    {
+        "id": 13842,
+        "date": "2024-05-29T00:00:00.000Z",
+        "startTime": "14:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 18,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13843,
+        "date": "2024-05-29T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "20:30:00",
+        "Employee_id": 55,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13844,
+        "date": "2024-05-29T00:00:00.000Z",
+        "startTime": "14:00:00",
+        "endTime": "20:00:00",
+        "Employee_id": 21,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13845,
+        "date": "2024-05-29T00:00:00.000Z",
+        "startTime": "17:00:00",
+        "endTime": "21:30:00",
+        "Employee_id": 57,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13846,
+        "date": "2024-05-29T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 58,
+        "Schedule_id": 6,
+        "Role_id": 3,
+        "Store_id": 1
+    },
+    {
+        "id": 13847,
+        "date": "2024-05-29T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 56,
+        "Schedule_id": 6,
+        "Role_id": 4,
+        "Store_id": 1
+    },
+    {
+        "id": 13848,
+        "date": "2024-05-30T00:00:00.000Z",
+        "startTime": "08:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 55,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13849,
+        "date": "2024-05-30T00:00:00.000Z",
+        "startTime": "09:30:00",
+        "endTime": "14:00:00",
+        "Employee_id": 53,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13850,
+        "date": "2024-05-30T00:00:00.000Z",
+        "startTime": "10:30:00",
+        "endTime": "16:00:00",
+        "Employee_id": 14,
+        "Schedule_id": 6,
+        "Role_id": 3,
+        "Store_id": 1
+    },
+    {
+        "id": 13851,
+        "date": "2024-05-30T00:00:00.000Z",
+        "startTime": "11:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 57,
+        "Schedule_id": 6,
+        "Role_id": 4,
+        "Store_id": 1
+    },
+    {
+        "id": 13852,
+        "date": "2024-05-30T00:00:00.000Z",
+        "startTime": "14:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 21,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13853,
+        "date": "2024-05-30T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "20:30:00",
+        "Employee_id": 60,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13854,
+        "date": "2024-05-30T00:00:00.000Z",
+        "startTime": "14:00:00",
+        "endTime": "20:00:00",
+        "Employee_id": 51,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13855,
+        "date": "2024-05-30T00:00:00.000Z",
+        "startTime": "17:00:00",
+        "endTime": "21:30:00",
+        "Employee_id": 24,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13856,
+        "date": "2024-05-30T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 19,
+        "Schedule_id": 6,
+        "Role_id": 3,
+        "Store_id": 1
+    },
+    {
+        "id": 13857,
+        "date": "2024-05-30T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 18,
+        "Schedule_id": 6,
+        "Role_id": 4,
+        "Store_id": 1
+    },
+    {
+        "id": 13858,
+        "date": "2024-05-31T00:00:00.000Z",
+        "startTime": "08:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 54,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13859,
+        "date": "2024-05-31T00:00:00.000Z",
+        "startTime": "09:30:00",
+        "endTime": "14:00:00",
+        "Employee_id": 24,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13860,
+        "date": "2024-05-31T00:00:00.000Z",
+        "startTime": "10:30:00",
+        "endTime": "16:00:00",
+        "Employee_id": 14,
+        "Schedule_id": 6,
+        "Role_id": 3,
+        "Store_id": 1
+    },
+    {
+        "id": 13861,
+        "date": "2024-05-31T00:00:00.000Z",
+        "startTime": "11:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 11,
+        "Schedule_id": 6,
+        "Role_id": 4,
+        "Store_id": 1
+    },
+    {
+        "id": 13862,
+        "date": "2024-05-31T00:00:00.000Z",
+        "startTime": "14:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 13,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13863,
+        "date": "2024-05-31T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "20:30:00",
+        "Employee_id": 19,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13864,
+        "date": "2024-05-31T00:00:00.000Z",
+        "startTime": "14:00:00",
+        "endTime": "20:00:00",
+        "Employee_id": 53,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13865,
+        "date": "2024-05-31T00:00:00.000Z",
+        "startTime": "17:00:00",
+        "endTime": "21:30:00",
+        "Employee_id": 54,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13866,
+        "date": "2024-05-31T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 55,
+        "Schedule_id": 6,
+        "Role_id": 3,
+        "Store_id": 1
+    },
+    {
+        "id": 13867,
+        "date": "2024-05-31T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 58,
+        "Schedule_id": 6,
+        "Role_id": 4,
+        "Store_id": 1
+    },
+    {
+        "id": 13868,
+        "date": "2024-06-01T00:00:00.000Z",
+        "startTime": "08:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 10,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13869,
+        "date": "2024-06-01T00:00:00.000Z",
+        "startTime": "09:30:00",
+        "endTime": "14:00:00",
+        "Employee_id": 11,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13870,
+        "date": "2024-06-01T00:00:00.000Z",
+        "startTime": "10:30:00",
+        "endTime": "16:00:00",
+        "Employee_id": 13,
+        "Schedule_id": 6,
+        "Role_id": 3,
+        "Store_id": 1
+    },
+    {
+        "id": 13871,
+        "date": "2024-06-01T00:00:00.000Z",
+        "startTime": "11:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": null,
+        "Schedule_id": 6,
+        "Role_id": 5,
+        "Store_id": 1
+    },
+    {
+        "id": 13872,
+        "date": "2024-06-01T00:00:00.000Z",
+        "startTime": "14:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 16,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13873,
+        "date": "2024-06-01T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "20:30:00",
+        "Employee_id": 15,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 1
+    },
+    {
+        "id": 13874,
+        "date": "2024-06-01T00:00:00.000Z",
+        "startTime": "14:00:00",
+        "endTime": "20:00:00",
+        "Employee_id": 14,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13875,
+        "date": "2024-06-01T00:00:00.000Z",
+        "startTime": "17:00:00",
+        "endTime": "21:30:00",
+        "Employee_id": 18,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 1
+    },
+    {
+        "id": 13876,
+        "date": "2024-06-01T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 19,
+        "Schedule_id": 6,
+        "Role_id": 3,
+        "Store_id": 1
+    },
+    {
+        "id": 13877,
+        "date": "2024-06-01T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": null,
+        "Schedule_id": 6,
+        "Role_id": 5,
+        "Store_id": 1
+    },
+    {
+        "id": 13878,
+        "date": "2024-05-26T00:00:00.000Z",
+        "startTime": "08:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 24,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13879,
+        "date": "2024-05-26T00:00:00.000Z",
+        "startTime": "09:30:00",
+        "endTime": "14:00:00",
+        "Employee_id": 20,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13880,
+        "date": "2024-05-26T00:00:00.000Z",
+        "startTime": "10:30:00",
+        "endTime": "16:00:00",
+        "Employee_id": 52,
+        "Schedule_id": 6,
+        "Role_id": 3,
+        "Store_id": 2
+    },
+    {
+        "id": 13881,
+        "date": "2024-05-26T00:00:00.000Z",
+        "startTime": "11:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 19,
+        "Schedule_id": 6,
+        "Role_id": 4,
+        "Store_id": 2
+    },
+    {
+        "id": 13882,
+        "date": "2024-05-26T00:00:00.000Z",
+        "startTime": "14:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 55,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13883,
+        "date": "2024-05-26T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "20:30:00",
+        "Employee_id": 56,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13884,
+        "date": "2024-05-26T00:00:00.000Z",
+        "startTime": "14:00:00",
+        "endTime": "20:00:00",
+        "Employee_id": 57,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13885,
+        "date": "2024-05-26T00:00:00.000Z",
+        "startTime": "17:00:00",
+        "endTime": "21:30:00",
+        "Employee_id": 58,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13886,
+        "date": "2024-05-26T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 63,
+        "Schedule_id": 6,
+        "Role_id": 3,
+        "Store_id": 2
+    },
+    {
+        "id": 13887,
+        "date": "2024-05-26T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 64,
+        "Schedule_id": 6,
+        "Role_id": 4,
+        "Store_id": 2
+    },
+    {
+        "id": 13888,
+        "date": "2024-05-27T00:00:00.000Z",
+        "startTime": "08:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 13,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13889,
+        "date": "2024-05-27T00:00:00.000Z",
+        "startTime": "09:30:00",
+        "endTime": "14:00:00",
+        "Employee_id": 15,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13890,
+        "date": "2024-05-27T00:00:00.000Z",
+        "startTime": "10:30:00",
+        "endTime": "16:00:00",
+        "Employee_id": 17,
+        "Schedule_id": 6,
+        "Role_id": 3,
+        "Store_id": 2
+    },
+    {
+        "id": 13891,
+        "date": "2024-05-27T00:00:00.000Z",
+        "startTime": "11:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 21,
+        "Schedule_id": 6,
+        "Role_id": 4,
+        "Store_id": 2
+    },
+    {
+        "id": 13892,
+        "date": "2024-05-27T00:00:00.000Z",
+        "startTime": "14:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 24,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13893,
+        "date": "2024-05-27T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "20:30:00",
+        "Employee_id": 51,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13894,
+        "date": "2024-05-27T00:00:00.000Z",
+        "startTime": "14:00:00",
+        "endTime": "20:00:00",
+        "Employee_id": 52,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13895,
+        "date": "2024-05-27T00:00:00.000Z",
+        "startTime": "17:00:00",
+        "endTime": "21:30:00",
+        "Employee_id": 53,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13896,
+        "date": "2024-05-27T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 54,
+        "Schedule_id": 6,
+        "Role_id": 3,
+        "Store_id": 2
+    },
+    {
+        "id": 13897,
+        "date": "2024-05-27T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 56,
+        "Schedule_id": 6,
+        "Role_id": 4,
+        "Store_id": 2
+    },
+    {
+        "id": 13898,
+        "date": "2024-05-28T00:00:00.000Z",
+        "startTime": "08:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 53,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13899,
+        "date": "2024-05-28T00:00:00.000Z",
+        "startTime": "09:30:00",
+        "endTime": "14:00:00",
+        "Employee_id": 67,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13900,
+        "date": "2024-05-28T00:00:00.000Z",
+        "startTime": "10:30:00",
+        "endTime": "16:00:00",
+        "Employee_id": 69,
+        "Schedule_id": 6,
+        "Role_id": 3,
+        "Store_id": 2
+    },
+    {
+        "id": 13901,
+        "date": "2024-05-28T00:00:00.000Z",
+        "startTime": "11:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 58,
+        "Schedule_id": 6,
+        "Role_id": 4,
+        "Store_id": 2
+    },
+    {
+        "id": 13902,
+        "date": "2024-05-28T00:00:00.000Z",
+        "startTime": "14:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 59,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13903,
+        "date": "2024-05-28T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "20:30:00",
+        "Employee_id": 62,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13904,
+        "date": "2024-05-28T00:00:00.000Z",
+        "startTime": "14:00:00",
+        "endTime": "20:00:00",
+        "Employee_id": 63,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13905,
+        "date": "2024-05-28T00:00:00.000Z",
+        "startTime": "17:00:00",
+        "endTime": "21:30:00",
+        "Employee_id": 64,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13906,
+        "date": "2024-05-28T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 65,
+        "Schedule_id": 6,
+        "Role_id": 3,
+        "Store_id": 2
+    },
+    {
+        "id": 13907,
+        "date": "2024-05-28T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 66,
+        "Schedule_id": 6,
+        "Role_id": 4,
+        "Store_id": 2
+    },
+    {
+        "id": 13908,
+        "date": "2024-05-29T00:00:00.000Z",
+        "startTime": "08:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 62,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13909,
+        "date": "2024-05-29T00:00:00.000Z",
+        "startTime": "09:30:00",
+        "endTime": "14:00:00",
+        "Employee_id": 63,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13910,
+        "date": "2024-05-29T00:00:00.000Z",
+        "startTime": "10:30:00",
+        "endTime": "16:00:00",
+        "Employee_id": 64,
+        "Schedule_id": 6,
+        "Role_id": 3,
+        "Store_id": 2
+    },
+    {
+        "id": 13911,
+        "date": "2024-05-29T00:00:00.000Z",
+        "startTime": "11:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 65,
+        "Schedule_id": 6,
+        "Role_id": 4,
+        "Store_id": 2
+    },
+    {
+        "id": 13912,
+        "date": "2024-05-29T00:00:00.000Z",
+        "startTime": "14:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 66,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13913,
+        "date": "2024-05-29T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "20:30:00",
+        "Employee_id": 67,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13914,
+        "date": "2024-05-29T00:00:00.000Z",
+        "startTime": "14:00:00",
+        "endTime": "20:00:00",
+        "Employee_id": 74,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13915,
+        "date": "2024-05-29T00:00:00.000Z",
+        "startTime": "17:00:00",
+        "endTime": "21:30:00",
+        "Employee_id": 75,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13916,
+        "date": "2024-05-29T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 76,
+        "Schedule_id": 6,
+        "Role_id": 3,
+        "Store_id": 2
+    },
+    {
+        "id": 13917,
+        "date": "2024-05-29T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 52,
+        "Schedule_id": 6,
+        "Role_id": 4,
+        "Store_id": 2
+    },
+    {
+        "id": 13918,
+        "date": "2024-05-30T00:00:00.000Z",
+        "startTime": "08:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 74,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13919,
+        "date": "2024-05-30T00:00:00.000Z",
+        "startTime": "09:30:00",
+        "endTime": "14:00:00",
+        "Employee_id": 54,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13920,
+        "date": "2024-05-30T00:00:00.000Z",
+        "startTime": "10:30:00",
+        "endTime": "16:00:00",
+        "Employee_id": 56,
+        "Schedule_id": 6,
+        "Role_id": 3,
+        "Store_id": 2
+    },
+    {
+        "id": 13921,
+        "date": "2024-05-30T00:00:00.000Z",
+        "startTime": "11:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 76,
+        "Schedule_id": 6,
+        "Role_id": 4,
+        "Store_id": 2
+    },
+    {
+        "id": 13922,
+        "date": "2024-05-30T00:00:00.000Z",
+        "startTime": "14:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 58,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13923,
+        "date": "2024-05-30T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "20:30:00",
+        "Employee_id": 69,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13924,
+        "date": "2024-05-30T00:00:00.000Z",
+        "startTime": "14:00:00",
+        "endTime": "20:00:00",
+        "Employee_id": 61,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13925,
+        "date": "2024-05-30T00:00:00.000Z",
+        "startTime": "17:00:00",
+        "endTime": "21:30:00",
+        "Employee_id": 68,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13926,
+        "date": "2024-05-30T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 64,
+        "Schedule_id": 6,
+        "Role_id": 3,
+        "Store_id": 2
+    },
+    {
+        "id": 13927,
+        "date": "2024-05-30T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 70,
+        "Schedule_id": 6,
+        "Role_id": 4,
+        "Store_id": 2
+    },
+    {
+        "id": 13928,
+        "date": "2024-05-31T00:00:00.000Z",
+        "startTime": "08:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 64,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13929,
+        "date": "2024-05-31T00:00:00.000Z",
+        "startTime": "09:30:00",
+        "endTime": "14:00:00",
+        "Employee_id": 65,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13930,
+        "date": "2024-05-31T00:00:00.000Z",
+        "startTime": "10:30:00",
+        "endTime": "16:00:00",
+        "Employee_id": 66,
+        "Schedule_id": 6,
+        "Role_id": 3,
+        "Store_id": 2
+    },
+    {
+        "id": 13931,
+        "date": "2024-05-31T00:00:00.000Z",
+        "startTime": "11:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 67,
+        "Schedule_id": 6,
+        "Role_id": 4,
+        "Store_id": 2
+    },
+    {
+        "id": 13932,
+        "date": "2024-05-31T00:00:00.000Z",
+        "startTime": "14:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 68,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13933,
+        "date": "2024-05-31T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "20:30:00",
+        "Employee_id": 69,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13934,
+        "date": "2024-05-31T00:00:00.000Z",
+        "startTime": "14:00:00",
+        "endTime": "20:00:00",
+        "Employee_id": 70,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13935,
+        "date": "2024-05-31T00:00:00.000Z",
+        "startTime": "17:00:00",
+        "endTime": "21:30:00",
+        "Employee_id": 71,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13936,
+        "date": "2024-05-31T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 72,
+        "Schedule_id": 6,
+        "Role_id": 3,
+        "Store_id": 2
+    },
+    {
+        "id": 13937,
+        "date": "2024-05-31T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 73,
+        "Schedule_id": 6,
+        "Role_id": 4,
+        "Store_id": 2
+    },
+    {
+        "id": 13938,
+        "date": "2024-06-01T00:00:00.000Z",
+        "startTime": "08:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": 21,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13939,
+        "date": "2024-06-01T00:00:00.000Z",
+        "startTime": "09:30:00",
+        "endTime": "14:00:00",
+        "Employee_id": 24,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13940,
+        "date": "2024-06-01T00:00:00.000Z",
+        "startTime": "10:30:00",
+        "endTime": "16:00:00",
+        "Employee_id": 13,
+        "Schedule_id": 6,
+        "Role_id": 3,
+        "Store_id": 2
+    },
+    {
+        "id": 13941,
+        "date": "2024-06-01T00:00:00.000Z",
+        "startTime": "11:00:00",
+        "endTime": "15:00:00",
+        "Employee_id": null,
+        "Schedule_id": 6,
+        "Role_id": 5,
+        "Store_id": 2
+    },
+    {
+        "id": 13942,
+        "date": "2024-06-01T00:00:00.000Z",
+        "startTime": "14:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 53,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13943,
+        "date": "2024-06-01T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "20:30:00",
+        "Employee_id": 15,
+        "Schedule_id": 6,
+        "Role_id": 1,
+        "Store_id": 2
+    },
+    {
+        "id": 13944,
+        "date": "2024-06-01T00:00:00.000Z",
+        "startTime": "14:00:00",
+        "endTime": "20:00:00",
+        "Employee_id": 63,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13945,
+        "date": "2024-06-01T00:00:00.000Z",
+        "startTime": "17:00:00",
+        "endTime": "21:30:00",
+        "Employee_id": 20,
+        "Schedule_id": 6,
+        "Role_id": 2,
+        "Store_id": 2
+    },
+    {
+        "id": 13946,
+        "date": "2024-06-01T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": 19,
+        "Schedule_id": 6,
+        "Role_id": 3,
+        "Store_id": 2
+    },
+    {
+        "id": 13947,
+        "date": "2024-06-01T00:00:00.000Z",
+        "startTime": "15:30:00",
+        "endTime": "21:30:00",
+        "Employee_id": null,
+        "Schedule_id": 6,
+        "Role_id": 5,
+        "Store_id": 2
+    },
+    {
+        "id": 14319,
+        "date": "2024-06-01T00:00:00.000Z",
+        "startTime": "09:30:00",
+        "endTime": "15:30:00",
+        "Employee_id": null,
+        "Schedule_id": 6,
+        "Role_id": 5,
+        "Store_id": 1
+    }
+]

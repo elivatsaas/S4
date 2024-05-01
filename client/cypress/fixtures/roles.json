@@ -1,0 +1,22 @@
+[
+  {
+    "roleName": "Cashier",
+    "id": 3
+  },
+  {
+    "roleName": "Cook",
+    "id": 2
+  },
+  {
+    "roleName": "Dish Washer",
+    "id": 5
+  },
+  {
+    "roleName": "Driver",
+    "id": 4
+  },
+  {
+    "roleName": "Manager",
+    "id": 1
+  }
+]
