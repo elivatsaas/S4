@@ -1,0 +1,37 @@
+[
+  {
+    "id": 13553,
+    "title": "Big Show",
+    "start": "Sun May 19 2024 08:00:00 GMT-0700 (Mountain Standard Time)",
+    "end": "Sun May 19 2024 15:00:00 GMT-0700 (Mountain Standard Time)",
+    "role": "Manager"
+  },
+  {
+    "id": 13554,
+    "title": "Danny Devito",
+    "start": "Sun May 19 2024 09:30:00 GMT-0700 (Mountain Standard Time)",
+    "end": "Sun May 19 2024 14:00:00 GMT-0700 (Mountain Standard Time)",
+    "role": "Cook"
+  },
+  {
+    "id": 13555,
+    "title": "Bart Simpson",
+    "start": "Sun May 19 2024 10:30:00 GMT-0700 (Mountain Standard Time)",
+    "end": "Sun May 19 2024 16:00:00 GMT-0700 (Mountain Standard Time)",
+    "role": "Cashier"
+  },
+  {
+    "id": 13556,
+    "title": "Dwight Schrute",
+    "start": "Sun May 19 2024 11:00:00 GMT-0700 (Mountain Standard Time)",
+    "end": "Sun May 19 2024 15:00:00 GMT-0700 (Mountain Standard Time)",
+    "role": "Driver"
+  },
+  {
+    "id": 13557,
+    "title": "Shredder >:(",
+    "start": "Sun May 19 2024 14:30:00 GMT-0700 (Mountain Standard Time)",
+    "end": "Sun May 19 2024 21:30:00 GMT-0700 (Mountain Standard Time)",
+    "role": "Manager"
+  }
+]
