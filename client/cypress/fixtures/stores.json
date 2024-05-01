@@ -1,0 +1,14 @@
+[
+  {
+    "storeName": "Downtown",
+    "id": 1
+  },
+  {
+    "storeName": "Eastside",
+    "id": 2
+  },
+  {
+    "storeName": "Westside",
+    "id": 3
+  }
+]
