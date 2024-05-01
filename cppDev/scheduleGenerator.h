@@ -1,6 +1,7 @@
 #include <string>
 #include <iostream>
 #include <time.h>
+#include "doctest.h"
 #pragma once
 
 using namespace std;
@@ -117,15 +118,19 @@ extern "C"
 
     bool checkForOverlap(Employee checkEmp, Shift checkShift);
 
+    void createNewEmployee(EmployeeType *employees, int newId, int timeReq);
+
     void dateStringToInts(int *day, int* month, int *year, string toConvert);
 
     void deepCopyShift(Shift *dest, Shift src);
+
+    void deepCopyShiftType(ShiftType *dest, ShiftType *src);
 
     bool empInArray(Employee *array, int arrLen, int toFind);
 
     int employeeExists(EmployeeType *employees, int checkId);
 
-    bool fillShift(ShiftType *shifts, EmployeeType *employees, int shiftIndex, int **availableIds, ShiftType *incompleteOption);
+    bool fillShift(ShiftType *shifts, EmployeeType *employees, int shiftIndex, int **availableIds, ShiftType *incompleteOption, int *maxIndex);
 
     bool intInArray(int *array, int arrLen, int toFind);
 
