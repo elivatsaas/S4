@@ -1,6 +1,10 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+#include <string>
+#include <fstream>
+#include "json/json.h"
 #include "doctest.h"
 #include "scheduleGenerator.h"
+#include "timeConverter.h"
 
 TEST_CASE("Testing the checkForOverlap function")
 {
@@ -191,4 +195,17 @@ TEST_CASE("Testing the sameWeek function")
     CHECK(sameWeek(sft3, sft4) == true);
     // month to month (leap year)
     CHECK(sameWeek(sft5, sft6) == true);
+}
+
+TEST_CASE("Testing the timeToNumber function")
+{
+    string time1, time2, time3, time4;
+    time1 = "1000";
+    time2 = "1234";
+    time3 = "0000";
+    time4 = "1859";
+    CHECK(timeToNumber(time1) == 600);
+    CHECK(timeToNumber(time2) == 754);
+    CHECK(timeToNumber(time3) == 0);
+    CHECK(timeToNumber(time4) == 1139);
 }
