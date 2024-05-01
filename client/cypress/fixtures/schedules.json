@@ -1,0 +1,14 @@
+[
+  {
+    "id": 5,
+    "startDate": "2024-05-19T00:00:00.000Z",
+    "endDate": "2024-05-25T00:00:00.000Z",
+    "scheduleName": "Demo Schedule One"
+  },
+  {
+    "id": 6,
+    "startDate": "2024-05-26T00:00:00.000Z",
+    "endDate": "2024-06-01T00:00:00.000Z",
+    "scheduleName": "Demo Schedule Two"
+  }
+]
